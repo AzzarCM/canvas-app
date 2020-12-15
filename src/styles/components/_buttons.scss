@@ -1,0 +1,52 @@
+.btn{
+    background-color: $primary;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 7px 10px 7px 10px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    height: 50px;
+    transition: background-color .5s ease;
+
+    &:focus{
+        outline: none;
+    }
+    &:hover{
+        background-color: darken($color: $primary, $amount: 10);
+    }
+}
+
+.btn-primary{
+    width: 75%;
+}
+.btn-facebook{
+    width: 75%;
+    background-color: $facebook;
+    &:hover{
+        background-color: darken($color: $facebook, $amount: 5);
+    }
+}
+
+
+
+.btn-medium{
+    background-color: $primary;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    height: 35px;
+    transition: background-color .5s ease;
+    &:focus{
+        outline: none;
+    }
+    &:hover{
+        background-color: darken($color: $primary, $amount: 5);
+    }
+}
+
+.link-dec{
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+}
