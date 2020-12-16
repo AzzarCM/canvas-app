@@ -6,6 +6,7 @@ import {
     Route,
     Redirect
 } from "react-router-dom";
+import { PrincipalRouter } from './PrincipalRouter';
 export const AppRouter = () => {
     return (
        <Router>
@@ -14,6 +15,10 @@ export const AppRouter = () => {
                    <Route
                         path="/auth"
                         component={ AuthRouter }
+                   />
+                   <Route
+                        path="/"
+                        component={ PrincipalRouter }
                    />
 
                    <Redirect to="/auth/login"/>

@@ -4,7 +4,7 @@ import {
     Route,
     Redirect,
  } 
-from 'react-router-dom' 
+from 'react-router-dom';
 //screens
 import { LoginScreen } from "../components/Auth/LoginScreen";
 import { RegisterScreen } from "../components/Auth/RegisterScreen";

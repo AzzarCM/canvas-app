@@ -44,7 +44,11 @@
 }
 
 .link-dec{
-    border-radius: 10px;
     text-decoration: none;
-    color: white;
+    color: $white;
+}
+
+.link-navbar{
+    text-decoration: none;
+    color: $dark-grey;
 }
