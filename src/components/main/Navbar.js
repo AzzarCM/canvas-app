@@ -3,7 +3,9 @@ import logo from '../../assets/img/logo.png';
 export const Navbar = () => {
     return (
         <div className="navbar__main-container">
-            <img alt="logo" src={logo}/>
+            <a href="/main/home">
+                <img alt="logo" src={logo}/>
+            </a>
             <div className="navbar__righ-container">
                 <a className="link-navbar" href="/main/most-selled">MAS VENDIDOS</a>
                 <a className="link-navbar" href="/main/themes">TEMAS</a>
