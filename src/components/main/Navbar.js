@@ -5,10 +5,10 @@ export const Navbar = () => {
         <div className="navbar__main-container">
             <img alt="logo" src={logo}/>
             <div className="navbar__righ-container">
-                <a className="link-navbar" href="/main/mas-vendidos">Mas Vendidos</a>
-                <a className="link-navbar" href="/main/mas-vendidos">Temas</a>
-                <a className="link-navbar" href="/main/mas-vendidos">Sube tu foto</a>
-                <a className="link-navbar" href="/main/mas-vendidos">Preguntas frecuentes</a>
+                <a className="link-navbar" href="/main/mas-vendidos">MAS VENDIDOS</a>
+                <a className="link-navbar" href="/main/mas-vendidos">TEMAS</a>
+                <a className="link-navbar" href="/main/mas-vendidos">SUBE TU FOTO</a>
+                <a className="link-navbar" href="/main/mas-vendidos">PREGUNTAS FRECUENTES</a>
                 <div>
                     <input className="navbar__search-input" type="text" placeholder="Search something"/>
                     <button className="navbar__search-button" type="button">

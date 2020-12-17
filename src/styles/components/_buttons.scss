@@ -51,4 +51,27 @@
 .link-navbar{
     text-decoration: none;
     color: $dark-grey;
+    transition: color .3s ease;
+    &:hover{
+        color: darken($color: $dark-grey, $amount: 15);
+    }
+}
+
+.home__btn{
+    border-radius: 18px;
+    color: white;
+    background-color: darken($color: $primary, $amount: 10);
+    border: none;
+    width: 300px;
+    height: 70px;
+    cursor: pointer;
+    transition: background-color .5s ease;
+    font-size: 20px;
+    &:focus{
+        outline: none;
+    }
+
+    &:hover{
+        background-color: darken($color: $primary, $amount: 20);
+    }
 }
