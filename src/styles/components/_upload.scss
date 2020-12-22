@@ -1,0 +1,17 @@
+.upload__container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+.upload__title{
+    margin-top: 10%;
+    margin-bottom: 10%;
+    color: $second-primary;
+}
+
+.upload__paragraph{
+    font-size: 20px;
+    margin-bottom: 10%;
+}

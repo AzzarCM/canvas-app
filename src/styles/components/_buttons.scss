@@ -75,3 +75,53 @@
         background-color: darken($color: $primary, $amount: 20);
     }
 }
+
+.temas-btn{
+    background-color: $second-primary;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    width: 150px;
+    height: 45px;
+    margin-left: 5%;
+    transition: background-color .5s ease;
+    &:focus{
+        outline: none;
+    }
+    &:hover{
+        background-color: darken($color: $primary, $amount: 5);
+    }
+}
+
+.ml-0{
+    margin-left: 0%;
+}
+.resize-2{
+    width: 200px;
+    height: 50px;
+}
+
+.temas-btn-carrito{
+    background-color: lighten($color: orange, $amount: 15);
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 10px;
+    width: 300px;
+    height: 60px;
+    cursor: pointer;
+    margin-top: 10%;
+    
+    transition: background-color .5s ease;
+    &:focus{
+        outline: none;
+    }
+    &:hover{
+        background-color: darken($color: orange, $amount: 5);
+    }
+}
+
+.resize{
+    width: 150px;
+}
