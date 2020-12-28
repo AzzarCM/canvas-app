@@ -1,19 +1,61 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import {Navbar} from "../main/Navbar";
 import {Footer} from "../main/Footer"
-
+import {
+    useParams
+  } from "react-router-dom";
 import tema from "../../assets/img/temas.png";
 import checkbox from "../../assets/img/checkbox.png";
 import tarjeta from "../../assets/img/tarjeta.png";
 import {Relacionados} from "./Relacionados"
 
 export const TemasScreen = () => {
+
+    let {id} = useParams();
+
+    const [imagen, setImagen] = useState([])
+    const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
+    
+    console.log(imagen);
+
+    useEffect(() => {
+        getImagen();
+    }, [url])
+
+    const getImagen = async () =>{
+        
+        const resp = await fetch(url)
+        
+        const {painting} = await resp.json();
+        
+        const infoImage = painting.map( img =>{
+            return {
+                id: img.id,
+                name: img.name,
+                price: img.price,
+                url: img.imageUrl,
+                descripcion: img.description,
+            }
+        })
+        setImagen(infoImage);
+     }
+
+
     return (
         <div className="home__main-container">
             <Navbar/>
             <div className="temas__tema-container">
                 <div>
-                    <img alt="imagen" src={tema}/>
+                    {imagen.map( img =>{
+                        return(
+                            <img 
+                                alt="imagen" 
+                                src={img.url}
+                                key={img.id}
+                                className="temas__imagen"
+                            />
+                        )
+                    })}
                     <div className="temas__garantia">
                         <img alt="imagen" src={checkbox}/>
                         <p className="temas__garantia-p">
@@ -22,16 +64,22 @@ export const TemasScreen = () => {
                     </div>
                 </div>
                 <div className="temas__info-container">
-                    <h1 className="temas__info-h1">
-                        UNA NOCHE<br/>
-                        EN EL CAMPO
-                    </h1>
-                    <p className="temas__info-p"> 
-                        Reprehenderit mollit reprehenderit amet amet culpa tempor id. Occaecat 
-                        consequat nostrud Lorem consectetur adipisicing eiusmod excepteur ex 
-                        velit id nulla. Quis ullamco deserunt sit quis dolore amet Lorem veniam. 
-                        Pariatur ut labore elit ea sunt nisi officia nisi adipisicing ex in.
-                    </p>
+                    {imagen.map( item =>{
+                        return (
+                            <h1 className="temas__info-h1">
+                            {item.name}
+                            </h1>
+                        )
+                    })}
+
+                    {imagen.map( item =>{
+                        return (
+                            <p className="temas__info-p">
+                                {item.descripcion}
+                            </p>
+                        )
+                    })}
+                   
                     <div className="temas__materiales">
                         <h4 className="temas__btn-title">Material</h4>
                         <button className="temas-btn">Acrílico</button>
@@ -83,7 +131,6 @@ export const TemasScreen = () => {
                     </button>
                 </div>
             </div>
-            
             <h1>Relacionados</h1>
             <Relacionados/>
             <Footer/>

@@ -1,16 +1,19 @@
 import React from 'react'
 
 export const ImageItem = (props) => {
-    const {img} = props;
+    const { img } = props;
     const titulo = img.name;
+
+    const path = `/main/themes/${img.id}`
     return (
         <div className="selled__image-item">
-            <img 
-                src={img.url} 
+            <a href={path}>
+            <img
+                src={img.url}
                 alt={img.name}
                 className="selled__imagen"
-                
             />
+            </a> 
             <p
                 className="selled__title-image"
             >{titulo.toUpperCase()}</p>

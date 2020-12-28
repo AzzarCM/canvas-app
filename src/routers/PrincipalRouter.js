@@ -26,8 +26,7 @@ export const PrincipalRouter = () => {
                     component={ MostSelledScreen }
                 />
                 <Route
-                    exact
-                    path="/main/themes"
+                    path="/main/themes/:id"
                     component={ TemasScreen }
                 />
                 <Route

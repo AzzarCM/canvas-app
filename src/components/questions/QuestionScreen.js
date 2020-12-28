@@ -1,26 +1,69 @@
 import React from 'react'
-import {Navbar} from "../main/Navbar";
-import {Footer} from "../main/Footer"
+import { Navbar } from "../main/Navbar";
+import { Footer } from "../main/Footer"
 import question from "../../assets/img/question.png";
+import Accordion from "@material-ui/core/Accordion"
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+
+
 export const QuestionScreen = () => {
     return (
         <div className="home__main-container">
-            <Navbar/>
+            <Navbar />
             <div className="questions__first-part">
-                <img alt="imagen" src={question}/>
+                <img alt="imagen" src={question} />
                 <div>
                     <h1 className="questions__title">¿Tienes dudas?</h1>
-                    <p className="questions__paragraph">Ingresa una palabra, frase o pregunta para localizar la <br/>
-                        raíz de tus problemas, estaremos atentos de <br/>
-                        responder si dicha pregunta aún no tiene respuesta. <br/>
+                    <p className="questions__paragraph">Ingresa una palabra, frase o pregunta para localizar la <br />
+                        raíz de tus problemas, estaremos atentos de <br />
+                        responder si dicha pregunta aún no tiene respuesta. <br />
                     </p>
                     <div className="questions__search-part">
-                        <input className="questions__search-input" type="text"/>
+                        <input className="questions__search-input" type="text" />
                         <button className="questions__search-button"><i className="fas fa-search"></i></button>
                     </div>
                 </div>
             </div>
-            <Footer/>
+
+            <div>
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon/>}
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                    <Typography>¿Que materiales ocupan?</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                            sit amet blandit leo lobortis eget.
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                
+                <Accordion>
+                    <AccordionSummary
+                        expandIcon={<ExpandMoreIcon />}
+                        aria-controls="panel2a-content"
+                        id="panel2a-header"
+                    >
+                        <Typography>Accordion 2</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
+                            sit amet blandit leo lobortis eget.
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+
+            </div>
+            <Footer />
         </div>
     )
 }
