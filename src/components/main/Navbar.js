@@ -8,7 +8,7 @@ export const Navbar = () => {
             </a>
             <div className="navbar__righ-container">
                 <a className="link-navbar" href="/main/most-selled">MAS VENDIDOS</a>
-                <a className="link-navbar" href="/main/themes/1">TEMAS</a>
+                <a className="link-navbar" href="/main/themes">TEMAS</a>
                 <a className="link-navbar" href="/main/upload">SUBE TU FOTO</a>
                 <a className="link-navbar" href="/main/faq">PREGUNTAS FRECUENTES</a>
                 <div>
@@ -25,6 +25,7 @@ export const Navbar = () => {
                         }}
                     ></i>
                 </button>
+                <a className="link-navbar" href="/auth/login">LOG IN</a>
                 
             </div>
         </div>

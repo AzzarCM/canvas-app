@@ -1,7 +1,8 @@
 import React from 'react'
 import imagen from "../../assets/img/inicio-sesion.png"
 import logo from "../../assets/img/logo.png"
-export const LoginScreen = () => {
+export const LoginScreen = (props) => {
+    console.log(props);
     return (
         <div className="auth__container">
             <div className="auth__image">

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Footer } from '../main/Footer'
 import { Navbar } from '../main/Navbar'
 import { Relacionados } from '../temas/Relacionados'
@@ -6,8 +6,10 @@ import { ImageItem } from './ImageItem'
 
 
 export const MostSelledScreen = () => {
-
-    const [images, setImages] = useState([])
+   
+    const [loading, setLoading] = useState(true);
+    console.log(loading);
+    const [images, setImages] = useState([]);
     console.log(images);
     useEffect(() => {
         getImages();
@@ -26,20 +28,29 @@ export const MostSelledScreen = () => {
            }
        })
        setImages(imagenes);
+       setLoading(false);
     }
 
     return (
         <div className="home__main-container">
             <Navbar/>
             <h1 className="selled__title-related mb-5">Favoritas por nuestros usuarios</h1>
-            <div className="selled__images-container">
-                {images.map(img => {
-                    return(<ImageItem
-                        key={img.id}
-                        img={img}
-                    />)
-                })}
-            </div>   
+            
+            {
+                loading ? 
+                    <h1>Loading...</h1> 
+                    : 
+                    <div className="selled__images-container">
+                        {
+                            images.map(img => {
+                                return(<ImageItem
+                                    key={img.id}
+                                    img={img}
+                                />)
+                            })}
+                    </div>   
+            }
+            
             <h1 className="selled__title-related">Relacionados</h1>
             <Relacionados/>
             <Footer/>

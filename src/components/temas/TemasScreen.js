@@ -4,7 +4,6 @@ import {Footer} from "../main/Footer"
 import {
     useParams
   } from "react-router-dom";
-import tema from "../../assets/img/temas.png";
 import checkbox from "../../assets/img/checkbox.png";
 import tarjeta from "../../assets/img/tarjeta.png";
 import {Relacionados} from "./Relacionados"
@@ -12,7 +11,6 @@ import {Relacionados} from "./Relacionados"
 export const TemasScreen = () => {
 
     let {id} = useParams();
-
     const [imagen, setImagen] = useState([])
     const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
     
@@ -66,7 +64,9 @@ export const TemasScreen = () => {
                 <div className="temas__info-container">
                     {imagen.map( item =>{
                         return (
-                            <h1 className="temas__info-h1">
+                            <h1 
+                            key={item.id}
+                            className="temas__info-h1">
                             {item.name}
                             </h1>
                         )
@@ -74,7 +74,9 @@ export const TemasScreen = () => {
 
                     {imagen.map( item =>{
                         return (
-                            <p className="temas__info-p">
+                            <p 
+                            key={item.id}
+                            className="temas__info-p">
                                 {item.descripcion}
                             </p>
                         )

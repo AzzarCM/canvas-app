@@ -8,7 +8,8 @@ from 'react-router-dom';
 import { PrincipalScreen } from '../components/main/PrincipalScreen';
 import { QuestionScreen } from '../components/questions/QuestionScreen';
 import { MostSelledScreen } from '../components/selled/MostSelledScreen';
-import { TemasScreen } from '../components/temas/TemasScreen';
+import { AllThemes } from '../components/temas/AllThemes';
+import { ThemesCategory } from '../components/temas/ThemesCategory';
 import { UploadScreen } from '../components/upload/UploadScreen';
 
 export const PrincipalRouter = () => {
@@ -26,8 +27,13 @@ export const PrincipalRouter = () => {
                     component={ MostSelledScreen }
                 />
                 <Route
-                    path="/main/themes/:id"
-                    component={ TemasScreen }
+                    path="/main/themes"
+                    component={ AllThemes }
+                />
+                <Route
+                    exact
+                    path="/main/categoria/:id"
+                    component={ ThemesCategory }
                 />
                 <Route
                     exact
