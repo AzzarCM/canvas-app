@@ -24,7 +24,7 @@ export const MostSelledScreen = () => {
                id: img.id,
                name: img.name,
                price: img.price,
-               url: img.imageUrl,
+               imageUrl: img.imageUrl,
            }
        })
        setImages(imagenes);

@@ -9,6 +9,7 @@ import { PrincipalScreen } from '../components/main/PrincipalScreen';
 import { QuestionScreen } from '../components/questions/QuestionScreen';
 import { MostSelledScreen } from '../components/selled/MostSelledScreen';
 import { AllThemes } from '../components/temas/AllThemes';
+import { TemasScreen } from '../components/temas/TemasScreen';
 import { ThemesCategory } from '../components/temas/ThemesCategory';
 import { UploadScreen } from '../components/upload/UploadScreen';
 
@@ -34,6 +35,10 @@ export const PrincipalRouter = () => {
                     exact
                     path="/main/categoria/:id"
                     component={ ThemesCategory }
+                />
+                <Route
+                    path="/main/imagen/id/:id"
+                    component={ TemasScreen }
                 />
                 <Route
                     exact

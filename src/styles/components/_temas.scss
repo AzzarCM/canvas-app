@@ -97,4 +97,14 @@
 
 .temas__search-container{
     display: flex;
+    width: 80%;
+    justify-content: center;
+    padding-top: 6%;
+}
+
+.temas__wrap-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
 }

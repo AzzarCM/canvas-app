@@ -4,12 +4,12 @@ export const ImageItem = (props) => {
     const { img } = props;
     const titulo = img.name;
 
-    const path = `/main/themes/${img.id}`
+    const path = `/main/imagen/id/${img.id}`
     return (
         <div className="selled__image-item">
             <a href={path}>
             <img
-                src={img.url}
+                src={img.imageUrl}
                 alt={img.name}
                 className="selled__imagen"
             />
