@@ -16,7 +16,6 @@ export const WrapImages = (props) => {
         const resp = await fetch(url)
         
         const { themes } = await resp.json();
-        console.log(themes);
         const imagenes = themes.map( item =>{
             const paintings = item.paintings;
             return paintings;
@@ -31,7 +30,7 @@ export const WrapImages = (props) => {
                 bandera ? 
                 <h1>Loading</h1> :
                 imagenes[0].map(item =>{
-                    return (<ImageItem img={item}/>)
+                    return (<ImageItem key={item.id} img={item}/>)
                 })
 
             }
