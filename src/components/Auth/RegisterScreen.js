@@ -1,7 +1,50 @@
-import React from 'react'
-import imagen from "../../assets/img/register.png"
-import logo from "../../assets/img/logo.png"
+import React from 'react';
+import imagen from "../../assets/img/register.png";
+import logo from "../../assets/img/logo.png";
+import { useForm } from '../../hooks/useForm';
+import validator from "validator";
+import { useDispatch, useSelector } from 'react-redux';
+import { setError, removeError } from "../../actions/ui"
 export const RegisterScreen = () => {
+
+    const dispatch = useDispatch();
+    const {msgError} = useSelector( state => state.ui);
+    console.log(msgError);
+
+    const [ formValues, handleInputChange ] = useForm({
+        name: 'Cristian Mundo',
+        email: 'canvas@gmail.com',
+        password: '12345',
+        password2: '12345',
+    });
+
+    const {name, email, password, password2} = formValues;
+
+    function isFormValid() {
+        if(validator.isEmpty(name)){
+            dispatch( setError('Name is required'));
+            return false
+        } else if (!validator.isEmail(email)){
+            dispatch( setError('Email is not valid'));
+            return false
+        } else if (!validator.equals(password,password2)){
+            dispatch( setError('Password does not match'))
+            return false
+        }
+
+        dispatch(removeError());
+        return true
+    }
+
+    const handleRegister = (e) =>{
+        e.preventDefault();
+        if( isFormValid()){
+            console.log('formulario correcto');
+        }
+        
+    }
+    
+
     return (
         <div className="auth__container">
         <div className="auth__image">
@@ -20,30 +63,54 @@ export const RegisterScreen = () => {
                 </div>  
             </div>
             <h2 className="auth__h2-align">Registrarse</h2>
-            <form className="auth__form">
+            {
+                msgError &&
+                (
+                    <div className="auth__alert-error">
+                        {msgError}
+                    </div>
+                )
+                
+            }
+            <form 
+            onSubmit={handleRegister}
+            className="auth__form">
                 <input 
                     type="text" 
                     placeholder="Correo"
+                    name="email"
                     className="auth__input"
+                    value={ email }
+                    onChange={ handleInputChange }
                 />
                 <input 
+                    name="name"
                     type="text" 
                     placeholder="Nombre"
                     className="auth__input"
+                    value={ name }
+                    onChange={ handleInputChange }
                 />
                 <input 
+                    name="password"
                     type="password" 
                     placeholder="Contraseña"
-                    className="auth__input"    
+                    className="auth__input" 
+                    value={ password }   
+                    onChange={ handleInputChange }
                 />
                 <input 
+                    name="password2"
                     type="password" 
                     placeholder="Repetir contraseña"
-                    className="auth__input"    
+                    className="auth__input"
+                    value={ password2 }  
+                    onChange={ handleInputChange }  
                 />
                 <button
                     type="submit"
                     className="btn btn-primary"
+                    
                 >
                     Crear cuenta
                 </button>

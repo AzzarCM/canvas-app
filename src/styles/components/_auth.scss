@@ -65,3 +65,21 @@
     width: 70%;
     margin-bottom: 20px;
 }
+
+.auth__social-networks {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.auth__alert-error {
+    background-color: red;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+}

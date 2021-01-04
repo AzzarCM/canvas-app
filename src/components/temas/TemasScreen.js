@@ -12,20 +12,16 @@ export const TemasScreen = () => {
 
     let {id} = useParams();
     const [imagen, setImagen] = useState([])
-    const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
     
-    console.log(imagen);
-
     useEffect(() => {
         getImagen();
-    }, [url])
+    }, [])
 
     const getImagen = async () =>{
-        
+        const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
         const resp = await fetch(url)
         
         const {painting} = await resp.json();
-        
         const infoImage = painting.map( img =>{
             return {
                 id: img.id,

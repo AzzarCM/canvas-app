@@ -8,9 +8,7 @@ import { ImageItem } from './ImageItem'
 export const MostSelledScreen = () => {
    
     const [loading, setLoading] = useState(true);
-    console.log(loading);
     const [images, setImages] = useState([]);
-    console.log(images);
     useEffect(() => {
         getImages();
     }, [])

@@ -7,8 +7,8 @@ export const WrapImages = (props) => {
     const [imagenes, setImagenes] = useState([]);
     const [bandera, setBandera] = useState(true);
 
-    useEffect( async () => {
-        await getAllImages();
+    useEffect( () => {
+        getAllImages();
     }, [])
 
     const getAllImages = async () => {
