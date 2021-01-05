@@ -16,7 +16,21 @@ import caminos from '../../assets/img/caminos.png';
 import tablet from '../../assets/img/tablet.png';
 import cuadro from "../../assets/img/cuadro.png";
 
+import firebase from "firebase/app";
+
+
+
+
 export const PrincipalScreen = () => {
+
+    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        console.log(idToken);
+        // Send token to your backend via HTTPS
+        // ...
+      }).catch(function(error) {
+        // Handle error
+      });
+
     return (
         <div className="home__main-container">
             <Navbar />

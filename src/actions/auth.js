@@ -10,7 +10,7 @@ export const startLoginEmailPassword = (email, password)=>{
 
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then(({user})=>{
-                console.log(`(no esta el idToken en esta opcion) UID: ${user.uid}`);
+                console.log(`UID: ${user.uid}`);
                 dispatch(
                     login(user.uid, user.displayName)
                 );
@@ -39,7 +39,7 @@ export const startGoogleLogin = () =>{
     return (dispatch) =>{
         firebase.auth().signInWithPopup( googleAuthProvider )
             .then(({user, credential}) =>{
-                console.log(`UID: ${user.uid} idToken: ${credential.idToken}`);
+                console.log(`UID: ${user.uid}`);
                 dispatch(
                     login(user.uid, user.displayName)
                 )
