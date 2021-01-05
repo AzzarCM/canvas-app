@@ -1,24 +1,47 @@
 import React from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch,useSelector } from "react-redux";
 import { startLoginEmailPassword, startFacebookLogin, startGoogleLogin } from '../../actions/auth';
 import imagen from "../../assets/img/inicio-sesion.png"
 import logo from "../../assets/img/logo.png"
 import { useForm } from '../../hooks/useForm'
+import validator from "validator";
+import { setError, removeError } from "../../actions/ui"
 export const LoginScreen = (props) => {
 
     const dispatch = useDispatch();
-
+    const {msgError} = useSelector( state => state.ui);
+    const {loading} = useSelector(state => state.ui);
     const [ formValues, handleInputChange ] = useForm({
         email: 'canvas@gmail.com',
-        password: '1234'
+        password: '123456'
     });
 
     const { email, password } = formValues;
 
+    function isFormValid() {
+        if(!validator.isEmail(email)){
+            dispatch( setError('Correo electronico invalido'));
+            return false
+        }else if(validator.isEmpty(email)){
+            dispatch( setError('El campo del correo esta vacio'))
+            return false
+        }else if(validator.isEmpty(password)){
+            dispatch(setError('El campo de la contraseña esta vacia'))
+            return false
+        }else if(password.lenght < 6){
+            dispatch(setError('la contraseña debe ser mayor a 6 caracteres'))
+            return false
+        }
+
+        dispatch(removeError())
+        return true
+    }
     const handleLogin = (e) =>{
         e.preventDefault();
+        if(isFormValid()){
+            dispatch( startLoginEmailPassword(email, password) );
+        }
         
-        dispatch( startLoginEmailPassword(email, password) );
     }
 
     const handleFacebookLogin = () => {
@@ -47,6 +70,15 @@ export const LoginScreen = (props) => {
                     </div>  
                 </div>
                 <h2 className="auth__h2-align">Iniciar sesión</h2>
+                {
+                msgError &&
+                (
+                    <div className="auth__alert-error">
+                        {msgError}
+                    </div>
+                )
+                
+                }
                 <form className="auth__form" onSubmit={ handleLogin }>
                     <input 
                         type="text"
@@ -68,6 +100,7 @@ export const LoginScreen = (props) => {
                     <button
                         type="submit"
                         className="btn btn-primary"
+                        disabled={loading}
                     >
                         Iniciar sesion
                     </button>
@@ -76,7 +109,7 @@ export const LoginScreen = (props) => {
                     className="btn btn-facebook"
                     onClick={ handleFacebookLogin }
                 >
-                    <i style={{marginRight:30}} class="fab fa-facebook-f"></i>
+                    <i style={{marginRight:30}} className="fab fa-facebook-f"></i>
                     Iniciar sesión con facebook
                 </button>
                 <div onClick={ handleGoogleLogin } className="auth__social-networks">

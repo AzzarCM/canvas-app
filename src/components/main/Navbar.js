@@ -1,6 +1,15 @@
 import React from 'react'
+import {useDispatch} from "react-redux"
+import { startLogout } from '../../actions/auth';
 import logo from '../../assets/img/logo.png';
 export const Navbar = () => {
+
+    const dispatch = useDispatch();
+
+    const handleLogOut = () =>{
+        dispatch( startLogout());
+    }
+
     return (
         <div className="navbar__main-container">
             <a href="/main/home">
@@ -26,6 +35,7 @@ export const Navbar = () => {
                     ></i>
                 </button>
                 <a className="link-navbar" href="/auth/login">LOG IN</a>
+                <a onClick={handleLogOut} className="link-navbar" href="">LOG OUT</a>
                 
             </div>
         </div>

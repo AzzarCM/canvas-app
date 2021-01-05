@@ -9,7 +9,7 @@ export const ImageItem = (props) => {
         <div className="selled__image-item">
             <a href={path}>
             <img
-                src={img.imageUrl}
+                src={img.image_url}
                 alt={img.name}
                 className="selled__imagen"
             />

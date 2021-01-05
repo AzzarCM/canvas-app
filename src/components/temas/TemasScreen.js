@@ -27,7 +27,7 @@ export const TemasScreen = () => {
                 id: img.id,
                 name: img.name,
                 price: img.price,
-                url: img.imageUrl,
+                url: img.image_url,
                 descripcion: img.description,
             }
         })
