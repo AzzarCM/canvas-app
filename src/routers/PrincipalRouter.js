@@ -10,6 +10,7 @@ import { QuestionScreen } from '../components/questions/QuestionScreen';
 import { MostSelledScreen } from '../components/selled/MostSelledScreen';
 import { AllThemes } from '../components/temas/AllThemes';
 import { TemasScreen } from '../components/temas/TemasScreen';
+//import {Hola} from "../components/temas/TemasScreenpp";
 import { ThemesCategory } from '../components/temas/ThemesCategory';
 import { UploadScreen } from '../components/upload/UploadScreen';
 

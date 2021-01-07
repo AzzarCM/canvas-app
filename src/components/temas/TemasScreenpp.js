@@ -1,81 +1,87 @@
-import React, {useState, useEffect} from 'react'
-import {Navbar} from "../main/Navbar";
-import {Footer} from "../main/Footer"
-import {
-    useParams
-  } from "react-router-dom";
+import React, { Component, useState, useEffect } from 'react'
+import {Navbar} from "../main/Navbar"
 import checkbox from "../../assets/img/checkbox.png";
 import tarjeta from "../../assets/img/tarjeta.png";
 import {Relacionados} from "./Relacionados"
-
-import { useDispatch,} from "react-redux"
+import {Footer} from "../main/Footer"
+import { useDispatch, useSelector, connect } from "react-redux"
 import { fillItems, addToCart } from '../../actions/cart'
+import {
+    useParams
+  } from "react-router-dom";
 
-
-export const TemasScreen = () => {
-
-    const dispatch = useDispatch();
-    
-
-    let {id} = useParams();
-    const [imagen, setImagen] = useState([])
-
-    // const [loading, setLoading] = useState(true);
-    // const [images, setImages] = useState([]);
-    
-    useEffect(() => {
-        getImagen();
-    }, [])
-
-    // useEffect(() => {
-    //     getImages();
-    // }, [])
-
-    const getImagen = async () =>{
-        const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
-        const resp = await fetch(url)
+function TemasScreen(Component) {
+    return function WrappedComponent(props) {
         
-        const {painting} = await resp.json();
-        const infoImage = painting.map( img =>{
-            return {
-                id: img.id,
-                name: img.name,
-                price: img.price,
-                url: img.image_url,
-                descripcion: img.description,
-            }
-        })
-        setImagen(infoImage);
-     }
+        const dispatch = useDispatch();
+        let {id} = useParams();
+        
+        const [imagen, setImagen] = useState([])
+        const [loading, setLoading] = useState(true);
+        const [images, setImages] = useState([]);
+        
+        useEffect(() => {
+            getImagen();
+        }, [])
 
-    //  const getImages = async () =>{
-    //     const url = "https://canvas-api-rest.herokuapp.com/api/paintings";
-    //     const resp = await fetch(url)
-    //     const {paintings} = await resp.json();
-    //     const imagenes = paintings.map( img =>{
-    //         return {
-    //             id: img.id,
-    //             name: img.name,
-    //             description: img.description,
-    //             stock: img.stock,
-    //             active: img.active,
-    //             measurements: img.measurements,
-    //             price: img.price,
-    //             image_url: img.image_url,
-    //         }
-    //     })
-    //     setImages(imagenes);
-    //     dispatch( fillItems(imagenes));
-    //     setLoading(false);
-    //  }
+        useEffect(() => {
+            getImages();
+        }, [])
 
-    const handleClick = () =>{
-        dispatch(addToCart(id));
+        const getImagen = async () =>{
+            const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
+            const resp = await fetch(url)
+            
+            const {painting} = await resp.json();
+            const infoImage = painting.map( img =>{
+                return {
+                    id: img.id,
+                    name: img.name,
+                    price: img.price,
+                    url: img.image_url,
+                    descripcion: img.description,
+                }
+            })
+            setImagen(infoImage);
+         }
+
+         const getImages = async () =>{
+            const url = "https://canvas-api-rest.herokuapp.com/api/paintings";
+            const resp = await fetch(url)
+            const {paintings} = await resp.json();
+            const imagenes = paintings.map( img =>{
+                return {
+                    id: img.id,
+                    name: img.name,
+                    description: img.description,
+                    stock: img.stock,
+                    active: img.active,
+                    measurements: img.measurements,
+                    price: img.price,
+                    image_url: img.image_url,
+                }
+            })
+            setImages(imagenes);
+            dispatch( fillItems(imagenes));
+            setLoading(false);
+         }
+
+
+        return <Component {...props} imagen={imagen} id={id}/>
     }
+}
 
+class Prueba extends Component {
+    render() {
+        const imagen = this.props.imagen;
 
-    return (
-        <div className="home__main-container">
+        const handleClick = (id)=>{
+            this.props.addToCart(id); 
+        }
+
+        return (
+            <div>
+                <div className="home__main-container">
             <Navbar/>
             <div className="temas__tema-container">
                 <div>
@@ -158,9 +164,10 @@ export const TemasScreen = () => {
                             step="1" 
                             min="1"/>
                     </div>
-                    <button onClick={handleClick} className="temas-btn-carrito">
-                        <i 
-                            className="fas fa-shopping-cart"></i>
+                    <button
+                    onClick={()=>{handleClick(this.props.id)}}
+                    className="temas-btn-carrito">
+                        <i className="fas fa-shopping-cart"></i>
                          Agregar al carrito
                     </button>
                     <button className="temas-btn-carrito resize">
@@ -173,5 +180,23 @@ export const TemasScreen = () => {
             <Relacionados/>
             <Footer/>
         </div>
-    )
+            </div>
+        )
+    }
 }
+
+const mapStateToProps = (state)=>{
+    return {
+      items: state.items
+    }
+  }
+
+const mapDispatchToProps= (dispatch)=>{
+    
+    return{
+        addToCart: (id)=>{dispatch(addToCart(id))}
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Prueba)
+export const Hola = TemasScreen(Prueba);

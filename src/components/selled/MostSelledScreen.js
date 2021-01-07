@@ -4,9 +4,7 @@ import { Navbar } from '../main/Navbar'
 import { Relacionados } from '../temas/Relacionados'
 import { ImageItem } from './ImageItem'
 
-
 export const MostSelledScreen = () => {
-   
     const [loading, setLoading] = useState(true);
     const [images, setImages] = useState([]);
     useEffect(() => {

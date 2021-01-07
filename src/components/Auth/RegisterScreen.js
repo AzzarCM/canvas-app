@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import imagen from "../../assets/img/register.png";
 import logo from "../../assets/img/logo.png";
 import { useForm } from '../../hooks/useForm';
@@ -9,6 +9,8 @@ import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 export const RegisterScreen = () => {
 
     const dispatch = useDispatch();
+    const hola = useSelector(state=>state);
+    console.log(hola);
     const {msgError} = useSelector( state => state.ui);
 
     const [ formValues, handleInputChange ] = useForm({
