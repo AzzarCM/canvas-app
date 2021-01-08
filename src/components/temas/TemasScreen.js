@@ -8,28 +8,19 @@ import checkbox from "../../assets/img/checkbox.png";
 import tarjeta from "../../assets/img/tarjeta.png";
 import {Relacionados} from "./Relacionados"
 
-import { useDispatch,} from "react-redux"
+import { useDispatch, useSelector,} from "react-redux"
 import { fillItems, addToCart } from '../../actions/cart'
 
 
 export const TemasScreen = () => {
 
     const dispatch = useDispatch();
-    
-
     let {id} = useParams();
     const [imagen, setImagen] = useState([])
-
-    // const [loading, setLoading] = useState(true);
-    // const [images, setImages] = useState([]);
     
     useEffect(() => {
         getImagen();
     }, [])
-
-    // useEffect(() => {
-    //     getImages();
-    // }, [])
 
     const getImagen = async () =>{
         const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
@@ -48,28 +39,8 @@ export const TemasScreen = () => {
         setImagen(infoImage);
      }
 
-    //  const getImages = async () =>{
-    //     const url = "https://canvas-api-rest.herokuapp.com/api/paintings";
-    //     const resp = await fetch(url)
-    //     const {paintings} = await resp.json();
-    //     const imagenes = paintings.map( img =>{
-    //         return {
-    //             id: img.id,
-    //             name: img.name,
-    //             description: img.description,
-    //             stock: img.stock,
-    //             active: img.active,
-    //             measurements: img.measurements,
-    //             price: img.price,
-    //             image_url: img.image_url,
-    //         }
-    //     })
-    //     setImages(imagenes);
-    //     dispatch( fillItems(imagenes));
-    //     setLoading(false);
-    //  }
-
     const handleClick = () =>{
+        console.log(id);
         dispatch(addToCart(id));
     }
 

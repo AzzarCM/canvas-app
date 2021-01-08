@@ -7,30 +7,28 @@ import {
     Redirect
 } from "react-router-dom";
 import { PrincipalRouter } from './PrincipalRouter';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/auth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from "./PublicRoute"
-import {getAllPaintings} from '../helpers/loadPaintings'
 import { fillItems } from '../actions/cart';
-
+import validator from 'validator'
 
 export const AppRouter = () => {
+    const [checking, setChecking] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const dispatch = useDispatch();
     
-    const [checking, setChecking] = useState(true);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [paintings, setPaintings] = useState([]);
-
-
+    useEffect(() => {
+        getImages();
+    }, []) 
+    
     useEffect(() => {
         firebase.auth().onAuthStateChanged( (user)=>{
             if(user?.uid){
-                getImages();
                 dispatch(login(user.uid, user.displayName));
                 setIsLoggedIn(true);
-
             }else{
                 setIsLoggedIn(false);
             }
@@ -54,8 +52,7 @@ export const AppRouter = () => {
                 image_url: img.image_url,
             }
         })
-        setPaintings(imagenes);
-        dispatch( fillItems(paintings));
+        dispatch( fillItems(imagenes));
      }
 
     if(checking){
@@ -70,13 +67,13 @@ export const AppRouter = () => {
                <Switch>
                    <PublicRoute
                         path="/auth"
-                        isAuthenticated={ isLoggedIn }
+                        isAuthenticated= { isLoggedIn }
                         component={ AuthRouter }
                    />
                    <PrivateRoute
                         
                         path="/"
-                        isAuthenticated={isLoggedIn}
+                        isAuthenticated = { isLoggedIn }
                         component={ PrincipalRouter }
                    />
 
