@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Navbar } from "../main/Navbar"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
-
+import { Footer } from '../main/Footer'
+import Memorias from '../../assets/img/memorias.png'
 
 export const AllThemes = () => {
     
@@ -42,6 +43,11 @@ export const AllThemes = () => {
                              marginTop: 10,
                                 
                             }}>
+                            <Card.Img style={{
+                                width: 286,
+                                height: 180,
+                                objectFit: 'cover',
+                            }} variant="top" src={Memorias} />
                             <Card.Body>
                                 <Card.Title>{item.name}</Card.Title>
                                 <Card.Text>
@@ -55,6 +61,7 @@ export const AllThemes = () => {
                     )
                 })}
             </div> 
+            <Footer/>
         </div>
     )
 }

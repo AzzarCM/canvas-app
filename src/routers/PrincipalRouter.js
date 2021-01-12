@@ -5,6 +5,7 @@ import {
     Redirect,
  } 
 from 'react-router-dom';
+import { Cart } from '../components/cart/Cart';
 import { PrincipalScreen } from '../components/main/PrincipalScreen';
 import { QuestionScreen } from '../components/questions/QuestionScreen';
 import { MostSelledScreen } from '../components/selled/MostSelledScreen';
@@ -50,6 +51,11 @@ export const PrincipalRouter = () => {
                     exact
                     path="/main/faq"
                     component={ QuestionScreen }
+                />
+                <Route
+                    exact
+                    path="/main/cart"
+                    component = { Cart }
                 />
                 <Redirect to="/main/home"/>
             </Switch>

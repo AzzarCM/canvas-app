@@ -1,0 +1,35 @@
+.cart__list-container{
+    margin-top: 4%;
+    display: flex;
+    align-items: center;
+}
+.cart__item-image{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+.cart__item-desc{
+    padding-left: 4%;
+}
+.cart__icons-container{
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+.cart__icons{
+    font-size: 20px;
+    color: $second-primary;
+    cursor: pointer;
+    &:hover{
+        color: darken($color: $second-primary, $amount: 10);
+    }
+}
+.cart__item-title{
+    font-size: 20px;
+}
+.delete{
+    color: red;
+    &:hover{
+        color: darken($color: red, $amount: 10);
+    }
+}

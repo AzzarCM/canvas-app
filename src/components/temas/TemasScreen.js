@@ -9,7 +9,7 @@ import tarjeta from "../../assets/img/tarjeta.png";
 import {Relacionados} from "./Relacionados"
 
 import { useDispatch, useSelector,} from "react-redux"
-import { fillItems, addToCart } from '../../actions/cart'
+import { addToCart } from '../../actions/cart'
 
 
 export const TemasScreen = () => {

@@ -27,12 +27,14 @@ export const Navbar = () => {
                     </button>
                 </div>
                 <button className="navbar__search-button">
+                    <a href="/main/cart">
                     <i 
                         className="fas fa-shopping-cart"
                         style={{
                             fontSize: 30
                         }}
                     ></i>
+                    </a>
                 </button>
                 <a className="link-navbar" href="/auth/login">LOG IN</a>
                 <a onClick={handleLogOut} className="link-navbar" href="">LOG OUT</a>
