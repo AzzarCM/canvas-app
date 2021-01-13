@@ -7,12 +7,11 @@ import {
     Redirect
 } from "react-router-dom";
 import { PrincipalRouter } from './PrincipalRouter';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from "./PublicRoute"
 import { fillItems } from '../actions/cart';
-import validator from 'validator'
 
 export const AppRouter = () => {
     const [checking, setChecking] = useState(true);

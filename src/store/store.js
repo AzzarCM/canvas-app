@@ -3,8 +3,6 @@ import { authReducer } from '../reducers/authReducer';
 import thunk from 'redux-thunk';
 import { uiReducer } from '../reducers/uiReducer';
 import { cartReducer } from '../reducers/cartReducer';
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 

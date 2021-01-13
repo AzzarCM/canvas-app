@@ -52,6 +52,8 @@
     text-decoration: none;
     color: $dark-grey;
     transition: color .3s ease;
+    margin-bottom: 0;
+    cursor: pointer;
     &:hover{
         color: darken($color: $dark-grey, $amount: 15);
     }
