@@ -30,15 +30,15 @@ export const WrapImages = (props) => {
     }
 
     return (
-        <div style={{width: "100%"}}>
+        <div style={{width: "95%"}}>
             {
                 bandera ? 
                 <h1>Loading</h1> :
                 <div>
-                    <h1 style={{
-                        textAlign: 'center',
-                    }}>
-                        {`Busqueda: "${nombre}"`}
+                    <h1 
+                        className="temas__title-busqueda"
+                    >
+                        Busqueda: <span className="temas__span-busqueda">"{nombre}"</span>
                     </h1>
                     {
                         imagenes[0] ? 
@@ -51,7 +51,7 @@ export const WrapImages = (props) => {
                         }
                         </div> :
 
-                        <h1>No hay cuadros disponibles:(</h1>
+                        <h1 className="temas__no-cuadros">No hay cuadros disponibles:(</h1>
                     }   
                 </div> 
             }

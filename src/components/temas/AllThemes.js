@@ -8,7 +8,6 @@ import Memorias from '../../assets/img/memorias.png'
 export const AllThemes = () => {
     
     const [themes, setThemes] = useState([])
-    console.log(themes);
 
     useEffect(() => {
         getAllThemes();

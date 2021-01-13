@@ -23,13 +23,16 @@ export const SideBar = () => {
     }
 
     return (
-        <div>
-            <dl>
-                <dt>Coffee</dt>
-                    <dd>black hot drink</dd>
-                <dt>Milk</dt>
-                    <dd>white cold drink</dd>
-            </dl>
+        <div className="temas__side-bar">
+            {themes.map((tema)=>{
+                const path = `/main/categoria/${tema.id}`
+                return <a 
+                className="temas__link-temas" 
+                key={tema.id} 
+                href={path}>
+                    {tema.name.toUpperCase()}
+                </a>
+            })}
         </div>
     )
 }

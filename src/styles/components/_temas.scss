@@ -109,3 +109,32 @@
     justify-content: center;
     width: 100%;
 }
+
+.temas__side-bar{
+    display: flex;
+    flex-direction: column;
+}
+
+.temas__link-temas{
+    margin-top: 7%;
+    color: $dark-grey;
+    
+    &:hover{
+        color: darken($color: $dark-grey, $amount: 10);
+    }
+}
+
+.temas__no-cuadros{
+    text-align: center;
+    color: $dark-grey;
+    margin-top: 10%;
+    padding-bottom: 20%;
+}
+
+.temas__title-busqueda{
+    text-align: center;
+    color: $dark-grey;
+}
+.temas__span-busqueda{
+    color: $primary;
+}
