@@ -31,3 +31,9 @@ export const addQuantity=(id)=>{
         id
     }
 }
+
+export const emptyCart = ()=>{
+    return {
+        type: types.LOG_OUT
+    }
+}

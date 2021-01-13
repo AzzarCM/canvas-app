@@ -82,6 +82,12 @@ export const cartReducer = (state = initialState, action) =>{
                 addedItems: new_items,
                 total: newTotal
             }
+        case types.LOG_OUT:
+            return {
+                ...state,
+                addedItems: [],
+                total: 0
+            }
         default:
             return state
     }

@@ -6,8 +6,9 @@ import logo from '../../assets/img/logo.png';
 export const Navbar = () => {
 
     const dispatch = useDispatch();
-
     const handleLogOut = () =>{
+        console.log('clicked');
+        localStorage.clear();
         dispatch( startLogout());
     }
 
@@ -36,7 +37,7 @@ export const Navbar = () => {
                     ></i>
                     </Link>
                 </button>
-                <a className="link-navbar" href="/auth/login">LOG IN</a>
+                {/* {<a className="link-navbar" href="/auth/login">LOG IN</a>} */}
                 <p onClick={handleLogOut} className="link-navbar">LOG OUT</p>        
             </div>
         </div>

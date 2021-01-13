@@ -49,7 +49,7 @@ export const TemasScreen = () => {
         <div className="home__main-container">
             <Navbar/>
             <div className="temas__tema-container">
-                <div>
+                <div className="temas__image-container">
                     {imagen.map( img =>{
                         return(
                             <img 

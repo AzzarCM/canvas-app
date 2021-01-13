@@ -9,7 +9,7 @@
 .navbar__righ-container{
     display: flex;
     align-items: center;
-    width: 85%;
+    width: 100%;
     justify-content: space-evenly;
 }
 
@@ -37,5 +37,10 @@
 
     &:focus{
         outline: none;
+    }
+}
+@media (max-width: 1400px){
+    .navbar__main-container{
+        width: 95%;
     }
 }

@@ -1,7 +1,8 @@
 .related__main-container{
     margin-top: 5%;
     width: 75%;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
     display: flex;
     margin-bottom: 5%;
 }
