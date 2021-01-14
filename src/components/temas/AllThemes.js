@@ -30,7 +30,7 @@ export const AllThemes = () => {
     return (
         <div className="home__main-container">
             <Navbar />
-            <div className="temas__themes-container">
+            <div className="temas__themes-container animate__animated animate__fadeInLeft">
                 { themes.map(item => {
                     const path = `/main/categoria/${item.id}`
                     console.log(path);

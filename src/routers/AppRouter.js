@@ -13,9 +13,18 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from "./PublicRoute"
 import { fillItems } from '../actions/cart';
 
+import { useLoading, BallTriangle } from '@agney/react-loading';
+
+
 export const AppRouter = () => {
+    
     const [checking, setChecking] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
+    const { containerProps, indicatorEl } = useLoading({
+        loading: checking,
+        indicator: <BallTriangle width="50" />,
+      });
 
     const dispatch = useDispatch();
     
@@ -56,7 +65,14 @@ export const AppRouter = () => {
 
     if(checking){
         return(
-            <h1>Loading...</h1>
+            <section style={{
+                display: 'flex',
+                justifyContent: 'center',
+                height: '100vh',
+                width: '100vw',
+            }} {...containerProps}>
+                {indicatorEl}
+            </section>
         )
     }
 

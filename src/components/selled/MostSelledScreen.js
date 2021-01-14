@@ -3,10 +3,17 @@ import { Footer } from '../main/Footer'
 import { Navbar } from '../main/Navbar'
 import { Relacionados } from '../temas/Relacionados'
 import { ImageItem } from './ImageItem'
+import { useLoading, BallTriangle } from '@agney/react-loading';
 
 export const MostSelledScreen = () => {
     const [loading, setLoading] = useState(true);
     const [images, setImages] = useState([]);
+    
+    const { containerProps, indicatorEl } = useLoading({
+        loading: loading,
+        indicator: <BallTriangle width="50" />,
+      });
+
     useEffect(() => {
         getImages();
     }, [])
@@ -28,13 +35,20 @@ export const MostSelledScreen = () => {
     }
 
     return (
-        <div className="home__main-container">
+        <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar/>
             <h1 className="selled__title-related mb-5">Favoritas por nuestros usuarios</h1>
             
             {
                 loading ? 
-                    <h1>Loading...</h1> 
+                    <section style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        height: '100vh',
+                        width: '100vw',
+                    }} {...containerProps}>
+                        {indicatorEl}
+                    </section>
                     : 
                     <div className="selled__images-container">
                         {

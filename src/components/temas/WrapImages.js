@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import { ImageItem } from '../selled/ImageItem';
+import { useLoading, BallTriangle } from '@agney/react-loading';
 
 export const WrapImages = (props) => {
     const {id} = props;
@@ -7,6 +8,12 @@ export const WrapImages = (props) => {
     const [imagenes, setImagenes] = useState([]);
     const [bandera, setBandera] = useState(true);
     const [nombre, setNombre] = useState('No encontrado');
+
+    const { containerProps, indicatorEl } = useLoading({
+        loading: bandera,
+        indicator: <BallTriangle width="50" />,
+      });
+
     useEffect( () => {
         getAllImages();
     }, [])
@@ -30,10 +37,17 @@ export const WrapImages = (props) => {
     }
 
     return (
-        <div style={{width: "95%"}}>
+        <div className="animate__animated animate__fadeIn" style={{width: "95%"}}>
             {
                 bandera ? 
-                <h1>Loading</h1> :
+                <section style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    height: '100vh',
+                    width: '100vw',
+                }} {...containerProps}>
+                    {indicatorEl}
+                </section> :
                 <div>
                     <h1 
                         className="temas__title-busqueda"

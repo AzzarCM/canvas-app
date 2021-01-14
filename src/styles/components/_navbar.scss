@@ -39,6 +39,14 @@
         outline: none;
     }
 }
+.navbar__shopping-cart-icon{
+    color: $primary;
+    transition: color .4s ease;
+    &:hover{
+        color: darken($color: $primary, $amount: 10);
+    }
+}
+
 @media (max-width: 1400px){
     .navbar__main-container{
         width: 95%;

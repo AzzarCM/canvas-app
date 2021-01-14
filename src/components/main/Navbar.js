@@ -1,14 +1,21 @@
 import React from 'react'
-import {useDispatch} from "react-redux"
+import {useDispatch, useSelector} from "react-redux"
 import { startLogout } from '../../actions/auth';
 import { Link } from 'react-router-dom'
 import logo from '../../assets/img/logo.png';
 export const Navbar = () => {
 
+    const addedItems = useSelector(state => state.cart.addedItems);
+    console.log(addedItems);
+    var total = 0
+    addedItems.map((item)=>{
+        total += item.quantity
+    })
+
+    console.log(total);
+
     const dispatch = useDispatch();
     const handleLogOut = () =>{
-        console.log('clicked');
-        localStorage.clear();
         dispatch( startLogout());
     }
 
@@ -28,15 +35,23 @@ export const Navbar = () => {
                         <i className="fas fa-search"></i>
                     </button>
                 </div>
-                <button className="navbar__search-button">
-                    <Link to="/main/cart"><i 
+               
+                <Link
+                    className="navbar__shopping-cart-icon" 
+                    to="/main/cart">
+                    <div>
+                        <i
                         className="fas fa-shopping-cart"
                         style={{
                             fontSize: 30
                         }}
-                    ></i>
-                    </Link>
-                </button>
+                        >
+                        </i>
+                        {total}
+                    </div>
+                    
+                </Link>
+                
                 {/* {<a className="link-navbar" href="/auth/login">LOG IN</a>} */}
                 <p onClick={handleLogOut} className="link-navbar">LOG OUT</p>        
             </div>

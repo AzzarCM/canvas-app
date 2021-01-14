@@ -10,6 +10,7 @@ import {Relacionados} from "./Relacionados"
 
 import { useDispatch } from "react-redux"
 import { addToCart } from '../../actions/cart'
+import Swal from 'sweetalert2'
 
 
 export const TemasScreen = () => {
@@ -41,6 +42,12 @@ export const TemasScreen = () => {
 
     const handleClick = () =>{
         console.log(id);
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Agregado al carrito!',
+            showConfirmButton: true,
+          })
         dispatch(addToCart(id));
     }
 
@@ -48,7 +55,7 @@ export const TemasScreen = () => {
     return (
         <div className="home__main-container">
             <Navbar/>
-            <div className="temas__tema-container">
+            <div className="temas__tema-container animate__animated animate__fadeInLeft">
                 <div className="temas__image-container">
                     {imagen.map( img =>{
                         return(
@@ -115,7 +122,7 @@ export const TemasScreen = () => {
                     </p>
                 </div>
                 <div className="temas__buy-container-right">
-                    <div className="temas__div-cantidad">
+                    {/* {<div className="temas__div-cantidad">
                         <p style={{
                             fontSize: 25,
                             marginRight: 20
@@ -128,7 +135,7 @@ export const TemasScreen = () => {
                             max="10"
                             step="1" 
                             min="1"/>
-                    </div>
+                    </div>} */}
                     <button onClick={handleClick} className="temas-btn-carrito">
                         <i 
                             className="fas fa-shopping-cart"></i>

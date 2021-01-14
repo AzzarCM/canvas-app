@@ -32,7 +32,7 @@ export const PrincipalScreen = () => {
       });
 
     return (
-        <div className="home__main-container">
+        <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <Carousel />
             <div className="home__canvas-text-container">
