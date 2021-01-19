@@ -6,6 +6,7 @@ import {
  } 
 from 'react-router-dom';
 import { Cart } from '../components/cart/Cart';
+import { Checkout } from '../components/cart/Checkout';
 import { PrincipalScreen } from '../components/main/PrincipalScreen';
 import { QuestionScreen } from '../components/questions/QuestionScreen';
 import { MostSelledScreen } from '../components/selled/MostSelledScreen';
@@ -56,6 +57,11 @@ export const PrincipalRouter = () => {
                     exact
                     path="/main/cart"
                     component = { Cart }
+                />
+                <Route
+                    exact
+                    path="/main/checkout"
+                    component = { Checkout }
                 />
                 <Redirect to="/main/home"/>
             </Switch>

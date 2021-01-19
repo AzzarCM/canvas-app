@@ -33,3 +33,83 @@
         color: darken($color: red, $amount: 10);
     }
 }
+
+.cart__container-total{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 75%;
+    padding-bottom: 6%;
+}
+
+.cart__horizontal-total{
+    display: flex;
+    justify-content: space-evenly;
+}
+.cart__p-align{
+    margin-right: 6em;
+}
+
+.input__card-field{
+    border: 1px solid $light-grey;
+    width: 100%;
+    height: 50px;
+    padding-left: 35px;
+
+    &:focus{
+        border: 1px solid $primary;
+        outline: none;
+    }
+}
+
+.input-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: $primary;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+}
+
+.input-number-card{
+    border: 1px solid $light-grey;
+    width: 100%;
+    transition: border .4s ease;
+    height: 50px;
+    
+    &:focus{
+        border: 1px solid $primary;
+        outline: none;
+    }
+}
+.footer-inputs{
+    display: flex;
+}
+.inputs-container-foot{
+    display: flex;
+    width: 100%;
+}
+
+.input-with-icon{
+    display: flex;
+    margin-bottom: 15px;
+}
+.cart__select-zones{
+    width: 100%;
+    height: 50px;
+    border: 1px solid $light-grey;
+    outline: none;
+    cursor: pointer;
+
+
+    &:focus{
+        border: 1px solid $primary;
+    }
+}
