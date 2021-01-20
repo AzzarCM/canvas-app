@@ -1,5 +1,4 @@
 
-import { addQuantity } from "../actions/cart"
 import {types} from "../types/types"
 
 const initialState = {
@@ -45,7 +44,6 @@ export const cartReducer = (state = initialState, action) =>{
         case types.ADD_QUANTITY:
             var addedItem = state.addedItems.find(item=> item.id == action.id);
             addedItem.quantity += 1
-            console.log(addedItem);
             var newTotal = state.total + parseFloat(addedItem.price)
             return{
                 ...state,
@@ -87,6 +85,11 @@ export const cartReducer = (state = initialState, action) =>{
                 ...state,
                 addedItems: [],
                 total: 0
+            }
+        case types.CHANGE_TOTAL:
+            return {
+                ...state,
+                total: action.payload
             }
         default:
             return state

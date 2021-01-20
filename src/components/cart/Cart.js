@@ -12,10 +12,12 @@ export const Cart = () => {
         <div className="home__main-container">
             <Navbar/>
             <CartList/>
-            <h2>Recibo</h2>
-            {total.toFixed(2)}
+            <h2 className="temas__title-busqueda mt-5" >Sub Total</h2>
+            <p style={{fontSize: 25}}>{`$${total.toFixed(2)}`}</p>
 
-            <Link className="cart__checkout-link" to="/main/checkout">Pagar</Link>
+            <Link className="cart__checkout-link" to="/main/checkout">
+                <button className="checkout-button mb-5">pagar</button>
+            </Link>
         </div>
     )
 }

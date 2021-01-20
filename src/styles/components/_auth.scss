@@ -13,12 +13,13 @@
 }
 
 .auth__image{
-    margin-left: 20px;
+    height: 100%;
 }
 
 .auth__image img{
     height: 100%;
     width: 100%;
+    object-fit: cover;
 }
 
 .auth__right-container{
@@ -82,4 +83,19 @@
     justify-content: center;
     margin-bottom: 10px;
     padding: 5px;
+}
+
+@media (max-width: 1024px){
+    .auth__container{
+        flex-direction: column;
+    }
+    .auth__right-container{
+        width: 100%;
+    }
+    .auth__mini-nav{
+        width: 100%;
+    }
+    .google-icon-wrapper{
+        display: none;
+    }
 }

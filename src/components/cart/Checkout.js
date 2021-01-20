@@ -1,28 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar } from '../main/Navbar'
 import { CartList } from './CartList'
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
 import {useForm} from '../../hooks/useForm'
 
 export const Checkout = () => {
     
-    const {total} = useSelector(state => state.cart)
+   
+
+    const {total, addedItems} = useSelector(state => state.cart)
     const [zones, setZones] = useState([]);
     const [zoneSelected, setZoneSelected] = useState(0);
     const [zoneName, setZoneName] = useState('');
 
+    //valores del formulario e informacion del cliente
     const [ formValues, handleInputChange ] = useForm({
         fname: '',
         email: 'canvas@gmail.com',
-        telefono: '2277777'
+        telefono: '2277777',
+        zoneName: '',
+        direccion: ''
     });
 
+    //Valores de la tarjeta de credito
     const [ cardValues, handleInputCardChange ] = useForm({
         card_number: '',
         on_card_name: '',
         card_expire_date: '',
         card_cvc: '',
     })
+
+    const totalWithShipping = (total + parseFloat(zoneSelected)).toFixed(2);
 
     useEffect(() => {
         getAllZones();
@@ -43,22 +51,25 @@ export const Checkout = () => {
         setZones(zonas)
     }
 
-    
-    
-    
+    const handleDropDownChange = (e) =>{
+
+        setZoneSelected(e.target.value)
+        setZoneName(e.target.options[e.target.selectedIndex].text)
+
+    }
+
+    formValues.zoneName = zoneName;
 
     const { fname, email, telefono } = formValues;
 
-    const handleDropDownChange = (e) =>{
-        setZoneSelected(e.target.value)
-        setZoneName(e.target.options[e.target.selectedIndex].text)
-    }
-
+    console.log(formValues);
+    console.log(cardValues);
+    console.log(addedItems);
     return (
         <div className="home__main-container">
             <Navbar/>
             <form>
-                <h2 className="temas__title-busqueda">Informacion del cliente</h2>
+                <h2 className="temas__title-busqueda mb-5 mt-5">Informacion del cliente</h2>
                 <div className="input-container">
                     <label>Nombre <span style={{color: 'red'}}>*</span></label>
                     <div className="input-with-icon">
@@ -105,12 +116,13 @@ export const Checkout = () => {
                 </div>
                    
                    
-                <h2 className="temas__title-busqueda">Informacion de la entrega</h2>
+                <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de la entrega</h2>
                 <select
+                    defaultValue=""
                     className="cart__select-zones"
                     onChange={handleDropDownChange}
                 >
-                    <option defaultValue="" selected disabled hidden>Zonas de Envio</option>
+                    <option  selected disabled hidden>Zonas de Envio</option>
                     {zones.map((item)=>{
                         return  (
                         <option
@@ -123,8 +135,18 @@ export const Checkout = () => {
                         )
                     })}
                 </select>
+                <div className="input-with-icon mt-5">
+                    <i className="fas fa-map-marked-alt icon"></i>
+                    <textarea 
+                        className="text-area-direccion"
+                        type="text"
+                        name="direccion" 
+                        placeholder="Direccion de envio"
+                        onChange={ handleInputChange }
+                    />
+                </div>
                 
-                <h2 className="temas__title-busqueda">Informacion de pago</h2>
+                <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de pago</h2>
                 <div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <div className="input-with-icon">
@@ -175,22 +197,25 @@ export const Checkout = () => {
             </form>
            
 
-            <h2 className="temas__title-busqueda">Resumen de la compra</h2>
+            <h2 className="temas__title-busqueda mb-5 mt-5">Resumen de la compra</h2>
             <CartList/>
             <div className="cart__container-total">
-                <div className="cart__horizontal-total">
-                    <p className="cart__p-align">Sub Total</p>
-                    <p>{`$${total.toFixed(2)}`}</p>
+                <div className="cart__container-divs-total">
+                    <div className="cart__horizontal-total">
+                        <p className="cart__p-align">Sub Total</p>
+                        <p>{`$${total.toFixed(2)}`}</p>
+                    </div>
+                    <div className="cart__horizontal-total">
+                        <p className="cart__p-align">Costo de envio</p>
+                        <p>{`$${zoneSelected}`}</p>
+                    </div>
+                    <div className="cart__horizontal-total">
+                        <p className="cart__p-align">Total</p>
+                        <p className="cart__total-color">{`$${totalWithShipping}`}</p>
+                    </div>
+                    <button className="checkout-button" type="submit">Confirmar compra</button>
                 </div>
-                <div className="cart__horizontal-total">
-                    <p className="cart__p-align">Costo de envio</p>
-                    <p>{`$${zoneSelected}`}</p>
-                </div>
-                <div className="cart__horizontal-total">
-                    <p className="cart__p-align">Total</p>
-                    <p>{`$${(total + parseFloat(zoneSelected)).toFixed(2)}`}</p>
-                </div>
-                <button type="submit">Confirmar compra</button>
+                
             </div>
         </div>
     )

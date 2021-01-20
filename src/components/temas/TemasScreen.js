@@ -17,7 +17,8 @@ export const TemasScreen = () => {
 
     const dispatch = useDispatch();
     let {id} = useParams();
-    const [imagen, setImagen] = useState([])
+    const [imagen, setImagen] = useState([]);
+    const [materials, setMaterials] = useState([]);
     
     useEffect(() => {
         getImagen();
@@ -37,6 +38,11 @@ export const TemasScreen = () => {
                 descripcion: img.description,
             }
         })
+        const materials = painting.map((mat)=>{
+            return mat.materials
+            
+        });
+        setMaterials(materials);
         setImagen(infoImage);
      }
 
@@ -51,7 +57,8 @@ export const TemasScreen = () => {
         dispatch(addToCart(id));
     }
 
-
+    //console.log(imagen);
+    //console.log(materials);
     return (
         <div className="home__main-container">
             <Navbar/>
@@ -100,6 +107,15 @@ export const TemasScreen = () => {
                         <button className="temas-btn">Acrílico</button>
                         <button className="temas-btn">Carbón</button>
                     </div>
+                    {
+                        imagen.map((item)=>{
+                            return (
+                                <p style={{fontSize: 25, marginTop: 10}} key={item.id}>
+                                    {`$${item.price}`}
+                                </p>
+                            )
+                        })
+                    }
                 </div>
             </div>
             <div className="temas__buy-container">

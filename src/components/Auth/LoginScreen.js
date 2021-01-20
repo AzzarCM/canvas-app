@@ -63,10 +63,13 @@ export const LoginScreen = (props) => {
                     <div style={{
                         display:'flex', 
                         alignItems:'center'}}>
-                        <p style={{paddingRight:20}}>Sin cuenta?</p>
-                        <button className="btn-medium">
-                            <a className="link-dec" href="/auth/register">Registrate</a>
-                        </button>
+                        <p style={{paddingRight:20, marginBottom:0}}>Sin cuenta?</p>
+                        <a href="/auth/register">
+                            <button className="btn-medium">
+                                Registrate
+                            </button>
+                        </a>
+                        
                     </div>  
                 </div>
                 <h2 className="auth__h2-align">Iniciar sesión</h2>
@@ -106,7 +109,7 @@ export const LoginScreen = (props) => {
                     </button>
                 </form>
                 <button 
-                    className="btn btn-facebook"
+                    className="btn-facebook color-fb"
                     onClick={ handleFacebookLogin }
                 >
                     <i style={{marginRight:30}} className="fab fa-facebook-f"></i>

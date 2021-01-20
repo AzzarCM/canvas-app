@@ -79,7 +79,9 @@ export const PrincipalScreen = () => {
                 <div className="home__table-left">
                     <h3 className="home__aun-no">¿Aun no <br/> te decides?</h3>
                     <p className="home__envia-p">¡Envíanos tu foto <br/> para crear tu canva!</p>
-                    <button className="home__btn">  EMPEZAR <i className="fas fa-plus"></i></button>
+                    <a href="/main/upload">
+                        <button className="home__btn">  EMPEZAR <i className="fas fa-plus"></i></button>
+                    </a>
                 </div>
                 <img alt="imagen" src={tablet}/>
             </div>

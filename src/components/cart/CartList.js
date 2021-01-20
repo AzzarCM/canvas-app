@@ -6,8 +6,6 @@ export const CartList = () => {
 
     const dispatch = useDispatch();
     const {addedItems} = useSelector(state => state.cart)
-    
-    console.log(addedItems);
 
     const handleAddClick = (id) =>{
         dispatch(addQuantity(id));

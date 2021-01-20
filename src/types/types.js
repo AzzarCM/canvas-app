@@ -17,5 +17,6 @@ export const types = {
     ADD_QUANTITY: '[CART] ADD_QUANTITY',
     ADD_SHIPPING: '[CART] ADD_SHIPPING',
     LOG_OUT: '[CART] LOG_OUT',
+    CHANGE_TOTAL: '[CART] CHANGE_TOTAL',
     
  }

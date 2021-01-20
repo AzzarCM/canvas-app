@@ -37,3 +37,10 @@ export const emptyCart = ()=>{
         type: types.LOG_OUT
     }
 }
+
+export const changeTotal = (total) =>{
+    return{
+        type: types.CHANGE_TOTAL,
+        payload: total
+    }
+}
