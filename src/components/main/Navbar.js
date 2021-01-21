@@ -1,45 +1,86 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {useDispatch, useSelector} from "react-redux"
 import { startLogout } from '../../actions/auth';
 import { Link } from 'react-router-dom'
 import logo from '../../assets/img/logo.png';
+import { ReactComponent as MenuIcon } from '../../assets/svg/menu.svg'
+import { ReactComponent as CloseMenu } from '../../assets/svg/x.svg'
+
 export const Navbar = () => {
-
-    const addedItems = useSelector(state => state.cart.addedItems);
-    console.log(addedItems);
-    var total = 0
-    addedItems.map((item)=>{
-        total += item.quantity
-    })
-
-    console.log(total);
-
+    
     const dispatch = useDispatch();
+    const [click, setClick] = useState(false);
+    const handleClick = () => setClick(!click);
+    const closeMobileMenu = () => setClick(false);
+    const addedItems = useSelector(state => state.cart.addedItems);
+        console.log(addedItems);
+         var total = 0
+       addedItems.map((item)=>{
+            total += item.quantity
+        })
+    
     const handleLogOut = () =>{
         dispatch( startLogout());
     }
-
     return (
-        <div className="navbar__main-container">
-            <a href="/main/home">
-                <img alt="logo" src={logo}/>
-            </a>
-            <div className="navbar__righ-container">
+        <div className="header">
+          <div className="logo-nav">
+            <div className="logo-container">
+                <a href="/main/home">
+                    <img alt="logo" src={logo}/>
+                </a>
+            </div>
+            <ul className={click ? "nav-options active" : "nav-options"}>
+              <li onClick={closeMobileMenu}>
                 <a className="link-navbar" href="/main/most-selled">MAS VENDIDOS</a>
+              </li>
+              <li onClick={closeMobileMenu}>
                 <a className="link-navbar" href="/main/themes">TEMAS</a>
+              </li>
+              <li onClick={closeMobileMenu}>
                 <a className="link-navbar" href="/main/upload">SUBE TU FOTO</a>
+              </li>
+              <li onClick={closeMobileMenu}>
                 <a className="link-navbar" href="/main/faq">PREGUNTAS FRECUENTES</a>
-                <div>
-                    <input className="navbar__search-input" type="text" placeholder="Search something"/>
-                    <button className="navbar__search-button" type="button">
-                        <i className="fas fa-search"></i>
-                    </button>
+              </li>
+              
+              <li className="option mobile-option" onClick={closeMobileMenu}>
+                <Link
+                        className="navbar__shopping-cart-icon" 
+                        to="/main/cart">
+                        <div style={{display:'flex', color:'white'}}>
+                            <i
+                            className="fas fa-shopping-cart"
+                            style={{
+                                fontSize: 30
+                            }}
+                            >
+                            </i>
+                            {total}
+                        </div>  
+                </Link>
+              </li>
+              <li className="option mobile-option" onClick={closeMobileMenu}>
+                <p onClick={handleLogOut} className="link-navbar">
+                    LOG OUT
+                </p>
+              </li>
+            </ul>
+          </div>
+          <ul className="signin-up">
+            <li className="sign-in" onClick={closeMobileMenu}>
+            <div style={{display:'flex'}}>
+                <input className="navbar__search-input" type="text" placeholder="Search something"/>
+                <button className="navbar__search-button" type="button">
+                    <i className="fas fa-search"></i>
+                </button>
                 </div>
-               
+            </li>
+            <li>
                 <Link
                     className="navbar__shopping-cart-icon" 
                     to="/main/cart">
-                    <div>
+                    <div style={{display:'flex'}}>
                         <i
                         className="fas fa-shopping-cart"
                         style={{
@@ -51,10 +92,22 @@ export const Navbar = () => {
                     </div>
                     
                 </Link>
-                
-                {/* {<a className="link-navbar" href="/auth/login">LOG IN</a>} */}
-                <p onClick={handleLogOut} className="link-navbar">LOG OUT</p>        
-            </div>
+            </li>
+            <li style={{marginLeft:10}} onClick={closeMobileMenu}>
+              <p onClick={handleLogOut} className="link-navbar">
+                LOG OUT
+              </p>
+            </li>
+          </ul>
+          <div className="mobile-menu" onClick={handleClick}>
+            {click ? (
+              <CloseMenu className="menu-icon" />
+            ) : (
+              <MenuIcon className="menu-icon" />
+            )}
+          </div>
         </div>
-    )
+      );
 }
+
+
