@@ -18,8 +18,11 @@ export const TemasScreen = () => {
     const dispatch = useDispatch();
     let {id} = useParams();
     const [imagen, setImagen] = useState([]);
-    const [materials, setMaterials] = useState([]);
+    const [banderaMat, setBanderaMat] = useState(false);
     
+    // const [materialSelected, setMaterialSelected] = useState('');
+    // const [materials, setMaterials] = useState([]);
+
     useEffect(() => {
         getImagen();
     }, [])
@@ -28,22 +31,19 @@ export const TemasScreen = () => {
         const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
         const resp = await fetch(url)
         
-        const {painting} = await resp.json();
-        const infoImage = painting.map( img =>{
+        const {painting_info} = await resp.json();
+        
+        const infoImage = painting_info.map( img =>{
             return {
                 id: img.id,
                 name: img.name,
-                price: img.price,
                 url: img.image_url,
                 descripcion: img.description,
+                materials: img.materials
             }
         })
-        const materials = painting.map((mat)=>{
-            return mat.materials
-            
-        });
-        setMaterials(materials);
         setImagen(infoImage);
+        setBanderaMat(true);
      }
 
     const handleClick = () =>{
@@ -54,7 +54,7 @@ export const TemasScreen = () => {
             title: 'Agregado al carrito!',
             showConfirmButton: true,
           })
-        dispatch(addToCart(id));
+        dispatch(addToCart(id, 30));
     }
 
     //console.log(imagen);
@@ -103,6 +103,17 @@ export const TemasScreen = () => {
                     })}
                    
                     <div className="temas__materiales">
+                        <select>
+                            {
+                                banderaMat ?
+                                imagen[0].materials.map((material)=>{
+                                    return(
+                                        <option key={material.id}>{material.name}</option>
+                                    )
+                                })
+                                : <option>No hay materiales</option>
+                            }
+                        </select>
                         <h4 className="temas__btn-title">Material</h4>
                         <button className="temas-btn">Acrílico</button>
                         <button className="temas-btn">Carbón</button>

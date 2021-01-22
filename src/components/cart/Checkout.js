@@ -203,7 +203,7 @@ export const Checkout = () => {
                 <div className="cart__container-divs-total">
                     <div className="cart__horizontal-total">
                         <p className="cart__p-align">Sub Total</p>
-                        <p>{`$${total.toFixed(2)}`}</p>
+                        <p>{`$${total}`}</p>
                     </div>
                     <div className="cart__horizontal-total">
                         <p className="cart__p-align">Costo de envio</p>

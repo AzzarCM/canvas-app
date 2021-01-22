@@ -1,4 +1,5 @@
 
+import { act } from "react-dom/test-utils"
 import {types} from "../types/types"
 
 const initialState = {
@@ -30,6 +31,9 @@ export const cartReducer = (state = initialState, action) =>{
                   }
             }
          else{
+            addedItem.price = action.price;
+            console.log(action.id, 'soy el log de action.id');
+            console.log(action.price, 'soy el log de action.price');  
             addedItem.quantity = 1;
             //calculating the total
             var newTotal = state.total + parseFloat(addedItem.price)

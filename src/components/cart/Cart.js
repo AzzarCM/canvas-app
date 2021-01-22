@@ -13,7 +13,7 @@ export const Cart = () => {
             <Navbar/>
             <CartList/>
             <h2 className="temas__title-busqueda mt-5" >Sub Total</h2>
-            <p style={{fontSize: 25}}>{`$${total.toFixed(2)}`}</p>
+            <p style={{fontSize: 25}}>{`$${total}`}</p>
 
             <Link className="cart__checkout-link" to="/main/checkout">
                 <button className="checkout-button mb-5">pagar</button>
