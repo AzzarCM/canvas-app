@@ -17,9 +17,6 @@ export const ImageItem = (props) => {
             <p
                 className="selled__title-image"
             >{titulo.toUpperCase()}</p>
-            <p
-                className="selled__price-image"
-            >{`$${img.price}`}</p>
         </div>
     )
 }

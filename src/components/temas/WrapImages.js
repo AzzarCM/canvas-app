@@ -9,6 +9,8 @@ export const WrapImages = (props) => {
     const [bandera, setBandera] = useState(true);
     const [nombre, setNombre] = useState('No encontrado');
 
+    console.log(imagenes);
+
     const { containerProps, indicatorEl } = useLoading({
         loading: bandera,
         indicator: <BallTriangle width="50" />,
@@ -19,7 +21,7 @@ export const WrapImages = (props) => {
     }, [])
 
     const getAllImages = async () => {
-        const url = `https://canvas-api-rest.herokuapp.com/api/themes/get-paintings/${id}`;
+        const url = `https://api-rest-canvas.herokuapp.com/api/themes/get-paintings/${id}`;
         const resp = await fetch(url)
         
         const { themes } = await resp.json();
@@ -55,7 +57,7 @@ export const WrapImages = (props) => {
                         Busqueda: <span className="temas__span-busqueda">"{nombre}"</span>
                     </h1>
                     {
-                        imagenes[0] ? 
+                        imagenes[0].length > 1 ? 
                         <div className="temas__wrap-container">
                         {imagenes[0].map(item =>{
                             return (

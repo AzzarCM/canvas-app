@@ -28,7 +28,7 @@ export const TemasScreen = () => {
     }, [])
 
     const getImagen = async () =>{
-        const url = `https://canvas-api-rest.herokuapp.com/api/paintings/${id}`;
+        const url = `https://api-rest-canvas.herokuapp.com/api/paintings/${id}`;
         const resp = await fetch(url)
         
         const {painting_info} = await resp.json();

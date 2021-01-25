@@ -9,14 +9,14 @@ export const SideBar = () => {
     }, [])
 
     const getAllThemes = async () => {
-        const url = "https://canvas-api-rest.herokuapp.com/api/themes";
+        const url = "https://api-rest-canvas.herokuapp.com/api/themes";
         const resp = await fetch(url)
         const { themes } = await resp.json();
         const temas = themes.map(theme => {
             return {
                 id: theme.id,
                 name: theme.name,
-                description: theme.description,
+                image_url: theme.image_url,
             }
         })
         setThemes(temas);

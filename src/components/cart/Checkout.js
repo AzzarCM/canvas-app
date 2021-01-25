@@ -37,14 +37,14 @@ export const Checkout = () => {
     }, [])
 
     const getAllZones = async () => {
-        const url = "https://canvas-api-rest.herokuapp.com/api/delivery-zones";
+        const url = "https://api-rest-canvas.herokuapp.com/api/delivery-zones";
         const resp = await fetch(url)
         const { delivery_zones } = await resp.json();
         const zonas = delivery_zones.map((item)=>{
             return {
                 id: item.id,
                 name: item.name,
-                delivery_price: item.delivery_price,
+                delivery_price: item.delivery_cost,
                 active: item.active,
             }
         })

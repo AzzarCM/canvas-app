@@ -19,7 +19,7 @@ export const MostSelledScreen = () => {
     }, [])
 
     const getImages = async () =>{
-       const url = "https://canvas-api-rest.herokuapp.com/api/paintings";
+       const url = "https://api-rest-canvas.herokuapp.com/api/paintings";
        const resp = await fetch(url)
        const {paintings} = await resp.json();
        const imagenes = paintings.map( img =>{

@@ -3,7 +3,7 @@ import { Navbar } from "../main/Navbar"
 import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import { Footer } from '../main/Footer'
-import Memorias from '../../assets/img/memorias.png'
+
 
 export const AllThemes = () => {
     
@@ -14,14 +14,14 @@ export const AllThemes = () => {
     }, [])
 
     const getAllThemes = async () => {
-        const url = "https://canvas-api-rest.herokuapp.com/api/themes";
+        const url = "https://api-rest-canvas.herokuapp.com/api/themes";
         const resp = await fetch(url)
         const { themes } = await resp.json();
         const temas = themes.map(theme => {
             return {
                 id: theme.id,
                 name: theme.name,
-                description: theme.description,
+                image_url: theme.image_url,
             }
         })
         setThemes(temas);
@@ -46,12 +46,9 @@ export const AllThemes = () => {
                                 width: 286,
                                 height: 180,
                                 objectFit: 'cover',
-                            }} variant="top" src={Memorias} />
+                            }} variant="top" src={item.image_url} />
                             <Card.Body>
                                 <Card.Title>{item.name}</Card.Title>
-                                <Card.Text>
-                                    {item.description}
-                                </Card.Text>
                                 <a href={path}>
                                 <Button  variant="outline-secondary">Ver todos</Button>
                                 </a>
