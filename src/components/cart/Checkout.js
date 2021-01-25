@@ -3,34 +3,51 @@ import { Navbar } from '../main/Navbar'
 import { CartList } from './CartList'
 import { useSelector } from 'react-redux'
 import {useForm} from '../../hooks/useForm'
+import firebase from "firebase/app";
 
 export const Checkout = () => {
     
+    var uid = firebase.auth().currentUser.uid;
+    var name = firebase.auth().currentUser.displayName;
+    var mail = firebase.auth().currentUser.email;
    
 
     const {total, addedItems} = useSelector(state => state.cart)
     const [zones, setZones] = useState([]);
     const [zoneSelected, setZoneSelected] = useState(0);
     const [zoneName, setZoneName] = useState('');
+    const [inputVencimiento, setInputVencimiento] = useState('');
+    
+    const zoneIdAux = zoneName.split("-");
+    const inputSplited = inputVencimiento.split("/");
 
+    var mes = inputSplited[0];
+    var anio = inputSplited[1];
+
+    //console.log(zoneId[0], 'soy zoneid');
+    var zoneId = zoneIdAux[0];
+    console.log(zoneId,'soy zone ID');
     //valores del formulario e informacion del cliente
     const [ formValues, handleInputChange ] = useForm({
-        fname: '',
-        email: 'canvas@gmail.com',
-        telefono: '2277777',
-        zoneName: '',
-        direccion: ''
+        customer_name: name,
+        email: mail,
+        customer_phone: '222',
+        delivery_address: '',
+        customer_uid: uid,
+        delivery_zone_id: zoneId,
     });
 
     //Valores de la tarjeta de credito
     const [ cardValues, handleInputCardChange ] = useForm({
         card_number: '',
         on_card_name: '',
-        card_expire_date: '',
+        mesVencimiento: mes,
+        anioVencimiento: anio,
         card_cvc: '',
     })
 
     const totalWithShipping = (total + parseFloat(zoneSelected)).toFixed(2);
+
 
     useEffect(() => {
         getAllZones();
@@ -58,9 +75,48 @@ export const Checkout = () => {
 
     }
 
-    formValues.zoneName = zoneName;
+    const handleExpireDate = (e) =>{
+        setInputVencimiento(e.target.value);
+    }
 
-    const { fname, email, telefono } = formValues;
+
+    const cuadros = () =>{
+        addedItems.map((item)=>{
+            return {
+                paintingId: item.id,
+                material_id: item.material_id,
+                measurements: item.medidas,
+                price: item.price,
+                quantity: item.quantity,
+            }
+        })
+        console.log(cuadros);
+    } 
+
+    const item = addedItems.map((item)=>{
+        return {
+            paintingId: item.id,
+            material_id: item.material_id,
+            measurements: item.medidas,
+            price: item.price,
+            quantity: item.quantity,
+        }
+    })
+
+    const { customer_name, email,customer_phone  } = formValues;
+
+    formValues.delivery_zone_id = parseFloat(zoneId);
+    formValues.total_amount = parseFloat(totalWithShipping);
+    cardValues.mesVencimiento = parseInt(mes);
+    cardValues.anioVencimiento = parseInt(anio);
+
+    const data = [{
+        cardData: cardValues,
+        custumerData: formValues,
+        detail: item,
+    }]
+
+    console.log(data, 'soy data');
 
     return (
         <div className="home__main-container">
@@ -74,9 +130,9 @@ export const Checkout = () => {
                         <input  
                             className="input-number-card"
                             type="text"
-                            name="fname" 
+                            name="customer_name" 
                             placeholder="Nombre"
-                            value={ fname }
+                            value={ customer_name }
                             onChange={ handleInputChange }
                         />
                     </div>
@@ -104,9 +160,9 @@ export const Checkout = () => {
                         <input 
                             className="input-number-card"
                             type="text"
-                            name="telefono" 
+                            name="customer_phone" 
                             placeholder="Numero telefonico"
-                            value={ telefono }
+                            value={ customer_phone }
                             onChange={ handleInputChange }
                         />
                     </div>
@@ -127,7 +183,7 @@ export const Checkout = () => {
                             value={item.delivery_price}
                             
                         >
-                            {item.name} {`($${item.delivery_price})`}
+                           {item.id} {`- ${item.name}`} {`$${item.delivery_price}`}
                         </option>
                         )
                     })}
@@ -137,7 +193,7 @@ export const Checkout = () => {
                     <textarea 
                         className="text-area-direccion"
                         type="text"
-                        name="direccion" 
+                        name="delivery_address" 
                         placeholder="Direccion de envio"
                         onChange={ handleInputChange }
                     />
@@ -175,14 +231,14 @@ export const Checkout = () => {
                                 type="text" 
                                 placeholder="MM/YY"
                                 name="card_expire_date"
-                                onChange={ handleInputCardChange }
+                                onChange={ handleExpireDate }
                             />
                         </div>
                         <div className="inputs-container-foot">
                             <i className="fas fa-lock icon"></i>
                             <input 
                                 className="input__card-field" 
-                                type="text" 
+                                type="number" 
                                 placeholder="CVC"
                                 name="card_cvc"
                                 onChange={ handleInputCardChange }

@@ -5,11 +5,13 @@ export const fillItems = ( items ) =>({
     payload: items
 });
 
-export const addToCart = ( id, price, material )=>({
+export const addToCart = ( id, price, material, material_id, medidas )=>({
     type: types.ADD_TO_CART,
     id,
     price,
     material,
+    material_id,
+    medidas,
 });
 
 //remove item action

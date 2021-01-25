@@ -15,17 +15,19 @@ import Swal from 'sweetalert2'
 
 export const TemasScreen = () => {
 
+    var flag = false;
     const dispatch = useDispatch();
     let {id} = useParams();
     const [painting, setPainting] = useState([]);
     const [banderaMat, setBanderaMat] = useState(false);
-    const [idDimension, setIdDimension] = useState(1);
+    const [idMaterial, setIdMaterial] = useState(1);
     const [dimensions, setDimensions] = useState([]);
     const [banderaDim, setBanderaDim] = useState(false)
+    const [medidas, setMedidas] = useState('')
     
     const [precio, setPrecio] = useState(0);
     const [material, setMaterial] = useState('');
-
+    
     useEffect(() => {
         getPainting();
     }, [])
@@ -67,26 +69,30 @@ export const TemasScreen = () => {
                 title: 'Agregado al carrito!',
                 showConfirmButton: true,
               })
-            dispatch(addToCart(id, precio, material));
+            dispatch(addToCart(id, precio, material,idMaterial,medidas));
         }
     }
     const handleDropDownChange = (e) =>{
-        setIdDimension(e.target.value)
+        setIdMaterial(e.target.value)
         setMaterial(e.target.options[e.target.selectedIndex].text);
         setBanderaDim(true);
+        
     }
 
     const handlePrice = (e) =>{
         setPrecio(e.target.value)
+        setMedidas(e.target.options[e.target.selectedIndex].text);
     }
 
     
     if(banderaDim){
-        const result = painting[0].measurements.filter(dim => dim.material_id == idDimension);
+        const result = painting[0].measurements.filter(dim => dim.material_id == idMaterial);
         setDimensions(result);
         setBanderaDim(false);
+        flag=true
     }
-    
+
+    console.log(idMaterial);
 
     return (
         <div className="home__main-container">
@@ -167,7 +173,7 @@ export const TemasScreen = () => {
                                         return (
                                             <option
                                                 key={dim.id}
-                                                value={dim.price}
+                                                value={dim.price} 
                                             >
                                                 {`Heiht: ${dim.height} Width: ${dim.width}`}
                                             </option>
