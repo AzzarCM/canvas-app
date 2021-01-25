@@ -17,54 +17,83 @@ export const TemasScreen = () => {
 
     const dispatch = useDispatch();
     let {id} = useParams();
-    const [imagen, setImagen] = useState([]);
+    const [painting, setPainting] = useState([]);
     const [banderaMat, setBanderaMat] = useState(false);
+    const [idDimension, setIdDimension] = useState(1);
+    const [dimensions, setDimensions] = useState([]);
+    const [banderaDim, setBanderaDim] = useState(false)
     
-    // const [materialSelected, setMaterialSelected] = useState('');
-    // const [materials, setMaterials] = useState([]);
+    const [precio, setPrecio] = useState(0);
+    const [material, setMaterial] = useState('');
 
     useEffect(() => {
-        getImagen();
+        getPainting();
     }, [])
 
-    const getImagen = async () =>{
+    const getPainting = async () =>{
         const url = `https://api-rest-canvas.herokuapp.com/api/paintings/${id}`;
         const resp = await fetch(url)
         
         const {painting_info} = await resp.json();
         
-        const infoImage = painting_info.map( img =>{
+        const cuadro = painting_info.map( img =>{
             return {
                 id: img.id,
                 name: img.name,
                 url: img.image_url,
                 descripcion: img.description,
-                materials: img.materials
+                materials: img.materials,
+                measurements: img.measurements,
             }
         })
-        setImagen(infoImage);
+        setPainting(cuadro);
         setBanderaMat(true);
+        setBanderaDim(true);
      }
 
     const handleClick = () =>{
         console.log(id);
-        Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Agregado al carrito!',
-            showConfirmButton: true,
-          })
-        dispatch(addToCart(id, 30));
+        if(precio === 0 || material === '' || precio == 0){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Selecciona un material y su dimension!',
+                showConfirmButton:true,
+              });
+        }else{
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Agregado al carrito!',
+                showConfirmButton: true,
+              })
+            dispatch(addToCart(id, precio, material));
+        }
+    }
+    const handleDropDownChange = (e) =>{
+        setIdDimension(e.target.value)
+        setMaterial(e.target.options[e.target.selectedIndex].text);
+        setBanderaDim(true);
     }
 
-    //console.log(imagen);
-    //console.log(materials);
+    const handlePrice = (e) =>{
+        setPrecio(e.target.value)
+    }
+
+    
+    if(banderaDim){
+        const result = painting[0].measurements.filter(dim => dim.material_id == idDimension);
+        setDimensions(result);
+        setBanderaDim(false);
+    }
+    
+
     return (
         <div className="home__main-container">
             <Navbar/>
             <div className="temas__tema-container animate__animated animate__fadeInLeft">
                 <div className="temas__image-container">
-                    {imagen.map( img =>{
+                    {painting.map( img =>{
                         return(
                             <img 
                                 alt="imagen" 
@@ -82,7 +111,7 @@ export const TemasScreen = () => {
                     </div>
                 </div>
                 <div className="temas__info-container">
-                    {imagen.map( item =>{
+                    {painting.map( item =>{
                         return (
                             <h1 
                             key={item.id}
@@ -92,7 +121,7 @@ export const TemasScreen = () => {
                         )
                     })}
 
-                    {imagen.map( item =>{
+                    {painting.map( item =>{
                         return (
                             <p 
                             key={item.id}
@@ -103,30 +132,62 @@ export const TemasScreen = () => {
                     })}
                    
                     <div className="temas__materiales">
-                        <select>
-                            {
-                                banderaMat ?
-                                imagen[0].materials.map((material)=>{
-                                    return(
-                                        <option key={material.id}>{material.name}</option>
-                                    )
-                                })
-                                : <option>No hay materiales</option>
-                            }
-                        </select>
-                        <h4 className="temas__btn-title">Material</h4>
-                        <button className="temas-btn">Acrílico</button>
-                        <button className="temas-btn">Carbón</button>
+                        <div className="temas__width-select">
+                            <h4 className="temas__btn-title">Material</h4>
+                            <select
+                                className="temas__width-select cart__select-zones"
+                                onChange={handleDropDownChange}
+                             >
+                                <option value='' selected>Materiales</option>
+                                {
+                                    banderaMat ?
+                                    painting[0].materials.map((material)=>{
+                                        return(
+                                            <option 
+                                                key={material.id} 
+                                                value={material.id}
+                                            >
+                                                {material.name}
+                                            </option>
+                                        )
+                                    })
+                                    : <option>No hay materiales</option>
+                                }
+                            </select>
+                        </div>
+                        <div className="temas__width-select">
+                            <h4 className="temas__btn-title">Dimensiones</h4>
+                            <select
+                                className="temas__width-select cart__select-zones"
+                                onClick={handlePrice}
+                            >
+                                <option value={0} selected>Dimensiones</option>
+                                {
+                                    dimensions.map((dim)=>{
+                                        return (
+                                            <option
+                                                key={dim.id}
+                                                value={dim.price}
+                                            >
+                                                {`Heiht: ${dim.height} Width: ${dim.width}`}
+                                            </option>
+                                        )
+                                    })
+                                }
+                            </select>
+                        </div>
                     </div>
                     {
-                        imagen.map((item)=>{
-                            return (
-                                <p style={{fontSize: 25, marginTop: 10}} key={item.id}>
-                                    {`$${item.price}`}
-                                </p>
-                            )
-                        })
+                        precio == 0 ? 
+                        <p className="temas__precio-cuadro">
+                            {`Selecciona un material y dimension para conocer el precio $${precio}`}
+                        </p> :
+                        <p className="temas__precio-cuadro">
+                        {`Precio del cuadro $${precio}`}
+                        </p>
                     }
+                
+                        
                 </div>
             </div>
             <div className="temas__buy-container">
@@ -168,10 +229,22 @@ export const TemasScreen = () => {
                             className="fas fa-shopping-cart"></i>
                          Agregar al carrito
                     </button>
-                    <button className="temas-btn-carrito resize">
-                        <i className="fas fa-arrow-up"></i>
-                        Comprar
-                    </button>
+                    {
+                        precio == 0 ? 
+                        <a>
+                            <button onClick={handleClick} className="temas-btn-carrito resize">
+                                <i className="fas fa-arrow-up"></i>
+                                Comprar
+                            </button> 
+                        </a> :
+                        <a href="/main/checkout">
+                            <button onClick={handleClick} className="temas-btn-carrito resize">
+                                <i className="fas fa-arrow-up"></i>
+                                Comprar
+                            </button>
+                        </a>
+                    }
+                   
                 </div>
             </div>
             <h1>Relacionados</h1>

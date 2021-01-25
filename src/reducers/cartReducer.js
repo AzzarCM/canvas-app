@@ -32,8 +32,7 @@ export const cartReducer = (state = initialState, action) =>{
             }
          else{
             addedItem.price = action.price;
-            console.log(action.id, 'soy el log de action.id');
-            console.log(action.price, 'soy el log de action.price');  
+            addedItem.material = action.material;
             addedItem.quantity = 1;
             //calculating the total
             var newTotal = state.total + parseFloat(addedItem.price)

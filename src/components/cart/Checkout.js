@@ -62,9 +62,6 @@ export const Checkout = () => {
 
     const { fname, email, telefono } = formValues;
 
-    console.log(formValues);
-    console.log(cardValues);
-    console.log(addedItems);
     return (
         <div className="home__main-container">
             <Navbar/>

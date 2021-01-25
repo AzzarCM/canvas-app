@@ -34,10 +34,11 @@
 .temas__materiales{
     display: flex;
     align-items: center;
-    padding-top: 7%;
+    padding-top: 4%;
 }
 .temas__btn-title{
     color: $primary-dark;
+    text-align: center;
     font-size: 30px;
 }
 .temas__empty-space{
@@ -138,6 +139,16 @@
 .temas__span-busqueda{
     color: $primary;
 }
+
+.temas__width-select{
+    width: 100%;
+}
+
+.temas__precio-cuadro{
+    font-size: 25px;
+    margin-top: 5%;   
+}
+
 
 @media (max-width: 1366px){
     .temas__imagen{
