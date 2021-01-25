@@ -2,7 +2,8 @@ import { types } from "../types/types";
 
 const initialState = {
     loading: false,
-    msgError: null
+    msgError: null,
+    searchText: null,
 }
 
 
@@ -30,6 +31,13 @@ export const uiReducer = (state = initialState, action) =>{
             return {
                 ...state,
                 loading: false
+            }
+        }
+        
+        case types.uiSetNewText:{
+            return {
+                ...state,
+                searchText: action.payload
             }
         }
     

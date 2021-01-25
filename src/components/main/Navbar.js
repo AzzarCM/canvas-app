@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import logo from '../../assets/img/logo.png';
 import { ReactComponent as MenuIcon } from '../../assets/svg/menu.svg'
 import { ReactComponent as CloseMenu } from '../../assets/svg/x.svg'
+import { changeSearchText } from '../../actions/ui';
+
 
 export const Navbar = () => {
     
@@ -22,6 +24,11 @@ export const Navbar = () => {
     const handleLogOut = () =>{
         dispatch( startLogout());
     }
+
+    const handleSearchBar = (text) =>{
+        dispatch(changeSearchText(text));
+    }
+
     return (
         <div className="header">
           <div className="logo-nav">
@@ -70,7 +77,7 @@ export const Navbar = () => {
           <ul className="signin-up">
             <li className="sign-in" onClick={closeMobileMenu}>
             <div style={{display:'flex'}}>
-                <input className="navbar__search-input" type="text" placeholder="Search something"/>
+                <input onChange={(e)=>handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Search something"/>
                 <button className="navbar__search-button" type="button">
                     <i className="fas fa-search"></i>
                 </button>

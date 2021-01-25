@@ -16,3 +16,8 @@ export const startLoading = ()=>({
 export const finisLoading = ()=>({
     type: types.uiFinishLoading
 })
+
+export const changeSearchText = ( text ) =>({
+    type: types.uiSetNewText,
+    payload: text
+});
