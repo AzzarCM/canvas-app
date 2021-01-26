@@ -57,7 +57,7 @@ export const WrapImages = (props) => {
                         Busqueda: <span className="temas__span-busqueda">"{nombre}"</span>
                     </h1>
                     {
-                        imagenes[0].length > 1 ? 
+                        imagenes[0].length >= 1 ? 
                         <div className="temas__wrap-container">
                         {imagenes[0].map(item =>{
                             return (

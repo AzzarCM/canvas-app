@@ -4,7 +4,8 @@ import firebase from "firebase/app";
 import {
     BrowserRouter as Router,
     Switch,
-    Redirect
+    Redirect,
+    Route
 } from "react-router-dom";
 import { PrincipalRouter } from './PrincipalRouter';
 import { useDispatch } from 'react-redux';
@@ -20,7 +21,7 @@ export const AppRouter = () => {
     
     const [checking, setChecking] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    
+    console.log(isLoggedIn);
     const { containerProps, indicatorEl } = useLoading({
         loading: checking,
         indicator: <BallTriangle width="50" />,
@@ -43,7 +44,6 @@ export const AppRouter = () => {
             setChecking(false);
         });
     }, [dispatch, setChecking, setIsLoggedIn]);
-
     const getImages = async () =>{
         const url = "https://api-rest-canvas.herokuapp.com/api/paintings";
         const resp = await fetch(url)
@@ -81,19 +81,20 @@ export const AppRouter = () => {
        <Router>
            <div>
                <Switch>
-                   <PublicRoute
+                   <Route
                         path="/auth"
-                        isAuthenticated= { isLoggedIn }
-                        component={ AuthRouter }
+                        component={ (props) => (
+                            (isLoggedIn) 
+                            ? (<Redirect to="/"/>)
+                            : (<AuthRouter/>)
+                        )}
                    />
-                   <PrivateRoute
-                        
+                   <Route
                         path="/"
-                        isAuthenticated = { isLoggedIn }
                         component={ PrincipalRouter }
                    />
 
-                   <Redirect to="/auth/login"/>
+                   <Redirect to="/"/>
                </Switch>
 
            </div>

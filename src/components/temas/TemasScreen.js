@@ -8,13 +8,15 @@ import checkbox from "../../assets/img/checkbox.png";
 import tarjeta from "../../assets/img/tarjeta.png";
 import {Relacionados} from "./Relacionados"
 
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from '../../actions/cart'
 import Swal from 'sweetalert2'
 
 
 export const TemasScreen = () => {
 
+    const authState = useSelector(state => state.auth);
+    console.log(authState);
     var flag = false;
     const dispatch = useDispatch();
     let {id} = useParams();
@@ -63,7 +65,16 @@ export const TemasScreen = () => {
                 text: 'Selecciona un material y su dimension!',
                 showConfirmButton:true,
               });
-        }else{
+        }
+        // else if(JSON.stringify(authState)=='{}'){
+        //     Swal.fire({
+        //         icon: 'error',
+        //         title: 'Oops...',
+        //         text: 'Necesitas estar logueado!',
+        //         showConfirmButton:true,
+        //       });
+        // }
+        else{
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -241,12 +252,19 @@ export const TemasScreen = () => {
                          Agregar al carrito
                     </button>
                     {
+                        JSON.stringify(authState)=='{}' ?
                         precio == 0 ? 
                         <a>
                             <button onClick={handleClick} className="temas-btn-carrito resize">
                                 <i className="fas fa-arrow-up"></i>
                                 Comprar
                             </button> 
+                        </a> :
+                         <a>
+                         <button onClick={handleClick} className="temas-btn-carrito resize">
+                             <i className="fas fa-arrow-up"></i>
+                             Comprar
+                         </button> 
                         </a> :
                         <a href="/main/checkout">
                             <button onClick={handleClick} className="temas-btn-carrito resize">

@@ -10,12 +10,20 @@ import firebase from "firebase/app";
 
 export const Navbar = () => {
     
-    var uid = firebase.auth().currentUser.uid;
+    const firebaseInfo = useSelector(state=> state.auth)
+    var uid = firebaseInfo.uid
+    // if(firebase.auth().currentUser){
+    //   console.log("no esta logueado");
+    // }else{
+    //   var uid = firebase.auth().currentUser.uid;
+    // }
+    
     const dispatch = useDispatch();
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
     const closeMobileMenu = () => setClick(false);
     const addedItems = useSelector(state => state.cart.addedItems);
+
     console.log(addedItems);
     var total = 0
     addedItems.map((item)=>{
@@ -70,15 +78,27 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className="option mobile-option" onClick={closeMobileMenu}>
-                <p onClick={handleLogOut} className="link-navbar">
-                    LOG OUT
-                </p>
+                <a href="/auth/login" className="link-navbar">
+                    LOG IN
+                </a>
               </li>
-              <li className="option mobile-option" onClick={closeMobileMenu}>
-                  <a className="link-navbar" href={pathHistory}>
-                    HISTORIAL
-                  </a>
-              </li>
+              {
+                JSON.stringify(firebaseInfo)=='{}'
+                ? <div></div>
+                :
+                <div>
+                  <li className="option mobile-option" onClick={closeMobileMenu}>
+                    <p onClick={handleLogOut} className="link-navbar">
+                        <a href="/auth/login">LOG OUT</a>
+                    </p>
+                  </li>
+                  <li className="option mobile-option" onClick={closeMobileMenu}>
+                    <a className="link-navbar" href={pathHistory}>
+                      HISTORIAL
+                    </a>
+                  </li>
+                </div>
+              }
             </ul>
           </div>
           <ul className="signin-up">
@@ -107,16 +127,31 @@ export const Navbar = () => {
                     
                 </Link>
             </li>
-            <li style={{marginLeft:10}} onClick={closeMobileMenu}>
-              <p onClick={handleLogOut} className="link-navbar">
-                LOG OUT
-              </p>
-            </li>
-            <li>
-              <a className="link-navbar" href={pathHistory}>
-                HISTORIAL
+            <li onClick={closeMobileMenu}>  
+              <a className="link-navbar" href="/auth/login">
+                LOG IN
               </a>
             </li>
+            {
+              JSON.stringify(firebaseInfo)=='{}' 
+              ? 
+              <div></div>
+              :
+              <div>
+              <li onClick={closeMobileMenu}>
+                <p onClick={handleLogOut} className="link-navbar">
+                    <a className="link-navbar" href="/auth/login">
+                      LOG OUT
+                    </a>
+                </p>
+              </li>
+              <li>
+                <a className="link-navbar" href={pathHistory}>
+                  HISTORIAL
+                </a>
+              </li>
+            </div>
+            }
           </ul>
           <div className="mobile-menu" onClick={handleClick}>
             {click ? (

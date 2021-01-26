@@ -23,13 +23,13 @@ import firebase from "firebase/app";
 
 export const PrincipalScreen = () => {
 
-    firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-        console.log(idToken);
-        // Send token to your backend via HTTPS
-        // ...
-      }).catch(function(error) {
-        // Handle error
-      });
+    // firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+    //     console.log(idToken);
+    //     // Send token to your backend via HTTPS
+    //     // ...
+    //   }).catch(function(error) {
+    //     // Handle error
+    //   });
 
     return (
         <div className="home__main-container animate__animated animate__fadeIn">
