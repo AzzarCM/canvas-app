@@ -39,11 +39,10 @@ export const Checkout = () => {
 
     //Valores de la tarjeta de credito
     const [ cardValues, handleInputCardChange ] = useForm({
-        card_number: '',
-        on_card_name: '',
+        numeroTarjeta: '',
         mesVencimiento: mes,
         anioVencimiento: anio,
-        card_cvc: '',
+        cvv: '',
     })
 
     const totalWithShipping = (total + parseFloat(zoneSelected)).toFixed(2);
@@ -110,13 +109,32 @@ export const Checkout = () => {
     cardValues.mesVencimiento = parseInt(mes);
     cardValues.anioVencimiento = parseInt(anio);
 
-    const data = [{
-        cardData: cardValues,
-        custumerData: formValues,
-        detail: item,
-    }]
+    
 
-    console.log(data, 'soy data');
+    //console.log(data, 'soy data');
+   
+
+    const handleSubmitData = () =>{
+        console.log("clicked");
+        const data = {
+            ...formValues,
+            cardData: cardValues,
+            detail: item,
+        };
+        console.log(data);
+        fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
+            method: "POST",
+            headers: {"Content-type": "application/json"},
+            body: JSON.stringify(data),
+        })
+        .then((res)=>res.json())
+        .then((resp)=>{
+            if(resp){
+                console.log("posteado con exito");
+            }
+        });
+
+    }
 
     return (
         <div className="home__main-container">
@@ -208,7 +226,7 @@ export const Checkout = () => {
                                 className="input-number-card" 
                                 type="text" 
                                 placeholder="Numero Tarjeta" 
-                                name="card_number" 
+                                name="numeroTarjeta" 
                                 onChange={ handleInputCardChange }
                             />
                         </div>
@@ -218,8 +236,6 @@ export const Checkout = () => {
                                 className="input-number-card" 
                                 type="text"
                                 placeholder="Nombre Tarjetahabiente"
-                                name="on_card_name"
-                                onChange={ handleInputCardChange }
                             />
                         </div> 
                     </div>
@@ -240,7 +256,7 @@ export const Checkout = () => {
                                 className="input__card-field" 
                                 type="number" 
                                 placeholder="CVC"
-                                name="card_cvc"
+                                name="cvv"
                                 onChange={ handleInputCardChange }
 
                             />
@@ -266,7 +282,7 @@ export const Checkout = () => {
                         <p className="cart__p-align">Total</p>
                         <p className="cart__total-color">{`$${totalWithShipping}`}</p>
                     </div>
-                    <button className="checkout-button" type="submit">Confirmar compra</button>
+                    <button onClick={handleSubmitData} className="checkout-button" type="submit">Confirmar compra</button>
                 </div>
                 
             </div>
