@@ -8,6 +8,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-top: 20px;
 }
 
 .temas__garantia-p{
@@ -42,7 +43,15 @@
     font-size: 30px;
 }
 .temas__empty-space{
-    width: 30%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.imagen__tarjeta{
+    width: 200px;
+    height: 190px;
+    object-fit: cover;
 }
 
 .temas__buy-container{
@@ -157,6 +166,14 @@
     }
 }
 
+@media (max-width: 1024px){
+    .temas__empty-space{
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+
 
 @media (max-width: 1200px){
     .temas__imagen{
@@ -172,6 +189,7 @@
     .temas__image-container{
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
     }
 }

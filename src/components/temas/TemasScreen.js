@@ -24,6 +24,7 @@ export const TemasScreen = () => {
     const [dimensions, setDimensions] = useState([]);
     const [banderaDim, setBanderaDim] = useState(false)
     const [medidas, setMedidas] = useState('')
+
     
     const [precio, setPrecio] = useState(0);
     const [material, setMaterial] = useState('');
@@ -165,7 +166,7 @@ export const TemasScreen = () => {
                             <h4 className="temas__btn-title">Dimensiones</h4>
                             <select
                                 className="temas__width-select cart__select-zones"
-                                onClick={handlePrice}
+                                onChange={handlePrice}
                             >
                                 <option value={0} selected>Dimensiones</option>
                                 {
@@ -175,7 +176,7 @@ export const TemasScreen = () => {
                                                 key={dim.id}
                                                 value={dim.price} 
                                             >
-                                                {`Heiht: ${dim.height} Width: ${dim.width}`}
+                                                {`Alto: ${dim.height} Ancho: ${dim.width}`}
                                             </option>
                                         )
                                     })
@@ -198,25 +199,26 @@ export const TemasScreen = () => {
             </div>
             <div className="temas__buy-container">
 
-                <div className="temas__empty-space"></div>
-                <div>
-                    <img alt="imagen" src={tarjeta}/>
+                <div className="temas__empty-space">
+                    <img className="imagen__tarjeta" alt="imagen" src={tarjeta}/>
                     <p style={{fontSize: 24}}>
-                        Querido usuario de <br/>
-                        Canvas,tomamos <br/>
-                        este espacio para <br/>
-                        acordarte que tus  <br/>
-                        compras siempre  <br/>
-                        estan aseguradas y  <br/>
-                        tiene su respectiva  <br/>
-                        garantía. <br/>
-                        <br/>
-                        ¡Agradecemos tu <br/>
+                        Querido usuario de 
+                        Canvas,tomamos 
+                        este espacio para 
+                        acordarte que tus 
+                        compras siempre  
+                        estan aseguradas y 
+                        tiene su respectiva 
+                        garantía.
+                        ¡Agradecemos tu
                         preferencia!
                     </p>
                 </div>
+                <div>
+                    
+                </div>
                 <div className="temas__buy-container-right">
-                    {/* {<div className="temas__div-cantidad">
+                     {/* {{<div className="temas__div-cantidad">
                         <p style={{
                             fontSize: 25,
                             marginRight: 20
@@ -225,11 +227,14 @@ export const TemasScreen = () => {
                         </p>
                         <input 
                             className="temas__input-cantidad"
-                            type="number" 
+                            type="number"
+                            name="cantidad"
+                            onChange={handleCantidad} 
                             max="10"
+                            defaultValue="1"
                             step="1" 
                             min="1"/>
-                    </div>} */}
+                    </div>}} */}
                     <button onClick={handleClick} className="temas-btn-carrito">
                         <i 
                             className="fas fa-shopping-cart"></i>
