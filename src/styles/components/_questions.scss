@@ -54,3 +54,20 @@
     width: 75%;
     margin-bottom: 10%;
 }
+
+@media (max-width: 920px){
+    .questions__first-part{
+        flex-direction: column;
+        padding-bottom: 10%;
+    }
+    .question__image{
+        width: 300px;
+        object-fit: cover;
+    }
+    .questions__title{
+        text-align: center;
+    }
+    .questions__paragraph{
+        text-align: center;
+    }
+}

@@ -1,6 +1,8 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { addQuantity, removeItem, subtractQuantity } from '../../actions/cart';
+import cartImage from '../../assets/img/emptycart.png';
+import { Link } from 'react-router-dom'
 
 export const CartList = () => {
 
@@ -52,8 +54,14 @@ export const CartList = () => {
                             </li>   
                         )
                     })
-                 :
-                    <h1>Nada en el carrito</h1>  
+                 :  
+                    <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
+                        <img className="carrito-image" src={cartImage} alt="empty cart"/>
+                        <Link className="cart__checkout-link" to="/main/themes">
+                            <button className="checkout-button mb-5">Regresar a comprar!</button>
+                        </Link>
+                    </div>
+                    
             }
         </div>
     )

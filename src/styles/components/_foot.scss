@@ -42,6 +42,9 @@
     color: $primary-light;
     font-size: 25px;
     font-weight: bold;
+    &:hover{
+        color: darken($color: $primary-light, $amount: 10);
+    }
 }
 
 .a-color{
@@ -69,6 +72,12 @@
 @media (max-width: 1090px){
     .foot__upper-div{
         flex-direction: column;
+    }
+    .foot__social-icons{
+        justify-content: center;
+    }
+    .align-text{
+        text-align: center;
     }
 }
 

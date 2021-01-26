@@ -15,7 +15,7 @@ export const QuestionScreen = () => {
         <div className="home__main-container">
             <Navbar />
             <div className="questions__first-part">
-                <img alt="imagen" src={question} />
+                <img className="question__image" alt="imagen" src={question} />
                 <div>
                     <h1 className="questions__title">¿Tienes dudas?</h1>
                     <p className="questions__paragraph">Ingresa una palabra, frase o pregunta para localizar la <br />

@@ -8,6 +8,7 @@ import { emptyCart } from '../../actions/cart'
 import Swal from 'sweetalert2'
 import validator from "validator";
 import { removeError, setError } from '../../actions/ui'
+import { Footer } from '../main/Footer'
 
 export const Checkout = () => {
     
@@ -338,6 +339,8 @@ export const Checkout = () => {
                 </div>
                 
             </div>
+            <Footer/>
         </div>
+        
     )
 }
