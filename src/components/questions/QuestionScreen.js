@@ -28,15 +28,17 @@ export const QuestionScreen = () => {
                     </div>
                 </div>
             </div>
+            <h1 className="selled__title-related mb-5">Preguntas frecuentes!</h1>
 
-            <div>
-                <Accordion>
+            <div className="questions__accordion-div">
+                <Accordion
+                >
                     <AccordionSummary
                         expandIcon={<ExpandMoreIcon/>}
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
-                    <Typography>¿Que materiales ocupan?</Typography>
+                    <Typography align="center">¿Que materiales ocupan?</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>
@@ -52,7 +54,7 @@ export const QuestionScreen = () => {
                         aria-controls="panel2a-content"
                         id="panel2a-header"
                     >
-                        <Typography>Accordion 2</Typography>
+                        <Typography>Aqui iria otra pregunta frecuente XD</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography>

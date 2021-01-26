@@ -1,58 +1,3 @@
-// .navbar__main-container{
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-between;
-//     width: 75%;
-//     margin-top: 7%;    
-// }
-
-// .navbar__righ-container{
-//     display: flex;
-//     align-items: center;
-//     width: 100%;
-//     justify-content: space-evenly;
-// }
-
-// .navbar__search-button{
-//     background-color: transparent;
-//     border-color: transparent;
-//     font-size: 18px;
-//     color: $second-primary;
-//     position: relative;
-//     right: 44px;
-//     top: 1px;
-//     cursor: pointer;
-// }
-
-// .navbar__search-input{
-//     border: 2px solid  $second-primary;
-//     border-radius: 30px;
-//     height: 32px;
-//     font-family: 'Nunito Sans', sans-serif;
-//     font-size: 15px;
-//     color: #3D3D3C;
-//     font-weight: 400;
-//     padding-left: 15px;
-//     padding-right: 20px;
-
-//     &:focus{
-//         outline: none;
-//     }
-// }
-// .navbar__shopping-cart-icon{
-//     color: $primary;
-//     transition: color .4s ease;
-//     &:hover{
-//         color: darken($color: $primary, $amount: 10);
-//     }
-// }
-
-// @media (max-width: 1400px){
-//     .navbar__main-container{
-//         width: 96%;
-//     }
-// }
-/*Desktop View*/
 .header {
     display: flex;
     justify-content: space-evenly;
@@ -90,6 +35,8 @@
   .signin-up {
     display: flex;
     padding: 0px 5px;
+    width: 35%;
+    justify-content: space-between;
     list-style-type: none;
   }
   .sign-in {
@@ -163,7 +110,7 @@
     .nav-options {
       display: flex;
       width: 100%;
-      height: 500px;
+      height: 675px;
       position: absolute;
       top: 80px;
       left: -100%;

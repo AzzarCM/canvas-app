@@ -6,10 +6,11 @@ import logo from '../../assets/img/logo.png';
 import { ReactComponent as MenuIcon } from '../../assets/svg/menu.svg'
 import { ReactComponent as CloseMenu } from '../../assets/svg/x.svg'
 import { changeSearchText } from '../../actions/ui';
-
+import firebase from "firebase/app";
 
 export const Navbar = () => {
     
+    var uid = firebase.auth().currentUser.uid;
     const dispatch = useDispatch();
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
@@ -28,6 +29,7 @@ export const Navbar = () => {
     const handleSearchBar = (text) =>{
         dispatch(changeSearchText(text));
     }
+    const pathHistory = `/main/history/${uid}`
 
     return (
         <div className="header">
@@ -72,6 +74,11 @@ export const Navbar = () => {
                     LOG OUT
                 </p>
               </li>
+              <li className="option mobile-option" onClick={closeMobileMenu}>
+                  <a className="link-navbar" href={pathHistory}>
+                    HISTORIAL
+                  </a>
+              </li>
             </ul>
           </div>
           <ul className="signin-up">
@@ -104,6 +111,11 @@ export const Navbar = () => {
               <p onClick={handleLogOut} className="link-navbar">
                 LOG OUT
               </p>
+            </li>
+            <li>
+              <a className="link-navbar" href={pathHistory}>
+                HISTORIAL
+              </a>
             </li>
           </ul>
           <div className="mobile-menu" onClick={handleClick}>

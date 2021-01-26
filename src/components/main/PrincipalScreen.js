@@ -98,7 +98,9 @@ export const PrincipalScreen = () => {
                         resolveremos<br/>
                         cualquier inquietud
                     </p>
-                    <button className="home__btn">IR A PREGUNTAS</button>
+                    <a href="/main/faq">
+                        <button className="home__btn">IR A PREGUNTAS</button>
+                    </a>
                 </div>
             </div>
             <Footer/>

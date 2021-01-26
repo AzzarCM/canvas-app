@@ -1,23 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import { Navbar } from '../main/Navbar'
 import { CartList } from './CartList'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import {useForm} from '../../hooks/useForm'
 import firebase from "firebase/app";
+import { emptyCart } from '../../actions/cart'
+import Swal from 'sweetalert2'
+import validator from "validator";
+import { removeError, setError } from '../../actions/ui'
 
 export const Checkout = () => {
     
+    //constants from firebasse
     var uid = firebase.auth().currentUser.uid;
     var name = firebase.auth().currentUser.displayName;
     var mail = firebase.auth().currentUser.email;
-   
-
+    
+    //redux variables
+    const dispatch = useDispatch();
+    const {msgError} = useSelector( state => state.ui);
     const {total, addedItems} = useSelector(state => state.cart)
+   
+    //useStates
+   
     const [zones, setZones] = useState([]);
     const [zoneSelected, setZoneSelected] = useState(0);
     const [zoneName, setZoneName] = useState('');
     const [inputVencimiento, setInputVencimiento] = useState('');
     
+
+
     const zoneIdAux = zoneName.split("-");
     const inputSplited = inputVencimiento.split("/");
 
@@ -102,37 +114,77 @@ export const Checkout = () => {
         }
     })
 
-    const { customer_name, email,customer_phone  } = formValues;
-
+    const { customer_name, email,customer_phone, delivery_address,delivery_zone_id } = formValues;
+    const {numeroTarjeta} = cardValues
     formValues.delivery_zone_id = parseFloat(zoneId);
     formValues.total_amount = parseFloat(totalWithShipping);
     cardValues.mesVencimiento = parseInt(mes);
     cardValues.anioVencimiento = parseInt(anio);
 
-    
+    console.log(delivery_zone_id);
 
-    //console.log(data, 'soy data');
-   
+    function isFormValuesValid() {
+        if(validator.isEmpty(customer_name)){
+            dispatch(setError("El campo del nombre esta vacio"))
+            return false
+        }else if(validator.isEmpty(email)){
+            dispatch(setError("El campo del correo esta vacio"))
+            return false
+        }else if(validator.isEmpty(customer_phone)){
+            dispatch(setError("El campo del telefono esta vacio"))
+            return false
+        }else if(validator.isEmpty(delivery_address)){
+            dispatch(setError("El campo de la direccion esta vacio"))
+            return false
+        }else if(isNaN(delivery_zone_id)){
+            dispatch(setError("Necesita seleccionar una zona de envio"))
+            return false
+        }
+        dispatch(removeError());
+        return true
+    }
 
     const handleSubmitData = () =>{
-        console.log("clicked");
-        const data = {
-            ...formValues,
-            cardData: cardValues,
-            detail: item,
-        };
-        console.log(data);
-        fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
-            method: "POST",
-            headers: {"Content-type": "application/json"},
-            body: JSON.stringify(data),
-        })
-        .then((res)=>res.json())
-        .then((resp)=>{
-            if(resp){
-                console.log("posteado con exito");
-            }
-        });
+        if(isFormValuesValid()){
+            const data = {
+                ...formValues,
+                cardData: cardValues,
+                detail: item,
+            };
+            console.log(data);
+            fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
+                method: "POST",
+                headers: {"Content-type": "application/json"},
+                body: JSON.stringify(data),
+            })
+            .then((res)=>res.json())
+            .then((resp)=>{
+                if(resp){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Gracias!',
+                        text: 'Compra realizada con exito!',
+                        showConfirmButton:true,
+                    })
+                    dispatch(emptyCart());
+                    console.log("posteado con exito");
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Opps...',
+                        text: 'Hubo un error en tu compra :(',
+                        showConfirmButton: true
+                    })
+                }
+            });
+        }else{
+            Swal.fire({
+                icon: 'error',
+                text: msgError,
+                timer: 2000,
+            })
+        }
+        
 
     }
 
