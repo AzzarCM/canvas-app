@@ -178,3 +178,40 @@
         background-color: darken($color: $facebook, $amount: 5);
     }
 }
+
+
+.btn-material{
+    border: 1px solid grey;
+    color: grey;
+    width: 150px;
+    height: 50px;
+    padding-top: 12px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+.btn-radio:checked + label{
+    color: white;
+    border: 1px solid white;
+    background-color: $primary;
+    width: 150px;
+    height: 50px;
+    padding-top: 12px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color .5s ease;
+}
+
+.btn-radio-second:checked + label{
+    color: white;
+    border: 1px solid white;
+    background-color: $primary;
+    width: 150px;
+    height: 50px;
+    padding-top: 12px;
+    border-radius: 10px;
+    text-align: center;
+    transition: background-color .5s ease;
+}

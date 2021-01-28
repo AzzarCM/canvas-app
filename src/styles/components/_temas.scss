@@ -31,10 +31,12 @@
     font-size: 60px;
     color: $third-primary;
     padding-bottom: 10%;
+    text-align: center;
 }
 .temas__materiales{
     display: flex;
     align-items: center;
+    flex-direction: column;
     padding-top: 4%;
 }
 .temas__btn-title{
@@ -156,6 +158,14 @@
 .temas__precio-cuadro{
     font-size: 25px;
     margin-top: 5%;   
+}
+
+.btn-div-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
 

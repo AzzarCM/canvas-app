@@ -12,6 +12,11 @@ import { Footer } from '../main/Footer'
 
 export const Checkout = () => {
     
+    const monthNames = ["Enero", "Febrero", "Marzo", "April", "Mayo", "Junio",
+    "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"
+    ];
+    const dayNames = ["Domingo", "Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
+
     //constants from firebasse
     var uid = firebase.auth().currentUser.uid;
     var name = firebase.auth().currentUser.displayName;
@@ -22,7 +27,18 @@ export const Checkout = () => {
     const {msgError} = useSelector( state => state.ui);
     const {total, addedItems} = useSelector(state => state.cart)
    
+
     //useStates
+
+    var today = new Date();
+    var tresDias = new Date();
+    var cincoDias = new Date();
+
+    tresDias.setDate(today.getDate() + 3);
+    cincoDias.setDate(today.getDate() + 5);
+
+    console.log(tresDias.getDay());
+    console.log(cincoDias.getDay());
    
     const [zones, setZones] = useState([]);
     const [zoneSelected, setZoneSelected] = useState(0);
@@ -269,6 +285,16 @@ export const Checkout = () => {
                         onChange={ handleInputChange }
                     />
                 </div>
+                <div className="input-with-icon mt-5">
+                    <i className="fas fa-asterisk icon"></i>
+                    <textarea 
+                        className="text-area-direccion"
+                        type="text"
+                        name="delivery_notes" 
+                        placeholder="Referencias o notas especificas para la entrega"
+                        onChange={ handleInputChange }
+                    />
+                </div>
                 
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de pago</h2>
                 <div>
@@ -320,6 +346,7 @@ export const Checkout = () => {
            
 
             <h2 className="temas__title-busqueda mb-5 mt-5">Resumen de la compra</h2>
+            <p>{`NOTA: la entrega estimada seria entre el ${dayNames[tresDias.getDay()]} ${tresDias.getDate()} de ${monthNames[tresDias.getMonth()]} al  ${dayNames[cincoDias.getDay()]} ${cincoDias.getDate()} de ${monthNames[cincoDias.getMonth()]}`}</p>
             <CartList/>
             <div className="cart__container-total">
                 <div className="cart__container-divs-total">

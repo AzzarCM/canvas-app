@@ -16,7 +16,6 @@ import Swal from 'sweetalert2'
 export const TemasScreen = () => {
 
     const authState = useSelector(state => state.auth);
-    console.log(authState);
     var flag = false;
     const dispatch = useDispatch();
     let {id} = useParams();
@@ -26,11 +25,16 @@ export const TemasScreen = () => {
     const [dimensions, setDimensions] = useState([]);
     const [banderaDim, setBanderaDim] = useState(false)
     const [medidas, setMedidas] = useState('')
-
+    const [radioChecked, setRadioChecked] = useState(true);
     
     const [precio, setPrecio] = useState(0);
     const [material, setMaterial] = useState('');
     
+    //console.log(radioChecked);
+
+    console.log(medidas, 'medidas');
+    console.log(material, 'material');
+
     useEffect(() => {
         getPainting();
     }, [])
@@ -66,14 +70,14 @@ export const TemasScreen = () => {
                 showConfirmButton:true,
               });
         }
-        // else if(JSON.stringify(authState)=='{}'){
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Oops...',
-        //         text: 'Necesitas estar logueado!',
-        //         showConfirmButton:true,
-        //       });
-        // }
+        else if(JSON.stringify(authState)=='{}'){
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Necesitas estar logueado!',
+                showConfirmButton:true,
+              });
+        }
         else{
             Swal.fire({
                 position: 'top-end',
@@ -84,16 +88,35 @@ export const TemasScreen = () => {
             dispatch(addToCart(id, precio, material,idMaterial,medidas));
         }
     }
+
+    const handleWarning = () =>{
+        Swal.fire({
+            icon: 'warning',
+            title: 'ATENCION!',
+            text: 'Debes estar logueado para comprar :)',
+            showConfirmButton: true,
+        });
+    }
+    const handleSecondWarning = () =>{
+        Swal.fire({
+            icon: 'error',
+            title: 'ATENCION!',
+            text: 'Debes seleccionar dimension y material',
+            showConfirmButton: true,
+        });
+    }
+
     const handleDropDownChange = (e) =>{
         setIdMaterial(e.target.value)
-        setMaterial(e.target.options[e.target.selectedIndex].text);
         setBanderaDim(true);
-        
+        setRadioChecked(false);
+        setPrecio(0)
     }
 
     const handlePrice = (e) =>{
         setPrecio(e.target.value)
-        setMedidas(e.target.options[e.target.selectedIndex].text);
+        setRadioChecked(true)
+        //setMedidas(e.target.options[e.target.selectedIndex].text);
     }
 
     
@@ -103,9 +126,16 @@ export const TemasScreen = () => {
         setBanderaDim(false);
         flag=true
     }
+    const handleChecked = (name) =>{
+        setMaterial(name)
+    }
 
-    console.log(idMaterial);
+    const handleCheckedDim = (altura, ancho) =>{
+        const medida = `Alto ${altura} Ancho ${ancho}`
+        setMedidas(medida);
+    }
 
+    
     return (
         <div className="home__main-container">
             <Navbar/>
@@ -152,7 +182,7 @@ export const TemasScreen = () => {
                     <div className="temas__materiales">
                         <div className="temas__width-select">
                             <h4 className="temas__btn-title">Material</h4>
-                            <select
+                            {/* {<select
                                 className="temas__width-select cart__select-zones"
                                 onChange={handleDropDownChange}
                              >
@@ -171,11 +201,33 @@ export const TemasScreen = () => {
                                     })
                                     : <option>No hay materiales</option>
                                 }
-                            </select>
+                            </select>} */}
+                            <div className="btn-div-wrap">
+                            {
+                                banderaMat ? 
+                                painting[0].materials.map((material)=>{
+                                    return (
+                                        <div key={material.id}>
+                                            <input 
+                                                onClick={handleDropDownChange} 
+                                                className="btn-radio" 
+                                                type="radio" 
+                                                name="name_name" 
+                                                id={material.name} 
+                                                value={material.id} 
+                                                style={{visibility: 'hidden'}}/>
+                                            <label onClick={()=>handleChecked(material.name)} className="btn-material" htmlFor={material.name}>{material.name}</label>
+                                        </div>
+                                    )
+                                })
+                                : <p>No hay medidas disponibles</p>
+                            }
+                            </div>
+                            
                         </div>
                         <div className="temas__width-select">
                             <h4 className="temas__btn-title">Dimensiones</h4>
-                            <select
+                           {/* { <select
                                 className="temas__width-select cart__select-zones"
                                 onChange={handlePrice}
                             >
@@ -192,7 +244,38 @@ export const TemasScreen = () => {
                                         )
                                     })
                                 }
-                            </select>
+                            </select>} */}
+                            <div className="btn-div-wrap">
+                            {
+                                dimensions.length >= 1 ?
+                                dimensions.map((dim)=>{
+                                    return (
+                                        <div key={dim.id}>
+                                            <input 
+                                                onClick={handlePrice} 
+                                                className="btn-radio-second" 
+                                                type="radio" 
+                                                name="name_name2" 
+                                                id={dim.id} 
+                                                value={dim.price} 
+                                                style={{visibility: 'hidden'}}
+                                            />
+                                            <label 
+                                                className="btn-material" 
+                                                htmlFor={dim.id}
+                                                onClick={()=>handleCheckedDim(dim.height, dim.width)}
+                                            >
+                                                {`${dim.height} X ${dim.width}`}
+                                            </label>
+                                        </div>
+                                        
+                                    )
+                                })
+                                :
+                                (<p>No hay medidas disponibles</p>)
+                            }
+                            </div>
+                            
                         </div>
                     </div>
                     {
@@ -255,7 +338,7 @@ export const TemasScreen = () => {
                         JSON.stringify(authState)=='{}' ?
                         precio == 0 ? 
                         <a>
-                            <button onClick={handleClick} className="temas-btn-carrito resize">
+                            <button onClick={handleWarning} className="temas-btn-carrito resize">
                                 <i className="fas fa-arrow-up"></i>
                                 Comprar
                             </button> 
