@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d2a33877.chunk.css",
+    "main.js": "/static/js/main.5d0b5d1b.chunk.js",
+    "main.js.map": "/static/js/main.5d0b5d1b.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9e4fa669.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9e4fa669.js.map",
+    "static/css/2.f9e7c6c9.chunk.css": "/static/css/2.f9e7c6c9.chunk.css",
+    "static/js/2.d579c1da.chunk.js": "/static/js/2.d579c1da.chunk.js",
+    "static/js/2.d579c1da.chunk.js.map": "/static/js/2.d579c1da.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.f9e7c6c9.chunk.css.map": "/static/css/2.f9e7c6c9.chunk.css.map",
+    "static/css/main.d2a33877.chunk.css.map": "/static/css/main.d2a33877.chunk.css.map",
+    "static/js/2.d579c1da.chunk.js.LICENSE.txt": "/static/js/2.d579c1da.chunk.js.LICENSE.txt",
+    "static/media/styles.scss": "/static/media/Metropolis-Regular.67a1988d.otf",
+    "static/media/arte.be26325d.png": "/static/media/arte.be26325d.png",
+    "static/media/caminos.33df7fdb.png": "/static/media/caminos.33df7fdb.png",
+    "static/media/cuadro.df0dcd1a.png": "/static/media/cuadro.df0dcd1a.png",
+    "static/media/emptycart.3fb2f85a.png": "/static/media/emptycart.3fb2f85a.png",
+    "static/media/imagef.4f46ea69.png": "/static/media/imagef.4f46ea69.png",
+    "static/media/images.0ef6b4be.jpg": "/static/media/images.0ef6b4be.jpg",
+    "static/media/inicio-sesion.a5f58f50.png": "/static/media/inicio-sesion.a5f58f50.png",
+    "static/media/landscapes.d41984da.png": "/static/media/landscapes.d41984da.png",
+    "static/media/memorias.cca970a4.png": "/static/media/memorias.cca970a4.png",
+    "static/media/menu.c21acb3a.svg": "/static/media/menu.c21acb3a.svg",
+    "static/media/people.b7866b05.png": "/static/media/people.b7866b05.png",
+    "static/media/question.62d42274.png": "/static/media/question.62d42274.png",
+    "static/media/register.7ea93253.png": "/static/media/register.7ea93253.png",
+    "static/media/tablet.50232d81.png": "/static/media/tablet.50232d81.png",
+    "static/media/tarjeta.bd9e018e.png": "/static/media/tarjeta.bd9e018e.png",
+    "static/media/x.cb990eee.svg": "/static/media/x.cb990eee.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9e4fa669.js",
+    "static/css/2.f9e7c6c9.chunk.css",
+    "static/js/2.d579c1da.chunk.js",
+    "static/css/main.d2a33877.chunk.css",
+    "static/js/main.5d0b5d1b.chunk.js"
+  ]
+}

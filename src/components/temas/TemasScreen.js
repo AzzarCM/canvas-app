@@ -32,8 +32,8 @@ export const TemasScreen = () => {
     
     //console.log(radioChecked);
 
-    console.log(medidas, 'medidas');
-    console.log(material, 'material');
+    console.log(dimensions ,'dimension');
+    console.log(material,'material');
 
     useEffect(() => {
         getPainting();
