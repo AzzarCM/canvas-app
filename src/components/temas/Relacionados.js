@@ -1,32 +1,49 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import landscapes from '../../assets/img/landscapes.png';
 import people from '../../assets/img/people.png';
 import arte from '../../assets/img/arte.png';
 import caminos from '../../assets/img/caminos.png';
+import { ImageItem } from '../selled/ImageItem';
 
-export const Relacionados = () => {
+export const Relacionados = (props) => {
+
+    const {painting_id, theme_id} = props;
+    const [relatedPaintings, setRelatedPaintings] = useState([]);
+
+    function getRelatedImages() {
+        const url = `https://api-rest-canvas.herokuapp.com/api/paintings/related/${theme_id}/${painting_id}`
+
+        return fetch(url)
+            .then((res)=>{
+                return res.json()
+            })
+            .then((result)=>{
+                return result
+            })
+    }  
+    
+    useEffect(() => {
+        getRelatedImages()
+            .then(({related_paintings})=>{
+                setRelatedPaintings(related_paintings);
+            })
+    }, [painting_id, theme_id])
+    
+    console.log(relatedPaintings);
+
     return (
         <div className="related__main-container">
-            <div className="home__photo-item">
-                    <img alt="imagen" src={landscapes}/>
-                    <p className="home__photo-title">LANDSCAPES</p>
-                    <p className="related__color-c">$119.00</p>
-                </div>
-                <div className="home__photo-item">
-                    <img alt="imagen" src={caminos}/>
-                    <p className="home__photo-title">CAMINOS</p>
-                    <p className="related__color-c">$99.00</p>
-                </div>
-                <div className="home__photo-item">
-                    <img alt="imagen" src={arte}/>
-                    <p className="home__photo-title">ARTE</p>
-                    <p className="related__color-c">$399.99</p>
-                </div>
-                <div className="home__photo-item">
-                    <img alt="imagen" src={people}/>
-                    <p className="home__photo-title">PEOPLE</p>
-                    <p className="related__color-c">$200.00</p>
-            </div>
+            {
+                relatedPaintings.length >= 1 
+                ?
+                relatedPaintings.map((cuadro)=>{
+                    return (
+                        <ImageItem img={cuadro}/>
+                    )
+                })
+                :
+                <h1>No hay cuadros relacionados!</h1>
+            }
         </div>
     )
 }

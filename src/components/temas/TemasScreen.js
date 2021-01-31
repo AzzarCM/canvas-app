@@ -16,7 +16,6 @@ import Swal from 'sweetalert2'
 export const TemasScreen = () => {
 
     const authState = useSelector(state => state.auth);
-    var flag = false;
     const dispatch = useDispatch();
     let {id} = useParams();
     const [painting, setPainting] = useState([]);
@@ -26,11 +25,10 @@ export const TemasScreen = () => {
     const [banderaDim, setBanderaDim] = useState(false)
     const [medidas, setMedidas] = useState('')
     const [radioChecked, setRadioChecked] = useState(true);
-    
+    const [temaId, setTemaId] = useState(0);
     const [precio, setPrecio] = useState(0);
     const [material, setMaterial] = useState('');
     
-    //console.log(radioChecked);
 
     console.log(dimensions ,'dimension');
     console.log(material,'material');
@@ -53,15 +51,15 @@ export const TemasScreen = () => {
                 descripcion: img.description,
                 materials: img.materials,
                 measurements: img.measurements,
+                theme_id: img.theme_id,
             }
         })
         setPainting(cuadro);
         setBanderaMat(true);
         setBanderaDim(true);
      }
-
+    
     const handleClick = () =>{
-        console.log(id);
         if(precio === 0 || material === '' || precio == 0){
             Swal.fire({
                 icon: 'error',
@@ -116,15 +114,14 @@ export const TemasScreen = () => {
     const handlePrice = (e) =>{
         setPrecio(e.target.value)
         setRadioChecked(true)
-        //setMedidas(e.target.options[e.target.selectedIndex].text);
     }
 
     
     if(banderaDim){
         const result = painting[0].measurements.filter(dim => dim.material_id == idMaterial);
+        setTemaId(painting[0].theme_id);
         setDimensions(result);
         setBanderaDim(false);
-        flag=true
     }
     const handleChecked = (name) =>{
         setMaterial(name)
@@ -135,7 +132,6 @@ export const TemasScreen = () => {
         setMedidas(medida);
     }
 
-    
     return (
         <div className="home__main-container">
             <Navbar/>
@@ -182,26 +178,6 @@ export const TemasScreen = () => {
                     <div className="temas__materiales">
                         <div className="temas__width-select">
                             <h4 className="temas__btn-title">Material</h4>
-                            {/* {<select
-                                className="temas__width-select cart__select-zones"
-                                onChange={handleDropDownChange}
-                             >
-                                <option value='' selected>Materiales</option>
-                                {
-                                    banderaMat ?
-                                    painting[0].materials.map((material)=>{
-                                        return(
-                                            <option 
-                                                key={material.id} 
-                                                value={material.id}
-                                            >
-                                                {material.name}
-                                            </option>
-                                        )
-                                    })
-                                    : <option>No hay materiales</option>
-                                }
-                            </select>} */}
                             <div className="btn-div-wrap">
                             {
                                 banderaMat ? 
@@ -227,24 +203,6 @@ export const TemasScreen = () => {
                         </div>
                         <div className="temas__width-select">
                             <h4 className="temas__btn-title">Dimensiones</h4>
-                           {/* { <select
-                                className="temas__width-select cart__select-zones"
-                                onChange={handlePrice}
-                            >
-                                <option value={0} selected>Dimensiones</option>
-                                {
-                                    dimensions.map((dim)=>{
-                                        return (
-                                            <option
-                                                key={dim.id}
-                                                value={dim.price} 
-                                            >
-                                                {`Alto: ${dim.height} Ancho: ${dim.width}`}
-                                            </option>
-                                        )
-                                    })
-                                }
-                            </select>} */}
                             <div className="btn-div-wrap">
                             {
                                 dimensions.length >= 1 ?
@@ -312,23 +270,6 @@ export const TemasScreen = () => {
                     
                 </div>
                 <div className="temas__buy-container-right">
-                     {/* {{<div className="temas__div-cantidad">
-                        <p style={{
-                            fontSize: 25,
-                            marginRight: 20
-                        }}>
-                            Cantidad: 
-                        </p>
-                        <input 
-                            className="temas__input-cantidad"
-                            type="number"
-                            name="cantidad"
-                            onChange={handleCantidad} 
-                            max="10"
-                            defaultValue="1"
-                            step="1" 
-                            min="1"/>
-                    </div>}} */}
                     <button onClick={handleClick} className="temas-btn-carrito">
                         <i 
                             className="fas fa-shopping-cart"></i>
@@ -338,19 +279,19 @@ export const TemasScreen = () => {
                         JSON.stringify(authState)=='{}' ?
                         precio == 0 ? 
                         <a>
-                            <button onClick={handleWarning} className="temas-btn-carrito resize">
+                            <button onClick={handleWarning} className="temas-btn-carrito resize mt-5">
                                 <i className="fas fa-arrow-up"></i>
                                 Comprar
                             </button> 
                         </a> :
                          <a>
-                         <button onClick={handleClick} className="temas-btn-carrito resize">
+                         <button onClick={handleClick} className="temas-btn-carrito resize mt-5">
                              <i className="fas fa-arrow-up"></i>
                              Comprar
                          </button> 
                         </a> :
                         <a href="/main/checkout">
-                            <button onClick={handleClick} className="temas-btn-carrito resize">
+                            <button onClick={handleClick} className="temas-btn-carrito resize mt-5">
                                 <i className="fas fa-arrow-up"></i>
                                 Comprar
                             </button>
@@ -359,8 +300,8 @@ export const TemasScreen = () => {
                    
                 </div>
             </div>
-            <h1>Relacionados</h1>
-            <Relacionados/>
+            <h1 className="selled__title-related">Relacionados</h1>
+            <Relacionados painting_id={id} theme_id={temaId}/>
             <Footer/>
         </div>
     )

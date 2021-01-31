@@ -50,7 +50,7 @@ export const MostSelledScreen = () => {
                         {indicatorEl}
                     </section>
                     : 
-                    <div className="selled__images-container">
+                    <div style={{paddingBottom: 150}} className="selled__images-container">
                         {
                             images.map(img => {
                                 return(<ImageItem
@@ -60,9 +60,6 @@ export const MostSelledScreen = () => {
                             })}
                     </div>   
             }
-            
-            <h1 className="selled__title-related">Relacionados</h1>
-            <Relacionados/>
             <Footer/>
         </div>
     )
