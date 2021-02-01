@@ -10,9 +10,10 @@
     object-fit: cover;
     transition: width .6s ease;
     cursor: pointer;
-    &:hover{
-        width: 330px;
-    }
+
+}
+.selled__imagen:hover{
+    width: 330px;
 }
 .selled__images-container{
     display: flex;
@@ -26,7 +27,7 @@
 }
 .selled__price-image{
     margin-top: 5%;
-    color: $primary;
+    color:#21AB91;
 }
 
 .historial__table-container{

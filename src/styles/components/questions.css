@@ -1,5 +1,5 @@
 .questions__first-part{
-    background-color: $second-primary;
+    background-color: #21AB91;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -27,20 +27,21 @@
     height: 30px;
     border-radius: 10px;
     outline: none;
-    border: 2px solid $light-grey;
+    border: 2px solid #BCBCBC;
 
     transition: border .3s ease;
-    &:focus{
-        border: 2px solid darken($color: $second-primary, $amount: 10);
-       
-    }
 }
+.questions__search-input:focus{
+    border: 2px solid #979797;
+}
+
+
 .questions__search-button{
     margin-left: 2%;
     border-radius: 10px;
-    border: 2px solid $light-grey;
+    border: 2px solid #BCBCBC;
     background-color: white;
-    color: $primary;
+    color: #21AB91;
     width: 40px;
     height: 36px;   
     cursor: pointer;

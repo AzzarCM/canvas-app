@@ -29,7 +29,7 @@
 }
 .temas__info-h1{
     font-size: 60px;
-    color: $third-primary;
+    color: #21AB91;
     padding-bottom: 10%;
     text-align: center;
 }
@@ -40,7 +40,7 @@
     padding-top: 4%;
 }
 .temas__btn-title{
-    color: $primary-dark;
+    color: #277566;
     text-align: center;
     font-size: 30px;
 }
@@ -71,22 +71,22 @@
 
 .temas__input-cantidad{
     border-radius: 10px;
-    border: 2px solid $light-grey;
+    border: 2px solid #868686;
     outline: none;
     height: 50px;
     width: 60px;
     transition: border-color .3s ease;
     font-size: 30px;
     text-align: center;
-    color: $dark-grey;
-    &:focus{
-        border-color: $primary;
-    }
-    &::-webkit-inner-spin-button{
-        opacity: 1;
-    }
-}
+    color: #868686;
 
+}
+.temas__input-cantidad:focus{
+    border-color:  #21AB91;
+}
+.temas__input-cantidad::-webkit-inner-spin-button{
+    opacity: 1;
+}
 .temas__buy-container-right{
     display: flex;
     flex-direction: column;
@@ -129,26 +129,26 @@
 
 .temas__link-temas{
     margin-top: 7%;
-    color: $dark-grey;
+    color: #868686;
     
-    &:hover{
-        color: darken($color: $dark-grey, $amount: 10);
-    }
+}
+.temas__link-temas:hover{
+    color: #666666;
 }
 
 .temas__no-cuadros{
     text-align: center;
-    color: $dark-grey;
+    color: #868686;
     margin-top: 10%;
     padding-bottom: 20%;
 }
 
 .temas__title-busqueda{
     text-align: center;
-    color: $dark-grey;
+    color: #868686;
 }
 .temas__span-busqueda{
-    color: $primary;
+    color: #21AB91;
 }
 
 .temas__width-select{
@@ -223,7 +223,7 @@
     }
     .temas__info-h1-movil{
         font-size: 60px;
-        color: $third-primary;
+        color: #21AB91;
         padding-bottom: 10%;
         text-align: center;
     }
