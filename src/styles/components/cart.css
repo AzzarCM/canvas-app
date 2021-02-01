@@ -152,8 +152,8 @@
 .checkout-button:hover{
     background-color: #166e5e;
 }
-
-@media(max-width: 400px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 400px){
     .cart__img-container{
         display: flex;
         justify-content: center;

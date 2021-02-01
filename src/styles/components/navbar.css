@@ -97,8 +97,9 @@
   color: #318d7b;
 }
 
-  @media (max-width: 1024px) {
-    /*Mobile View */
+/* Smartphones (portrait and landscape) ----------- */
+  @media only screen and (max-width: 1024px) {
+
     .header {
       padding: 0px 10px;
       justify-content: space-between;

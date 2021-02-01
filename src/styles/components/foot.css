@@ -68,8 +68,8 @@
 .mr-2{
     margin-right: 2%;
 }
-
-@media (max-width: 1090px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 1090px){
     .foot__upper-div{
         flex-direction: column;
     }

@@ -172,16 +172,16 @@
     font-size: 30px;
 }
 
-
-@media (max-width: 1366px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 1366px){
     .temas__imagen{
         width: 500px;
         height: 500px;
     }
 
 }
-
-@media (max-width: 1024px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 1024px){
     .temas__empty-space{
         flex-direction: column;
         width: 100%;
@@ -189,16 +189,16 @@
 
 }
 
-
-@media (max-width: 1200px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 1200px){
     .temas__imagen{
         width: 300px;
         height: 300px;
     }
     
 }
-
-@media (max-width: 920px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 920px){
     .temas__tema-container{
         flex-direction: column;
     }
@@ -239,8 +239,8 @@
         text-align: center;
     }
 }
-
-@media (min-width: 680px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-width: 680px){
     .temas__garantia-movil{
         display: none;
     }
@@ -250,8 +250,8 @@
 }
 
 
-
-@media (max-width: 640px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 640px){
     .temas__buy-container{
         flex-direction: column;
     }
@@ -260,7 +260,7 @@
     }
 }
 
-@media (max-width: 400px){
+@media only screen and (max-width: 400px){
     .temas__materiales{
         flex-direction: column;
     }

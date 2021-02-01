@@ -84,7 +84,8 @@
     padding: 5px;
 }
 
-@media (max-width: 1024px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 1024px){
     .auth__container{
         flex-direction: column;
     }

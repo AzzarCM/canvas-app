@@ -113,20 +113,20 @@
     font-size: 33px;
     margin-bottom: 15%;
 }
-
-@media (max-width: 1366px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 1366px){
     .home__canvas-text-container{
         width: 75%;
     }
 }
-
-@media (max-width: 920px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 920px){
     .home__canvas-text-container{
         width: 85%;
     }
 }
-
-@media (max-width: 855px){
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (max-width: 855px){
     .home__canvas-text-container{
        flex-direction: column;
     }
