@@ -92,7 +92,7 @@ export const PrincipalScreen = () => {
                     </a>
                 </div>
             </div>
-            {/* {<Footer/>} */}
+            <Footer/>
         </div>
     )
 }

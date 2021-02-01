@@ -98,7 +98,7 @@
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-  @media only screen and (max-width: 1024px) {
+  @media(min-width: 300px) and (max-width: 1024px) {
 
     .header {
       padding: 0px 10px;

@@ -114,19 +114,19 @@
     margin-bottom: 15%;
 }
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (max-width: 1366px){
+@media  (min-width: 920px) and (max-width: 1366px){
     .home__canvas-text-container{
         width: 75%;
     }
 }
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (max-width: 920px){
+@media (min-width: 300px) and (max-width: 920px){
     .home__canvas-text-container{
         width: 85%;
     }
 }
 /* Smartphones (portrait and landscape) ----------- */
-@media only screen and (max-width: 855px){
+@media (min-width: 300px) and (max-width: 855px){
     .home__canvas-text-container{
        flex-direction: column;
     }
