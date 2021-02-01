@@ -28,7 +28,7 @@ export const CartList = () => {
                     addedItems.map((item )=>{
                         return(
                             <li className="cart__list-container animate__animated animate__fadeInUp" key={item.id}>
-                                <div>
+                                <div className="cart__img-container">
                                     <img 
                                         className="cart__item-image"
                                         src={item.image_url} 

@@ -15,7 +15,8 @@ export const Cart = () => {
             icon: 'warning',
             title: 'Atencion',
             text: 'Debes estar logueado primero!',
-            showConfirmButton: true,
+            showConfirmButton: false,
+            footer: '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar Sesion</a>',
         })
     }
 
@@ -27,7 +28,7 @@ export const Cart = () => {
             <p style={{fontSize: 25}}>{`$${total}`}</p>
             {
                 JSON.stringify(authState)=='{}' ?
-                <button onClick={handleClick} className="checkout-button mb-5">pagar</button>
+                <button onClick={handleClick} style={{padding: 10}} className="checkout-button mb-5">pagar</button>
                 :
                 <Link className="cart__checkout-link" to="/main/checkout">
                     <button className="checkout-button mb-5">pagar</button>

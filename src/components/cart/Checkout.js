@@ -201,7 +201,6 @@ export const Checkout = () => {
                             const path = `/main/history/${uid}`
                             Swal.fire({
                                 imageUrl: doneImg,
-                                width: "50%",
                                 title: 'Gracias!',
                                 html: '<p style="color:#42bda5;font-size: 35;">Excelente! Tu<br>compra ha sido<br>realizada con exito</p>',
                                 showConfirmButton:true,
@@ -213,7 +212,6 @@ export const Checkout = () => {
                         }else{
                             Swal.fire({
                                 imageUrl: errorImg,
-                                width: "50%",
                                 html: '<p style="color:#42bda5;font-size: 35;">Ops! Parece <br> que tu compra <br> no ha sido procesada</p>',
                                 showConfirmButton: true,
                                 confirmButtonText: 'Ver detalles'

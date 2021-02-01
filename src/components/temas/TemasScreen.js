@@ -64,7 +64,9 @@ export const TemasScreen = () => {
         if(precio === 0 || material === '' || precio == 0){
             Swal.fire({
                 imageUrl:errorImg,
-                width: "50%",
+                //width: "50%",
+                imageWidth: 155,
+                imageHeight: 250,
                 html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimension!</p>',
                 showConfirmButton:true,
               });
@@ -82,8 +84,7 @@ export const TemasScreen = () => {
         else{
             Swal.fire({
                 position: 'center',
-                width: "50%",  
-                html: '<p style="color:#42bda5;font-size: 35;">Tu compra<br>fue agregada<br>exitosamente!</p>',
+                html: '<p style="color:#42bda5;font-size: 35;">El cuadro<br>fue agregado<br>exitosamente!</p>',
                 imageUrl: compra,
                 imageWidth: 200,
                 imageHeight: 200,
@@ -97,15 +98,15 @@ export const TemasScreen = () => {
         if(precio === 0 || material === '' || precio == 0){
             Swal.fire({
                 imageUrl:errorImg,
-                width: "50%",
+                imageWidth: 155,
+                imageHeight: 250,
                 html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimension!</p>',
                 showConfirmButton:true,
               });
         }else{
             Swal.fire({
                 position: 'center',
-                width: "50%",  
-                html: '<p style="color:#42bda5;font-size: 35;">Tu compra<br>fue agregada<br>exitosamente!</p>',
+                html: '<p style="color:#42bda5;font-size: 35;">El cuadro<br>fue agregado<br>exitosamente!</p>',
                 imageUrl: compra,
                 imageWidth: 200,
                 imageHeight: 200,
@@ -167,6 +168,16 @@ export const TemasScreen = () => {
             <Navbar/>
             <div className="temas__tema-container animate__animated animate__fadeInLeft">
                 <div className="temas__image-container">
+                    {painting.map( item =>{
+                        return (
+                            <h1 
+                            key={item.id}
+                            className="temas__info-h1-movil">
+                            {item.name}
+                            </h1>
+                        )
+                    })}
+                    
                     {painting.map( img =>{
                         return(
                             <img 
@@ -283,7 +294,7 @@ export const TemasScreen = () => {
 
                 <div className="temas__empty-space">
                     <img className="imagen__tarjeta" alt="imagen" src={tarjeta}/>
-                    <p style={{fontSize: 24}}>
+                    <p className="temas__querido" style={{fontSize: 24}}>
                         Querido usuario de 
                         Canvas,tomamos 
                         este espacio para 
@@ -297,7 +308,12 @@ export const TemasScreen = () => {
                     </p>
                 </div>
                 <div>
-                    
+                <div  className="temas__garantia-movil">
+                        <img className="temas__check-movil" alt="imagen" src={checkbox}/>
+                        <p className="temas__garantia-p">
+                            Garantía de 30 días, lo cambiamos o regresamos tu dinero.
+                        </p>
+                </div>
                 </div>
                 <div className="temas__buy-container-right">
                     <button onClick={handleAddToCart} className="temas-btn-carrito">

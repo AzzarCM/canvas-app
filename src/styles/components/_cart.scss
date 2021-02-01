@@ -153,4 +153,13 @@
     
 }
 
+@media(max-width: 400px){
+    .cart__img-container{
+        display: flex;
+        justify-content: center;
+    }
+    .cart__list-container{
+        flex-direction: column;
+    }
+}
 

@@ -61,7 +61,6 @@ export const AllThemes = () => {
                                         
                                     }}>
                                     <Card.Img style={{
-                                        width: 286,
                                         height: 180,
                                         objectFit: 'cover',
                                     }} variant="top" src={item.image_url} />
