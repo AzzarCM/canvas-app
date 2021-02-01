@@ -12,7 +12,7 @@
 
 .home__text{
     text-align: center;
-    color: $black;
+    color: black;
     font-size: 35px;
     
 }
@@ -20,12 +20,12 @@
 .home__line1{
     width: 150px;
     height: 3px;
-    background-color: $third-primary;
+    background-color:#31B199;
 }
 .home__line2{
     width: 150px;
     height: 3px;
-    background-color: $third-primary;
+    background-color: #31B199;
 }
 
 .home__canvas-text-container{
@@ -37,18 +37,18 @@
 }
 
 .home__span{
-    color: $primary;
+    color: #42bda5;
     font-size: 35px;
     
 }
 .home__canvas-text{
-    color: $third-primary;
+    color:#31B199;
     font-size: 63px;
     font-weight: lighter;
 }
 .home__paragraph-p{
     margin-left: 10%;
-    color: $dark-grey;
+    color:  #868686;
     font-size: 20px;
     font-weight: lighter;
 } 
@@ -76,7 +76,7 @@
 
 .home__tablet-part{
     width: 100vw;
-    background-color: $second-primary;
+    background-color: #21AB91;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -84,12 +84,12 @@
 }
 
 .home__aun-no{
-    color: $white;
+    color: white;
     font-size: 56px;
     margin-bottom: 15%;
 }
 .home__envia-p{
-    color: $white;
+    color: white;
     font-size: 33px;
     margin-bottom: 15%;
 }
@@ -104,12 +104,12 @@
 }
 
 .home__tienes{
-    color: $primary-dark;
+    color:  #277566;
     font-size: 56px;
     margin-bottom: 15%;
 }
 .home__preocupes-p{
-    color: $second-primary;
+    color: #21AB91;
     font-size: 33px;
     margin-bottom: 15%;
 }

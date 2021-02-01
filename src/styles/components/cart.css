@@ -18,20 +18,20 @@
 }
 .cart__icons{
     font-size: 20px;
-    color: $second-primary;
+    color: #21AB91;
     cursor: pointer;
-    &:hover{
-        color: darken($color: $second-primary, $amount: 10);
-    }
+}
+.cart__icons:hover{
+    color: #1c8673;
 }
 .cart__item-title{
     font-size: 20px;
 }
 .delete{
     color: red;
-    &:hover{
-        color: darken($color: red, $amount: 10);
-    }
+}
+.delete:hover{
+    color: rgb(177, 6, 6)
 }
 
 .cart__container-total{
@@ -51,15 +51,14 @@
 }
 
 .input__card-field{
-    border: 1px solid $light-grey;
+    border: 1px solid #BCBCBC;
     width: 100%;
     height: 50px;
     padding-left: 35px;
-
-    &:focus{
-        border: 1px solid $primary;
-        outline: none;
-    }
+}
+.input__card-field:focus{
+    border: 1px solid #21AB91;
+    outline: none;
 }
 
 .input-container{
@@ -72,23 +71,23 @@
     align-items: center;
     justify-content: center;
     padding: 10px;
-    background: $primary;
+    background: #21AB91;
     color: white;
     min-width: 50px;
     text-align: center;
 }
 
 .input-number-card{
-    border: 1px solid $light-grey;
+    border: 1px solid #BCBCBC;;
     width: 100%;
     transition: border .4s ease;
     height: 50px;
-    
-    &:focus{
-        border: 1px solid $primary;
-        outline: none;
-    }
 }
+.input-number-card:focus{
+    border: 1px solid #21AB91;;
+    outline: none;
+}
+
 .footer-inputs{
     display: flex;
 }
@@ -104,53 +103,54 @@
 .cart__select-zones{
     width: 100%;
     height: 50px;
-    border: 1px solid $light-grey;
+    border: 1px solid #BCBCBC;
     outline: none;
     cursor: pointer;
 
-
-    &:focus{
-        border: 1px solid $primary;
-    }
 }
-
+.cart__select-zones:focus{
+    border: 1px solid #21AB91;
+}
 .cart__total-color{
     font-size: 20px;
-    color: $primary;
+    color: #21AB91;
 }
 
 .text-area-direccion{
-    border: 1px solid $light-grey;
+    border: 1px solid #BCBCBC;
     width: 100%;
     transition: border .4s ease;
     height: 100px;
     
-    &::placeholder{
-        padding-top: 30px;
-        padding-left: 10px;
-    }
-    &:focus{
-        border: 1px solid $primary;
-        outline: none;
-    }
+}
+.text-area-direccion::placeholder{
+    padding-top: 30px;
+    padding-left: 10px;
+}
+.text-area-direccion:focus{
+    border: 1px solid #21AB91;;
+    outline: none;
 }
 
+
 .checkout-button{
-    background-color: $primary;
+    background-color: #21AB91;
     outline: none;
-    border: 1px solid $light-grey;
+    border: 1px solid #BCBCBC;
     border-radius: 5px;
     height: 50px;
     width: 175px;
     color: white;
     transition: background-color .3s ease;
-    &:focus{
-        outline: none;
-    }
-    &:hover{
-        background-color: darken($color: $primary, $amount: 5);
-    }
     
+}
+
+.checkout-button:focus{
+    outline: none;
+}
+
+.checkout-button:hover{
+    background-color: #166e5e;
 }
 
 @media(max-width: 400px){

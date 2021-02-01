@@ -12,8 +12,8 @@
 html, body {
     height: 100vh;
     width: 100vw;
-    overflow-x: hidden; //horizontal
-    overflow-y: scroll; //vertical
+    overflow-x: hidden; 
+    overflow-y: scroll; 
 }
 
 p{

@@ -1,5 +1,5 @@
 .btn{
-    background-color: $primary;
+    background-color: #21AB91;
     border: none;
     color: white;
     cursor: pointer;
@@ -8,13 +8,12 @@
     margin-bottom: 30px;
     height: 50px;
     transition: background-color .5s ease;
-
-    &:focus{
-        outline: none;
-    }
-    &:hover{
-        background-color: darken($color: $primary, $amount: 10);
-    }
+}
+.btn:focus{
+    outline: none;
+}
+.btn:hover{
+    background-color: #18836f;
 }
 
 .btn-primary{
@@ -23,58 +22,58 @@
 
 
 .btn-medium{
-    background-color: $primary;
+    background-color: #21AB91;
     border: none;
     border-radius: 10px;
     width: 200px;
     color: white;
     height: 35px;
     transition: background-color .5s ease;
-    &:focus{
-        outline: none;
-    }
-    &:hover{
-        background-color: darken($color: $primary, $amount: 5);
-    }
+}
+
+.btn-medium:focus{
+    outline: none;
+}
+.btn-medium:hover{
+    background-color: #187a68;
 }
 
 .link-dec{
     text-decoration: none;
-    color: $white;
+    color: white;
 }
 
 .link-navbar{
     text-decoration: none;
-    color: $dark-grey;
+    color: #838383;
     transition: color .3s ease;
     margin-bottom: 0;
     cursor: pointer;
-    &:hover{
-        color: darken($color: $dark-grey, $amount: 15);
-    }
+}
+.link-navbar:hover{
+    color: #666666;
 }
 
 .home__btn{
     border-radius: 18px;
     color: white;
-    background-color: darken($color: $primary, $amount: 10);
+    background-color: #166e5e;
     border: none;
     width: 300px;
     height: 70px;
     cursor: pointer;
     transition: background-color .5s ease;
     font-size: 20px;
-    &:focus{
-        outline: none;
-    }
-
-    &:hover{
-        background-color: darken($color: $primary, $amount: 20);
-    }
+}
+.home__btn:focus{
+    outline: none;
+}
+.home__btn:hover{
+    background-color: #19836f;
 }
 
 .temas-btn{
-    background-color: $second-primary;
+    background-color:#21AB91;
     color: white;
     font-size: 24px;
     border: none;
@@ -83,12 +82,13 @@
     height: 45px;
     margin-left: 5%;
     transition: background-color .5s ease;
-    &:focus{
-        outline: none;
-    }
-    &:hover{
-        background-color: darken($color: $primary, $amount: 5);
-    }
+}
+
+.temas-btn:focus{
+    outline: none;
+}
+.temas-btn:hover{
+    background-color: #147765;
 }
 
 .ml-0{
@@ -100,22 +100,22 @@
 }
 
 .temas-btn-carrito{
-    background-color: lighten($color: orange, $amount: 15);
+    background-color: orange;
     color: white;
     font-size: 24px;
     border: none;
     border-radius: 10px;
     width: 300px;
     height: 60px;
-    cursor: pointer;
-    
+    cursor: pointer;    
     transition: background-color .5s ease;
-    &:focus{
-        outline: none;
-    }
-    &:hover{
-        background-color: darken($color: orange, $amount: 5);
-    }
+
+}
+.temas-btn-carrito:focus{
+    outline: none;
+}
+.temas-btn-carrito:hover{
+    background-color: rgb(187, 121, 0)
 }
 
 .resize{
@@ -127,41 +127,40 @@
     margin-top: 5px;
     width: 75%;
     height: 50px;
-    background-color: $google-blue;
+    background-color: #4285f4;
     border-radius: 2px;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 
     transition: box-shadow .3s ease;
-
-    .google-icon-wrapper {
-        position: absolute;
-        margin-top: 1px;
-        margin-left: 1px;
-        width: 50px;
-        height: 50px;
-        border-radius: 2px;
-        background-color: $white;
-    }
-    .google-icon {
-        position: absolute;
-        margin-top: 11px;
-        margin-left: 11px;
-        width: 25px;
-        height: 25px;
-    }
-    .btn-text {
-        text-align: center;
-        margin-top: 10px;
-        color: $white;
-        font-size: 14px;
-        letter-spacing: 0.2px;
-    }
-    &:hover {
-        box-shadow: 0 0 6px $google-blue;
-    }
-    &:active {
-        background: $button-active-blue;
-    }
+}
+.google-btn:hover{
+    box-shadow: 0 0 6px #4285f4;
+}
+.google-btn:active{
+    background: #1669f2;
+}
+.google-icon-wrapper {
+    position: absolute;
+    margin-top: 1px;
+    margin-left: 1px;
+    width: 50px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: white;
+}
+.google-icon {
+    position: absolute;
+    margin-top: 11px;
+    margin-left: 11px;
+    width: 25px;
+    height: 25px;
+}
+.btn-text {
+    text-align: center;
+    margin-top: 10px;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 0.2px;
 }
 
 .btn-facebook{
@@ -172,12 +171,11 @@
     outline: none;
     border: none;
     border-radius: 5px;
-    background-color: $facebook;
-    &:hover{
-        background-color: darken($color: $facebook, $amount: 5);
-    }
+    background-color: #3b5998;
 }
-
+.btn-facebook:hover{
+    background-color: #2b4172;
+}
 
 .btn-material{
     border: 1px solid grey;
@@ -194,7 +192,7 @@
 .btn-radio:checked + label{
     color: white;
     border: 1px solid white;
-    background-color: $primary;
+    background-color: #21AB91;;
     width: 150px;
     height: 50px;
     padding-top: 12px;
@@ -206,7 +204,7 @@
 .btn-radio-second:checked + label{
     color: white;
     border: 1px solid white;
-    background-color: $primary;
+    background-color: #21AB91;;
     width: 150px;
     height: 50px;
     padding-top: 12px;

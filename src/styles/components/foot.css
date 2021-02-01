@@ -6,7 +6,7 @@
 }
 
 .foot__upper-div{
-    background-color: $primary-dark-second;
+    background-color:#205B50;;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -16,7 +16,7 @@
 }
 
 .foot__bottom-div{
-    background-color: $primary-dark;
+    background-color: #277566;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -39,12 +39,12 @@
 }
 .foot__links{
     text-decoration: none;
-    color: $primary-light;
+    color: #58C7B2;
     font-size: 25px;
     font-weight: bold;
-    &:hover{
-        color: darken($color: $primary-light, $amount: 10);
-    }
+}
+.foot__links:hover{
+    color:  #459c8c;
 }
 
 .a-color{
