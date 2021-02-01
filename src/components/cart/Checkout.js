@@ -9,6 +9,8 @@ import Swal from 'sweetalert2'
 import validator from "validator";
 import { removeError, setError } from '../../actions/ui'
 import { Footer } from '../main/Footer'
+import errorImg from '../../assets/img/error.png'
+import doneImg from '../../assets/img/done.png'
 
 export const Checkout = () => {
     
@@ -21,6 +23,8 @@ export const Checkout = () => {
     var uid = firebase.auth().currentUser.uid;
     var name = firebase.auth().currentUser.displayName;
     var mail = firebase.auth().currentUser.email;
+    
+
     
     //redux variables
     const dispatch = useDispatch();
@@ -36,16 +40,14 @@ export const Checkout = () => {
 
     tresDias.setDate(today.getDate() + 3);
     cincoDias.setDate(today.getDate() + 5);
-
-    console.log(tresDias.getDay());
-    console.log(cincoDias.getDay());
    
     const [zones, setZones] = useState([]);
     const [zoneSelected, setZoneSelected] = useState(0);
     const [zoneName, setZoneName] = useState('');
     const [inputVencimiento, setInputVencimiento] = useState('');
-    
+    const [errorMessage, setErrorMessage] = useState('campos vacios');
 
+    
 
     const zoneIdAux = zoneName.split("-");
     const inputSplited = inputVencimiento.split("/");
@@ -55,7 +57,7 @@ export const Checkout = () => {
 
     //console.log(zoneId[0], 'soy zoneid');
     var zoneId = zoneIdAux[0];
-    console.log(zoneId,'soy zone ID');
+
     //valores del formulario e informacion del cliente
     const [ formValues, handleInputChange ] = useForm({
         customer_name: name,
@@ -132,30 +134,42 @@ export const Checkout = () => {
     })
 
     const { customer_name, email,customer_phone, delivery_address,delivery_zone_id } = formValues;
-    const {numeroTarjeta} = cardValues
+    const {numeroTarjeta,cvv} = cardValues
     formValues.delivery_zone_id = parseFloat(zoneId);
     formValues.total_amount = parseFloat(totalWithShipping);
     cardValues.mesVencimiento = parseInt(mes);
     cardValues.anioVencimiento = parseInt(anio);
-
-    console.log(delivery_zone_id);
+    
+    useEffect(() => {
+        isFormValuesValid()
+    }, [cardValues,formValues]);
 
     function isFormValuesValid() {
+        var expirationRegex = /(0[1-9]|10|11|12)\/20[0-9]{2}/
         if(validator.isEmpty(customer_name)){
-            dispatch(setError("El campo del nombre esta vacio"))
+            setErrorMessage("El campo del nombre esta vacio")
             return false
         }else if(validator.isEmpty(email)){
-            dispatch(setError("El campo del correo esta vacio"))
+            setErrorMessage("El campo del correo esta vacio")
             return false
         }else if(validator.isEmpty(customer_phone)){
-            dispatch(setError("El campo del telefono esta vacio"))
+            setErrorMessage("El campo del telefono esta vacio")
             return false
         }else if(validator.isEmpty(delivery_address)){
-            dispatch(setError("El campo de la direccion esta vacio"))
+            setErrorMessage("El campo de la direccion esta vacio")
             return false
         }else if(isNaN(delivery_zone_id)){
-            dispatch(setError("Necesita seleccionar una zona de envio"))
+            setErrorMessage("Necesita seleccionar una zona de envio")
             return false
+        }else if(!validator.isCreditCard(numeroTarjeta)){
+            setErrorMessage("El numero de tarjeta proporcionado no concuerda con VISA o MasterCard")
+            return false
+        }else if((expirationRegex =! inputVencimiento)){
+            setErrorMessage("La fecha de expiracion no coincide con el patron");
+            return false
+        }else if(validator.isEmpty(cvv)){
+            setErrorMessage("El CVV esta vacio");
+            return false;
         }
         dispatch(removeError());
         return true
@@ -169,40 +183,67 @@ export const Checkout = () => {
                 detail: item,
             };
             console.log(data);
-            fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
-                method: "POST",
-                headers: {"Content-type": "application/json"},
-                body: JSON.stringify(data),
-            })
-            .then((res)=>res.json())
-            .then((resp)=>{
-                if(resp){
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Gracias!',
-                        text: 'Compra realizada con exito!',
-                        showConfirmButton:true,
+            Swal.fire({
+                title: 'Seguro que desea proceder?',
+                confirmButtonText: 'Si, seguro!',
+                showLoaderOnConfirm: true,
+                showDenyButton: true,
+                preConfirm: () =>{
+                    return   fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
+                        method: "POST",
+                        headers: {"Content-type": "application/json"},
+                        body: JSON.stringify(data),
                     })
-                    dispatch(emptyCart());
-                    console.log("posteado con exito");
-                }else{
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Opps...',
-                        text: 'Hubo un error en tu compra :(',
-                        showConfirmButton: true
-                    })
+                    .then((res)=>res.json())
+                    .then((resp)=>{
+                        console.log(resp, 'esta es la respuesta');
+                        if(!resp.error){
+                            const path = `/main/history/${uid}`
+                            Swal.fire({
+                                imageUrl: doneImg,
+                                width: "50%",
+                                title: 'Gracias!',
+                                html: '<p style="color:#42bda5;font-size: 35;">Excelente! Tu<br>compra ha sido<br>realizada con exito</p>',
+                                showConfirmButton:true,
+                                confirmButtonText: 'Entendido!',
+                                footer: `<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="${path}">Ver Historial</a>`
+                            })
+                            dispatch(emptyCart());
+                            console.log("posteado con exito");
+                        }else{
+                            Swal.fire({
+                                imageUrl: errorImg,
+                                width: "50%",
+                                html: '<p style="color:#42bda5;font-size: 35;">Ops! Parece <br> que tu compra <br> no ha sido procesada</p>',
+                                showConfirmButton: true,
+                                confirmButtonText: 'Ver detalles'
+                            })
+                            .then((result)=>{
+                                if(result.isConfirmed){
+                                    Swal.fire({
+                                        html:`<pre><code>${resp.message}</code></pre>`
+                                    })
+                                }
+                            })
+                        }
+                    });
                 }
-            });
+            })
         }else{
+
             Swal.fire({
                 icon: 'error',
-                text: msgError,
-                timer: 2000,
+                text: 'Hubo un error en los campos',
+                confirmButtonText: 'Ver Detalles'
+            })
+            .then((result)=>{
+                if(result.isConfirmed){
+                    Swal.fire({
+                        html:`<pre><code>${errorMessage}</code></pre>`
+                    })
+                }
             })
         }
-        
-
     }
 
     return (
@@ -324,7 +365,7 @@ export const Checkout = () => {
                             <input 
                                 className="input__card-field" 
                                 type="text" 
-                                placeholder="MM/YY"
+                                placeholder="MM/YYYY"
                                 name="card_expire_date"
                                 onChange={ handleExpireDate }
                             />
@@ -345,7 +386,7 @@ export const Checkout = () => {
             </form>
            
 
-            <h2 className="temas__title-busqueda mb-5 mt-5">Resumen de la compra</h2>
+            <h1 className="selled__title-related mb-5">Resumen de la compra</h1>
             <p>{`NOTA: la entrega estimada seria entre el ${dayNames[tresDias.getDay()]} ${tresDias.getDate()} de ${monthNames[tresDias.getMonth()]} al  ${dayNames[cincoDias.getDay()]} ${cincoDias.getDate()} de ${monthNames[cincoDias.getMonth()]}`}</p>
             <CartList/>
             <div className="cart__container-total">

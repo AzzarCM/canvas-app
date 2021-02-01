@@ -7,10 +7,10 @@ import {
 import checkbox from "../../assets/img/checkbox.png";
 import tarjeta from "../../assets/img/tarjeta.png";
 import {Relacionados} from "./Relacionados"
-
+import compra from '../../assets/img/compra.png'
 import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from '../../actions/cart'
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2/src/sweetalert2.js'
 
 
 export const TemasScreen = () => {
@@ -64,7 +64,7 @@ export const TemasScreen = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Selecciona un material y su dimension!',
+                html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimension!</p>',
                 showConfirmButton:true,
               });
         }
@@ -72,16 +72,21 @@ export const TemasScreen = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Necesitas estar logueado!',
-                showConfirmButton:true,
+                html: '<p style="color:#42bda5;font-size: 35;">Inicia sesion para comprar!</p>',
+                showConfirmButton:false,
+                footer: '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar Sesion</a>',
               });
         }
+
         else{
             Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: 'Agregado al carrito!',
-                showConfirmButton: true,
+                position: 'center',
+                width: "50%",  
+                html: '<p style="color:#42bda5;font-size: 35;">Tu compra<br>fue agregada<br>exitosamente!</p>',
+                imageUrl: compra,
+                imageWidth: 200,
+                imageHeight: 200,
+                footer: '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/main/cart">Ver carrito</a>'
               })
             dispatch(addToCart(id, precio, material,idMaterial,medidas));
         }
@@ -91,8 +96,9 @@ export const TemasScreen = () => {
         Swal.fire({
             icon: 'warning',
             title: 'ATENCION!',
-            text: 'Debes estar logueado para comprar :)',
-            showConfirmButton: true,
+            html: '<p style="color:#42bda5;font-size: 35;">Inicia sesion para comprar!</p>',
+            showConfirmButton: false,
+            footer: '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar Sesion</a>',
         });
     }
     const handleSecondWarning = () =>{
@@ -277,18 +283,19 @@ export const TemasScreen = () => {
                     </button>
                     {
                         JSON.stringify(authState)=='{}' ?
+
+                        <a>
+                        <button onClick={handleWarning} className="temas-btn-carrito resize mt-5">
+                            <i className="fas fa-arrow-up"></i>
+                            Comprar
+                        </button> 
+                        </a> :
                         precio == 0 ? 
                         <a>
-                            <button onClick={handleWarning} className="temas-btn-carrito resize mt-5">
-                                <i className="fas fa-arrow-up"></i>
-                                Comprar
-                            </button> 
-                        </a> :
-                         <a>
-                         <button onClick={handleClick} className="temas-btn-carrito resize mt-5">
-                             <i className="fas fa-arrow-up"></i>
-                             Comprar
-                         </button> 
+                        <button onClick={handleClick} className="temas-btn-carrito resize mt-5">
+                            <i className="fas fa-arrow-up"></i>
+                            Comprar
+                        </button> 
                         </a> :
                         <a href="/main/checkout">
                             <button onClick={handleClick} className="temas-btn-carrito resize mt-5">

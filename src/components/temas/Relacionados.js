@@ -38,7 +38,7 @@ export const Relacionados = (props) => {
                 ?
                 relatedPaintings.map((cuadro)=>{
                     return (
-                        <ImageItem img={cuadro}/>
+                        <ImageItem key={cuadro.id} img={cuadro}/>
                     )
                 })
                 :
