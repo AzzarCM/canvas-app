@@ -11,6 +11,7 @@ import compra from '../../assets/img/compra.png'
 import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from '../../actions/cart'
 import Swal from 'sweetalert2/src/sweetalert2.js'
+import errorImg from '../../assets/img/error.png'
 
 
 export const TemasScreen = () => {
@@ -62,8 +63,8 @@ export const TemasScreen = () => {
     const handleClick = () =>{
         if(precio === 0 || material === '' || precio == 0){
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
+                imageUrl:errorImg,
+                width: "50%",
                 html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimension!</p>',
                 showConfirmButton:true,
               });
@@ -91,6 +92,29 @@ export const TemasScreen = () => {
             dispatch(addToCart(id, precio, material,idMaterial,medidas));
         }
     }
+
+    const handleAddToCart = () =>{
+        if(precio === 0 || material === '' || precio == 0){
+            Swal.fire({
+                imageUrl:errorImg,
+                width: "50%",
+                html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimension!</p>',
+                showConfirmButton:true,
+              });
+        }else{
+            Swal.fire({
+                position: 'center',
+                width: "50%",  
+                html: '<p style="color:#42bda5;font-size: 35;">Tu compra<br>fue agregada<br>exitosamente!</p>',
+                imageUrl: compra,
+                imageWidth: 200,
+                imageHeight: 200,
+                footer: '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/main/cart">Ver carrito</a>'
+              })
+            dispatch(addToCart(id, precio, material,idMaterial,medidas));
+        }
+    }
+
 
     const handleWarning = () =>{
         Swal.fire({
@@ -276,7 +300,7 @@ export const TemasScreen = () => {
                     
                 </div>
                 <div className="temas__buy-container-right">
-                    <button onClick={handleClick} className="temas-btn-carrito">
+                    <button onClick={handleAddToCart} className="temas-btn-carrito">
                         <i 
                             className="fas fa-shopping-cart"></i>
                          Agregar al carrito
