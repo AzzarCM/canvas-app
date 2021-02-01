@@ -19,9 +19,9 @@ import cuadro from "../../assets/img/cuadro.png";
 import firebase from "firebase/app";
 
 export const PrincipalScreen = () => {
-
+    // animate__animated animate__fadeIn
     return (
-        <div className="home__main-container animate__animated animate__fadeIn">
+        <div className="home__main-container">
             <Navbar />
             <Carousel />
             <div className="home__canvas-text-container">

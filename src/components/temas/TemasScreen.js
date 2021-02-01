@@ -162,11 +162,12 @@ export const TemasScreen = () => {
         const medida = `Alto ${altura} Ancho ${ancho}`
         setMedidas(medida);
     }
+    // animate__animated animate__fadeInLeft
 
     return (
         <div className="home__main-container">
             <Navbar/>
-            <div className="temas__tema-container animate__animated animate__fadeInLeft">
+            <div className="temas__tema-container">
                 <div className="temas__image-container">
                     {painting.map( item =>{
                         return (
