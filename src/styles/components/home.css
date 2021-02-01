@@ -45,6 +45,7 @@
     color:#31B199;
     font-size: 63px;
     font-weight: lighter;
+    text-align: center;
 }
 .home__paragraph-p{
     margin-left: 10%;
@@ -128,18 +129,18 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 855px){
     .home__canvas-text-container{
-       flex-direction: column;
+        flex-wrap: wrap;
     }
 
     .home__tablet-part{
-        flex-direction: column;
+        flex-wrap: wrap;
     }
     .home__tablet-part img{
         width: 300px;
     }
 
     .home__cuadro-part{
-        flex-direction: column;
+        flex-wrap: wrap;
     }
     .home__cuadro-part img{
         width: 200px;

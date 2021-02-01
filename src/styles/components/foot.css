@@ -71,7 +71,7 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 1090px){
     .foot__upper-div{
-        flex-direction: column;
+        flex-wrap: wrap;
     }
     .foot__social-icons{
         justify-content: center;
