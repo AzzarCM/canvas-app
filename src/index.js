@@ -18,6 +18,8 @@ import './styles/components/temas.css'
 import './styles/components/upload.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+
 ReactDOM.render(
   <CanvasApp/>,
   document.getElementById('root')
