@@ -96,7 +96,17 @@
 .navbar__shopping-cart-icon:hover{
   color: #318d7b;
 }
+.input-search{
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+} 
 
+@media (min-width: 1024px){
+  .input-search{
+    display: none;
+  }
+}
 /* Smartphones (portrait and landscape) ----------- */
   @media(min-width: 300px) and (max-width: 1024px) {
 

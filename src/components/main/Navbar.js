@@ -6,7 +6,7 @@ import logo from '../../assets/img/logo.png';
 import { ReactComponent as MenuIcon } from '../../assets/svg/menu.svg'
 import { ReactComponent as CloseMenu } from '../../assets/svg/x.svg'
 import { changeSearchText } from '../../actions/ui';
-import firebase from "firebase/app";
+
 
 export const Navbar = () => {
     
@@ -105,9 +105,13 @@ export const Navbar = () => {
             <li className="sign-in" onClick={closeMobileMenu}>
             <div style={{display:'flex'}}>
                 <input onChange={(e)=>handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Search something"/>
+               
                 <button className="navbar__search-button" type="button">
+                  <Link className="navbar__shopping-cart-icon" to="/main/search">
                     <i className="fas fa-search"></i>
+                  </Link>
                 </button>
+                
                 </div>
             </li>
             <li>

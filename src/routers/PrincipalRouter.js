@@ -10,6 +10,7 @@ import { Checkout } from '../components/cart/Checkout';
 import { Historial } from '../components/history/Historial';
 import { PrincipalScreen } from '../components/main/PrincipalScreen';
 import { QuestionScreen } from '../components/questions/QuestionScreen';
+import { Search } from '../components/search/Search';
 import { MostSelledScreen } from '../components/selled/MostSelledScreen';
 import { AllThemes } from '../components/temas/AllThemes';
 import { TemasScreen } from '../components/temas/TemasScreen';
@@ -67,6 +68,11 @@ export const PrincipalRouter = () => {
                     exact
                     path="/main/history/:id"
                     component = { Historial }
+                />
+                <Route
+                    exact
+                    path="/main/search"
+                    component = { Search }
                 />
                 <Redirect to="/main/home"/>
             </Switch>
