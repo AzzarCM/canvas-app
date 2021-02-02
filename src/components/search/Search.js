@@ -5,6 +5,7 @@ import { ImageItem } from '../selled/ImageItem';
 import { useLoading, BallTriangle } from '@agney/react-loading';
 import {Link} from 'react-router-dom'
 import {changeSearchText} from '../../actions/ui'
+import { Footer } from '../main/Footer';
 
 export const Search = () => {
 
@@ -86,8 +87,7 @@ export const Search = () => {
             </div>
 
             }
-            
-            
+            <Footer/>            
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Navbar} from "../main/Navbar";
 import {Footer} from "../main/Footer"
 import {
+    Link,
     useParams
   } from "react-router-dom";
 import checkbox from "../../assets/img/checkbox.png";
@@ -10,6 +11,7 @@ import {Relacionados} from "./Relacionados"
 import compra from '../../assets/img/compra.png'
 import { useDispatch, useSelector } from "react-redux"
 import { addToCart } from '../../actions/cart'
+import { changeSearchText } from '../../actions/ui';
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import errorImg from '../../assets/img/error.png'
 
@@ -135,6 +137,10 @@ export const TemasScreen = () => {
         });
     }
 
+    const handleSearchBar = (text) =>{
+        dispatch(changeSearchText(text));
+    }
+
     const handleDropDownChange = (e) =>{
         setIdMaterial(e.target.value)
         setBanderaDim(true);
@@ -167,6 +173,16 @@ export const TemasScreen = () => {
     return (
         <div className="home__main-container">
             <Navbar/>
+            <div className="input-search">
+                <input onChange={(e) => handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Busca un cuadro!" />
+
+                <button className="navbar__search-button" type="button">
+                    <Link className="navbar__shopping-cart-icon" to="/main/search">
+                        <i className="fas fa-search"></i>
+                    </Link>
+                </button>
+
+            </div>
             <div className="temas__tema-container">
                 <div className="temas__image-container">
                     {painting.map( item =>{
