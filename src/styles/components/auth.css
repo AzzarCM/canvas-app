@@ -47,16 +47,15 @@
 }
 
 .auth__input{
-    border: 1px solid grey;
+    border: 1px solid #BCBCBC;
     width: 75%;
     transition: border .4s ease;
     border-radius: 10px;
     margin-bottom: 30px;
     height: 50px;
-
 }
 .auth__input:focus{
-    border: 1px solid  #21AB91;
+    border: 1px solid #21AB91;
     outline: none;
 }
 
@@ -85,7 +84,8 @@
     padding: 5px;
 }
 
-@media (max-width: 1024px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 300px) and (max-width: 1024px){
     .auth__container{
         flex-direction: column;
     }

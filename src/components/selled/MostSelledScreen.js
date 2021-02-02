@@ -33,9 +33,9 @@ export const MostSelledScreen = () => {
        setImages(imagenes);
        setLoading(false);
     }
-
+    //animate__animated animate__fadeIn
     return (
-        <div className="home__main-container animate__animated animate__fadeIn">
+        <div className="home__main-container">
             <Navbar/>
             <h1 className="selled__title-related mb-5">Favoritas por nuestros usuarios</h1>
             

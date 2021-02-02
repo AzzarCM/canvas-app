@@ -8,13 +8,12 @@
     margin-bottom: 30px;
     height: 50px;
     transition: background-color .5s ease;
-    
-}
-.btn:hover{
-    background-color: #1c927d;
 }
 .btn:focus{
     outline: none;
+}
+.btn:hover{
+    background-color: #18836f;
 }
 
 .btn-primary{
@@ -30,13 +29,13 @@
     color: white;
     height: 35px;
     transition: background-color .5s ease;
-
 }
+
 .btn-medium:focus{
     outline: none;
 }
 .btn-medium:hover{
-    background-color: #1c927d;
+    background-color: #187a68;
 }
 
 .link-dec{
@@ -46,36 +45,35 @@
 
 .link-navbar{
     text-decoration: none;
-    color: #868686;
+    color: #838383;
     transition: color .3s ease;
     margin-bottom: 0;
     cursor: pointer;
 }
 .link-navbar:hover{
-    color: #727272;
+    color: #666666;
 }
 
 .home__btn{
     border-radius: 18px;
     color: white;
-    background-color: #1c927d;
+    background-color: #166e5e;
     border: none;
     width: 300px;
     height: 70px;
     cursor: pointer;
     transition: background-color .5s ease;
     font-size: 20px;
-       
 }
 .home__btn:focus{
     outline: none;
 }
 .home__btn:hover{
-    background-color: #14705f;
+    background-color: #19836f;
 }
 
 .temas-btn{
-    background-color: #21AB91;
+    background-color:#21AB91;
     color: white;
     font-size: 24px;
     border: none;
@@ -89,7 +87,7 @@
     outline: none;
 }
 .temas-btn:hover{
-    background-color: #14705f;
+    background-color: #147765;
 }
 
 .ml-0{
@@ -101,25 +99,23 @@
 }
 
 .temas-btn-carrito{
-    background-color: rgb(252, 180, 47);
+    background-color: orange;
     color: white;
     font-size: 24px;
     border: none;
     border-radius: 10px;
     width: 300px;
     height: 60px;
-    cursor: pointer;
-    
+    cursor: pointer;    
     transition: background-color .5s ease;
-}
 
+}
 .temas-btn-carrito:focus{
     outline: none;
 }
 .temas-btn-carrito:hover{
-    background-color: orange
+    background-color: rgb(187, 121, 0)
 }
-
 
 .resize{
     width: 150px;
@@ -135,7 +131,12 @@
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 
     transition: box-shadow .3s ease;
-
+}
+.google-btn:hover{
+    box-shadow: 0 0 6px #4285f4;
+}
+.google-btn:active{
+    background: #1669f2;
 }
 .google-icon-wrapper {
     position: absolute;
@@ -161,14 +162,6 @@
     letter-spacing: 0.2px;
 }
 
-.google-btn:active{
-    background: #1669f2;
-}
-.google-btn:hover{
-    box-shadow: 0 0 6px #4285f4;
-}
-
-
 .btn-facebook{
     width: 75%;
     height: 50px;
@@ -178,12 +171,10 @@
     border: none;
     border-radius: 5px;
     background-color: #3b5998;
-   
 }
 .btn-facebook:hover{
-    background-color: #37528d;
+    background-color: #2b4172;
 }
-
 
 .btn-material{
     border: 1px solid grey;
@@ -200,7 +191,7 @@
 .btn-radio:checked + label{
     color: white;
     border: 1px solid white;
-    background-color:#21AB91;
+    background-color: #21AB91;;
     width: 150px;
     height: 50px;
     padding-top: 12px;
@@ -212,7 +203,7 @@
 .btn-radio-second:checked + label{
     color: white;
     border: 1px solid white;
-    background-color: #21AB91;
+    background-color: #21AB91;;
     width: 150px;
     height: 50px;
     padding-top: 12px;

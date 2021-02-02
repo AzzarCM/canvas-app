@@ -29,7 +29,7 @@
 }
 .temas__info-h1{
     font-size: 60px;
-    color: #21AB91;
+    color: #31B199;
     padding-bottom: 10%;
     text-align: center;
 }
@@ -71,18 +71,18 @@
 
 .temas__input-cantidad{
     border-radius: 10px;
-    border: 2px solid #868686;
+    border: 2px solid #BCBCBC;
     outline: none;
     height: 50px;
     width: 60px;
     transition: border-color .3s ease;
     font-size: 30px;
     text-align: center;
-    color: #868686;
+    color: #868686;;
 
 }
 .temas__input-cantidad:focus{
-    border-color:  #21AB91;
+    border-color: #21AB91;
 }
 .temas__input-cantidad::-webkit-inner-spin-button{
     opacity: 1;
@@ -130,10 +130,9 @@
 .temas__link-temas{
     margin-top: 7%;
     color: #868686;
-    
 }
 .temas__link-temas:hover{
-    color: #666666;
+    color: #616161;
 }
 
 .temas__no-cuadros{
@@ -172,16 +171,16 @@
     font-size: 30px;
 }
 
-
-@media (max-width: 1366px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 1200px) and (max-width: 1366px){
     .temas__imagen{
         width: 500px;
         height: 500px;
     }
 
 }
-
-@media (max-width: 1024px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 300px) and (max-width: 1024px){
     .temas__empty-space{
         flex-direction: column;
         width: 100%;
@@ -189,22 +188,22 @@
 
 }
 
-
-@media (max-width: 1200px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 300px) and (max-width: 1024px){
     .temas__imagen{
         width: 300px;
         height: 300px;
     }
     
 }
-
-@media (max-width: 920px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 300px) and (max-width: 920px){
     .temas__tema-container{
         flex-direction: column;
     }
     .temas__image-container{
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
     }
@@ -223,7 +222,7 @@
     }
     .temas__info-h1-movil{
         font-size: 60px;
-        color: #21AB91;
+        color: #31B199;
         padding-bottom: 10%;
         text-align: center;
     }
@@ -239,8 +238,8 @@
         text-align: center;
     }
 }
-
-@media (min-width: 680px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 680px) and (max-width: 2120px) {
     .temas__garantia-movil{
         display: none;
     }
@@ -250,19 +249,19 @@
 }
 
 
-
-@media (max-width: 640px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 300px) and (max-width: 640px){
     .temas__buy-container{
-        flex-direction: column;
+        flex-wrap: wrap;
     }
     .temas__buy-container-right{
         padding-left: 0%;
     }
 }
 
-@media (max-width: 400px){
+@media (min-width: 300px) and (max-width: 400px){
     .temas__materiales{
-        flex-direction: column;
+        flex-wrap: wrap;
     }
     .temas-btn{
         margin: 1%;

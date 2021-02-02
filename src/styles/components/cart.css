@@ -22,9 +22,8 @@
     cursor: pointer;
 }
 .cart__icons:hover{
-    color: #188672;
+    color: #1c8673;
 }
-
 .cart__item-title{
     font-size: 20px;
 }
@@ -32,7 +31,7 @@
     color: red;
 }
 .delete:hover{
-    color: rgb(167, 13, 13)
+    color: rgb(177, 6, 6)
 }
 
 .cart__container-total{
@@ -79,15 +78,13 @@
 }
 
 .input-number-card{
-    border: 1px solid  #BCBCBC;
+    border: 1px solid #BCBCBC;;
     width: 100%;
     transition: border .4s ease;
     height: 50px;
-    
 }
-
 .input-number-card:focus{
-    border: 1px solid #21AB91;
+    border: 1px solid #21AB91;;
     outline: none;
 }
 
@@ -109,15 +106,14 @@
     border: 1px solid #BCBCBC;
     outline: none;
     cursor: pointer;
-}
 
+}
 .cart__select-zones:focus{
     border: 1px solid #21AB91;
 }
-
 .cart__total-color{
     font-size: 20px;
-    color:#21AB91;
+    color: #21AB91;
 }
 
 .text-area-direccion{
@@ -125,14 +121,14 @@
     width: 100%;
     transition: border .4s ease;
     height: 100px;
-
+    
 }
 .text-area-direccion::placeholder{
     padding-top: 30px;
     padding-left: 10px;
 }
 .text-area-direccion:focus{
-    border: 1px solid #21AB91;
+    border: 1px solid #21AB91;;
     outline: none;
 }
 
@@ -146,16 +142,18 @@
     width: 175px;
     color: white;
     transition: background-color .3s ease;
+    
 }
 
 .checkout-button:focus{
     outline: none;
 }
-.checkout-button:hover{
-    background-color:  #167e6b;
-}
 
-@media(max-width: 400px){
+.checkout-button:hover{
+    background-color: #166e5e;
+}
+/* Smartphones (portrait and landscape) ----------- */
+@media(min-width: 300px) and (max-width: 400px){
     .cart__img-container{
         display: flex;
         justify-content: center;

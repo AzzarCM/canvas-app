@@ -10,7 +10,6 @@
     object-fit: cover;
     transition: width .6s ease;
     cursor: pointer;
-
 }
 .selled__imagen:hover{
     width: 330px;
@@ -27,7 +26,7 @@
 }
 .selled__price-image{
     margin-top: 5%;
-    color:#21AB91;
+    color: #42bda5;
 }
 
 .historial__table-container{

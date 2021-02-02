@@ -6,7 +6,7 @@
 }
 
 .foot__upper-div{
-    background-color: #205B50;
+    background-color:#205B50;;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -39,14 +39,13 @@
 }
 .foot__links{
     text-decoration: none;
-    color: #42bda5;
+    color: #58C7B2;
     font-size: 25px;
     font-weight: bold;
 }
 .foot__links:hover{
-    color: #339c87;
+    color:  #459c8c;
 }
-
 
 .a-color{
     color: white;
@@ -69,10 +68,10 @@
 .mr-2{
     margin-right: 2%;
 }
-
-@media (max-width: 1090px){
+/* Smartphones (portrait and landscape) ----------- */
+@media (min-width: 300px) and (max-width: 1090px){
     .foot__upper-div{
-        flex-direction: column;
+        flex-wrap: wrap;
     }
     .foot__social-icons{
         justify-content: center;

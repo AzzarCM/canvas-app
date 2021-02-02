@@ -37,9 +37,9 @@ export const WrapImages = (props) => {
         setImagenes(imagenes);
         setBandera(false);
     }
-
+    //className="animate__animated animate__fadeIn"
     return (
-        <div className="animate__animated animate__fadeIn" style={{width: "95%"}}>
+        <div style={{width: "95%"}}>
             {
                 bandera ? 
                 <section style={{

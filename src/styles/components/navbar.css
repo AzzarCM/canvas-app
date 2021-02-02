@@ -58,7 +58,7 @@
 
   .navbar__search-input{
         width: 100%;
-        border: 2px solid  #21AB91;
+        border: 2px solid  #42bda5;;
         border-radius: 30px;
         height: 32px;
         font-family: 'Nunito Sans', sans-serif;
@@ -67,38 +67,39 @@
         font-weight: 400;
         padding-left: 15px;
         padding-right: 20px;
-    
-   
     }
     .navbar__search-input:focus{
       outline: none;
     }
-
 .navbar__search-button{
     background-color: transparent;
     border-color: transparent;
     font-size: 18px;
-    color: #21AB91;
+    color: #42bda5;
     position: relative;
     right: 44px;
     top: 1px;
     cursor: pointer;
+
 }
 .navbar__search-button:hover{
-    outline: none;
-    color: #17836f;
+  outline: none;
+  color: #3a9c89;
 }
+
 
 .navbar__shopping-cart-icon{
-    color: #21AB91;
+    color: #42bda5;
     transition: color .4s ease;
+
 }
 .navbar__shopping-cart-icon:hover{
-    color: #17836f;
+  color: #318d7b;
 }
 
-  @media (max-width: 1024px) {
-    /*Mobile View */
+/* Smartphones (portrait and landscape) ----------- */
+  @media(min-width: 300px) and (max-width: 1024px) {
+
     .header {
       padding: 0px 10px;
       justify-content: space-between;
@@ -127,7 +128,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        background:#21AB91;
+        background:#42bda5;;
         margin-top: 80px;
         left: 0;
         opacity: 1;

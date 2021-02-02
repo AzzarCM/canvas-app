@@ -48,7 +48,7 @@ export const RegisterScreen = () => {
     
 
     return (
-        <div className="auth__container animate__animated animate__fadeIn">
+        <div className="auth__container">
         <div className="auth__image">
             <img alt="una imagen" src={imagen} />
         </div>
