@@ -1,12 +1,12 @@
 .home__main-container{
-    display: flex;
+    display: -webkit-flex;
     align-items: center;
     flex-direction: column;
     width: 100%;
 }
 
 .home__separator{
-    display:flex;
+    display: -webkit-flex;
     align-items: center;
 }
 
@@ -31,7 +31,7 @@
 .home__canvas-text-container{
     margin-top: 5%;
     margin-bottom: 5%;
-    display: flex;
+    display: -webkit-flex;
     align-items: center;
     width: 65%;
 }
@@ -59,13 +59,13 @@
     width: 75%;
     flex-wrap: wrap;
     justify-content: center;
-    display: flex;
+    display: -webkit-flex;
     margin-bottom: 5%;
 }
 
 .home__photo-item{
     margin: 2%;
-    display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     align-items: center;
 }
@@ -78,7 +78,7 @@
 .home__tablet-part{
     width: 100vw;
     background-color: #21AB91;
-    display: flex;
+    display: -webkit-flex;
     justify-content: space-evenly;
     align-items: center;
     padding-top: 6%;
@@ -96,7 +96,7 @@
 }
 
 .home__cuadro-part{
-    display: flex;
+    display: -webkit-flex;
     justify-content: space-evenly;
     width: 100vw;
     align-items: center;

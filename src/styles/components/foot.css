@@ -1,5 +1,5 @@
 .foot__main-container{
-    display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
@@ -7,7 +7,7 @@
 
 .foot__upper-div{
     background-color:#205B50;;
-    display: flex;
+    display: -webkit-flex;
     align-items: center;
     justify-content: space-evenly;
     width: 100vw;
@@ -17,7 +17,7 @@
 
 .foot__bottom-div{
     background-color: #277566;
-    display: flex;
+    display: -webkit-flex;
     align-items: center;
     justify-content: center;
     width: 100vw;
@@ -26,13 +26,13 @@
 }
 
 .foot__left-part{
-    display: flex;
+    display: -webkit-flex;
     flex-direction: column;
 }
 
 
 .foot__phone{
-    display: flex;
+    display: -webkit-flex;
     color: white;
     font-size: 21px;
     justify-content: space-between;
@@ -54,7 +54,7 @@
 }
 
 .foot__social-icons{
-    display: flex;
+    display: -webkit-flex;
     flex-wrap: wrap;
     align-items: flex-start;
 }
