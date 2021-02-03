@@ -198,8 +198,20 @@
 }
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 920px){
+    .temas__side-bar{
+        flex-direction: row;
+    }
+    .temas__link-temas{
+        margin: 0;
+    }
     .temas__tema-container{
         flex-direction: column;
+    }
+    .temas__search-container{
+        padding-top: 1rem;
+    }
+    .temas__title-busqueda{
+        margin-top: 2rem;
     }
     .temas__image-container{
         display: flex;
@@ -212,7 +224,8 @@
     }
     .temas__side-bar{
         align-items: center;
-        justify-content: space-around;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
     }
     .temas__garantia{
         display: none;

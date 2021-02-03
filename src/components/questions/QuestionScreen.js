@@ -7,6 +7,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { SearchBar } from '../search/SearchBar';
 
 
 
@@ -14,6 +15,7 @@ export const QuestionScreen = () => {
     return (
         <div className="home__main-container">
             <Navbar />
+            <SearchBar/>
             <div className="questions__first-part">
                 <img className="question__image" alt="imagen" src={question} />
                 <div>

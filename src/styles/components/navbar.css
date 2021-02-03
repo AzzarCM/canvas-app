@@ -98,10 +98,20 @@
 }
 .input-search{
   display: -webkit-flex;
-  width: 75%;
+  width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
-} 
+  margin-left: 2rem;
+}
+.navbar__total{
+  margin: -8px;
+  text-align: center;
+  height: 20px;
+  width: 20px;
+  color: white;
+  background-color: orange;
+  border-radius: 50%;
+}
 
 @media (min-width: 1024px){
   .input-search{

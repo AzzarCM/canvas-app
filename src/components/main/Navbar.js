@@ -73,7 +73,9 @@ export const Navbar = () => {
                             }}
                             >
                             </i>
+                            <p className="navbar__total">
                             {total}
+                            </p>       
                         </div>  
                 </Link>
               </li>
@@ -126,7 +128,9 @@ export const Navbar = () => {
                         }}
                         >
                         </i>
-                        {total}
+                        <p className="navbar__total">
+                          {total}
+                        </p>  
                     </div>
                     
                 </Link>

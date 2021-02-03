@@ -4,6 +4,7 @@ import { Navbar } from '../main/Navbar'
 import { Relacionados } from '../temas/Relacionados'
 import { ImageItem } from './ImageItem'
 import { useLoading, BallTriangle } from '@agney/react-loading';
+import { SearchBar } from '../search/SearchBar'
 
 export const MostSelledScreen = () => {
     const [loading, setLoading] = useState(true);
@@ -35,8 +36,9 @@ export const MostSelledScreen = () => {
     }
     //animate__animated animate__fadeIn
     return (
-        <div className="home__main-container">
+        <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar/>
+            <SearchBar/>
             <h1 className="selled__title-related mb-5">Favoritas por nuestros usuarios</h1>
             
             {

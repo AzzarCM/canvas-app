@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card"
 import Button from "react-bootstrap/Button"
 import { Footer } from '../main/Footer'
 import { useLoading, BallTriangle } from '@agney/react-loading';
+import { SearchBar } from '../search/SearchBar'
 
 export const AllThemes = () => {
     
@@ -37,6 +38,7 @@ export const AllThemes = () => {
     return (
         <div className="home__main-container">
             <Navbar />
+            <SearchBar/>
             {
                 loading ?
                     <section style={{

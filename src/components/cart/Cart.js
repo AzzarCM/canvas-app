@@ -3,6 +3,7 @@ import { Navbar } from '../main/Navbar'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { CartList } from './CartList'
+import { SearchBar } from '../search/SearchBar'
 import Swal from 'sweetalert2'
 
 export const Cart = () => {
@@ -23,6 +24,7 @@ export const Cart = () => {
     return (
         <div className="home__main-container">
             <Navbar/>
+            <SearchBar/>
             <CartList/>
             <h2 className="temas__title-busqueda mt-5" >Sub Total</h2>
             <p style={{fontSize: 25}}>{`$${total}`}</p>

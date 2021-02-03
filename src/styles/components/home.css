@@ -130,6 +130,10 @@
 @media (min-width: 300px) and (max-width: 855px){
     .home__canvas-text-container{
         flex-wrap: wrap;
+        justify-content: center;
+    }
+    .home__table-left{
+        margin-bottom: 2rem;
     }
 
     .home__tablet-part{

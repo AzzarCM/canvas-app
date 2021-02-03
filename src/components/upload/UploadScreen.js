@@ -3,10 +3,12 @@ import {Navbar} from "../main/Navbar";
 import {Footer} from "../main/Footer"
 //import uploadImage from "../../assets/img/upload.png"
 import socialMedia from '../../assets/img/social.png';
+import { SearchBar } from '../search/SearchBar';
 export const UploadScreen = () => {
     return (
         <div className="home__main-container">
             <Navbar/>
+            <SearchBar/>
                 <div className="upload__container">
                {/* { <img alt="imagen" src={uploadImage}/>
                 <h1 className="upload__title">CREA TU PROPIO CANVAS</h1>

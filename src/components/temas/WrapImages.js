@@ -1,23 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import { ImageItem } from '../selled/ImageItem';
 import { useLoading, BallTriangle } from '@agney/react-loading';
-import {useDispatch} from "react-redux"
-import {Link} from 'react-router-dom'
-import {changeSearchText} from '../../actions/ui'
 export const WrapImages = (props) => {
     const { id } = props;
 
     const [imagenes, setImagenes] = useState([]);
     const [bandera, setBandera] = useState(true);
     const [nombre, setNombre] = useState('No encontrado');
-    const dispatch = useDispatch();
-
-
-    const handleSearchBar = (text) =>{
-        dispatch(changeSearchText(text));
-    }
-
-    console.log(imagenes);
 
     const { containerProps, indicatorEl } = useLoading({
         loading: bandera,
@@ -47,7 +36,7 @@ export const WrapImages = (props) => {
     }
     //className="animate__animated animate__fadeIn"
     return (
-        <div style={{ width: "95%" }}>
+        <div className="animate__animated animate__fadeIn" style={{ width: "95%" }}>
             {
                 bandera ?
                     <section style={{
@@ -59,20 +48,10 @@ export const WrapImages = (props) => {
                         {indicatorEl}
                     </section> :
                     <div>
-                        <div className="input-search">
-                            <input onChange={(e) => handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Busca un cuadro!" />
-
-                            <button className="navbar__search-button" type="button">
-                                <Link className="navbar__shopping-cart-icon" to="/main/search">
-                                    <i className="fas fa-search"></i>
-                                </Link>
-                            </button>
-
-                        </div>
                         <h1
                             className="temas__title-busqueda"
                         >
-                            Busqueda: <span className="temas__span-busqueda">"{nombre}"</span>
+                            Tema: <span className="temas__span-busqueda">"{nombre}"</span>
                         </h1>
                         {
                             imagenes[0].length >= 1 ?

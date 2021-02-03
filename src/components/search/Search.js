@@ -4,8 +4,8 @@ import {Navbar} from '../main/Navbar'
 import { ImageItem } from '../selled/ImageItem';
 import { useLoading, BallTriangle } from '@agney/react-loading';
 import {Link} from 'react-router-dom'
-import {changeSearchText} from '../../actions/ui'
 import { Footer } from '../main/Footer';
+import { SearchBar } from './SearchBar';
 
 export const Search = () => {
 
@@ -16,13 +16,6 @@ export const Search = () => {
         loading: loading,
         indicator: <BallTriangle width="50" />,
       });
-
-    const dispatch = useDispatch();
-
-
-    const handleSearchBar = (text) =>{
-        dispatch(changeSearchText(text));
-    }
 
     function getItemsSearched() {
         const url = `https://api-rest-canvas.herokuapp.com/api/paintings/search/${searchText}`
@@ -47,16 +40,7 @@ export const Search = () => {
     return (
         <div className="home__main-container">
             <Navbar />
-            <div className="input-search">
-                <input onChange={(e) => handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Busca un cuadro!" />
-
-                <button className="navbar__search-button" type="button">
-                    <Link className="navbar__shopping-cart-icon" to="/main/search">
-                        <i className="fas fa-search"></i>
-                    </Link>
-                </button>
-
-            </div>
+            <SearchBar/>
             <h1 
                 className="temas__title-busqueda"
             >

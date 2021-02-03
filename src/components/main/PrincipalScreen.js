@@ -18,6 +18,7 @@ import cuadro from "../../assets/img/cuadro.png";
 
 import firebase from "firebase/app";
 import {useSelector} from 'react-redux'
+import { SearchBar } from '../search/SearchBar';
 
 export const PrincipalScreen = () => {
     // animate__animated animate__fadeIn
@@ -39,6 +40,7 @@ export const PrincipalScreen = () => {
     return (
         <div className="home__main-container">
             <Navbar />
+            <SearchBar/>
             <Carousel />
             <div className="home__canvas-text-container">
                 <h2 className="home__canvas-text">CANVAS</h2>

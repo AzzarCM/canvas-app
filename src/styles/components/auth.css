@@ -1,10 +1,3 @@
-.auth__main-container{
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-}
-
 .auth__container{
     display: -webkit-flex;
     align-items: center;
