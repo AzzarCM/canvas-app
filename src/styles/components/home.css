@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 100vw;
+    width: 100%;
 }
 
 .home__separator{
