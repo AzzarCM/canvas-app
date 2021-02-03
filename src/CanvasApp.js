@@ -9,7 +9,6 @@ import './styles/components/buttons.css';
 import './styles/components/carousel.css';
 import './styles/components/cart.css';
 import './styles/components/foot.css';
-import './styles/components/main.css';
 import './styles/components/navbar.css';
 import './styles/components/questions.css';
 import './styles/components/realated.css';

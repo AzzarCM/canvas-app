@@ -19,7 +19,7 @@ import { UploadScreen } from '../components/upload/UploadScreen';
 
 export const PrincipalRouter = () => {
     return (
-        <div className="main__main-container">
+        <div>
             <Switch>
                 <Route
                     exact
