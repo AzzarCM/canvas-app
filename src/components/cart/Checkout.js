@@ -11,6 +11,7 @@ import { removeError, setError } from '../../actions/ui'
 import { Footer } from '../main/Footer'
 import errorImg from '../../assets/img/error.png'
 import doneImg from '../../assets/img/done.png'
+import wompi from '../../assets/img/wompi.png'
 
 export const Checkout = () => {
     
@@ -337,6 +338,7 @@ export const Checkout = () => {
                 </div>
                 
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de pago</h2>
+                <img src={wompi} alt="wompi" style={{width: 200}}/>
                 <div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <div className="input-with-icon">

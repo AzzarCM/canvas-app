@@ -1,5 +1,5 @@
 import React from 'react'
-
+import wompi from '../../assets/img/wompi.png'
 export const Footer = () => {
     return (
         <div className="foot__main-container">
@@ -38,6 +38,7 @@ export const Footer = () => {
                         <a className="mr-2" href="https://twitter.com/Canvas_sv01"><i className="fab fa-twitter-square a-color"></i></a>
                         <a className="mr-2" href="https://www.instagram.com/canvas.sv/"><i className="fab fa-instagram-square a-color"></i></a>
                     </div>
+                    <a href="https://wompi.sv/"><img src={wompi} alt="wompi" style={{width: 100,marginTop: 10}}/></a>
                 </div>
             </div>
             <div className="foot__bottom-div">
