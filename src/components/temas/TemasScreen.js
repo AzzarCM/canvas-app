@@ -31,10 +31,6 @@ export const TemasScreen = () => {
     const [precio, setPrecio] = useState(0);
     const [material, setMaterial] = useState('');
     
-
-    console.log(dimensions ,'dimension');
-    console.log(material,'material');
-
     useEffect(() => {
         getPainting();
     }, [])
@@ -60,12 +56,13 @@ export const TemasScreen = () => {
         setBanderaMat(true);
         setBanderaDim(true);
      }
+
+     console.log(precio);
     
     const handleClick = () =>{
-        if(precio === 0 || material === '' || precio == 0){
+        if(precio === 0 || material === '' || precio == 0 || precio === null){
             Swal.fire({
                 imageUrl:errorImg,
-                //width: "50%",
                 imageWidth: 155,
                 imageHeight: 250,
                 html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimension!</p>',
@@ -127,14 +124,6 @@ export const TemasScreen = () => {
             footer: '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar Sesion</a>',
         });
     }
-    const handleSecondWarning = () =>{
-        Swal.fire({
-            icon: 'error',
-            title: 'ATENCION!',
-            text: 'Debes seleccionar dimension y material',
-            showConfirmButton: true,
-        });
-    }
 
     const handleDropDownChange = (e) =>{
         setIdMaterial(e.target.value)
@@ -160,7 +149,7 @@ export const TemasScreen = () => {
     }
 
     const handleCheckedDim = (altura, ancho) =>{
-        const medida = `Alto ${altura} Ancho ${ancho}`
+        const medida = `${altura} X ${ancho}`
         setMedidas(medida);
     }
     

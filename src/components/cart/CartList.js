@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import { addQuantity, removeItem, subtractQuantity } from '../../actions/cart';
+import { addQuantity, changeTotal, removeItem, subtractQuantity } from '../../actions/cart';
 import cartImage from '../../assets/img/emptycart.png';
 import { Link } from 'react-router-dom'
 
@@ -20,6 +20,11 @@ export const CartList = () => {
     const handleRemoveItemClick = (id) => {
         dispatch(removeItem(id));
     }
+    useEffect(() => {
+        if(addedItems.length == 0){
+            dispatch( (changeTotal(0)) );
+        }
+    }, [addedItems])
 
     return (
         <div>
@@ -39,12 +44,24 @@ export const CartList = () => {
                                 <div className="cart__item-desc">
                                     <span className="cart__item-title">{item.name}</span>
                                     <p>{item.description}</p>
-                                    <p>
-                                        <b>{`Price: $${item.price}`}</b>
-                                    </p>
-                                    <p>
-                                        <b>Cantidad: {item.quantity}</b>    
-                                    </p>
+                                    <div style={{display: 'flex', width: 300, justifyContent: 'space-between'}}>
+                                        <div>
+                                            <p>
+                                                <b>{`Price: $${item.price}`}</b>
+                                            </p>
+                                            <p>
+                                                <b>Cantidad: {item.quantity}</b>    
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <p>
+                                                <b>Medidas: {item.medidas}</b>    
+                                            </p>
+                                            <p>
+                                                <b>Material: {item.material}</b>    
+                                            </p>
+                                        </div>
+                                    </div>
                                     <div className="cart__icons-container">
                                         <i onClick={()=>handleAddClick(item.id)} className="fas fa-angle-up cart__icons"></i>
                                         <i onClick={()=>handleSubClick(item.id)} className="fas fa-angle-down cart__icons"></i>

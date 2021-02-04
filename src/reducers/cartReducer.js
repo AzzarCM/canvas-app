@@ -24,13 +24,29 @@ export const cartReducer = (state = initialState, action) =>{
         
             if(existed_item)
             {
-            addedItem.quantity += 1 
+            // console.log('cai en existed item');
+            // console.log(existed_item,'existed');
+            // console.log(action.price);
+            // console.log(action.id, 'id action');
+            // console.log(addedItem.id,'id added');
+            // console.log(addedItem.medidas, 'medidas added');
+            // console.log(action.medidas,'action medidas');
+            // console.log(addedItem.material, 'material added');
+            // console.log(action.material,'action meterial');
+            addedItem.quantity += 1
+            addedItem.price = action.price; 
+            
              return{
                 ...state,
                  total: state.total + parseFloat(addedItem.price)
                   }
             }
          else{
+
+            console.log(action.price, 'price en red');
+            console.log(action.material, 'material en red');
+            console.log(action.medidas, 'medidas en red');
+
             addedItem.price = action.price;
             addedItem.material = action.material;
             addedItem.material_id = action.material_id;
