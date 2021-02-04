@@ -13,8 +13,8 @@ export const LoginScreen = (props) => {
     const {loading} = useSelector(state => state.ui);
     const authState = useSelector(state => state.auth);
     const [ formValues, handleInputChange ] = useForm({
-        email: 'canvas@gmail.com',
-        password: '123456'
+        email: '',
+        password: ''
     });
 
     const { email, password } = formValues;
@@ -54,13 +54,15 @@ export const LoginScreen = (props) => {
     }
 
     return (
-        <div className="auth__container">
+        <div className="auth__container animate__animated animate__fadeIn">
             <div className="auth__image">
                 <img alt="una imagen" src={imagen} />
             </div>
             <div className="auth__right-container">
                 <div className="auth__mini-nav">
+                    <a href="/main/home">
                     <img alt="logo" src={logo}/>
+                    </a>
                     <div style={{
                         display:'flex', 
                         alignItems:'center'}}>

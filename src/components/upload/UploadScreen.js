@@ -6,7 +6,7 @@ import socialMedia from '../../assets/img/social.png';
 import { SearchBar } from '../search/SearchBar';
 export const UploadScreen = () => {
     return (
-        <div className="home__main-container">
+        <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar/>
             <SearchBar/>
                 <div className="upload__container">

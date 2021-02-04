@@ -38,7 +38,7 @@ export const Search = () => {
 
 
     return (
-        <div className="home__main-container">
+        <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <SearchBar/>
             <h1 

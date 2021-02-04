@@ -14,10 +14,10 @@ export const RegisterScreen = () => {
     const {msgError} = useSelector( state => state.ui);
 
     const [ formValues, handleInputChange ] = useForm({
-        name: 'Cristian Mundo',
-        email: 'canvas@gmail.com',
-        password: '123456',
-        password2: '123456',
+        name: '',
+        email: '',
+        password: '',
+        password2: '',
     });
 
     const {name, email, password, password2} = formValues;
@@ -48,13 +48,15 @@ export const RegisterScreen = () => {
     
 
     return (
-        <div className="auth__container">
+        <div className="auth__container animate__animated animate__fadeIn">
         <div className="auth__image">
             <img alt="una imagen" src={imagen} />
         </div>
         <div className="auth__right-container">
             <div className="auth__mini-nav">
-                <img alt="logo" src={logo}/>
+                <a href="/main/home">
+                    <img alt="logo" src={logo}/>
+                </a>
                 <div style={{
                     display:'flex', 
                     alignItems:'center'}}>

@@ -53,6 +53,9 @@
     width: 75%;
     margin-bottom: 10%;
 }
+.accordion__title{
+    color: #42bda5;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 920px){

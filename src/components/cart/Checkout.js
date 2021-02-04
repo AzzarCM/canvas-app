@@ -62,7 +62,7 @@ export const Checkout = () => {
     const [ formValues, handleInputChange ] = useForm({
         customer_name: name,
         email: mail,
-        customer_phone: '222',
+        customer_phone: '',
         delivery_address: '',
         customer_uid: uid,
         delivery_zone_id: zoneId,
@@ -245,7 +245,7 @@ export const Checkout = () => {
     }
 
     return (
-        <div className="home__main-container">
+        <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar/>
             <form>
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion del cliente</h2>
@@ -296,6 +296,7 @@ export const Checkout = () => {
                    
                    
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de la entrega</h2>
+                <label>Zona <span style={{color: 'red'}}>*</span></label>
                 <select
                     defaultValue=""
                     className="cart__select-zones"

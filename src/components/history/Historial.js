@@ -29,7 +29,7 @@ export const Historial = () => {
 
 
     return (
-        <div className="home__main-container">
+        <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <h1 className="selled__title-related mb-5">Historial de compras</h1>
             <Table className="historial__table-container" striped bordered hover>

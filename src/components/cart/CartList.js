@@ -27,7 +27,7 @@ export const CartList = () => {
     }, [addedItems])
 
     return (
-        <div>
+        <div className="animate__animated animate__fadeIn">
              {   
                 addedItems.length > 0 ?
                     addedItems.map((item )=>{

@@ -5,9 +5,10 @@ export const Footer = () => {
         <div className="foot__main-container">
             <div className="foot__upper-div">
                 <div className="foot__left-part">
-                    <a className="foot__links mb-5 align-text" href="/">TERMINOS Y CONDICIONES</a>
+                    <a className="foot__links mb-5 align-text" href="/main/terms">TERMINOS Y CONDICIONES</a>
                     <a className="foot__links mb-5 align-text" href="/main/faq">PREGUNTAS FRECUENTES</a>
                     <a className="foot__links mb-5 align-text" href="/">AVISO DE PRIVACIDAD</a>
+                    <a className="foot__links mb-5 align-text" href="/main/garantia">SOBRE GARANTIA</a>
                 </div>
                 <div className="foot__middle-part">
                     <h3 className="foot__links mb-10 align-text">CONTACTO</h3>

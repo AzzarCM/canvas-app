@@ -8,6 +8,7 @@ from 'react-router-dom';
 import { Cart } from '../components/cart/Cart';
 import { Checkout } from '../components/cart/Checkout';
 import { Historial } from '../components/history/Historial';
+import { TermsAndCond } from '../components/information/TermsAndCond';
 import { PrincipalScreen } from '../components/main/PrincipalScreen';
 import { QuestionScreen } from '../components/questions/QuestionScreen';
 import { Search } from '../components/search/Search';
@@ -16,7 +17,7 @@ import { AllThemes } from '../components/temas/AllThemes';
 import { TemasScreen } from '../components/temas/TemasScreen';
 import { ThemesCategory } from '../components/temas/ThemesCategory';
 import { UploadScreen } from '../components/upload/UploadScreen';
-
+import { Garantia } from '../components/information/Garantia'
 export const PrincipalRouter = () => {
     return (
         <div>
@@ -73,6 +74,16 @@ export const PrincipalRouter = () => {
                     exact
                     path="/main/search"
                     component = { Search }
+                />
+                <Route
+                    exact
+                    path="/main/terms"
+                    component = { TermsAndCond }
+                />
+                <Route
+                    exact
+                    path="/main/garantia"
+                    component = { Garantia }
                 />
                 <Redirect to="/main/home"/>
             </Switch>
