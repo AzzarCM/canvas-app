@@ -21,7 +21,7 @@
   }
   .nav-options {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(3, auto);
     grid-gap: 50px;
     list-style-type: none;
     padding-top: 50px;
@@ -51,9 +51,6 @@
     color: white;
     cursor: pointer;
     align-items: center;
-  }
-  .mobile-menu {
-    display: none;
   }
 
   .navbar__search-input{
@@ -114,6 +111,9 @@
   border-radius: 50%;
   font-weight: bold;
 }
+.mobile-menu{
+  display: none;
+}
 
 @media (min-width: 1024px){
   .input-search{
@@ -122,6 +122,10 @@
 }
 /* Smartphones (portrait and landscape) ----------- */
   @media(min-width: 300px) and (max-width: 1024px) {
+
+    .mobile-menu{
+      display: flex;
+    }
 
     .header {
       padding: 0px 10px;
@@ -183,8 +187,5 @@
     .signin-up {
       display: none;
     }
-  }
-  .mobile-menu {
-    display: block;
   }
   

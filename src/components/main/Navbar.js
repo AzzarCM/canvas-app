@@ -43,9 +43,9 @@ export const Navbar = () => {
                 </a>
             </div>
             <ul className={click ? "nav-options active" : "nav-options"}>
-              <li onClick={closeMobileMenu}>
+              {/* {<li onClick={closeMobileMenu}>
                 <a className="link-navbar" href="/main/most-selled">MAS VENDIDOS</a>
-              </li>
+              </li>} */}
               <li onClick={closeMobileMenu}>
                 <a className="link-navbar" href="/main/themes">TEMAS</a>
               </li>
