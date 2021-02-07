@@ -12,7 +12,7 @@ import { Footer } from '../main/Footer'
 import errorImg from '../../assets/img/error.png'
 import doneImg from '../../assets/img/done.png'
 import wompi from '../../assets/img/wompi.png'
-
+import { API_HOST } from '../../constants/URLS'
 
 var bcrypt = require('bcryptjs');
 
@@ -88,7 +88,7 @@ export const Checkout = () => {
     }, [])
 
     const getAllZones = async () => {
-        const url = "https://api-rest-canvas.herokuapp.com/api/delivery-zones";
+        const url = `${API_HOST}/delivery-zones`
         const resp = await fetch(url)
         const { delivery_zones } = await resp.json();
         const zonas = delivery_zones.map((item)=>{
@@ -200,7 +200,8 @@ export const Checkout = () => {
                     showLoaderOnConfirm: true,
                     showDenyButton: true,
                     preConfirm: () =>{
-                        return   fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
+                        const url = `${API_HOST}/orders`
+                        return   fetch(url,{
                             method: "POST",
                             headers: {
                                 "Content-type": "application/json",

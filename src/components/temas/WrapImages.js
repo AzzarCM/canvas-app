@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { ImageItem } from '../selled/ImageItem';
 import { useLoading, BallTriangle } from '@agney/react-loading';
+import { API_HOST } from '../../constants/URLS'
+
 export const WrapImages = (props) => {
     const { id } = props;
 
@@ -18,7 +20,7 @@ export const WrapImages = (props) => {
     }, [])
 
     const getAllImages = async () => {
-        const url = `https://api-rest-canvas.herokuapp.com/api/themes/get-paintings/${id}`;
+        const url = `${API_HOST}/themes/get-paintings/${id}`;
         const resp = await fetch(url)
 
         const { themes } = await resp.json();

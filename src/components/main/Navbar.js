@@ -12,11 +12,6 @@ export const Navbar = () => {
     
     const firebaseInfo = useSelector(state=> state.auth)
     var uid = firebaseInfo.uid
-    // if(firebase.auth().currentUser){
-    //   console.log("no esta logueado");
-    // }else{
-    //   var uid = firebase.auth().currentUser.uid;
-    // }
     
     const dispatch = useDispatch();
     const [click, setClick] = useState(false);
@@ -79,11 +74,18 @@ export const Navbar = () => {
                         </div>  
                 </Link>
               </li>
-              <li className="option mobile-option" onClick={closeMobileMenu}>
-                <a href="/auth/login" className="link-navbar">
-                    LOG IN
-                </a>
-              </li>
+              {
+                JSON.stringify(firebaseInfo)=='{}'
+                ?
+                <li className="option mobile-option" onClick={closeMobileMenu}>
+                  <a href="/auth/login" className="link-navbar">
+                      LOG IN
+                  </a>
+                </li>
+                :
+                <div></div>
+              }
+             
               {
                 JSON.stringify(firebaseInfo)=='{}'
                 ? <div></div>
@@ -135,26 +137,33 @@ export const Navbar = () => {
                     
                 </Link>
             </li>
-            <li onClick={closeMobileMenu}>  
-              <a className="link-navbar" href="/auth/login">
-                LOG IN
-              </a>
-            </li>
+            {
+                JSON.stringify(firebaseInfo)=='{}'
+                ?
+                <li onClick={closeMobileMenu}>  
+                  <a style={{color: "#21AB91"}} className="link-navbar" href="/auth/login">
+                    LOG IN
+                  </a>
+                </li>
+                :
+                <div></div>
+              }
+           
             {
               JSON.stringify(firebaseInfo)=='{}' 
               ? 
               <div></div>
               :
-              <div>
+              <div style={{display: 'flex'}}>
               <li onClick={closeMobileMenu}>
                 <p onClick={handleLogOut} className="link-navbar">
-                    <a className="link-navbar" href="/auth/login">
+                    <a style={{color: "#EC7063"}} className="link-navbar" href="/auth/login">
                       LOG OUT
                     </a>
                 </p>
               </li>
-              <li>
-                <a className="link-navbar" href={pathHistory}>
+              <li style={{marginLeft: 10}}>
+                <a style={{color: "#21AB91"}} className="link-navbar" href={pathHistory}>
                   HISTORIAL
                 </a>
               </li>

@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
-
+import { API_HOST } from '../../constants/URLS'
 export const SideBar = () => {
     const [themes, setThemes] = useState([])
-    console.log(themes);
 
     useEffect(() => {
         getAllThemes();
     }, [])
 
     const getAllThemes = async () => {
-        const url = "https://api-rest-canvas.herokuapp.com/api/themes";
+        const url = `${API_HOST}/themes`;
         const resp = await fetch(url)
         const { themes } = await resp.json();
         const temas = themes.map(theme => {

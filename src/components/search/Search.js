@@ -3,9 +3,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import {Navbar} from '../main/Navbar'
 import { ImageItem } from '../selled/ImageItem';
 import { useLoading, BallTriangle } from '@agney/react-loading';
-import {Link} from 'react-router-dom'
 import { Footer } from '../main/Footer';
 import { SearchBar } from './SearchBar';
+import { API_HOST } from '../../constants/URLS'
 
 export const Search = () => {
 
@@ -18,7 +18,7 @@ export const Search = () => {
       });
 
     function getItemsSearched() {
-        const url = `https://api-rest-canvas.herokuapp.com/api/paintings/search/${searchText}`
+        const url = `${API_HOST}/paintings/search/${searchText}`
         return fetch(url)
             .then((res)=>{
                 return res.json();

@@ -8,17 +8,13 @@ import { Navbar } from './Navbar'
 
 //assets
 
-import landscapes from '../../assets/img/landscapes.png';
-import memorias from '../../assets/img/memorias.png';
-import people from '../../assets/img/people.png';
-import arte from '../../assets/img/arte.png';
-import caminos from '../../assets/img/caminos.png';
 import tablet from '../../assets/img/tablet.png';
 import cuadro from "../../assets/img/cuadro.png";
 
 import firebase from "firebase/app";
 import {useSelector} from 'react-redux'
 import { SearchBar } from '../search/SearchBar';
+import { Temas } from '../temas/Temas';
 
 export const PrincipalScreen = () => {
     // animate__animated animate__fadeIn
@@ -59,28 +55,7 @@ export const PrincipalScreen = () => {
                 <div className="home__line2"></div>
             </div>
 
-            <div className="home__photos-container">
-                <div className="home__photo-item">
-                    <img alt="imagen" src={landscapes}/>
-                    <p className="home__photo-title">LANDSCAPES</p>
-                </div>
-                <div className="home__photo-item">
-                    <img alt="imagen" src={caminos}/>
-                    <p className="home__photo-title">CAMINOS</p>
-                </div>
-                <div className="home__photo-item">
-                    <img alt="imagen" src={memorias}/>
-                    <p className="home__photo-title">MEMORIAS</p>
-                </div>
-                <div className="home__photo-item">
-                    <img alt="imagen" src={arte}/>
-                    <p className="home__photo-title">ARTE</p>
-                </div>
-                <div className="home__photo-item">
-                    <img alt="imagen" src={people}/>
-                    <p className="home__photo-title">PEOPLE</p>
-                </div>
-            </div>
+            <Temas/>
 
             <div className="home__tablet-part">
                 <div className="home__table-left">

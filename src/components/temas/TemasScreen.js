@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {Navbar} from "../main/Navbar";
 import {Footer} from "../main/Footer"
 import {
-    Redirect,
     useParams,
     useHistory
   } from "react-router-dom";
@@ -15,7 +14,7 @@ import { addToCart } from '../../actions/cart'
 import Swal from 'sweetalert2/src/sweetalert2.js'
 import errorImg from '../../assets/img/error.png'
 import { SearchBar } from '../search/SearchBar';
-
+import { API_HOST } from '../../constants/URLS'
 
 export const TemasScreen = () => {
 
@@ -40,7 +39,7 @@ export const TemasScreen = () => {
     }, [])
 
     const getPainting = async () =>{
-        const url = `https://api-rest-canvas.herokuapp.com/api/paintings/${id}`;
+        const url = `${API_HOST}/paintings/${id}`;
         const resp = await fetch(url)
         
         const {painting_info} = await resp.json();

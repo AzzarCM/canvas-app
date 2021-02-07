@@ -2,7 +2,6 @@ import React from 'react'
 
 export const ImageItem = (props) => {
     const { img } = props;
-    const activo = img.active
     const titulo = img.name;
     const path = `/main/imagen/id/${img.id}`
     return (

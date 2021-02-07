@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { Footer } from '../main/Footer'
 import { Navbar } from '../main/Navbar'
-import { Relacionados } from '../temas/Relacionados'
 import { ImageItem } from './ImageItem'
 import { useLoading, BallTriangle } from '@agney/react-loading';
 import { SearchBar } from '../search/SearchBar'
+import { API_HOST } from '../../constants/URLS'
 
 export const MostSelledScreen = () => {
     const [loading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ export const MostSelledScreen = () => {
     }, [])
 
     const getImages = async () =>{
-       const url = "https://api-rest-canvas.herokuapp.com/api/paintings";
+       const url =`${API_HOST}/paintings`;
        const resp = await fetch(url)
        const {paintings} = await resp.json();
        const imagenes = paintings.map( img =>{

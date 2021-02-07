@@ -171,6 +171,26 @@
     font-size: 30px;
 }
 
+.temas__card-individual{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 18rem;
+    margin-left: 1rem;
+    margin-top: 2rem;
+    height: 400px;
+    transition: 0.1s
+}
+.temas__card-individual:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.temas__card-image{
+    height: 200px;
+    object-fit: cover;
+}
+.temas__card-body{
+    text-align: center;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 1200px) and (max-width: 1366px){
     .temas__imagen{

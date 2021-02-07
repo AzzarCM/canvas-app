@@ -3,13 +3,14 @@ import { Footer } from '../main/Footer'
 import { useParams } from 'react-router-dom'
 import { Navbar } from '../main/Navbar';
 import Jumbotron from 'react-bootstrap/Jumbotron'
+import { API_HOST } from '../../constants/URLS'
 
 export const Detail = () => {
     const {id} = useParams();
     const [orderDetail, setOrderDetail] = useState(null);
 
     function getOrderDetailById() {
-        const url = `https://api-rest-canvas.herokuapp.com/api/orders-details/order/${id}`
+        const url = `${API_HOST}/orders-details/order/${id}`
         return fetch(url)
             .then((res)=>{
                 return res.json();

@@ -1,9 +1,6 @@
 import React,{useState, useEffect} from 'react'
-import landscapes from '../../assets/img/landscapes.png';
-import people from '../../assets/img/people.png';
-import arte from '../../assets/img/arte.png';
-import caminos from '../../assets/img/caminos.png';
 import { ImageItem } from '../selled/ImageItem';
+import { API_HOST} from '../../constants/URLS'
 
 export const Relacionados = (props) => {
 
@@ -11,7 +8,7 @@ export const Relacionados = (props) => {
     const [relatedPaintings, setRelatedPaintings] = useState([]);
 
     function getRelatedImages() {
-        const url = `https://api-rest-canvas.herokuapp.com/api/paintings/related/${theme_id}/${painting_id}`
+        const url = `${API_HOST}/paintings/related/${theme_id}/${painting_id}`
 
         return fetch(url)
             .then((res)=>{

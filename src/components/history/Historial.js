@@ -3,13 +3,14 @@ import { Footer } from '../main/Footer'
 import { Navbar } from '../main/Navbar'
 import Table from 'react-bootstrap/Table'
 import {useParams, Link} from "react-router-dom"
+import { API_HOST } from '../../constants/URLS'
 
 export const Historial = () => {
     const {id} = useParams();
     const [orden, setOrden] = useState(null);
 
     function getOrderById() {
-        const url = `https://api-rest-canvas.herokuapp.com/api/orders/orders-by-customer/${id}`
+        const url = `${API_HOST}/orders/orders-by-customer/${id}`
         return fetch(url)
             .then((res)=>{
                 return res.json();

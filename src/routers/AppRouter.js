@@ -10,10 +10,8 @@ import {
 import { PrincipalRouter } from './PrincipalRouter';
 import { useDispatch } from 'react-redux';
 import { login } from '../actions/auth';
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from "./PublicRoute"
 import { fillItems } from '../actions/cart';
-
+import { API_HOST } from '../constants/URLS'
 import { useLoading, BallTriangle } from '@agney/react-loading';
 
 
@@ -45,7 +43,7 @@ export const AppRouter = () => {
         });
     }, [dispatch, setChecking, setIsLoggedIn]);
     const getImages = async () =>{
-        const url = "https://api-rest-canvas.herokuapp.com/api/paintings";
+        const url = `${API_HOST}/paintings`;
         const resp = await fetch(url)
         const {paintings} = await resp.json();
         const imagenes = paintings.map( img =>{
