@@ -18,21 +18,27 @@ export const cartReducer = (state = initialState, action) =>{
                 items: action.payload
             }
         case types.ADD_TO_CART:
+
             var addedItem = state.items.find(item=>item.id == action.id)
-            
             var existed_item= state.addedItems.find(item=> action.id == item.id)
-        
+
             if(existed_item)
             {
-            // console.log('cai en existed item');
-            // console.log(existed_item,'existed');
-            // console.log(action.price);
-            // console.log(action.id, 'id action');
-            // console.log(addedItem.id,'id added');
-            // console.log(addedItem.medidas, 'medidas added');
-            // console.log(action.medidas,'action medidas');
-            // console.log(addedItem.material, 'material added');
-            // console.log(action.material,'action meterial');
+            if(existed_item.material != action.material){
+                const new_id = Math.floor(Math.random() * 10000) + 1000;
+                addedItem.id = new_id;
+                addedItem.price = action.price;
+                addedItem.material = action.material;
+                addedItem.material_id = action.material_id;
+                addedItem.medidas = action.medidas;
+                addedItem.quantity = 1;
+                var new_total = state.total + parseFloat(action.price);
+                return{
+                    ...state,
+                    addedItems: [...state.addedItems, addedItem],
+                    total: new_total,
+                }
+            }
             addedItem.quantity += 1
             addedItem.price = action.price; 
             
@@ -42,10 +48,6 @@ export const cartReducer = (state = initialState, action) =>{
                   }
             }
          else{
-
-            console.log(action.price, 'price en red');
-            console.log(action.material, 'material en red');
-            console.log(action.medidas, 'medidas en red');
 
             addedItem.price = action.price;
             addedItem.material = action.material;

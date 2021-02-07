@@ -18,6 +18,7 @@ import { TemasScreen } from '../components/temas/TemasScreen';
 import { ThemesCategory } from '../components/temas/ThemesCategory';
 import { UploadScreen } from '../components/upload/UploadScreen';
 import { Garantia } from '../components/information/Garantia'
+import { Detail } from '../components/history/Detail';
 export const PrincipalRouter = () => {
     return (
         <div>
@@ -84,6 +85,11 @@ export const PrincipalRouter = () => {
                     exact
                     path="/main/garantia"
                     component = { Garantia }
+                />
+                <Route
+                    exact
+                    path="/main/history/orderDetail/:id"
+                    component = { Detail }
                 />
                 <Redirect to="/main/home"/>
             </Switch>

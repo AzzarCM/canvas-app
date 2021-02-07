@@ -28,8 +28,6 @@ export const Relacionados = (props) => {
                 setRelatedPaintings(related_paintings);
             })
     }, [painting_id, theme_id])
-    
-    console.log(relatedPaintings);
 
     return (
         <div className="related__main-container">

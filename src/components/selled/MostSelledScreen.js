@@ -29,12 +29,12 @@ export const MostSelledScreen = () => {
                name: img.name,
                price: img.price,
                image_url: img.image_url,
+               active: img.active,
            }
        })
        setImages(imagenes);
        setLoading(false);
     }
-    //animate__animated animate__fadeIn
     return (
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar/>

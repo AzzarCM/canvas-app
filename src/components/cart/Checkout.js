@@ -13,6 +13,9 @@ import errorImg from '../../assets/img/error.png'
 import doneImg from '../../assets/img/done.png'
 import wompi from '../../assets/img/wompi.png'
 
+
+var bcrypt = require('bcryptjs');
+
 export const Checkout = () => {
     
     const monthNames = ["Enero", "Febrero", "Marzo", "April", "Mayo", "Junio",
@@ -140,7 +143,12 @@ export const Checkout = () => {
     formValues.total_amount = parseFloat(totalWithShipping);
     cardValues.mesVencimiento = parseInt(mes);
     cardValues.anioVencimiento = parseInt(anio);
-    
+    // var salt = bcrypt.genSaltSync(10);
+    // const hash = bcrypt.hashSync(cvv, salt);
+    // cardValues.cvv = hash;
+
+
+
     useEffect(() => {
         isFormValuesValid()
     }, [cardValues,formValues]);
@@ -177,72 +185,82 @@ export const Checkout = () => {
     }
 
     const handleSubmitData = () =>{
-        if(isFormValuesValid()){
-            const data = {
-                ...formValues,
-                cardData: cardValues,
-                detail: item,
-            };
-            console.log(data);
-            Swal.fire({
-                title: 'Seguro que desea proceder?',
-                confirmButtonText: 'Si, seguro!',
-                showLoaderOnConfirm: true,
-                showDenyButton: true,
-                preConfirm: () =>{
-                    return   fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
-                        method: "POST",
-                        headers: {"Content-type": "application/json"},
-                        body: JSON.stringify(data),
-                    })
-                    .then((res)=>res.json())
-                    .then((resp)=>{
-                        console.log(resp, 'esta es la respuesta');
-                        if(!resp.error){
-                            const path = `/main/history/${uid}`
-                            Swal.fire({
-                                imageUrl: doneImg,
-                                title: 'Gracias!',
-                                html: '<p style="color:#42bda5;font-size: 35;">Excelente! Tu<br>compra ha sido<br>realizada con exito</p>',
-                                showConfirmButton:true,
-                                confirmButtonText: 'Entendido!',
-                                footer: `<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="${path}">Ver Historial</a>`
-                            })
-                            dispatch(emptyCart());
-                            console.log("posteado con exito");
-                        }else{
-                            Swal.fire({
-                                imageUrl: errorImg,
-                                html: '<p style="color:#42bda5;font-size: 35;">Ops! Parece <br> que tu compra <br> no ha sido procesada</p>',
-                                showConfirmButton: true,
-                                confirmButtonText: 'Ver detalles'
-                            })
-                            .then((result)=>{
-                                if(result.isConfirmed){
-                                    Swal.fire({
-                                        html:`<pre><code>${resp.message}</code></pre>`
-                                    })
-                                }
-                            })
-                        }
-                    });
-                }
-            })
-        }else{
 
-            Swal.fire({
-                icon: 'error',
-                text: 'Hubo un error en los campos',
-                confirmButtonText: 'Ver Detalles'
-            })
-            .then((result)=>{
-                if(result.isConfirmed){
-                    Swal.fire({
-                        html:`<pre><code>${errorMessage}</code></pre>`
-                    })
-                }
-            })
-        }
+        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken){
+            if(isFormValuesValid()){
+                const data = {
+                    ...formValues,
+                    cardData: cardValues,
+                    detail: item,
+                };
+                console.log(data);
+                Swal.fire({
+                    title: 'Seguro que desea proceder?',
+                    confirmButtonText: 'Si, seguro!',
+                    showLoaderOnConfirm: true,
+                    showDenyButton: true,
+                    preConfirm: () =>{
+                        return   fetch("https://api-rest-canvas.herokuapp.com/api/orders",{
+                            method: "POST",
+                            headers: {
+                                "Content-type": "application/json",
+                                "Authorization": 'none'
+                            },
+                            body: JSON.stringify(data),
+                        })
+                        .then((res)=>res.json())
+                        .then((resp)=>{
+                            console.log(resp, 'esta es la respuesta');
+                            if(!resp.error){
+                                const path = `/main/history/${uid}`
+                                Swal.fire({
+                                    imageUrl: doneImg,
+                                    title: 'Gracias!',
+                                    html: '<p style="color:#42bda5;font-size: 35;">Excelente! Tu<br>compra ha sido<br>realizada con exito</p>',
+                                    showConfirmButton:true,
+                                    confirmButtonText: 'Entendido!',
+                                    footer: `<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="${path}">Ver Historial</a>`
+                                })
+                                dispatch(emptyCart());
+                                console.log("posteado con exito");
+                            }else{
+                                Swal.fire({
+                                    imageUrl: errorImg,
+                                    html: '<p style="color:#42bda5;font-size: 35;">Ops! Parece <br> que tu compra <br> no ha sido procesada</p>',
+                                    showConfirmButton: true,
+                                    confirmButtonText: 'Ver detalles'
+                                })
+                                .then((result)=>{
+                                    if(result.isConfirmed){
+                                        Swal.fire({
+                                            html:`<pre><code>${resp.message}</code></pre>`
+                                        })
+                                    }
+                                })
+                            }
+                        });
+                    }
+                })
+            }else{
+    
+                Swal.fire({
+                    icon: 'error',
+                    text: 'Hubo un error en los campos',
+                    confirmButtonText: 'Ver Detalles'
+                })
+                .then((result)=>{
+                    if(result.isConfirmed){
+                        Swal.fire({
+                            html:`<pre><code>${errorMessage}</code></pre>`
+                        })
+                    }
+                })
+            }
+        })
+        .catch(function(error) {
+            // Handle error
+          });
+
     }
 
     return (

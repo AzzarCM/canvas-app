@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import { addQuantity, changeTotal, removeItem, subtractQuantity } from '../../actions/cart';
 import cartImage from '../../assets/img/emptycart.png';
 import { Link } from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 export const CartList = () => {
 
@@ -10,7 +11,18 @@ export const CartList = () => {
     const {addedItems} = useSelector(state => state.cart)
 
     const handleAddClick = (id) =>{
-        dispatch(addQuantity(id));
+        const item = addedItems.filter(cuadro => cuadro.id == id);
+        
+        if(item[0].quantity < item[0].stock){
+            dispatch(addQuantity(id));
+        }else{
+            Swal.fire({
+                icon: 'warning',
+                title: 'Ya no hay mas stock de este producto',
+            })
+        }
+
+        
     }
     
     const handleSubClick = (id) =>{

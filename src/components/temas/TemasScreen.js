@@ -2,7 +2,9 @@ import React, {useState, useEffect} from 'react'
 import {Navbar} from "../main/Navbar";
 import {Footer} from "../main/Footer"
 import {
-    useParams
+    Redirect,
+    useParams,
+    useHistory
   } from "react-router-dom";
 import checkbox from "../../assets/img/checkbox.png";
 import tarjeta from "../../assets/img/tarjeta.png";
@@ -20,6 +22,8 @@ export const TemasScreen = () => {
     const authState = useSelector(state => state.auth);
     const dispatch = useDispatch();
     let {id} = useParams();
+    let history = useHistory();
+    console.log(history);
     const [painting, setPainting] = useState([]);
     const [banderaMat, setBanderaMat] = useState(false);
     const [idMaterial, setIdMaterial] = useState(1);
@@ -50,14 +54,13 @@ export const TemasScreen = () => {
                 materials: img.materials,
                 measurements: img.measurements,
                 theme_id: img.theme_id,
+                stock: img.stock,
             }
         })
         setPainting(cuadro);
         setBanderaMat(true);
         setBanderaDim(true);
      }
-
-     console.log(precio);
     
     const handleClick = () =>{
         if(precio === 0 || material === '' || precio == 0 || precio === null){
@@ -108,9 +111,10 @@ export const TemasScreen = () => {
                 imageUrl: compra,
                 imageWidth: 200,
                 imageHeight: 200,
-                footer: '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/main/cart">Ver carrito</a>'
               })
             dispatch(addToCart(id, precio, material,idMaterial,medidas));
+            let path = `/main/cart`;
+            history.push(path);
         }
     }
 
