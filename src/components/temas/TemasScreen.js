@@ -22,7 +22,8 @@ export const TemasScreen = () => {
     const dispatch = useDispatch();
     let {id} = useParams();
     let history = useHistory();
-    console.log(history);
+    const [banderitaCheck, setBanderitaCheck] = useState(false);
+
     const [painting, setPainting] = useState([]);
     const [banderaMat, setBanderaMat] = useState(false);
     const [idMaterial, setIdMaterial] = useState(1);
@@ -33,6 +34,7 @@ export const TemasScreen = () => {
     const [temaId, setTemaId] = useState(0);
     const [precio, setPrecio] = useState(0);
     const [material, setMaterial] = useState('');
+    
     
     useEffect(() => {
         getPainting();
@@ -148,6 +150,7 @@ export const TemasScreen = () => {
         setBanderaDim(false);
     }
     const handleChecked = (name) =>{
+        setBanderitaCheck(true);
         setMaterial(name)
     }
 
@@ -156,6 +159,7 @@ export const TemasScreen = () => {
         setMedidas(medida);
     }
     
+    console.log(banderitaCheck,'banderita');
 
     return (
         <div className="home__main-container animate__animated animate__fadeInLeft">
@@ -241,32 +245,35 @@ export const TemasScreen = () => {
                             <h4 className="temas__btn-title">Dimensiones</h4>
                             <div className="btn-div-wrap">
                             {
-                                dimensions.length >= 1 ?
-                                dimensions.map((dim)=>{
-                                    return (
-                                        <div key={dim.id}>
-                                            <input 
-                                                onClick={handlePrice} 
-                                                className="btn-radio-second" 
-                                                type="radio" 
-                                                name="name_name2" 
-                                                id={dim.id} 
-                                                value={dim.price} 
-                                                style={{visibility: 'hidden'}}
-                                            />
-                                            <label 
-                                                className="btn-material" 
-                                                htmlFor={dim.id}
-                                                onClick={()=>handleCheckedDim(dim.height, dim.width)}
-                                            >
-                                                {`${dim.height} X ${dim.width}`}
-                                            </label>
-                                        </div>
-                                        
-                                    )
-                                })
+                                banderitaCheck ? 
+                                    dimensions.length >= 1 ?
+                                    dimensions.map((dim)=>{
+                                        return (
+                                            <div key={dim.id}>
+                                                <input 
+                                                    onClick={handlePrice} 
+                                                    className="btn-radio-second" 
+                                                    type="radio" 
+                                                    name="name_name2" 
+                                                    id={dim.id} 
+                                                    value={dim.price} 
+                                                    style={{visibility: 'hidden'}}
+                                                />
+                                                <label 
+                                                    className="btn-material" 
+                                                    htmlFor={dim.id}
+                                                    onClick={()=>handleCheckedDim(dim.height, dim.width)}
+                                                >
+                                                    {`${dim.height} X ${dim.width}`}
+                                                </label>
+                                            </div>
+                                            
+                                        )
+                                    })
+                                    :
+                                    (<p>No hay medidas disponibles</p>)
                                 :
-                                (<p>No hay medidas disponibles</p>)
+                                <h3 className="selled__title-related" style={{margin:0}}>Selecciona un material primero</h3>
                             }
                             </div>
                             

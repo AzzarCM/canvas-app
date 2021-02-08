@@ -70,6 +70,7 @@ export const Checkout = () => {
         delivery_address: '',
         customer_uid: uid,
         delivery_zone_id: zoneId,
+        instructions:'',
     });
 
     //Valores de la tarjeta de credito
@@ -350,8 +351,8 @@ export const Checkout = () => {
                     <textarea 
                         className="text-area-direccion"
                         type="text"
-                        name="delivery_notes" 
-                        placeholder="Referencias o notas especificas para la entrega"
+                        name="instructions" 
+                        placeholder="Instrucciones para realizar la entrega"
                         onChange={ handleInputChange }
                     />
                 </div>

@@ -43,7 +43,6 @@ export const CartList = () => {
              {   
                 addedItems.length > 0 ?
                     addedItems.map((item )=>{
-                        // animate__animated animate__fadeInUp
                         return(
                             <li className="cart__list-container" key={item.id}>
                                 <div className="cart__img-container">
@@ -59,18 +58,18 @@ export const CartList = () => {
                                     <div style={{display: 'flex', width: 300, justifyContent: 'space-between'}}>
                                         <div>
                                             <p>
-                                                <b>{`Price: $${item.price}`}</b>
+                                                <b>Precio: <span style={{color:"#21AB91"}}>{`$${item.price}`}</span></b>
                                             </p>
                                             <p>
-                                                <b>Cantidad: {item.quantity}</b>    
+                                                <b>Cantidad: <span style={{color:"#21AB91"}}>{`${item.quantity}`}</span></b>    
                                             </p>
                                         </div>
                                         <div>
                                             <p>
-                                                <b>Medidas: {item.medidas}</b>    
+                                                <b>Medidas: <span style={{color:"#21AB91"}}>{`${item.medidas}`}</span></b>    
                                             </p>
                                             <p>
-                                                <b>Material: {item.material}</b>    
+                                                <b>Material: <span style={{color:"#21AB91"}}>{`${item.material}`}</span></b>    
                                             </p>
                                         </div>
                                     </div>

@@ -190,6 +190,11 @@
 .temas__card-body{
     text-align: center;
 }
+.temas__imagen-detail{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 1200px) and (max-width: 1366px){

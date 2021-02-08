@@ -34,6 +34,14 @@
     opacity: 0.5;
 }
 
+.history__order-details{
+    display: flex;
+}
+
+.history__delivery-container{
+    width: 75%;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 910px){
     .upload__container{
