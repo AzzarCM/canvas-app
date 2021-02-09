@@ -4,31 +4,50 @@ import { useParams } from 'react-router-dom'
 import { Navbar } from '../main/Navbar';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { API_HOST } from '../../constants/URLS'
-
+import firebase from 'firebase/app'
 export const Detail = () => {
     const { id } = useParams();
     const [orderDetail, setOrderDetail] = useState(null);
     const [deliveryDetail, setDeliveryDetail] = useState(null);
+    const [token, setToken] = useState('');
+    
+    const getIdToken = () =>{
+        firebase.auth().currentUser.getIdToken(true).then(function(idToken){
+            setToken(idToken);
+        })
+    }
+
+    useEffect(() => {
+        getIdToken();
+    }, [])
 
     function getOrderDetailById() {
         const url = `${API_HOST}/orders-details/order/${id}`
-        return fetch(url)
-            .then((res) => {
-                return res.json();
-            })
-            .then((result) => {
-                return result
-            })
+        return fetch(url,{
+            headers:{
+                "Authorization": 'Bearer ' + token,
+            }
+        })
+        .then((res) => {
+            return res.json();
+        })
+        .then((result) => {
+            return result
+        })
     }
     function getOrderDeliveryDetail() {
         const url = `${API_HOST}/orders/${id}`
-        return fetch(url)
-            .then((res) => {
-                return res.json();
-            })
-            .then((result) => {
-                return result
-            })
+        return fetch(url,{
+            headers:{
+                "Authorization": 'Bearer ' + token,
+            }
+        })
+        .then((res) => {
+            return res.json();
+        })
+        .then((result) => {
+            return result
+        })
     }
 
     useEffect(() => {
@@ -36,17 +55,15 @@ export const Detail = () => {
             .then(({ order }) => {
                 setDeliveryDetail(order);
             })
-    }, [])
+    }, [token])
 
     useEffect(() => {
         getOrderDetailById()
             .then(({ order_detail }) => {
                 setOrderDetail(order_detail);
             })
-    }, []);
+    }, [token]);
 
-    console.log(deliveryDetail);
-    console.log(orderDetail);
     return (
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />

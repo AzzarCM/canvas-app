@@ -19,7 +19,6 @@ export const AppRouter = () => {
     
     const [checking, setChecking] = useState(true);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    console.log(isLoggedIn);
     const { containerProps, indicatorEl } = useLoading({
         loading: checking,
         indicator: <BallTriangle width="50" />,

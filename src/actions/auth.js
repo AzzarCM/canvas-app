@@ -29,8 +29,14 @@ export const startLoginEmailPassword = (email, password)=>{
 export const startFacebookLogin = () =>{
     return (dispatch) =>{
         firebase.auth().signInWithPopup( facebookAuthProvider )
-            .then(userCred => {
-                console.log(userCred);
+            .then(({user, credential}) => {
+                dispatch(
+                    login(user.uid, user.displayName)
+                )
+            })
+            .catch(e =>{
+                console.log(e);
+                Swal.fire('Error', e.message, 'error');
             })
     }
 }
@@ -44,6 +50,10 @@ export const startGoogleLogin = () =>{
                 dispatch(
                     login(user.uid, user.displayName)
                 )
+            })
+            .catch(e =>{
+                console.log(e);
+                Swal.fire('Error', e.message, 'error');
             })
     }
 }

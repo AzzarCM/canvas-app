@@ -4,14 +4,26 @@ import { Navbar } from '../main/Navbar'
 import Table from 'react-bootstrap/Table'
 import {useParams, Link} from "react-router-dom"
 import { API_HOST } from '../../constants/URLS'
+import firebase from "firebase/app";
 
 export const Historial = () => {
     const {id} = useParams();
     const [orden, setOrden] = useState(null);
-
+    const [token, setToken] = useState('');
+    
+    const getIdToken = () =>{
+        firebase.auth().currentUser.getIdToken(true).then(function(idToken){
+            setToken(idToken);
+        })
+    }
+    
     function getOrderById() {
         const url = `${API_HOST}/orders/orders-by-customer/${id}`
-        return fetch(url)
+            return fetch(url,{
+                headers: {
+                    "Authorization": 'Bearer ' + token,
+                }
+            })
             .then((res)=>{
                 return res.json();
             })
@@ -19,13 +31,17 @@ export const Historial = () => {
                 return result
             })
     }
+    useEffect(() => {
+        getIdToken();
+    }, [])
+    
 
     useEffect(() => {
         getOrderById()
             .then((res)=>{
                 setOrden(res.orders)
             })
-    }, [])
+    }, [token])
 
 
     return (

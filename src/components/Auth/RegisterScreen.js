@@ -9,8 +9,6 @@ import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 export const RegisterScreen = () => {
 
     const dispatch = useDispatch();
-    const hola = useSelector(state=>state);
-    console.log(hola);
     const {msgError} = useSelector( state => state.ui);
 
     const [ formValues, handleInputChange ] = useForm({

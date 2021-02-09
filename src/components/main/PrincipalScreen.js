@@ -11,7 +11,6 @@ import { Navbar } from './Navbar'
 import tablet from '../../assets/img/tablet.png';
 import cuadro from "../../assets/img/cuadro.png";
 
-import firebase from "firebase/app";
 import {useSelector} from 'react-redux'
 import { SearchBar } from '../search/SearchBar';
 import { Temas } from '../temas/Temas';
@@ -19,18 +18,18 @@ import { Temas } from '../temas/Temas';
 export const PrincipalScreen = () => {
     // animate__animated animate__fadeIn
 
-    const auth = useSelector(state => state.auth);
-    if(JSON.stringify(auth) == '{}'){
-        console.log("no se ha logueado nadie");
-    }else{
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-            // Send token to your backend via HTTPS
-            // ...
-            console.log(idToken);
-          }).catch(function(error) {
-            // Handle error
-          });
-    }
+    //const auth = useSelector(state => state.auth);
+    // if(JSON.stringify(auth) == '{}'){
+    //     console.log("no se ha logueado nadie");
+    // }else{
+    //     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+    //         // Send token to your backend via HTTPS
+    //         // ...
+    //         console.log(idToken);
+    //       }).catch(function(error) {
+    //         // Handle error
+    //       });
+    // }
 
    
     return (

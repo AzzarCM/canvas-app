@@ -1,1 +1,1 @@
-export const API_HOST = `https://api-rest-canvas.herokuapp.com/api`;
+export const API_HOST = `http://canvasframeit.com:3000/api`;

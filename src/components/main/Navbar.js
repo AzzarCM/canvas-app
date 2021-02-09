@@ -19,7 +19,6 @@ export const Navbar = () => {
     const closeMobileMenu = () => setClick(false);
     const addedItems = useSelector(state => state.cart.addedItems);
 
-    console.log(addedItems);
     var total = 0
     addedItems.map((item)=>{
       total += item.quantity

@@ -14,7 +14,6 @@ import doneImg from '../../assets/img/done.png'
 import wompi from '../../assets/img/wompi.png'
 import { API_HOST } from '../../constants/URLS'
 
-var bcrypt = require('bcryptjs');
 
 export const Checkout = () => {
     
@@ -206,7 +205,7 @@ export const Checkout = () => {
                             method: "POST",
                             headers: {
                                 "Content-type": "application/json",
-                                "Authorization": 'none'
+                                "Authorization": 'Bearer ' + idToken,
                             },
                             body: JSON.stringify(data),
                         })
@@ -261,6 +260,7 @@ export const Checkout = () => {
         })
         .catch(function(error) {
             // Handle error
+            console.log("hubo un error con la autorizacion bearer", error);
           });
 
     }
