@@ -47,16 +47,10 @@ export const Checkout = () => {
     const [zones, setZones] = useState([]);
     const [zoneSelected, setZoneSelected] = useState(0);
     const [zoneName, setZoneName] = useState('');
-    const [inputVencimiento, setInputVencimiento] = useState('');
     const [errorMessage, setErrorMessage] = useState('campos vacios');
-
-    
+    const [totalPlusShipping, setTotalPlusShipping] = useState(0);
 
     const zoneIdAux = zoneName.split("-");
-    const inputSplited = inputVencimiento.split("/");
-
-    var mes = inputSplited[0];
-    var anio = inputSplited[1];
 
     //console.log(zoneId[0], 'soy zoneid');
     var zoneId = zoneIdAux[0];
@@ -75,14 +69,17 @@ export const Checkout = () => {
     //Valores de la tarjeta de credito
     const [ cardValues, handleInputCardChange ] = useForm({
         numeroTarjeta: '',
-        mesVencimiento: mes,
-        anioVencimiento: anio,
+        mesVencimiento: '',
+        anioVencimiento: '',
         cvv: '',
     })
 
-    const totalWithShipping = (total + parseFloat(zoneSelected)).toFixed(2);
+    //var totalWithShipping = (total + parseFloat(zoneSelected)).toFixed(2);
+    useEffect(() => {
+        setTotalPlusShipping((total + parseFloat(zoneSelected)).toFixed(2))
 
-
+    }, [formValues, cardValues, handleInputCardChange])
+    
     useEffect(() => {
         getAllZones();
     }, [])
@@ -107,10 +104,6 @@ export const Checkout = () => {
         setZoneSelected(e.target.value)
         setZoneName(e.target.options[e.target.selectedIndex].text)
 
-    }
-
-    const handleExpireDate = (e) =>{
-        setInputVencimiento(e.target.value);
     }
 
 
@@ -138,15 +131,9 @@ export const Checkout = () => {
     })
 
     const { customer_name, email,customer_phone, delivery_address,delivery_zone_id } = formValues;
-    const {numeroTarjeta,cvv} = cardValues
+    const {numeroTarjeta,cvv, mesVencimiento, anioVencimiento} = cardValues
     formValues.delivery_zone_id = parseFloat(zoneId);
-    formValues.total_amount = parseFloat(totalWithShipping);
-    cardValues.mesVencimiento = parseInt(mes);
-    cardValues.anioVencimiento = parseInt(anio);
-    // var salt = bcrypt.genSaltSync(10);
-    // const hash = bcrypt.hashSync(cvv, salt);
-    // cardValues.cvv = hash;
-
+    formValues.total_amount = parseFloat(totalPlusShipping);
 
 
     useEffect(() => {
@@ -154,7 +141,6 @@ export const Checkout = () => {
     }, [cardValues,formValues]);
 
     function isFormValuesValid() {
-        var expirationRegex = /(0[1-9]|10|11|12)\/20[0-9]{2}/
         if(validator.isEmpty(customer_name)){
             setErrorMessage("El campo del nombre esta vacio")
             return false
@@ -173,16 +159,29 @@ export const Checkout = () => {
         }else if(!validator.isCreditCard(numeroTarjeta)){
             setErrorMessage("El numero de tarjeta proporcionado no concuerda con VISA o MasterCard")
             return false
-        }else if((expirationRegex =! inputVencimiento)){
-            setErrorMessage("La fecha de expiracion no coincide con el patron");
-            return false
         }else if(validator.isEmpty(cvv)){
             setErrorMessage("El CVV esta vacio");
             return false;
+        }else if(validator.isEmpty(mesVencimiento)){
+            setErrorMessage("El mes de la tarjeta esta vacio")
+            return false;
+        }else if(validator.isEmpty(anioVencimiento)){
+            setErrorMessage("El año esta vacio")
+            return false
+        }else if(!validator.isLength(mesVencimiento,2,2)){
+            setErrorMessage("el mes debe de tener 2 numeros")
+            return false
+        }else if(!validator.isLength(anioVencimiento,4,4)){
+            setErrorMessage("El año debe tener 4 numeros")
+            return false
+        }else if(!validator.isLength(cvv,3,3)){
+            setErrorMessage("El cvv debe de tener 3 numeros")
+            return false
         }
         dispatch(removeError());
         return true
     }
+    console.log(validator.isLength(mesVencimiento,2,2));
 
     const handleSubmitData = () =>{
 
@@ -223,6 +222,8 @@ export const Checkout = () => {
                                     footer: `<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="${path}">Ver Historial</a>`
                                 })
                                 dispatch(emptyCart());
+                                setTotalPlusShipping(0);
+                                setZoneSelected(0);
                                 console.log("posteado con exito");
                             }else{
                                 Swal.fire({
@@ -382,16 +383,28 @@ export const Checkout = () => {
                     </div>
                     <div style={{display: 'flex'}}>
                         <div className="inputs-container-foot">
-                            <i className="far fa-calendar icon"></i>
+                            <i className="fas fa-calendar-day icon"></i>
                             <input 
                                 className="input__card-field" 
-                                type="text" 
-                                placeholder="MM/YYYY"
-                                name="card_expire_date"
-                                onChange={ handleExpireDate }
+                                type="number" 
+                                placeholder="MM"
+                                name="mesVencimiento"
+                                onChange={ handleInputCardChange }
                             />
                         </div>
                         <div className="inputs-container-foot">
+                            <i className="far fa-calendar icon"></i>
+                            <input 
+                                className="input__card-field" 
+                                type="number" 
+                                placeholder="YYYY"
+                                name="anioVencimiento"
+                                onChange={ handleInputCardChange }
+                            />
+                        </div>
+                        
+                    </div>
+                    <div style={{width: "50%", marginTop:"1rem"}} className="inputs-container-foot">
                             <i className="fas fa-lock icon"></i>
                             <input 
                                 className="input__card-field" 
@@ -401,8 +414,7 @@ export const Checkout = () => {
                                 onChange={ handleInputCardChange }
 
                             />
-                        </div>   
-                    </div>
+                    </div>   
                 </div>
             </form>
            
@@ -422,7 +434,7 @@ export const Checkout = () => {
                     </div>
                     <div className="cart__horizontal-total">
                         <p className="cart__p-align">Total</p>
-                        <p className="cart__total-color">{`$${totalWithShipping}`}</p>
+                        <p className="cart__total-color">{`$${totalPlusShipping}`}</p>
                     </div>
                     <button onClick={handleSubmitData} className="checkout-button" type="submit">Confirmar compra</button>
                 </div>

@@ -9,23 +9,14 @@ export const Detail = () => {
     const { id } = useParams();
     const [orderDetail, setOrderDetail] = useState(null);
     const [deliveryDetail, setDeliveryDetail] = useState(null);
-    const [token, setToken] = useState('');
-    
-    const getIdToken = () =>{
-        firebase.auth().currentUser.getIdToken(true).then(function(idToken){
-            setToken(idToken);
-        })
-    }
-
-    useEffect(() => {
-        getIdToken();
-    }, [])
 
     function getOrderDetailById() {
         const url = `${API_HOST}/orders-details/order/${id}`
+        var idToken = localStorage.getItem("idToken");
+        console.log(idToken, 'token');
         return fetch(url,{
             headers:{
-                "Authorization": 'Bearer ' + token,
+                "Authorization": 'Bearer ' + idToken,
             }
         })
         .then((res) => {
@@ -37,9 +28,10 @@ export const Detail = () => {
     }
     function getOrderDeliveryDetail() {
         const url = `${API_HOST}/orders/${id}`
+        var idToken = localStorage.getItem("idToken");
         return fetch(url,{
             headers:{
-                "Authorization": 'Bearer ' + token,
+                "Authorization": 'Bearer ' + idToken,
             }
         })
         .then((res) => {
@@ -55,14 +47,14 @@ export const Detail = () => {
             .then(({ order }) => {
                 setDeliveryDetail(order);
             })
-    }, [token])
+    }, [])
 
     useEffect(() => {
         getOrderDetailById()
             .then(({ order_detail }) => {
                 setOrderDetail(order_detail);
             })
-    }, [token]);
+    }, []);
 
     return (
         <div className="home__main-container animate__animated animate__fadeIn">

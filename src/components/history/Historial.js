@@ -9,19 +9,14 @@ import firebase from "firebase/app";
 export const Historial = () => {
     const {id} = useParams();
     const [orden, setOrden] = useState(null);
-    const [token, setToken] = useState('');
-    
-    const getIdToken = () =>{
-        firebase.auth().currentUser.getIdToken(true).then(function(idToken){
-            setToken(idToken);
-        })
-    }
+
     
     function getOrderById() {
         const url = `${API_HOST}/orders/orders-by-customer/${id}`
+            var idToken = localStorage.getItem("idToken")
             return fetch(url,{
                 headers: {
-                    "Authorization": 'Bearer ' + token,
+                    "Authorization": 'Bearer ' + idToken,
                 }
             })
             .then((res)=>{
@@ -31,17 +26,13 @@ export const Historial = () => {
                 return result
             })
     }
-    useEffect(() => {
-        getIdToken();
-    }, [])
-    
 
     useEffect(() => {
         getOrderById()
             .then((res)=>{
                 setOrden(res.orders)
             })
-    }, [token])
+    }, [])
 
 
     return (

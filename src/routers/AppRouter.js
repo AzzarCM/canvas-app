@@ -35,6 +35,9 @@ export const AppRouter = () => {
             if(user?.uid){
                 dispatch(login(user.uid, user.displayName));
                 setIsLoggedIn(true);
+                firebase.auth().currentUser.getIdToken(true).then(function(idToken){
+                    localStorage.setItem("idToken", idToken);
+                })
             }else{
                 setIsLoggedIn(false);
             }
