@@ -104,7 +104,7 @@ export const LoginScreen = (props) => {
                     />
                     <button
                         type="submit"
-                        className="btn btn-primary"
+                        className="btn-own btn-primary"
                         disabled={loading}
                     >
                         Iniciar sesion
