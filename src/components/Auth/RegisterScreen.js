@@ -112,6 +112,7 @@ export const RegisterScreen = () => {
                     onChange={ handleInputChange }  
                 />
                 <button
+                    style={{ marginBottom: 15, height: 50 }}
                     type="submit"
                     className="btn btn-primary"
                     
