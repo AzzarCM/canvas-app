@@ -39,7 +39,7 @@ export const Historial = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <h1 className="selled__title-related mb-5">Historial de compras</h1>
-            <Table responsive="md" striped bordered hover>
+            <Table style={{marginBottom: '4rem'}} responsive="md" striped bordered hover>
                 <thead>
                     <tr>
                         <th>Orden Id</th>
@@ -67,7 +67,7 @@ export const Historial = () => {
                                         <td>{`$${item.delivery_zone.delivery_cost}`}</td>
                                         <td>{`$${item.total_amount}`}</td>
                                         <td>{item.status}</td>
-                                        <td><Link to={path}>Ver detalle</Link></td>
+                                        <td><Link className="detail-button" to={path}>Ver detalle <i className="fas fa-info-circle"></i></Link></td>
                                     </tr>    
                                 )
                             })

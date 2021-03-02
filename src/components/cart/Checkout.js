@@ -86,7 +86,12 @@ export const Checkout = () => {
 
     const getAllZones = async () => {
         const url = `${API_HOST}/delivery-zones`
-        const resp = await fetch(url)
+        var idToken = localStorage.getItem("idToken")
+        const resp = await fetch(url,{
+            headers:{
+                "Authorization": 'Bearer ' + idToken,
+            }
+        })
         const { delivery_zones } = await resp.json();
         const zonas = delivery_zones.map((item)=>{
             return {

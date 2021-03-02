@@ -203,11 +203,22 @@
 .btn-radio-second:checked + label{
     color: white;
     border: 1px solid white;
-    background-color: #21AB91;;
+    background-color: #21AB91;
     width: 150px;
     height: 50px;
     padding-top: 12px;
     border-radius: 10px;
     text-align: center;
     transition: background-color .5s ease;
+}
+
+.detail-button{
+    background-color: #21AB91;
+    padding: 0.5rem;
+    border-radius: 10px;
+    color: white;
+}
+.detail-button:hover{
+    color: rgba(255, 255, 255, 0.692);
+    text-decoration: none;
 }

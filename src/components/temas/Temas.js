@@ -51,7 +51,7 @@ export const Temas = () => {
                         console.log(path);
                         return (
                             <Card className="temas__card-individual" key={item.id}>
-                                {/* {<Card.Img className="temas__card-image" variant="top" src={item.image_url} />} */}
+                                <Card.Img className="temas__card-image" variant="top" src={item.image_url} />
                                 <Card.Body className="temas__card-body">
                                     <Card.Title style={{color: "#31B199", marginBottom: '2rem'}}>{item.name}</Card.Title>
                                     <a href={path}>
