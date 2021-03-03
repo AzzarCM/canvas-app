@@ -38,7 +38,7 @@ export const WrapImages = (props) => {
     }
     //className="animate__animated animate__fadeIn"
     return (
-        <div className="animate__animated animate__fadeIn" style={{ width: "95%" }}>
+        <div className="animate__animated animate__fadeIn" style={{ width: "100%" }}>
             {
                 bandera ?
                     <section style={{

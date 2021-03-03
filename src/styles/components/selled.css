@@ -12,7 +12,7 @@
     cursor: pointer;
 }
 .selled__imagen:hover{
-    width: 330px;
+    width: 315px;
 }
 .selled__images-container{
     display: flex;
