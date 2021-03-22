@@ -11,9 +11,11 @@ import { Navbar } from './Navbar'
 import tablet from '../../assets/img/tablet.png';
 import cuadro from "../../assets/img/cuadro.png";
 
-import {useSelector} from 'react-redux'
 import { SearchBar } from '../search/SearchBar';
 import { Temas } from '../temas/Temas';
+
+import header from '../../assets/img/header.jpg';
+import { light } from '@material-ui/core/styles/createPalette';
 
 export const PrincipalScreen = () => {
     // animate__animated animate__fadeIn
@@ -36,17 +38,19 @@ export const PrincipalScreen = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <SearchBar/>
-            <Carousel />
-            <div className="home__canvas-text-container">
-                <h2 className="home__canvas-text">CANVAS</h2>
-                <p className="home__paragraph-p">Lorem reprehenderit ut quis dolor tempor id aliquip eu.
-                Adipisicing sint sunt fugiat exercitation nisi. Tempor officia
-                sunt tempor veniam. Nisi culpa consectetur elit duis est irure
-                incididunt adipisicing sunt et velit. Veniam culpa exercitation
-                non ex minim consequat non dolor amet. Fugiat dolor sit aliqua
-                ipsum laboris.
-                </p>
+            
+            <div className="carousel__main-image">
+                <div className="carousel__container">
+                    <p className="p-text-cuadro" >Cuadros personalizados</p>
+                    <span className="span-text-foto">Mandanos tu foto o elige de nuestra colección</span>
+                </div>
+                <div className="container-redes">
+                    <p><i className="fab fa-facebook"></i> CANVAS SV</p>
+                    <p><i className="fab fa-instagram"></i> CANVAS.SV</p>
+                    <p><i className="fab fa-whatsapp"></i> +503 7609 9688</p>
+                </div>
             </div>
+            
             <div className="home__separator">
                 <div className="home__line1"></div>
                 <h2 className="home__text">¿Necesitas inspiracion?<br />
@@ -66,8 +70,16 @@ export const PrincipalScreen = () => {
                 </div>
                 <img alt="imagen" src={tablet}/>
             </div>
-
-            <div className="home__cuadro-part">
+            <div className="home__canvas-text-container">
+                <h2 className="home__canvas-text">CANVAS</h2>
+                <p className="home__paragraph-p">
+                ¿QUIÉNES SOMOS? <br/><br/>
+                Somos una empresa que nace con el objetivo de ayudarte a personalizar tus espacios 
+                materializando tus ideas, “la imagen que tu quieras del tamaño que tu quieras” 
+                marcando una diferencia sin limitarnos a las propuestas que posee el mercado actual.
+                </p>
+            </div>
+            {/* {<div className="home__cuadro-part">
                 <img alt="imagen" src={cuadro}/>
                 <div className="home__table-left">
                     <h3 className="home__tienes">
@@ -83,7 +95,7 @@ export const PrincipalScreen = () => {
                         <button className="home__btn">IR A PREGUNTAS</button>
                     </a>
                 </div>
-            </div>
+            </div>} */}
             <Footer/>
         </div>
     )

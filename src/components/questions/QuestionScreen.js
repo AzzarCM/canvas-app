@@ -19,9 +19,9 @@ export const QuestionScreen = () => {
                 <img className="question__image" alt="imagen" src={question} />
                 <div>
                     <h1 className="questions__title">¿Tienes dudas?</h1>
-                    <p className="questions__paragraph">Aqui hay una serio de preguntas frecuentes por parte de nuestros clientes <br />
+                    <p className="questions__paragraph">Aqui hay una serie de preguntas frecuentes por parte de nuestros clientes <br />
                         Cualquier pregunta mas especifica la puedes hacer a traves de nuestras redes <br />
-                        o puedes mandarnos un correo a: <br></br> <br></br> atencionalcliente@canvasframeit.com <br />
+                        o puedes mandarnos un correo a: <br></br> <br></br> micanva@canvasframeit.com <br />
                     </p>
                    {/* { <div className="questions__search-part">
                         <input className="questions__search-input" type="text" />

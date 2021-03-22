@@ -8,6 +8,7 @@
 .home__separator{
     display: -webkit-flex;
     align-items: center;
+    margin-top: 5%;
 }
 
 .home__text{
@@ -29,8 +30,8 @@
 }
 
 .home__canvas-text-container{
-    margin-top: 5%;
-    margin-bottom: 5%;
+    margin-top: 10%;
+    margin-bottom: 10%;
     display: -webkit-flex;
     align-items: center;
     width: 65%;
@@ -114,6 +115,15 @@
     font-size: 33px;
     margin-bottom: 15%;
 }
+
+.p-text-cuadro{
+    font-size: 85px;
+}
+
+.span-text-foto{
+    font-size: 40px;
+    font-weight: lighter;
+}
 /* Smartphones (portrait and landscape) ----------- */
 @media  (min-width: 920px) and (max-width: 1366px){
     .home__canvas-text-container{
@@ -148,5 +158,15 @@
     }
     .home__cuadro-part img{
         width: 200px;
+    }
+    .home__paragraph-p{
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .p-text-cuadro{
+        font-size: 45px;
+    }
+    .span-text-foto{
+        font-size: 25px;
     }
 }
