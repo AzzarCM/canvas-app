@@ -12,7 +12,7 @@ import tablet from '../../assets/img/tablet.png';
 import cuadro from "../../assets/img/cuadro.png";
 
 import { SearchBar } from '../search/SearchBar';
-import { Temas } from '../temas/Temas';
+import { TemasHome } from '../main/TemasHome'
 
 import header from '../../assets/img/header.jpg';
 import { light } from '@material-ui/core/styles/createPalette';
@@ -58,7 +58,7 @@ export const PrincipalScreen = () => {
                 <div className="home__line2"></div>
             </div>
 
-            <Temas/>
+            <TemasHome/>
 
             <div className="home__tablet-part">
                 <div className="home__table-left">
