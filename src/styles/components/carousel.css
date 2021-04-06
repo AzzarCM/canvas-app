@@ -17,7 +17,6 @@
 }
 
 .carousel__main-image{
-    margin-top: 5%;
     position: relative;
     background: url(../../assets/img/header.jpg) no-repeat center;
     background-attachment: fixed;

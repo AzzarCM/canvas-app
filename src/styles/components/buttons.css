@@ -45,13 +45,14 @@
 
 .link-navbar{
     text-decoration: none;
-    color: #838383;
+    color: #58C7B2;
+    color: white;
     transition: color .3s ease;
     margin-bottom: 0;
     cursor: pointer;
 }
 .link-navbar:hover{
-    color: #666666;
+    color: #409e8d;
 }
 
 .home__btn{

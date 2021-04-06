@@ -20,7 +20,7 @@ export const WrapImages = (props) => {
     }, [])
 
     const getAllImages = async () => {
-        const url = `${API_HOST}/themes/get-paintings/${id}`;
+        const url = `${API_HOST}/paintings/theme/${id}`;
         const resp = await fetch(url)
 
         const { themes } = await resp.json();

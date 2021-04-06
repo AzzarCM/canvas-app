@@ -10,6 +10,7 @@ export const AllThemes = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <SearchBar/>
+            <h1 className="selled__title-related">Temas</h1>
             <Temas/>
             <Footer/>
         </div>

@@ -162,7 +162,7 @@ export const Navbar = () => {
                 </p>
               </li>
               <li style={{marginLeft: 10}}>
-                <a style={{color: "#21AB91"}} className="link-navbar" href={pathHistory}>
+                <a className="link-navbar" href={pathHistory}>
                   HISTORIAL
                 </a>
               </li>
