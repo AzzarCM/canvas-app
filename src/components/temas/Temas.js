@@ -45,7 +45,7 @@ export const Temas = () => {
                     {indicatorEl}
                 </section>
                 :
-                <div style={{display: 'flex', flexWrap: 'wrap'}}>
+                <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
                     { themes.map(item => {
                         const path = `/main/categoria/${item.id}`
                         console.log(path);
