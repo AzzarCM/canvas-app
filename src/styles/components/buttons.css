@@ -46,7 +46,7 @@
 .link-navbar{
     text-decoration: none;
     color: #58C7B2;
-    color: white;
+    color: grey;
     transition: color .3s ease;
     margin-bottom: 0;
     cursor: pointer;
