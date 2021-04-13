@@ -33,7 +33,7 @@ export const Cart = () => {
                 <button onClick={handleClick} style={{padding: 10}} className="checkout-button mb-5">pagar</button>
                 :
                 <Link className="cart__checkout-link" to="/main/checkout">
-                    <button className="checkout-button mb-5">pagar</button>
+                    <button className="checkout-button mb-5">PAGAR</button>
                 </Link>
             }
            

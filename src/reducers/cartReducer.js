@@ -24,7 +24,7 @@ export const cartReducer = (state = initialState, action) =>{
 
             if(existed_item)
             {
-            if(existed_item.material != action.material){
+            if(existed_item.material != action.material || existed_item.material == action.material){
                 const new_id = Math.floor(Math.random() * 10000) + 1000;
                 addedItem.id = new_id;
                 addedItem.price = action.price;

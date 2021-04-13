@@ -19,7 +19,6 @@
 .carousel__main-image{
     position: relative;
     background: url(../../assets/img/header.jpg) no-repeat center;
-    background-attachment: fixed;
     background-size: cover;
     height: 700px;
     width: 100%;

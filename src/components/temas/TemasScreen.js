@@ -17,7 +17,10 @@ import { SearchBar } from '../search/SearchBar';
 import { API_HOST } from '../../constants/URLS'
 
 export const TemasScreen = () => {
-
+    
+    window.onpopstate = function name(e) {
+        window.location.reload();
+    }
     const authState = useSelector(state => state.auth);
     const dispatch = useDispatch();
     let {id} = useParams();

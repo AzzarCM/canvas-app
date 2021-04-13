@@ -38,7 +38,7 @@ export const Navbar = () => {
           <div className="logo-nav">
             <div className="logo-container">
                 <a href="/main/home">
-                    <img alt="logo" src={logo}/>
+                    <img alt="logo" className="navbar-logo-img" src={logo}/>
                 </a>
             </div>
             <ul className={click ? "nav-options active" : "nav-options"}>
