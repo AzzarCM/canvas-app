@@ -157,6 +157,7 @@
 .temas__precio-cuadro{
     font-size: 25px;
     margin-top: 5%;   
+    text-align: center;
 }
 
 .btn-div-wrap{
@@ -224,7 +225,7 @@
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 920px){
     .temas__side-bar{
-        flex-direction: row;
+        display: none;
     }
     .temas__link-temas{
         margin: 0;
@@ -246,11 +247,6 @@
     }
     .temas__search-container{
         flex-direction: column;
-    }
-    .temas__side-bar{
-        align-items: center;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
     }
     .temas__garantia{
         display: none;

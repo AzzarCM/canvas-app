@@ -30,6 +30,8 @@
     margin-top: 4rem;
     width: 75%;
     justify-content: space-between;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 .auth__form{

@@ -313,7 +313,8 @@ export const Checkout = () => {
                         <input 
                             className="input-number-card"
                             type="text"
-                            name="customer_phone" 
+                            name="customer_phone"
+                            maxLength="8" 
                             placeholder="Numero telefonico"
                             value={ customer_phone }
                             onChange={ handleInputChange }
@@ -391,8 +392,9 @@ export const Checkout = () => {
                             <i className="fas fa-calendar-day icon"></i>
                             <input 
                                 className="input__card-field" 
-                                type="number" 
+                                type="text" 
                                 placeholder="MM"
+                                maxLength="2"
                                 name="mesVencimiento"
                                 onChange={ handleInputCardChange }
                             />
@@ -401,8 +403,9 @@ export const Checkout = () => {
                             <i className="far fa-calendar icon"></i>
                             <input 
                                 className="input__card-field" 
-                                type="number" 
+                                type="text" 
                                 placeholder="YYYY"
+                                maxLength="4"
                                 name="anioVencimiento"
                                 onChange={ handleInputCardChange }
                             />
@@ -414,6 +417,7 @@ export const Checkout = () => {
                             <input 
                                 className="input__card-field" 
                                 type="number" 
+                                maxLength="3"
                                 placeholder="CVC"
                                 name="cvv"
                                 onChange={ handleInputCardChange }

@@ -66,7 +66,7 @@ export const LoginScreen = (props) => {
                         display: 'flex',
                         alignItems: 'center'
                     }}>
-                        <p style={{ paddingRight: 20, marginBottom: 0 }}>Sin cuenta?</p>
+                        <p style={{ paddingRight: 20, marginBottom: 0 }}>¿Sin cuenta?</p>
                         <a href="/auth/register">
                             <button className="btn-medium">
                                 Registrate

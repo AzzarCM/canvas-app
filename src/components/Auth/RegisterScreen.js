@@ -58,7 +58,7 @@ export const RegisterScreen = () => {
                 <div style={{
                     display:'flex', 
                     alignItems:'center'}}>
-                    <p style={{paddingRight:20, marginBottom: 0}}>Ya tienes cuenta?</p>
+                    <p style={{paddingRight:20, marginBottom: 0}}>¿Ya tienes cuenta?</p>
                     <a href="/auth/login">
                         <button className="btn-medium">
                         Iniciar sesion

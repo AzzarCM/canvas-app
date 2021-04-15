@@ -285,14 +285,14 @@ export const TemasScreen = () => {
                     {
                         precio == 0 ? 
                         <p className="temas__precio-cuadro">
-                            {`Selecciona un material y dimension para conocer el precio $${precio}`}
+                            
                         </p> :
                         <p className="temas__precio-cuadro">
                         {`Precio del cuadro $${precio}`}
                         </p>
                     }
                 
-                        
+        
                 </div>
             </div>
             <div className="temas__buy-container">
