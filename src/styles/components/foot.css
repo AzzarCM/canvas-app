@@ -11,8 +11,7 @@
     align-items: center;
     justify-content: space-evenly;
     width: 100vw;
-    padding-top: 4%;
-    padding-bottom: 4%;
+    padding-top: 1%;
 }
 
 .foot__bottom-div{
@@ -21,7 +20,6 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    padding-bottom: 1%;
     padding-top: 1%;
 }
 

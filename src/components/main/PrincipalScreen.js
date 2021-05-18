@@ -9,29 +9,11 @@ import { Navbar } from './Navbar'
 //assets
 
 import tablet from '../../assets/img/tablet.png';
-import cuadro from "../../assets/img/cuadro.png";
 
 import { SearchBar } from '../search/SearchBar';
 import { TemasHome } from '../main/TemasHome'
 
-import header from '../../assets/img/header.jpg';
-import { light } from '@material-ui/core/styles/createPalette';
-
 export const PrincipalScreen = () => {
-    // animate__animated animate__fadeIn
-
-    //const auth = useSelector(state => state.auth);
-    // if(JSON.stringify(auth) == '{}'){
-    //     console.log("no se ha logueado nadie");
-    // }else{
-    //     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken) {
-    //         // Send token to your backend via HTTPS
-    //         // ...
-    //         console.log(idToken);
-    //       }).catch(function(error) {
-    //         // Handle error
-    //       });
-    // }
 
    
     return (

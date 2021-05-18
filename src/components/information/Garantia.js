@@ -13,7 +13,7 @@ export const Garantia = () => {
 
 
     return (
-        <div className="home__main-container">
+        <div>
         <Document
             file={garantia}
             options={{workerSrc: "/pdf.worker.js"}}

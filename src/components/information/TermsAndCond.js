@@ -13,7 +13,7 @@ export const TermsAndCond = () => {
 
 
     return (
-        <div className="home__main-container">
+        <div>
         <Document
             file={terms}
             options={{workerSrc: "/pdf.worker.js"}}

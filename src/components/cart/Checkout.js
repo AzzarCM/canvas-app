@@ -372,8 +372,9 @@ export const Checkout = () => {
                             <i className="fas fa-credit-card icon"></i>
                             <input 
                                 className="input-number-card" 
-                                type="text" 
-                                placeholder="Numero Tarjeta" 
+                                type="text"
+                                maxLength="16" 
+                                placeholder="Numero tarjeta sin espacios" 
                                 name="numeroTarjeta" 
                                 onChange={ handleInputCardChange }
                             />
@@ -416,7 +417,7 @@ export const Checkout = () => {
                             <i className="fas fa-lock icon"></i>
                             <input 
                                 className="input__card-field" 
-                                type="number" 
+                                type="text" 
                                 maxLength="3"
                                 placeholder="CVC"
                                 name="cvv"

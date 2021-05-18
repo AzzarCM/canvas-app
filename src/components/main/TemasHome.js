@@ -17,6 +17,7 @@ export const TemasHome = () => {
     function getThemes() {
         const url = `${API_HOST}/themes/home`
         return fetch(url).then((res)=>{
+            console.log("hola");
             return res.json()
         })
         .then((result)=>{
