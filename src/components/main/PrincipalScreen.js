@@ -15,7 +15,7 @@ import { TemasHome } from '../main/TemasHome'
 
 export const PrincipalScreen = () => {
 
-   
+    const screenWith = window.innerWidth;
     return (
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
@@ -24,7 +24,7 @@ export const PrincipalScreen = () => {
             <div className="carousel__main-image">
                 <div className="carousel__container">
                     <p className="p-text-cuadro" >Cuadros personalizados</p>
-                    <span className="span-text-foto">Mandanos tu foto o elige de nuestra colección</span>
+                    <span className="span-text-foto">{screenWith}Mandanos tu foto o elige de nuestra colección</span>
                 </div>
                 <div className="container-redes">
                     <p><i className="fab fa-facebook"></i> CANVAS SV</p>
