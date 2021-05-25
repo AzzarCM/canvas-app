@@ -1,16 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import imagen from "../../assets/img/register.png";
 import logo from "../../assets/img/logo.png";
 import { useForm } from '../../hooks/useForm';
 import validator from "validator";
-import { useDispatch, useSelector } from 'react-redux';
-import { setError, removeError } from "../../actions/ui"
+import { useDispatch } from 'react-redux';
 import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 export const RegisterScreen = () => {
 
     const dispatch = useDispatch();
-    const {msgError} = useSelector( state => state.ui);
-
+    const [flag, setFlag] = useState(true)
+    const [errorMessage, setErrorMessage] = useState('');
     const [ formValues, handleInputChange ] = useForm({
         name: '',
         email: '',
@@ -22,17 +21,21 @@ export const RegisterScreen = () => {
 
     function isFormValid() {
         if(validator.isEmpty(name)){
-            dispatch( setError('Name is required'));
+            setErrorMessage('El nombre es campo requerido');
+            setFlag(false);
             return false
         } else if (!validator.isEmail(email)){
-            dispatch( setError('Email is not valid'));
+            setErrorMessage('El correo no es valido');
+            setFlag(false)
             return false
         } else if (!validator.equals(password,password2)){
-            dispatch( setError('Password does not match'))
+            setErrorMessage('Las contraseñas no coinciden');
+            setFlag(false);
             return false
         }
 
-        dispatch(removeError());
+        setFlag(true);
+        setErrorMessage('');
         return true
     }
 
@@ -68,12 +71,12 @@ export const RegisterScreen = () => {
             </div>
             <h2 className="auth__h2-align">Registrarse</h2>
             {
-                msgError &&
+                flag ?
                 (
-                    <div className="auth__alert-error">
-                        {msgError}
+                    <div></div>
+                ) :  <div className="auth__alert-error">
+                        {errorMessage}
                     </div>
-                )
                 
             }
             <form 

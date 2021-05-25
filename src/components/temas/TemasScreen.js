@@ -161,8 +161,6 @@ export const TemasScreen = () => {
         const medida = `${altura} X ${ancho}`
         setMedidas(medida);
     }
-    
-    console.log(banderitaCheck,'banderita');
 
     return (
         <div className="home__main-container animate__animated animate__fadeInLeft">

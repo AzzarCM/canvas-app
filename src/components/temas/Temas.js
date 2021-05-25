@@ -26,6 +26,7 @@ export const Temas = () => {
                 id: theme.id,
                 name: theme.name,
                 image_url: theme.image_url,
+                active: theme.active,
             }
         })
         setThemes(temas);
@@ -48,17 +49,21 @@ export const Temas = () => {
                 <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
                     { themes.map(item => {
                         const path = `/main/categoria/${item.id}`
-                        console.log(path);
                         return (
-                            <Card className="temas__card-individual" key={item.id}>
-                                <Card.Img className="temas__card-image" variant="top" src={item.image_url} />
-                                <Card.Body className="temas__card-body">
+                            <div> {item.active ? 
+                                <Card className="temas__card-individual" key={item.id}>
+                                    <Card.Img className="temas__card-image" variant="top" src={item.image_url} />
+                                    <Card.Body className="temas__card-body">
                                     <Card.Title style={{color: "#31B199", marginBottom: '2rem'}}>{item.name}</Card.Title>
                                     <a href={path}>
-                                    <Button  variant="outline-secondary">Ver tema</Button>
+                                        <Button  variant="outline-secondary">Ver tema</Button>
                                     </a>
-                                </Card.Body>
-                            </Card>
+                                    </Card.Body>
+                                 </Card> :
+                                <div></div>
+                            
+                            }</div>
+                           
                         )
                     })}
                 </div> 

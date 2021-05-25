@@ -8,7 +8,6 @@ export const TemasHome = () => {
 
     const [themes, setThemes] = useState([])
     const [loading, setLoading] = useState(true);
-
     const { containerProps, indicatorEl } = useLoading({
         loading: loading,
         indicator: <BallTriangle width="50" />,
@@ -17,7 +16,6 @@ export const TemasHome = () => {
     function getThemes() {
         const url = `${API_HOST}/themes/home`
         return fetch(url).then((res)=>{
-            console.log("hola");
             return res.json()
         })
         .then((result)=>{
@@ -55,8 +53,8 @@ export const TemasHome = () => {
             <div style={{display: 'flex', flexWrap: 'wrap'}}>
             { themes.map(item => {
                 const path = `/main/categoria/${item.id}`
-                console.log(path);
                 return (
+                    
                     <Card className="temas__card-individual" key={item.id}>
                         <Card.Img className="temas__card-image" variant="top" src={item.image_url} />
                         <Card.Body className="temas__card-body">

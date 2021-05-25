@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { Navbar } from '../main/Navbar';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { API_HOST } from '../../constants/URLS'
-import firebase from 'firebase/app'
 export const Detail = () => {
     const { id } = useParams();
     const [orderDetail, setOrderDetail] = useState(null);
@@ -13,7 +12,6 @@ export const Detail = () => {
     function getOrderDetailById() {
         const url = `${API_HOST}/orders-details/order/${id}`
         var idToken = localStorage.getItem("idToken");
-        console.log(idToken, 'token');
         return fetch(url,{
             headers:{
                 "Authorization": 'Bearer ' + idToken,

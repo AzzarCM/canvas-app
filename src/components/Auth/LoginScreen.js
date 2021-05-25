@@ -1,15 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { startLoginEmailPassword, startFacebookLogin, startGoogleLogin } from '../../actions/auth';
 import imagen from "../../assets/img/inicio-sesion.png"
 import logo from "../../assets/img/logo.png"
 import { useForm } from '../../hooks/useForm'
 import validator from "validator";
-import { setError, removeError } from "../../actions/ui"
 export const LoginScreen = (props) => {
-
+   
     const dispatch = useDispatch();
-    const { msgError } = useSelector(state => state.ui);
+    const [flag, setFlag] = useState(true)
+    const [errorMessage, setErrorMessage] = useState('');
     const { loading } = useSelector(state => state.ui);
     const [formValues, handleInputChange] = useForm({
         email: '',
@@ -20,20 +20,24 @@ export const LoginScreen = (props) => {
 
     function isFormValid() {
         if (!validator.isEmail(email)) {
-            dispatch(setError('Correo electronico invalido'));
+            setErrorMessage('Correo electronico invalido')
+            setFlag(false)
             return false
         } else if (validator.isEmpty(email)) {
-            dispatch(setError('El campo del correo esta vacio'))
+            setErrorMessage('El campo del correo esta vacio')
+            setFlag(false)
             return false
         } else if (validator.isEmpty(password)) {
-            dispatch(setError('El campo de la contraseña esta vacia'))
+            setErrorMessage('El campo de la contraseña esta vacia')
+            setFlag(false)
             return false
         } else if (password.lenght < 6) {
-            dispatch(setError('la contraseña debe ser mayor a 6 caracteres'))
+            setErrorMessage('la contraseña debe ser mayor a 6 caracteres')
+            setFlag(false)
             return false
         }
-
-        dispatch(removeError())
+        setFlag(true)
+        setErrorMessage('');
         return true
     }
     const handleLogin = (e) => {
@@ -69,22 +73,18 @@ export const LoginScreen = (props) => {
                         <p style={{ paddingRight: 20, marginBottom: 0 }}>¿Sin cuenta?</p>
                         <a href="/auth/register">
                             <button className="btn-medium">
-                                Registrate
+                                Regístrate
                             </button>
                         </a>
 
                     </div>
                 </div>
                 <h2 className="auth__h2-align">Iniciar sesión</h2>
-                {
-                    msgError &&
-                    (
-                        <div className="auth__alert-error">
-                            {msgError}
-                        </div>
-                    )
-
-                }
+                    {
+                        flag ? <div></div> : <div className="auth__alert-error">{errorMessage}</div>
+                    }
+                        
+                 
                 <form className="auth__form" onSubmit={handleLogin}>
                     <input
                         type="text"

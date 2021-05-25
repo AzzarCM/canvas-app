@@ -46,6 +46,7 @@
     border-radius: 10px;
     height: 50px;
     margin-bottom: 5%;
+    padding-left: 1rem;
 }
 .auth__input:focus{
     border: 1px solid #21AB91;

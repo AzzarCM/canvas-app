@@ -30,10 +30,10 @@ export const Cart = () => {
             <p style={{fontSize: 25}}>{`$${total}`}</p>
             {
                 JSON.stringify(authState)=='{}' ?
-                <button onClick={handleClick} style={{padding: 10}} className="checkout-button mb-5">pagar</button>
+                <button onClick={handleClick} style={{padding: 10}} className="checkout-button mb-5">Realizar Pago</button>
                 :
                 <Link className="cart__checkout-link" to="/main/checkout">
-                    <button className="checkout-button mb-5">PAGAR</button>
+                    <button className="checkout-button mb-5">Realizar Pago</button>
                 </Link>
             }
            
