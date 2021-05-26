@@ -11,18 +11,8 @@ export const CartList = () => {
     const {addedItems} = useSelector(state => state.cart)
 
     const handleAddClick = (id) =>{
-        const item = addedItems.filter(cuadro => cuadro.id == id);
-        
-        if(item[0].quantity < item[0].stock){
-            dispatch(addQuantity(id));
-        }else{
-            Swal.fire({
-                icon: 'warning',
-                title: 'Ya no hay mas stock de este producto',
-            })
-        }
-
-        
+        //const item = addedItems.filter(cuadro => cuadro.id == id);
+        dispatch(addQuantity(id));   
     }
     
     const handleSubClick = (id) =>{
