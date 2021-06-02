@@ -67,7 +67,6 @@ export const startRegisterWithEmailPasswordName =
     return ( dispatch ) =>{
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then( async ({user}) =>{
-                console.log(`(no esta el idToken en esta opcion) UID: ${user.uid}`);
                 await user.updateProfile({displayName: name});
                 dispatch(
                     login(user.uid, user.displayName)

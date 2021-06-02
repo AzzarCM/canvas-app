@@ -39,7 +39,7 @@ export const Historial = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <h1 className="selled__title-related mb-5">Historial de compras</h1>
-            <Table style={{marginBottom: '4rem'}} responsive="md" striped bordered hover>
+            <Table style={{marginBottom: 200}} responsive="md" striped bordered hover>
                 <thead>
                     <tr>
                         <th>Orden Id</th>

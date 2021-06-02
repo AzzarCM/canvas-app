@@ -5,8 +5,10 @@ import imagen from "../../assets/img/inicio-sesion.png"
 import logo from "../../assets/img/logo.png"
 import { useForm } from '../../hooks/useForm'
 import validator from "validator";
+import Swal from 'sweetalert2';
+
 export const LoginScreen = (props) => {
-   
+    
     const dispatch = useDispatch();
     const [flag, setFlag] = useState(true)
     const [errorMessage, setErrorMessage] = useState('');
@@ -44,15 +46,24 @@ export const LoginScreen = (props) => {
         e.preventDefault();
         if (isFormValid()) {
             dispatch(startLoginEmailPassword(email, password));
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                html: `<pre><code>${errorMessage}</code></pre>`
+            })
         }
 
     }
 
-    const handleFacebookLogin = () => {
+    const handleFacebookLogin = (e) => {
+        e.preventDefault();
         dispatch(startFacebookLogin());
     }
 
-    const handleGoogleLogin = () => {
+    const handleGoogleLogin = (e) => {
+        e.preventDefault();
         dispatch(startGoogleLogin());
     }
 
@@ -80,11 +91,6 @@ export const LoginScreen = (props) => {
                     </div>
                 </div>
                 <h2 className="auth__h2-align">Iniciar sesión</h2>
-                    {
-                        flag ? <div></div> : <div className="auth__alert-error">{errorMessage}</div>
-                    }
-                        
-                 
                 <form className="auth__form" onSubmit={handleLogin}>
                     <input
                         type="text"

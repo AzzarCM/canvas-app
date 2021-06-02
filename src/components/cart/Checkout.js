@@ -43,7 +43,7 @@ export const Checkout = () => {
 
     tresDias.setDate(today.getDate() + 3);
     cincoDias.setDate(today.getDate() + 5);
-   
+    
     const [zones, setZones] = useState([]);
     const [zoneSelected, setZoneSelected] = useState(0);
     const [zoneName, setZoneName] = useState('');
@@ -111,20 +111,6 @@ export const Checkout = () => {
 
     }
 
-
-    const cuadros = () =>{
-        addedItems.map((item)=>{
-            return {
-                paintingId: item.id,
-                material_id: item.material_id,
-                measurements: item.medidas,
-                price: item.price,
-                quantity: item.quantity,
-            }
-        })
-        console.log(cuadros);
-    } 
-
     const item = addedItems.map((item)=>{
         return {
             paintingId: item.id,
@@ -186,7 +172,6 @@ export const Checkout = () => {
         dispatch(removeError());
         return true
     }
-    console.log(validator.isLength(mesVencimiento,2,2));
 
     const handleSubmitData = () =>{
 
@@ -216,6 +201,7 @@ export const Checkout = () => {
                         .then((res)=>res.json())
                         .then((resp)=>{
                             console.log(resp, 'esta es la respuesta');
+                            
                             if(!resp.error){
                                 const path = `/main/history/${uid}`
                                 Swal.fire({

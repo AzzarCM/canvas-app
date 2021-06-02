@@ -6,7 +6,6 @@ export const Footer = () => {
                 <div className="foot__left-part">
                     <a className="foot__links mb-5 align-text" href="/main/terms">TERMINOS Y CONDICIONES</a>
                     <a className="foot__links mb-5 align-text" href="/main/faq">PREGUNTAS FRECUENTES</a>
-                    <a className="foot__links mb-5 align-text" href="/">AVISO DE PRIVACIDAD</a>
                     <a className="foot__links mb-5 align-text" href="/main/garantia">SOBRE GARANTIA</a>
                 </div>
                 <div className="foot__middle-part">
@@ -33,8 +32,8 @@ export const Footer = () => {
                         sobre nuestra actividad ¡Síguenos!
                     </p>
                     <div className="foot__social-icons">
-                        <a className="mr-2" href="https://www.facebook.com/"><i className="fab fa-facebook-square a-color"></i></a>
-                        <a className="mr-2" href="https://twitter.com/Canvas_sv01"><i className="fab fa-twitter-square a-color"></i></a>
+                        <a className="mr-2" href="https://www.facebook.com/Canvas-SV-111154510666281"><i className="fab fa-facebook-square a-color"></i></a>
+                        <a className="mr-2" href="https://twitter.com/CanvasFrameIt"><i className="fab fa-twitter-square a-color"></i></a>
                         <a className="mr-2" href="https://www.instagram.com/canvas.sv/"><i className="fab fa-instagram-square a-color"></i></a>
                     </div>
                 </div>

@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom'
 import { Navbar } from '../main/Navbar';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import { API_HOST } from '../../constants/URLS'
+import HeaderOrderDetails from './HeaderOrderDetails';
 export const Detail = () => {
     const { id } = useParams();
     const [orderDetail, setOrderDetail] = useState(null);
     const [deliveryDetail, setDeliveryDetail] = useState(null);
-
     function getOrderDetailById() {
         const url = `${API_HOST}/orders-details/order/${id}`
         var idToken = localStorage.getItem("idToken");
@@ -24,6 +24,7 @@ export const Detail = () => {
             return result
         })
     }
+    
     function getOrderDeliveryDetail() {
         const url = `${API_HOST}/orders/${id}`
         var idToken = localStorage.getItem("idToken");
@@ -58,6 +59,8 @@ export const Detail = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <div className="history__delivery-container">
+                <h3 className="selled__title-related">Proceso de la orden</h3>
+                <HeaderOrderDetails order={deliveryDetail}/>
                 <h3 className="selled__title-related">Detalles de la orden</h3>
                 <Jumbotron>
                 {
@@ -77,10 +80,6 @@ export const Detail = () => {
                                     <div className="history__order-details">
                                         <b>Estado: </b>
                                         <p style={{ marginLeft: 10 }}>{item.status}</p>
-                                    </div>
-                                    <div className="history__order-details">
-                                        <b>Tipo de pago: </b>
-                                        <p style={{ marginLeft: 10 }}>{item.payment_type}</p>
                                     </div>
                                     <div className="history__order-details">
                                         <b>Total pagado: </b>

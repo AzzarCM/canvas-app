@@ -296,8 +296,8 @@ export const TemasScreen = () => {
             <div className="temas__buy-container">
 
                 <div className="temas__empty-space">
-                    <img className="imagen__tarjeta" alt="imagen" src={tarjeta}/>
-                    <p className="temas__querido" style={{fontSize: 24}}>
+                    <img style={{width: 140}} alt="imagen" src={tarjeta}/>
+                    <p className="temas__querido">
                         Querido usuario de 
                         Canvas,tomamos 
                         este espacio para 

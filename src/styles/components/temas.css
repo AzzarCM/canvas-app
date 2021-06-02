@@ -12,7 +12,7 @@
 }
 
 .temas__garantia-p{
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
 }
 
@@ -30,8 +30,7 @@
 .temas__info-h1{
     font-size: 50px;
     color: #31B199;
-    padding-bottom: 10%;
-    text-align: center;
+    padding-bottom: 2%;
 }
 .temas__materiales{
     display: flex;
@@ -41,7 +40,6 @@
 }
 .temas__btn-title{
     color: #277566;
-    text-align: center;
     font-size: 30px;
 }
 .temas__empty-space{
@@ -50,11 +48,6 @@
     align-items: center;
 }
 
-.imagen__tarjeta{
-    width: 200px;
-    height: 190px;
-    object-fit: cover;
-}
 
 .temas__buy-container{
     display: flex;
@@ -155,15 +148,15 @@
 }
 
 .temas__precio-cuadro{
-    font-size: 25px;
+    font-size: 30px;
     margin-top: 5%;   
-    text-align: center;
+    color: #277566;
+    font-weight: bold;
 }
 
 .btn-div-wrap{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     margin-top: 3%;
     margin-bottom: 3%;
 }
@@ -195,6 +188,10 @@
     width: 200px;
     height: 200px;
     object-fit: cover;
+}
+.temas__querido{
+    margin-top: 1rem;
+    font-size: 20px;
 }
 
 /* Smartphones (portrait and landscape) ----------- */
@@ -269,6 +266,15 @@
     }
     .temas__querido{
         margin-top: 10px;
+        text-align: center;
+    }
+    .temas__btn-title{
+        text-align: center;
+    }
+    .btn-div-wrap{
+        justify-content: center;
+    }
+    .temas__precio-cuadro{
         text-align: center;
     }
 }
