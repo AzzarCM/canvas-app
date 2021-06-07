@@ -134,6 +134,7 @@ export const TemasScreen = () => {
     }
 
     const handleDropDownChange = (e) =>{
+        //console.log(e.target.id);
         setIdMaterial(e.target.value)
         setBanderaDim(true);
         setRadioChecked(false);
@@ -243,7 +244,7 @@ export const TemasScreen = () => {
                             
                         </div>
                         <div className="temas__width-select">
-                            <h4 className="temas__btn-title">Dimensiones</h4>
+                            <h4 style={{marginBottom: 0, marginRight: 15}} className="temas__btn-title">Dimensiones</h4>
                             <div className="btn-div-wrap">
                             {
                                 banderitaCheck ? 
@@ -296,10 +297,9 @@ export const TemasScreen = () => {
             <div className="temas__buy-container">
 
                 <div className="temas__empty-space">
-                    <img style={{width: 140}} alt="imagen" src={tarjeta}/>
+                    <img style={{width: 80, marginRight: 15}} alt="imagen" src={tarjeta}/>
                     <p className="temas__querido">
-                        Querido usuario de 
-                        Canvas,tomamos 
+                        Tomamos 
                         este espacio para 
                         acordarte que tus 
                         compras siempre  

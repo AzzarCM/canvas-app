@@ -145,6 +145,8 @@
 
 .temas__width-select{
     width: 100%;
+    display: flex;
+    align-items: center;
 }
 
 .temas__precio-cuadro{
@@ -207,6 +209,9 @@
     .temas__empty-space{
         flex-direction: column;
         width: 100%;
+    }
+    .temas__width-select{
+        flex-direction: column;
     }
 
 }
