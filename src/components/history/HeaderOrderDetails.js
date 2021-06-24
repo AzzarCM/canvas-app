@@ -7,8 +7,6 @@ import step3 from "../../assets/img/step3.png";
 import step4 from "../../assets/img/step4.png";
 
 function HeaderOrderDetails({order}) {
-    console.log(order);
-
     return (
         <>
             {order && 

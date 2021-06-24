@@ -4,11 +4,11 @@ import { Navbar } from '../main/Navbar'
 import Table from 'react-bootstrap/Table'
 import {useParams, Link} from "react-router-dom"
 import { API_HOST } from '../../constants/URLS'
-import firebase from "firebase/app";
+
 
 export const Historial = () => {
     const {id} = useParams();
-    const [orden, setOrden] = useState(null);
+    const [orden, setOrden] = useState([]);
 
     
     function getOrderById() {
@@ -39,22 +39,21 @@ export const Historial = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <h1 className="selled__title-related mb-5">Historial de compras</h1>
-            <Table style={{marginBottom: 200}} responsive="md" striped bordered hover>
+            <Table variant="dark" style={{marginBottom: 200, width: '80vw', borderRadius: 25, borderStyle: 'hidden'}} responsive="md" striped bordered hover>
                 <thead>
                     <tr>
                         <th>Orden Id</th>
                         <th>Fecha Orden</th>
                         <th>Nombre</th>
-                        <th>Lugar</th>
                         <th>Envio</th>
                         <th>Total</th>
                         <th>Estado</th>
                         <th>Accion</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody style={{textAlign: 'center'}}>
                     {
-                        orden && (
+                        orden.length > 0 ? (
                             orden.map((item)=>{
                                 const D = new Date(item.order_date)
                                 const path = `/main/history/orderDetail/${item.id}`
@@ -63,15 +62,14 @@ export const Historial = () => {
                                         <td>{item.id}</td>
                                         <td>{`${D.getDate()}/${D.getMonth()+1}/${D.getFullYear()}`}</td>
                                         <td>{item.customer_name}</td>
-                                        <td>{item.delivery_zone.name}</td>
-                                        <td>{`$${item.delivery_zone.delivery_cost}`}</td>
+                                        <td>{`$${item.delivery_cost}`}</td>
                                         <td>{`$${item.total_amount}`}</td>
                                         <td>{item.status}</td>
                                         <td><Link className="detail-button" to={path}>Ver detalle <i className="fas fa-info-circle"></i></Link></td>
                                     </tr>    
                                 )
                             })
-                        ) 
+                        ) : <tr><td>No hay ordenes disponibles.</td></tr>
                     }
 
                 </tbody>

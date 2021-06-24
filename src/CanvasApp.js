@@ -17,6 +17,7 @@ import './styles/components/selled.css';
 import './styles/components/temas.css';
 import './styles/components/upload.css';
 import './styles/components/header.css';
+import './styles/components/detail.css';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

@@ -1,0 +1,145 @@
+.margin-0{
+    margin: 0;
+}
+.title-info {
+    width: fit-content;
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    margin-left: 4.5rem;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  
+  .product-title{
+    margin-top: 2rem;
+  }
+  
+  .container-product-item{
+    display: flex;
+    margin-left: 3rem;
+  }
+  
+  .text-container-product {
+    margin: auto;
+  }
+  
+  .product-name {
+    align-self: center;
+    margin-left: 2rem;
+    width: fit-content;
+  }
+  
+  .table.table-details {
+    width: 80% !important;
+    margin-left: 4.5rem;
+  }
+  
+  .summary-container {
+    margin-left: 4.5rem;
+    width: fit-content;
+    font-size: 17px;
+  }
+  
+  .summary-text{
+    margin-top: 1rem;
+  }
+  
+  .total-text {
+    font-weight: 900;
+  }
+  
+  .text-summary-desc{
+    padding: 8px;
+  }
+  
+  .subtotal-cost {
+    padding-left: 2rem;
+  }
+  
+  .delivery-cost {
+    padding-left: 3rem;
+  }
+  
+  .total-cost {
+    padding-left: 3rem;
+  }
+  
+  .description-product-item{
+    font-weight: 300;
+    color: dimgrey;
+    margin-left: 2rem;
+    width: fit-content;
+    font-style: italic;
+  }
+  
+  .footer-details {
+    display: flex !important;
+    justify-content: space-between !important;
+  }
+  
+  .btn.btn-container.btn-back{
+    height: fit-content;
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+    border-color: black;
+    color: black;
+  }
+  
+  .btn.btn-container.btn-back:hover{
+    background-color: black;
+    color: white;
+  }
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .card-container-delivery {
+      margin: 0 auto;
+      width: inherit;
+    }
+  }
+  
+  @media (min-width: 860px) and (max-width: 1024px) {
+    .row.container-labels.delivery{
+      padding-left: 7% !important;
+      padding-right: 7% !important;
+    }
+    .row.d-flex.icon-content.icon-container{
+      flex-direction: column;
+    }
+  }
+  
+  @media (min-width: 426px) and (max-width: 768px) {
+    .card-container-delivery {
+      margin: 0 auto;
+      width: inherit;
+    }
+  
+    img.icon {
+      width: 60px;
+      height: 40px;
+    }
+  
+    img.product-img {
+      width: 80px;
+      height: 80px;
+    }
+  
+    .row.justify-content-between.container-labels {
+      font-size: 12px;
+      flex-direction: row;
+      flex-wrap: nowrap !important;
+    }
+  
+    .description-product-item.dimensions{
+      font-size: 11px !important;
+    }
+    .description-product-item.material-name{
+      font-size: 14px !important;
+    }
+  
+    .row.d-flex.icon-content.icon-container {
+      flex-direction: row;
+    }
+  
+  }
