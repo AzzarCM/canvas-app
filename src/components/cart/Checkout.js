@@ -16,6 +16,37 @@ import { API_HOST } from '../../constants/URLS'
 
 
 export const Checkout = () => {
+
+    var json = {
+        "customer_uid" : "2cGgt5uw9yXeXW8vK8ulJf7b6C63",
+        "customer_name" :"Eduardo Reyes",
+        "total_amount": 30.90,
+        "email":"reduardo.reyes21@gmail.com",
+        "delivery_zone_id": 2,
+        "suburb":"Colonia Escalon",
+        "department":"Colonia Escalon",
+        "municipality":"Colonia Escalon",
+        "delivery_cost":45.39,
+        "delivery_address" :"askskkskskskskksks",
+        "customer_phone":"38922982",
+        "cardData":{
+            "numeroTarjeta":"4118410004499754",
+            "cvv":176,
+            "mesVencimiento":5,
+            "anioVencimiento":2024
+        },
+        "detail":[
+        {
+            "paintingId":2,
+            "price":30.00,
+            "quantity":3,
+            "measurements":3,
+            "material_id":4
+        }
+        ]
+    
+      
+    }
     
     const monthNames = ["Enero", "Febrero", "Marzo", "April", "Mayo", "Junio",
     "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"
@@ -31,7 +62,6 @@ export const Checkout = () => {
     
     //redux variables
     const dispatch = useDispatch();
-    const {msgError} = useSelector( state => state.ui);
     const {total, addedItems} = useSelector(state => state.cart)
    
 
@@ -44,16 +74,15 @@ export const Checkout = () => {
     tresDias.setDate(today.getDate() + 3);
     cincoDias.setDate(today.getDate() + 5);
     
-    const [zones, setZones] = useState([]);
-    const [zoneSelected, setZoneSelected] = useState(0);
-    const [zoneName, setZoneName] = useState('');
     const [errorMessage, setErrorMessage] = useState('campos vacios');
     const [totalPlusShipping, setTotalPlusShipping] = useState(0);
+    const [departamentos, setDepartamentos] = useState([]);
+    const [idDepartamento, setIdDepartamento] = useState(1);
+    const [municipios, setMunicipios] = useState([]);
+    const [shipping, setShipping] = useState(0);
+    const [municipioName, setMunicipioName] = useState('');
+    const [departamentoName, setDepartamentoName] = useState('');
 
-    const zoneIdAux = zoneName.split("-");
-
-    //console.log(zoneId[0], 'soy zoneid');
-    var zoneId = zoneIdAux[0];
 
     //valores del formulario e informacion del cliente
     const [ formValues, handleInputChange ] = useForm({
@@ -62,8 +91,8 @@ export const Checkout = () => {
         customer_phone: '',
         delivery_address: '',
         customer_uid: uid,
-        delivery_zone_id: zoneId,
         instructions:'',
+        suburb: '',
     });
 
     //Valores de la tarjeta de credito
@@ -74,41 +103,19 @@ export const Checkout = () => {
         cvv: '',
     })
 
-    //var totalWithShipping = (total + parseFloat(zoneSelected)).toFixed(2);
     useEffect(() => {
-        setTotalPlusShipping((total + parseFloat(zoneSelected)).toFixed(2))
+        
+        setTotalPlusShipping((total + parseFloat(shipping)).toFixed(2))
 
     }, [formValues, cardValues, handleInputCardChange])
-    
-    useEffect(() => {
-        getAllZones();
-    }, [])
 
-    const getAllZones = async () => {
-        const url = `${API_HOST}/delivery-zones`
-        var idToken = localStorage.getItem("idToken")
-        const resp = await fetch(url,{
-            headers:{
-                "Authorization": 'Bearer ' + idToken,
-            }
-        })
-        const { delivery_zones } = await resp.json();
-        const zonas = delivery_zones.map((item)=>{
-            return {
-                id: item.id,
-                name: item.name,
-                delivery_price: item.delivery_cost,
-                active: item.active,
-            }
-        })
-        setZones(zonas)
+    const handleDepartamentos = (e) =>{
+        setIdDepartamento(e.target.value);
+        setDepartamentoName(e.target.options[e.target.selectedIndex].text)
     }
-
-    const handleDropDownChange = (e) =>{
-
-        setZoneSelected(e.target.value)
-        setZoneName(e.target.options[e.target.selectedIndex].text)
-
+    const handleMunicipios = (e) => {
+        setShipping(e.target.value);
+        setMunicipioName(e.target.options[e.target.selectedIndex].text)
     }
 
     const item = addedItems.map((item)=>{
@@ -121,10 +128,45 @@ export const Checkout = () => {
         }
     })
 
-    const { customer_name, email,customer_phone, delivery_address,delivery_zone_id } = formValues;
+    function getDepartments() {
+        const url = `${API_HOST}/departments`
+        var idToken = localStorage.getItem("idToken");
+        return fetch(url, {
+            headers:{
+                "Authorization": 'Bearer ' + idToken,
+            }
+        }).then((res) => res.json()).then((result) => result)
+    }
+
+    function getMunicipios() {
+        const url = `${API_HOST}/municipalities/${idDepartamento}`
+        var idToken = localStorage.getItem("idToken");
+        return fetch(url, {
+            headers:{
+                "Authorization": 'Bearer ' + idToken,
+            }
+        }).then((res)=>res.json()).then((result)=> result);
+    }
+    
+    useEffect(() => {
+        getDepartments().then(({departments})=>{
+            setDepartamentos(departments);
+        })
+    }, [])
+
+    useEffect(() => {
+       getMunicipios().then(({municipalities})=>{
+           setMunicipios(municipalities)
+       })
+    }, [idDepartamento])
+
+    const { customer_name, email,customer_phone, delivery_address,suburb } = formValues;
     const {numeroTarjeta,cvv, mesVencimiento, anioVencimiento} = cardValues
-    formValues.delivery_zone_id = parseFloat(zoneId);
+    
     formValues.total_amount = parseFloat(totalPlusShipping);
+    formValues.delivery_cost = shipping
+    formValues.municipality = municipioName
+    formValues.department = departamentoName
 
 
     useEffect(() => {
@@ -143,9 +185,6 @@ export const Checkout = () => {
             return false
         }else if(validator.isEmpty(delivery_address)){
             setErrorMessage("El campo de la direccion esta vacio")
-            return false
-        }else if(isNaN(delivery_zone_id)){
-            setErrorMessage("Necesita seleccionar una zona de envio")
             return false
         }else if(!validator.isCreditCard(numeroTarjeta)){
             setErrorMessage("El numero de tarjeta proporcionado no concuerda con VISA o MasterCard")
@@ -167,6 +206,15 @@ export const Checkout = () => {
             return false
         }else if(!validator.isLength(cvv,3,3)){
             setErrorMessage("El cvv debe de tener 3 numeros")
+            return false
+        }else if(validator.equals(municipioName,'')){
+            setErrorMessage("Selecciona un municipio porfavor")
+            return false
+        }else if(validator.equals(departamentoName,'')){
+            setErrorMessage("Selecciona un departamento por favor")
+            return false
+        }else if(validator.isEmpty(suburb)){
+            setErrorMessage("Completa el campo de tu colonia");
             return false
         }
         dispatch(removeError());
@@ -214,7 +262,6 @@ export const Checkout = () => {
                                 })
                                 dispatch(emptyCart());
                                 setTotalPlusShipping(0);
-                                setZoneSelected(0);
                                 console.log("posteado con exito");
                             }else{
                                 Swal.fire({
@@ -310,25 +357,56 @@ export const Checkout = () => {
                    
                    
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de la entrega</h2>
-                <label>Zona <span style={{color: 'red'}}>*</span></label>
+                <label>Municipio <span style={{color: 'red'}}>*</span></label>
                 <select
-                    defaultValue=""
                     className="cart__select-zones"
-                    onChange={handleDropDownChange}
+                    onChange={handleDepartamentos}
                 >
-                    <option  selected disabled hidden>Zonas de Envio</option>
-                    {zones.map((item)=>{
-                        return  (
-                        <option
-                            key={item.id} 
-                            value={item.delivery_price}
-                            
-                        >
-                           {item.id} {`- ${item.name}`} {`$${item.delivery_price}`}
-                        </option>
-                        )
-                    })}
+                    <option  selected disabled hidden>Selecciona un departamento</option>
+                    {
+                        departamentos.map((depa)=>{
+                            return (
+                                <option
+                                    key={depa.id}
+                                    value={depa.id}
+                                >
+                                    {depa.name}
+                                </option>
+                            )
+                        })
+                    }
                 </select>
+                <br/><br/>
+                <label>Departamento <span style={{color: 'red'}}>*</span></label>
+                <select
+                    className="cart__select-zones"
+                    onChange={handleMunicipios}
+                >
+                    <option selected disabled hidden>Selecciona un municipio</option>
+                    {
+                        municipios.map((muni)=>{
+                            return (
+                                <option
+                                    key={muni.id}
+                                    value={muni.delivery_cost}
+                                >
+                                    {muni.name}
+                                </option>
+                            )
+                        })
+                    }
+
+                </select>
+                <div className="input-with-icon mt-5">
+                    <i className="fas fa-map-marked-alt icon"></i>
+                    <input 
+                        className="text-area-direccion"
+                        type="text"
+                        name="suburb" 
+                        placeholder="Colonia"
+                        onChange={ handleInputChange }
+                    />
+                </div>
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-map-marked-alt icon"></i>
                     <textarea 
@@ -426,7 +504,7 @@ export const Checkout = () => {
                     </div>
                     <div className="cart__horizontal-total">
                         <p className="cart__p-align">Costo de envio</p>
-                        <p>{`$${zoneSelected}`}</p>
+                        <p>{`$${shipping}`}</p>
                     </div>
                     <div className="cart__horizontal-total">
                         <p className="cart__p-align">Total</p>
