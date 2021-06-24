@@ -16,37 +16,6 @@ import { API_HOST } from '../../constants/URLS'
 
 
 export const Checkout = () => {
-
-    var json = {
-        "customer_uid" : "2cGgt5uw9yXeXW8vK8ulJf7b6C63",
-        "customer_name" :"Eduardo Reyes",
-        "total_amount": 30.90,
-        "email":"reduardo.reyes21@gmail.com",
-        "delivery_zone_id": 2,
-        "suburb":"Colonia Escalon",
-        "department":"Colonia Escalon",
-        "municipality":"Colonia Escalon",
-        "delivery_cost":45.39,
-        "delivery_address" :"askskkskskskskksks",
-        "customer_phone":"38922982",
-        "cardData":{
-            "numeroTarjeta":"4118410004499754",
-            "cvv":176,
-            "mesVencimiento":5,
-            "anioVencimiento":2024
-        },
-        "detail":[
-        {
-            "paintingId":2,
-            "price":30.00,
-            "quantity":3,
-            "measurements":3,
-            "material_id":4
-        }
-        ]
-    
-      
-    }
     
     const monthNames = ["Enero", "Febrero", "Marzo", "April", "Mayo", "Junio",
     "Julio", "Augosto", "Septiembre", "Octubre", "Noviembre", "Deciembre"
