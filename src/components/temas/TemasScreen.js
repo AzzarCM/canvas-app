@@ -15,6 +15,7 @@ import Swal from 'sweetalert2/src/sweetalert2.js'
 import errorImg from '../../assets/img/error.png'
 import { SearchBar } from '../search/SearchBar';
 import { API_HOST } from '../../constants/URLS'
+import { CarouselImages } from './CarouselImages'
 
 export const TemasScreen = () => {
     
@@ -181,12 +182,7 @@ export const TemasScreen = () => {
                     
                     {painting.map( img =>{
                         return(
-                            <img 
-                                alt="imagen" 
-                                src={img.url}
-                                key={img.id}
-                                className="temas__imagen"
-                            />
+                            <CarouselImages key={img.id} img={img.url}/>
                         )
                     })}
                     <div className="temas__garantia">

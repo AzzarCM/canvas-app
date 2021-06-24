@@ -1,5 +1,5 @@
 .temas__tema-container{
-    margin-top: 6%;
+    margin-top: 1%;
     display: flex;
     width: 75%;
 }
@@ -96,8 +96,6 @@
     display: flex;
     flex-wrap: wrap;
     width: 75%;
-    margin-top: 6%;
-    margin-bottom: 7%;
     justify-content: center;   
 }
 
