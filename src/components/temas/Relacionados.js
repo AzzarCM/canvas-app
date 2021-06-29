@@ -6,7 +6,7 @@ export const Relacionados = (props) => {
 
     const {painting_id, theme_id} = props;
     const [relatedPaintings, setRelatedPaintings] = useState([]);
-
+    console.log(relatedPaintings);
     function getRelatedImages() {
         const url = `${API_HOST}/paintings/related/${theme_id}/${painting_id}`
 
@@ -29,11 +29,12 @@ export const Relacionados = (props) => {
     return (
         <div className="related__main-container">
             {
-                relatedPaintings.length >= 1 
+                relatedPaintings.length > 1 
                 ?
                 relatedPaintings.map((cuadro)=>{
                     return (
-                        <ImageItem key={cuadro.id} img={cuadro}/>
+                        // 
+                        <h1>probando</h1>
                     )
                 })
                 :
