@@ -40,7 +40,7 @@ export const TemasScreen = () => {
     const [material, setMaterial] = useState('');
     const [discount, setDiscount] = useState(0);
     const [precioReal, setPrecioReal] = useState(0);
-    console.log(discount[0]);
+   
     
     useEffect(() => {
         getPainting();

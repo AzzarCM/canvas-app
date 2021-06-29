@@ -18,7 +18,7 @@ export const ImageItem = (props) => {
             </a> 
             <p
                 className="selled__title-image"
-            >{titulo.toUpperCase()}{descuento ? <p style={{textAlign:'center', color: 'red'}}>{`- ${descuento*100}%`}</p> : <></>}</p>
+            >{titulo.toUpperCase()}{descuento > 0 ? <p style={{textAlign:'center', color: 'red'}}>{`- ${descuento*100}%`}</p> : <></>}</p>
         </div>
         :
         <div className="selled__image-item">
