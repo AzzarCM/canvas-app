@@ -170,17 +170,23 @@
     width: 14rem;
     margin-left: 1rem;
     margin-top: 2rem;
-    height: 400px;
-    transition: 0.1s
+    height: 370px;
+    transition: 0.1s;
+    cursor: pointer;
 }
 .temas__card-individual:hover{
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.2);
 }
 
 .temas__card-image{
     height: 200px;
     object-fit: cover;
 }
+
+.temas__card-image:hover{
+    
+}
+
 .temas__card-body{
     text-align: center;
 }
@@ -192,6 +198,21 @@
 .temas__querido{
     margin-top: 1rem;
     font-size: 20px;
+}
+.temas__links-temas-container{
+    display: flex;
+    align-items: center;
+}
+
+.temas__precio-normal-tachado{
+    text-decoration: line-through;
+    color: red;
+}
+
+.temas__overlay{
+    font-weight:bolder;
+    font-size: 60px;
+    color: white;
 }
 
 /* Smartphones (portrait and landscape) ----------- */

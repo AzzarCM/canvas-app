@@ -9,7 +9,7 @@ export const WrapImages = (props) => {
     const [imagenes, setImagenes] = useState([]);
     const [bandera, setBandera] = useState(true);
     const [nombre, setNombre] = useState('No encontrado');
-
+    //console.log(imagenes);
     const { containerProps, indicatorEl } = useLoading({
         loading: bandera,
         indicator: <BallTriangle width="50" />,
@@ -22,21 +22,15 @@ export const WrapImages = (props) => {
     const getAllImages = async () => {
         const url = `${API_HOST}/paintings/theme/${id}`;
         const resp = await fetch(url)
-
-        const { themes } = await resp.json();
-        const imagenes = themes.map(item => {
-            const paintings = item.paintings;
-            return paintings;
-        })
-        const nombreTheme = themes.map(item => {
-            const nombre = item.name;
+        const { paintings } = await resp.json();
+        const nombreTheme = paintings.map((item)=>{
+            const nombre = item.theme.name
             return nombre
         })
-        setNombre(nombreTheme)
-        setImagenes(imagenes);
+        setNombre(nombreTheme[1]);
+        setImagenes(paintings)
         setBandera(false);
     }
-    //className="animate__animated animate__fadeIn"
     return (
         <div className="animate__animated animate__fadeIn" style={{ width: "100%" }}>
             {
@@ -56,9 +50,9 @@ export const WrapImages = (props) => {
                             Tema: <span className="temas__span-busqueda">"{nombre}"</span>
                         </h1>
                         {
-                            imagenes[0].length >= 1 ?
+                            imagenes.length >= 1 ?
                                 <div className="temas__wrap-container">
-                                    {imagenes[0].map(item => {
+                                    {imagenes.map(item => {
                                         return (
                                             <ImageItem key={item.id} img={item} />
                                         )

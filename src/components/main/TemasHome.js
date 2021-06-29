@@ -1,7 +1,6 @@
 import React, {useState,useEffect}  from 'react'
 import { useLoading, BallTriangle } from '@agney/react-loading';
-import Card from "react-bootstrap/Card"
-import Button from "react-bootstrap/Button"
+import { TemaItem } from '../selled/TemaItem'
 import { API_HOST } from '../../constants/URLS'
 
 export const TemasHome = () => {
@@ -52,18 +51,8 @@ export const TemasHome = () => {
             :
             <div style={{display: 'flex', flexWrap: 'wrap'}}>
             { themes.map(item => {
-                const path = `/main/categoria/${item.id}`
                 return (
-                    
-                    <Card className="temas__card-individual" key={item.id}>
-                        <Card.Img className="temas__card-image" variant="top" src={item.image_url} />
-                        <Card.Body className="temas__card-body">
-                            <Card.Title style={{color: "#31B199", marginBottom: '2rem'}}>{item.name}</Card.Title>
-                            <a href={path}>
-                            <Button  variant="outline-secondary">Ver tema</Button>
-                            </a>
-                        </Card.Body>
-                    </Card>
+                    <TemaItem key={item.id} item={item}/>
                 )
             })}
         </div> 

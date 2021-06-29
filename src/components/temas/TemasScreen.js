@@ -38,7 +38,9 @@ export const TemasScreen = () => {
     const [temaId, setTemaId] = useState(0);
     const [precio, setPrecio] = useState(0);
     const [material, setMaterial] = useState('');
-    
+    const [discount, setDiscount] = useState(0);
+    const [precioReal, setPrecioReal] = useState(0);
+    console.log(discount[0]);
     
     useEffect(() => {
         getPainting();
@@ -49,7 +51,7 @@ export const TemasScreen = () => {
         const resp = await fetch(url)
         
         const {painting_info} = await resp.json();
-        
+        //console.log(painting_info);
         const cuadro = painting_info.map( img =>{
             return {
                 id: img.id,
@@ -62,6 +64,10 @@ export const TemasScreen = () => {
                 stock: img.stock,
             }
         })
+        const descuento = painting_info.map((item)=>{
+            return item.theme.discount;
+        })
+        setDiscount(descuento);
         setPainting(cuadro);
         setBanderaMat(true);
         setBanderaDim(true);
@@ -143,8 +149,16 @@ export const TemasScreen = () => {
     }
 
     const handlePrice = (e) =>{
-        setPrecio(e.target.value)
-        setRadioChecked(true)
+        if(discount != null && discount > 0){
+            setPrecio((e.target.value)*(1-discount))
+            setPrecioReal(e.target.value);
+            setRadioChecked(true)
+        }else{
+            setPrecio(e.target.value)
+            setRadioChecked(true)
+        }
+        
+        
     }
 
     
@@ -198,7 +212,7 @@ export const TemasScreen = () => {
                             <h1 
                             key={item.id}
                             className="temas__info-h1">
-                            {item.name}
+                            {discount > 0 ? <>{item.name}<hr/><span style={{color:'red'}}>{`- ${discount*100}% descuento`}</span></>: item.name}
                             </h1>
                         )
                     })}
@@ -283,7 +297,7 @@ export const TemasScreen = () => {
                             
                         </p> :
                         <p className="temas__precio-cuadro">
-                        {`Precio del cuadro $${precio}`}
+                        {precioReal > 0 ? <div><p className="temas__precio-normal-tachado">{`$${precioReal}`}</p><p>{`Precio del cuadro: $${precio}`}</p></div> : <p>{`Precio del cuadro: $${precio}`}</p>}
                         </p>
                     }
                 
