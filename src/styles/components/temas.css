@@ -110,7 +110,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
+    width: 75%;
 }
 
 .temas__side-bar{
@@ -183,10 +183,6 @@
     object-fit: cover;
 }
 
-.temas__card-image:hover{
-    
-}
-
 .temas__card-body{
     text-align: center;
 }
@@ -215,6 +211,13 @@
     color: white;
 }
 
+.temas__btn-title-mat{
+    color: #277566;
+    font-size: 30px;
+    padding-right: 76px;
+
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 1200px) and (max-width: 1366px){
     .temas__imagen{
@@ -232,6 +235,12 @@
     .temas__width-select{
         flex-direction: column;
     }
+    .temas__btn-title-mat{
+        padding-right: 0px;
+    }
+    .btn-div-wrap{
+        justify-content: center;
+    }
 
 }
 
@@ -241,7 +250,6 @@
         width: 300px;
         height: 300px;
     }
-    
 }
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 920px){
@@ -294,9 +302,6 @@
     }
     .temas__btn-title{
         text-align: center;
-    }
-    .btn-div-wrap{
-        justify-content: center;
     }
     .temas__precio-cuadro{
         text-align: center;

@@ -49,7 +49,7 @@ export const TemasHome = () => {
                 {indicatorEl}
             </section>
             :
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center'}}>
             { themes.map(item => {
                 return (
                     <TemaItem key={item.id} item={item}/>

@@ -140,7 +140,9 @@ export const Checkout = () => {
 
     useEffect(() => {
         isFormValuesValid()
-    }, [cardValues,formValues]);
+    }, [cardValues,formValues, departamentoName, municipioName]);
+
+    console.log(errorMessage);
 
     function isFormValuesValid() {
         if(validator.isEmpty(customer_name)){
@@ -152,41 +154,48 @@ export const Checkout = () => {
         }else if(validator.isEmpty(customer_phone)){
             setErrorMessage("El campo del telefono esta vacio")
             return false
-        }else if(validator.isEmpty(delivery_address)){
-            setErrorMessage("El campo de la direccion esta vacio")
-            return false
-        }else if(!validator.isCreditCard(numeroTarjeta)){
-            setErrorMessage("El numero de tarjeta proporcionado no concuerda con VISA o MasterCard")
-            return false
-        }else if(validator.isEmpty(cvv)){
-            setErrorMessage("El CVV esta vacio");
-            return false;
-        }else if(validator.isEmpty(mesVencimiento)){
-            setErrorMessage("El mes de la tarjeta esta vacio")
-            return false;
-        }else if(validator.isEmpty(anioVencimiento)){
-            setErrorMessage("El año esta vacio")
-            return false
-        }else if(!validator.isLength(mesVencimiento,2,2)){
-            setErrorMessage("el mes debe de tener 2 numeros")
-            return false
-        }else if(!validator.isLength(anioVencimiento,4,4)){
-            setErrorMessage("El año debe tener 4 numeros")
-            return false
-        }else if(!validator.isLength(cvv,3,3)){
-            setErrorMessage("El cvv debe de tener 3 numeros")
-            return false
-        }else if(validator.equals(municipioName,'')){
-            setErrorMessage("Selecciona un municipio porfavor")
+        }else if(!validator.isLength(customer_phone,8,8)){
+            setErrorMessage("El telefono debe tener 8 digitos, ej: 2277777")
             return false
         }else if(validator.equals(departamentoName,'')){
             setErrorMessage("Selecciona un departamento por favor")
             return false
+        }else if(validator.equals(municipioName,'')){
+            setErrorMessage("Selecciona un municipio porfavor")
+            return false
         }else if(validator.isEmpty(suburb)){
             setErrorMessage("Completa el campo de tu colonia");
             return false
+        }else if(validator.isEmpty(delivery_address)){
+            setErrorMessage("El campo de la direccion esta vacio")
+            return false
+        }else if(validator.isEmpty(numeroTarjeta)){
+            setErrorMessage("Proporciona el numero de tarjeta")
+            return false
+        }else if(!validator.isCreditCard(numeroTarjeta)){
+            setErrorMessage("El numero de tarjeta proporcionado no concuerda con VISA o MasterCard")
+            return false
+        }else if(validator.isEmpty(mesVencimiento)){
+            setErrorMessage("El mes de la tarjeta esta vacio")
+            return false;
+        }else if(!validator.isLength(mesVencimiento,2,2)){
+            setErrorMessage("el mes debe de tener 2 digitos")
+            return false
+        }else if(validator.isEmpty(anioVencimiento)){
+            setErrorMessage("El año esta vacio")
+            return false
+        }else if(!validator.isLength(anioVencimiento,4,4)){
+            setErrorMessage("El año debe tener 4 digitos")
+            return false
+        }else if(validator.isEmpty(cvv)){
+            setErrorMessage("El CVV esta vacio");
+            return false;
+        }else if(!validator.isLength(cvv,3,3)){
+            setErrorMessage("El cvv debe de tener 3 digitos")
+            return false
         }
         dispatch(removeError());
+        setErrorMessage('')
         return true
     }
 
@@ -323,6 +332,7 @@ export const Checkout = () => {
                         />
                     </div>
                 </div>
+                <p className="foot__sticky-note">{errorMessage}</p>
                    
                    
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de la entrega</h2>
@@ -345,6 +355,7 @@ export const Checkout = () => {
                         })
                     }
                 </select>
+                <p className="foot__sticky-note">{errorMessage}</p>
                 <br/><br/>
                 <label>Departamento <span style={{color: 'red'}}>*</span></label>
                 <select
@@ -366,6 +377,7 @@ export const Checkout = () => {
                     }
 
                 </select>
+                <p className="foot__sticky-note">{errorMessage}</p>
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-map-marked-alt icon"></i>
                     <input 
@@ -376,6 +388,7 @@ export const Checkout = () => {
                         onChange={ handleInputChange }
                     />
                 </div>
+                <p className="foot__sticky-note">{errorMessage}</p>
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-map-marked-alt icon"></i>
                     <textarea 
@@ -386,6 +399,7 @@ export const Checkout = () => {
                         onChange={ handleInputChange }
                     />
                 </div>
+                <p className="foot__sticky-note">{errorMessage}</p>
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-asterisk icon"></i>
                     <textarea 
@@ -399,6 +413,7 @@ export const Checkout = () => {
                 
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de pago</h2>
                 <img src={wompi} alt="wompi" style={{width: 200}}/>
+                <p className="foot__sticky-note">{errorMessage}</p>
                 <div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                         <div className="input-with-icon">

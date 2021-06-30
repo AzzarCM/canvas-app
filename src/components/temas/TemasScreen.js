@@ -189,7 +189,7 @@ export const TemasScreen = () => {
                             <h1 
                             key={item.id}
                             className="temas__info-h1-movil">
-                            {item.name}
+                            {discount > 0 ? <>{item.name}<hr/><span style={{color:'red'}}>{`- ${discount*100}% descuento`}</span></>: item.name}
                             </h1>
                         )
                     })}
@@ -229,7 +229,7 @@ export const TemasScreen = () => {
                    
                     <div className="temas__materiales">
                         <div className="temas__width-select">
-                            <h4 className="temas__btn-title">Material</h4>
+                            <h4 className="temas__btn-title-mat">Material</h4>
                             <div className="btn-div-wrap">
                             {
                                 banderaMat ? 
@@ -276,7 +276,7 @@ export const TemasScreen = () => {
                                                     htmlFor={dim.id}
                                                     onClick={()=>handleCheckedDim(dim.height, dim.width)}
                                                 >
-                                                    {`${dim.height} X ${dim.width}`}
+                                                    {`${dim.height} X ${dim.width} m`}
                                                 </label>
                                             </div>
                                             
@@ -330,7 +330,7 @@ export const TemasScreen = () => {
                 </div>
                 <div className="temas__buy-container-right">
                     <button onClick={handleAddToCart} className="temas-btn-carrito">
-                        <i 
+                        <i  style={{marginRight: 10}}
                             className="fas fa-shopping-cart"></i>
                          Agregar al carrito
                     </button>
@@ -339,7 +339,7 @@ export const TemasScreen = () => {
 
                         <a>
                         <button onClick={handleWarning} className="temas-btn-carrito resize mt-5">
-                            <i className="fas fa-arrow-up"></i>
+                            <i style={{marginRight: 10}} className="fas fa-arrow-up"></i>
                             Comprar
                         </button> 
                         </a> :

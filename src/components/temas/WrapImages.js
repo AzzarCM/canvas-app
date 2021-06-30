@@ -51,7 +51,7 @@ export const WrapImages = (props) => {
                         </h1>
                         {
                             imagenes.length >= 1 ?
-                                <div className="temas__wrap-container">
+                                <div style={{width: '100%'}} className="temas__wrap-container">
                                     {imagenes.map(item => {
                                         return (
                                             <ImageItem key={item.id} img={item} />
