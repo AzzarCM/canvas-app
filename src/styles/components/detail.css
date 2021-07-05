@@ -78,6 +78,7 @@
     justify-content: space-between !important;
   }
   
+  
   .btn.btn-container.btn-back{
     height: fit-content;
     margin: auto;
@@ -91,7 +92,9 @@
     background-color: black;
     color: white;
   }
-  
+  .address-container{
+    margin-left: 4.5rem;
+  }
   @media (min-width: 769px) and (max-width: 1024px) {
     .card-container-delivery {
       margin: 0 auto;
@@ -109,7 +112,7 @@
     }
   }
   
-  @media (min-width: 426px) and (max-width: 768px) {
+  @media (min-width: 300px) and (max-width: 768px) {
     .card-container-delivery {
       margin: 0 auto;
       width: inherit;
@@ -140,6 +143,9 @@
   
     .row.d-flex.icon-content.icon-container {
       flex-direction: row;
+    }
+    .address-container{
+      margin-left: 0;
     }
   
   }

@@ -3,15 +3,15 @@ import { Navbar } from '../main/Navbar'
 import { CartList } from './CartList'
 import { useSelector, useDispatch } from 'react-redux'
 import {useForm} from '../../hooks/useForm'
+import { useFormik } from 'formik'
 import firebase from "firebase/app";
 import { emptyCart } from '../../actions/cart'
 import Swal from 'sweetalert2'
 import validator from "validator";
-import { removeError, setError } from '../../actions/ui'
 import { Footer } from '../main/Footer'
 import errorImg from '../../assets/img/error.png'
 import doneImg from '../../assets/img/done.png'
-import wompi from '../../assets/img/wompi.png'
+import wompi from '../../assets/img/wompi2.png'
 import { API_HOST } from '../../constants/URLS'
 
 
@@ -27,8 +27,6 @@ export const Checkout = () => {
     var name = firebase.auth().currentUser.displayName;
     var mail = firebase.auth().currentUser.email;
     
-
-    
     //redux variables
     const dispatch = useDispatch();
     const {total, addedItems} = useSelector(state => state.cart)
@@ -43,40 +41,106 @@ export const Checkout = () => {
     tresDias.setDate(today.getDate() + 3);
     cincoDias.setDate(today.getDate() + 5);
     
-    const [errorMessage, setErrorMessage] = useState('campos vacios');
+    //validation with formik
+    
+    const formValues = useFormik({
+        initialValues:{
+            customer_name: name,
+            email: mail,
+            customer_phone: '',
+            delivery_address: '',
+            customer_uid: uid,
+            instructions:'',
+            suburb: '',
+            department:'',
+            municipality:'',
+            delivery_cost: 0,
+            total_amount: 0,
+        },
+        validate: values =>{
+            
+            let errors = {}
+
+            if(validator.isEmpty(values.customer_name)){
+                errors.customer_name = 'Campo del nombre requerido';
+            }
+            if(validator.isEmpty(values.email)){
+                errors.email = 'Correo electronico requerido';
+            }
+            if(validator.isEmpty(values.customer_phone)){
+                errors.customer_phone = 'Campo del telefono requerido'
+            }else if(!validator.isLength(values.customer_phone,8,8)){
+                errors.customer_phone = 'El telefono debe ser de 8 digitos'
+            }
+            if(validator.equals(values.department, '')){
+                errors.department = 'Selecciona un departamento'
+            }
+            if(validator.equals(values.municipality, '')){
+                errors.municipality = 'Selecciona un municipio'
+            }
+            if(validator.isEmpty(values.suburb)){
+                errors.suburb = 'Completa el nombre de tu colonia'
+            }
+            if(validator.isEmpty(values.delivery_address)){
+                errors.delivery_address =  "Completa el campo de la direccion de tu casa"
+            }
+            return errors
+        }
+    });
+
+    const cardValues = useFormik({
+        initialValues:{
+            numeroTarjeta: '',
+            mesVencimiento: '',
+            anioVencimiento: '',
+            cvv: '',
+        },
+        validate: values=>{
+            let errors = {}
+            if(validator.isEmpty(values.numeroTarjeta)){
+                errors.numeroTarjeta = 'Completa el campo de la tarjeta de debito/credito';
+            }else if(!validator.isCreditCard(values.numeroTarjeta)){
+                errors.numeroTarjeta = 'El numero no coincide con una tarjeta Visa o Master Card'
+            }
+            if(validator.isEmpty(values.mesVencimiento)){
+                errors.mesVencimiento = 'El mes esta vacio';
+            }else if(!validator.isLength(values.mesVencimiento,2,2)){
+                errors.mesVencimiento = 'Requiere 2 digitos'
+            }else if(!validator.isNumeric(values.mesVencimiento)){
+                errors.mesVencimiento = "No introducir letras"
+            }
+            if(validator.isEmpty(values.anioVencimiento)){
+                errors.anioVencimiento = "El año esta vacio"
+            }else if(!validator.isLength(values.anioVencimiento,4,4)){
+                errors.anioVencimiento = "Requiere 4 digitos"
+            }else if(!validator.isNumeric(values.anioVencimiento)){
+                errors.anioVencimiento = "No introducir letras"
+            }
+            if(validator.isEmpty(values.cvv)){
+                errors.cvv = "CVV vacio"
+            }else if(!validator.isNumeric(values.cvv)){
+                errors.cvv = "No introducir letras"
+            }
+
+            return errors
+        }
+    })
+
     const [totalPlusShipping, setTotalPlusShipping] = useState(0);
     const [departamentos, setDepartamentos] = useState([]);
     const [idDepartamento, setIdDepartamento] = useState(1);
     const [municipios, setMunicipios] = useState([]);
     const [shipping, setShipping] = useState(0);
     const [municipioName, setMunicipioName] = useState('');
+    const [flagMunicipio, setFlagMunicipio] = useState(false);
     const [departamentoName, setDepartamentoName] = useState('');
 
-
-    //valores del formulario e informacion del cliente
-    const [ formValues, handleInputChange ] = useForm({
-        customer_name: name,
-        email: mail,
-        customer_phone: '',
-        delivery_address: '',
-        customer_uid: uid,
-        instructions:'',
-        suburb: '',
-    });
-
-    //Valores de la tarjeta de credito
-    const [ cardValues, handleInputCardChange ] = useForm({
-        numeroTarjeta: '',
-        mesVencimiento: '',
-        anioVencimiento: '',
-        cvv: '',
-    })
 
     useEffect(() => {
         
         setTotalPlusShipping((total + parseFloat(shipping)).toFixed(2))
 
-    }, [formValues, cardValues, handleInputCardChange])
+    }, [formValues.values, cardValues.values])
 
     const handleDepartamentos = (e) =>{
         setIdDepartamento(e.target.value);
@@ -85,6 +149,7 @@ export const Checkout = () => {
     const handleMunicipios = (e) => {
         setShipping(e.target.value);
         setMunicipioName(e.target.options[e.target.selectedIndex].text)
+        setFlagMunicipio(true);
     }
 
     const item = addedItems.map((item)=>{
@@ -129,83 +194,17 @@ export const Checkout = () => {
        })
     }, [idDepartamento])
 
-    const { customer_name, email,customer_phone, delivery_address,suburb } = formValues;
-    const {numeroTarjeta,cvv, mesVencimiento, anioVencimiento} = cardValues
+    formValues.values.department = departamentoName
+    formValues.values.municipality = municipioName
+    formValues.values.delivery_cost = shipping
+    formValues.values.total_amount = parseFloat(totalPlusShipping);
     
-    formValues.total_amount = parseFloat(totalPlusShipping);
-    formValues.delivery_cost = shipping
-    formValues.municipality = municipioName
-    formValues.department = departamentoName
-
-
-    useEffect(() => {
-        isFormValuesValid()
-    }, [cardValues,formValues, departamentoName, municipioName]);
-
-    console.log(errorMessage);
-
-    function isFormValuesValid() {
-        if(validator.isEmpty(customer_name)){
-            setErrorMessage("El campo del nombre esta vacio")
-            return false
-        }else if(validator.isEmpty(email)){
-            setErrorMessage("El campo del correo esta vacio")
-            return false
-        }else if(validator.isEmpty(customer_phone)){
-            setErrorMessage("El campo del telefono esta vacio")
-            return false
-        }else if(!validator.isLength(customer_phone,8,8)){
-            setErrorMessage("El telefono debe tener 8 digitos, ej: 2277777")
-            return false
-        }else if(validator.equals(departamentoName,'')){
-            setErrorMessage("Selecciona un departamento por favor")
-            return false
-        }else if(validator.equals(municipioName,'')){
-            setErrorMessage("Selecciona un municipio porfavor")
-            return false
-        }else if(validator.isEmpty(suburb)){
-            setErrorMessage("Completa el campo de tu colonia");
-            return false
-        }else if(validator.isEmpty(delivery_address)){
-            setErrorMessage("El campo de la direccion esta vacio")
-            return false
-        }else if(validator.isEmpty(numeroTarjeta)){
-            setErrorMessage("Proporciona el numero de tarjeta")
-            return false
-        }else if(!validator.isCreditCard(numeroTarjeta)){
-            setErrorMessage("El numero de tarjeta proporcionado no concuerda con VISA o MasterCard")
-            return false
-        }else if(validator.isEmpty(mesVencimiento)){
-            setErrorMessage("El mes de la tarjeta esta vacio")
-            return false;
-        }else if(!validator.isLength(mesVencimiento,2,2)){
-            setErrorMessage("el mes debe de tener 2 digitos")
-            return false
-        }else if(validator.isEmpty(anioVencimiento)){
-            setErrorMessage("El año esta vacio")
-            return false
-        }else if(!validator.isLength(anioVencimiento,4,4)){
-            setErrorMessage("El año debe tener 4 digitos")
-            return false
-        }else if(validator.isEmpty(cvv)){
-            setErrorMessage("El CVV esta vacio");
-            return false;
-        }else if(!validator.isLength(cvv,3,3)){
-            setErrorMessage("El cvv debe de tener 3 digitos")
-            return false
-        }
-        dispatch(removeError());
-        setErrorMessage('')
-        return true
-    }
-
     const handleSubmitData = () =>{
-
-        firebase.auth().currentUser.getIdToken(/* forceRefresh */ true).then(function(idToken){
-            if(isFormValuesValid()){
+        firebase.auth().currentUser.getIdToken(true).then(function(idToken){
+            if((JSON.stringify(formValues.errors)=='{}') && (JSON.stringify(cardValues.errors)=='{}') && flagMunicipio){
                 const data = {
-                    ...formValues,
-                    cardData: cardValues,
+                    ...formValues.values,
+                    cardData: cardValues.values,
                     detail: item,
                 };
                 console.log(data);
@@ -226,7 +225,7 @@ export const Checkout = () => {
                         })
                         .then((res)=>res.json())
                         .then((resp)=>{
-                            console.log(resp, 'esta es la respuesta');
+                            console.log(resp);
                             
                             if(!resp.error){
                                 const path = `/main/history/${uid}`
@@ -263,15 +262,9 @@ export const Checkout = () => {
     
                 Swal.fire({
                     icon: 'error',
-                    text: 'Hubo un error en los campos',
-                    confirmButtonText: 'Ver Detalles'
-                })
-                .then((result)=>{
-                    if(result.isConfirmed){
-                        Swal.fire({
-                            html:`<pre><code>${errorMessage}</code></pre>`
-                        })
-                    }
+                    title: 'Opss...',
+                    text: 'Lo siento hay campos vacios!',
+                    confirmButtonText: 'OK'
                 })
             }
         })
@@ -296,12 +289,12 @@ export const Checkout = () => {
                             type="text"
                             name="customer_name" 
                             placeholder="Nombre"
-                            value={ customer_name }
-                            onChange={ handleInputChange }
+                            value={ formValues.values.customer_name }
+                            onChange={ formValues.handleChange }
                         />
                     </div>
-                    
                 </div>
+                {formValues.errors.customer_name ?  <p className="foot__sticky-note">{formValues.errors.customer_name}</p> : null} 
                 <div className="input-container">
                     <label>Correo Electronico <span style={{color: 'red'}}>*</span></label>
                     <div className="input-with-icon">
@@ -311,12 +304,12 @@ export const Checkout = () => {
                             type="email"
                             name="email" 
                             placeholder="Correo Electronico"
-                            value={ email }
-                            onChange={ handleInputChange }
+                            value={ formValues.values.email }
+                            onChange={ formValues.handleChange }
                         />
                     </div>
-                   
                 </div>
+                {formValues.errors.email ?  <p className="foot__sticky-note">{formValues.errors.email}</p> : null} 
                 <div className="input-container">
                     <label>Telefono <span style={{color: 'red'}}>*</span></label>
                     <div className="input-with-icon">
@@ -327,19 +320,22 @@ export const Checkout = () => {
                             name="customer_phone"
                             maxLength="8" 
                             placeholder="Numero telefonico"
-                            value={ customer_phone }
-                            onChange={ handleInputChange }
+                            value={ formValues.values.customer_phone }
+                            onChange={ formValues.handleChange }
                         />
                     </div>
                 </div>
-                <p className="foot__sticky-note">{errorMessage}</p>
-                   
-                   
+                {formValues.errors.customer_phone ?  <p className="foot__sticky-note">{formValues.errors.customer_phone}</p> : null} 
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de la entrega</h2>
-                <label>Municipio <span style={{color: 'red'}}>*</span></label>
+                <label>Departamento <span style={{color: 'red'}}>*</span></label>
                 <select
                     className="cart__select-zones"
-                    onChange={handleDepartamentos}
+                    name="department"
+                    onChange={(e)=>{
+                        handleDepartamentos(e)
+                        formValues.handleChange(e);
+                    }}
+                    
                 >
                     <option  selected disabled hidden>Selecciona un departamento</option>
                     {
@@ -355,12 +351,16 @@ export const Checkout = () => {
                         })
                     }
                 </select>
-                <p className="foot__sticky-note">{errorMessage}</p>
+                {formValues.errors.department ?  <p className="foot__sticky-note">{formValues.errors.department}</p> : null} 
                 <br/><br/>
-                <label>Departamento <span style={{color: 'red'}}>*</span></label>
+                <label>Municipio <span style={{color: 'red'}}>*</span></label>
                 <select
                     className="cart__select-zones"
-                    onChange={handleMunicipios}
+                    name="municipality"
+                    onChange={(e)=>{
+                        handleMunicipios(e)
+                        formValues.handleChange(e)
+                    }}
                 >
                     <option selected disabled hidden>Selecciona un municipio</option>
                     {
@@ -377,7 +377,7 @@ export const Checkout = () => {
                     }
 
                 </select>
-                <p className="foot__sticky-note">{errorMessage}</p>
+                {formValues.errors.municipality ?  <p className="foot__sticky-note">{formValues.errors.municipality}</p> : null} 
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-map-marked-alt icon"></i>
                     <input 
@@ -385,10 +385,11 @@ export const Checkout = () => {
                         type="text"
                         name="suburb" 
                         placeholder="Colonia"
-                        onChange={ handleInputChange }
+                        value={ formValues.values.suburb }
+                        onChange={ formValues.handleChange }
                     />
                 </div>
-                <p className="foot__sticky-note">{errorMessage}</p>
+                {formValues.errors.suburb ?  <p className="foot__sticky-note">{formValues.errors.suburb}</p> : null} 
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-map-marked-alt icon"></i>
                     <textarea 
@@ -396,10 +397,11 @@ export const Checkout = () => {
                         type="text"
                         name="delivery_address" 
                         placeholder="Direccion de envio"
-                        onChange={ handleInputChange }
+                        value={ formValues.values.delivery_address }
+                        onChange={ formValues.handleChange }
                     />
                 </div>
-                <p className="foot__sticky-note">{errorMessage}</p>
+                {formValues.errors.delivery_address ?  <p className="foot__sticky-note">{formValues.errors.delivery_address}</p> : null} 
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-asterisk icon"></i>
                     <textarea 
@@ -407,15 +409,17 @@ export const Checkout = () => {
                         type="text"
                         name="instructions" 
                         placeholder="Instrucciones para realizar la entrega"
-                        onChange={ handleInputChange }
+                        onChange={ formValues.handleChange }
+                        value={ formValues.values.instructions }
                     />
                 </div>
                 
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de pago</h2>
                 <img src={wompi} alt="wompi" style={{width: 200}}/>
-                <p className="foot__sticky-note">{errorMessage}</p>
                 <div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
+                    
+                        {cardValues.errors.numeroTarjeta ?  <p className="foot__sticky-note">{cardValues.errors.numeroTarjeta}</p> : null}
                         <div className="input-with-icon">
                             <i className="fas fa-credit-card icon"></i>
                             <input 
@@ -424,7 +428,8 @@ export const Checkout = () => {
                                 maxLength="16" 
                                 placeholder="Numero tarjeta sin espacios" 
                                 name="numeroTarjeta" 
-                                onChange={ handleInputCardChange }
+                                value={ cardValues.values.numeroTarjeta }
+                                onChange={ cardValues.handleChange }
                             />
                         </div>
                         <div style={{display: 'flex', marginBottom: 15}}>
@@ -437,30 +442,39 @@ export const Checkout = () => {
                         </div> 
                     </div>
                     <div style={{display: 'flex'}}>
-                        <div className="inputs-container-foot">
-                            <i className="fas fa-calendar-day icon"></i>
-                            <input 
-                                className="input__card-field" 
-                                type="text" 
-                                placeholder="MM"
-                                maxLength="2"
-                                name="mesVencimiento"
-                                onChange={ handleInputCardChange }
-                            />
+                        <div>
+                            <div className="inputs-container-foot">
+                                <i className="fas fa-calendar-day icon"></i>
+                                <input 
+                                    className="input__card-field" 
+                                    type="text" 
+                                    placeholder="MM"
+                                    maxLength="2"
+                                    name="mesVencimiento"
+                                    value={cardValues.values.mesVencimiento}
+                                    onChange={ cardValues.handleChange }
+                                />
+                            </div>
+                            {cardValues.errors.mesVencimiento ?  <p className="foot__sticky-note">{cardValues.errors.mesVencimiento}</p> : null}
                         </div>
-                        <div className="inputs-container-foot">
-                            <i className="far fa-calendar icon"></i>
-                            <input 
-                                className="input__card-field" 
-                                type="text" 
-                                placeholder="YYYY"
-                                maxLength="4"
-                                name="anioVencimiento"
-                                onChange={ handleInputCardChange }
-                            />
-                        </div>
-                        
+                        <div>
+                            <div className="inputs-container-foot">
+                                <i className="far fa-calendar icon"></i>
+                                <input 
+                                    className="input__card-field" 
+                                    type="text" 
+                                    placeholder="YYYY"
+                                    maxLength="4"
+                                    name="anioVencimiento"
+                                    value={ cardValues.values.anioVencimiento }
+                                    onChange={ cardValues.handleChange }
+                                />
+                            </div>
+                            {cardValues.errors.anioVencimiento ?  <p className="foot__sticky-note">{cardValues.errors.anioVencimiento}</p> : null}
+
+                        </div>                        
                     </div>
+                    
                     <div style={{width: "50%", marginTop:"1rem"}} className="inputs-container-foot">
                             <i className="fas fa-lock icon"></i>
                             <input 
@@ -469,14 +483,13 @@ export const Checkout = () => {
                                 maxLength="3"
                                 placeholder="CVC"
                                 name="cvv"
-                                onChange={ handleInputCardChange }
-
+                                value={ cardValues.values.cvv }
+                                onChange={ cardValues.handleChange }
                             />
-                    </div>   
+                    </div>
+                    {cardValues.errors.cvv ?  <p className="foot__sticky-note">{cardValues.errors.cvv}</p> : null}
                 </div>
             </form>
-           
-
             <h1 className="selled__title-related mb-5">Resumen de la compra</h1>
             <p>{`NOTA: la entrega estimada seria entre el ${dayNames[tresDias.getDay()]} ${tresDias.getDate()} de ${monthNames[tresDias.getMonth()]} al  ${dayNames[cincoDias.getDay()]} ${cincoDias.getDate()} de ${monthNames[cincoDias.getMonth()]}`}</p>
             <CartList/>

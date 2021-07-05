@@ -285,7 +285,7 @@ export const TemasScreen = () => {
                                     :
                                     (<p>No hay medidas disponibles</p>)
                                 :
-                                <h3 className="selled__title-related" style={{margin:0}}>Selecciona un material primero</h3>
+                                <h3 className="selled__title-related" style={{margin:0}}>Seleccionar material</h3>
                             }
                             </div>
                             

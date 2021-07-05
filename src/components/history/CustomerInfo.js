@@ -7,8 +7,8 @@ export const CustomerInfo = ({ order }) => {
             {
                 order && (
                     <div>
-                        <p className="title-info">Información del cliente</p>
-                        <div style={{marginLeft: '4.5rem'}} className="address-container">
+                        <p className="title-info address-container">Información del cliente</p>
+                        <div className="address-container">
                             <div className="address-delivery text">
                                 <p
                                     className="title-address"
