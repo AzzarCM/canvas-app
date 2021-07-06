@@ -51,7 +51,6 @@ export const TemasScreen = () => {
         const resp = await fetch(url)
         
         const {painting_info} = await resp.json();
-        //console.log(painting_info);
         const cuadro = painting_info.map( img =>{
             return {
                 id: img.id,
@@ -141,7 +140,6 @@ export const TemasScreen = () => {
     }
 
     const handleDropDownChange = (e) =>{
-        //console.log(e.target.id);
         setIdMaterial(e.target.value)
         setBanderaDim(true);
         setRadioChecked(false);
@@ -165,6 +163,17 @@ export const TemasScreen = () => {
     if(banderaDim){
         const result = painting[0].measurements.filter(dim => dim.material_id == idMaterial);
         setTemaId(painting[0].theme_id);
+        
+        result.sort(function (a,b) {
+            if((a.height*a.width) > (b.height*b.width)){
+                return 1;
+            }
+            if((a.height*a.width) < (b.height*b.width)){
+                return -1
+            }
+            return 0
+        })
+        
         setDimensions(result);
         setBanderaDim(false);
     }

@@ -6,7 +6,6 @@ export const Relacionados = (props) => {
 
     const {painting_id, theme_id} = props;
     const [relatedPaintings, setRelatedPaintings] = useState([]);
-    console.log(relatedPaintings);
     function getRelatedImages() {
         const url = `${API_HOST}/paintings/related/${theme_id}/${painting_id}`
 
