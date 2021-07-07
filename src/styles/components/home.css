@@ -134,6 +134,18 @@
     .home__canvas-text-container{
         width: 85%;
     }
+    .home__separator{
+        width: 75%;
+    }
+    .home__line1{
+        display: none;
+    }
+    .home__line2{
+        display: none;
+    }
+    .responsive-icon{
+        display: none;
+    }
 }
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 855px){

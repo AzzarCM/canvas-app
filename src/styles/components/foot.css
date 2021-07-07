@@ -82,5 +82,9 @@
     .align-text{
         text-align: center;
     }
+    .foot__phone{
+        flex-direction: column;
+        align-items: center;
+    }
 }
 

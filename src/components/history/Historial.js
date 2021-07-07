@@ -65,7 +65,7 @@ export const Historial = () => {
                                         <td>{`$${item.delivery_cost}`}</td>
                                         <td>{`$${item.total_amount}`}</td>
                                         <td>{item.status}</td>
-                                        <td><Link className="detail-button" to={path}>Ver detalle <i className="fas fa-info-circle"></i></Link></td>
+                                        <td><Link className="detail-button" to={path}>Ver <i className="fas fa-info-circle responsive-icon"></i></Link></td>
                                     </tr>    
                                 )
                             })
