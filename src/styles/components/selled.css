@@ -23,6 +23,8 @@
 
 .selled__title-image{
     margin-top: 5%;
+    text-align: center;
+    word-wrap: break-word;
 }
 .selled__price-image{
     margin-top: 5%;
