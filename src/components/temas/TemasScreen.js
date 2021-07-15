@@ -238,7 +238,7 @@ export const TemasScreen = () => {
                    
                     <div className="temas__materiales">
                         <div className="temas__width-select">
-                            <h4 className="temas__btn-title-mat">Material</h4>
+                            <h4 className="temas__btn-title-mat">Seleccione<br/>Material</h4>
                             <div className="btn-div-wrap">
                             {
                                 banderaMat ? 
@@ -263,7 +263,7 @@ export const TemasScreen = () => {
                             
                         </div>
                         <div className="temas__width-select">
-                            <h4 style={{marginBottom: 0, marginRight: 15}} className="temas__btn-title">Dimensiones</h4>
+                            <h4 style={{marginBottom: 0, marginRight: 15}} className="temas__btn-title">Seleccione<br/>Dimensión</h4>
                             <div className="btn-div-wrap">
                             {
                                 banderitaCheck ? 
@@ -294,7 +294,7 @@ export const TemasScreen = () => {
                                     :
                                     (<p>No hay medidas disponibles</p>)
                                 :
-                                <h3 className="selled__title-related" style={{margin:0}}>Seleccionar material</h3>
+                                <h3 className="selled__title-related sel-mat">Debes seleccionar un material</h3>
                             }
                             </div>
                             
