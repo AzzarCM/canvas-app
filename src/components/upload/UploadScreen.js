@@ -19,7 +19,7 @@ export const UploadScreen = () => {
                 
                 <img className="upload__img" src={socialMedia} alt="imagen"/>
                 <div className="upload__text-container">
-                    <h1 className="selled__title-related mb-5">ENVIA TU<br/>CANVA VIA<br/>INSTAGRAM</h1>
+                    <h1 className="selled__title-related mb-5">ENVÍA TU<br/>CANVA VÍA<br/>INSTAGRAM</h1>
                     <p className="upload__align">Podemos procesar tu pedido vía inbox en instagram, haz click en el botón para que automaticamente estes en nuestro chat y mandes tu foto ¡Te esperamos!</p>
                     <a href="https://www.instagram.com/canvas.sv/"><button className="temas-btn resize-2 ml-0">Enviar mensaje</button></a>
                 </div>

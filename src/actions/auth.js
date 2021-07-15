@@ -35,7 +35,6 @@ export const startFacebookLogin = () =>{
                 )
             })
             .catch(e =>{
-                console.log(e);
                 Swal.fire('Error', e.message, 'error');
             })
     }
@@ -46,7 +45,6 @@ export const startGoogleLogin = () =>{
     return (dispatch) =>{
         firebase.auth().signInWithPopup( googleAuthProvider )
             .then(({user, credential}) =>{
-                console.log(`UID: ${user.uid}`);
                 dispatch(
                     login(user.uid, user.displayName)
                 )

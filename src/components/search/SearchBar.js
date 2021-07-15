@@ -14,7 +14,7 @@ export const SearchBar = () => {
 
     return (
         <div className="input-search">
-            <input onChange={(e) => handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Busca un cuadro!" />
+            <input onChange={(e) => handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Buscar..." />
 
             <button className="navbar__search-button" type="button">
                 <Link className="navbar__shopping-cart-icon" to="/main/search">

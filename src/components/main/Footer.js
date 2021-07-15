@@ -4,14 +4,14 @@ export const Footer = () => {
         <div className="foot__main-container">
             <div className="foot__upper-div">
                 <div className="foot__left-part">
-                    <a className="foot__links mb-5 align-text" href="/main/terms">TERMINOS Y CONDICIONES</a>
+                    <a className="foot__links mb-5 align-text" href="/main/terms">TÉRMINOS Y CONDICIONES</a>
                     <a className="foot__links mb-5 align-text" href="/main/faq">PREGUNTAS FRECUENTES</a>
-                    <a className="foot__links mb-5 align-text" href="/main/garantia">SOBRE GARANTIA</a>
+                    <a className="foot__links mb-5 align-text" href="/main/garantia">SOBRE GARANTÍA</a>
                 </div>
                 <div className="foot__middle-part">
                     <h3 className="foot__links mb-10 align-text">CONTACTO</h3>
                     <div className="foot__phone mb-5">
-                        <p style={{color:'white'}}>Phone: </p>
+                        <p style={{color:'white'}}>Teléfono: </p>
                         <p style={{color:'white'}}>+503 7609 9688</p>
                     </div>
                     <div className="foot__phone mb-5">
@@ -32,14 +32,14 @@ export const Footer = () => {
                         sobre nuestra actividad ¡Síguenos!
                     </p>
                     <div className="foot__social-icons">
-                        <a className="mr-2" href="https://www.facebook.com/Canvas-SV-111154510666281"><i className="fab fa-facebook-square a-color"></i></a>
-                        <a className="mr-2" href="https://twitter.com/CanvasFrameIt"><i className="fab fa-twitter-square a-color"></i></a>
-                        <a className="mr-2" href="https://www.instagram.com/canvas.sv/"><i className="fab fa-instagram-square a-color"></i></a>
+                        <a className="mr-2" href="https://www.facebook.com/Canvas-SV-111154510666281" target="__blank"><i className="fab fa-facebook-square a-color"></i></a>
+                        <a className="mr-2" href="https://twitter.com/CanvasFrameIt" target="__blank"><i className="fab fa-twitter-square a-color"></i></a>
+                        <a className="mr-2" href="https://www.instagram.com/canvas.sv/" target="__blank"><i className="fab fa-instagram-square a-color"></i></a>
                     </div>
                 </div>
             </div>
             <div className="foot__bottom-div">
-                <p style={{color:'white'}}>Copyright 2020</p>
+                <p style={{color:'white'}}>© Copyright 2021</p>
             </div>
         </div>
     )

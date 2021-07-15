@@ -92,7 +92,7 @@ export const Navbar = () => {
                 <div>
                   <li className="option mobile-option" onClick={closeMobileMenu}>
                     <p onClick={handleLogOut} className="link-navbar">
-                        <a href="/auth/login">LOG OUT</a>
+                        <a href="/auth/login">SALIR</a>
                     </p>
                   </li>
                   <li className="option mobile-option" onClick={closeMobileMenu}>
@@ -107,7 +107,7 @@ export const Navbar = () => {
           <ul className="signin-up">
             <li className="sign-in" onClick={closeMobileMenu}>
             <div style={{display:'flex'}}>
-                <input onChange={(e)=>handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Search something"/>
+                <input onChange={(e)=>handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Buscar..."/>
                
                 <button className="navbar__search-button" type="button">
                   <Link className="navbar__shopping-cart-icon" to="/main/search">
@@ -157,7 +157,7 @@ export const Navbar = () => {
               <li onClick={closeMobileMenu}>
                 <p onClick={handleLogOut} className="link-navbar">
                     <a style={{color: "#EC7063"}} className="link-navbar" href="/auth/login">
-                      LOG OUT
+                      SALIR
                     </a>
                 </p>
               </li>

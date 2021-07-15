@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { API_HOST } from '../../constants/URLS'
 export const SideBar = () => {
     const [themes, setThemes] = useState([])
-console.log(themes);
+    
     useEffect(() => {
         getAllThemes();
     }, [])
@@ -27,8 +27,6 @@ console.log(themes);
                         >
                         {tema.name.toUpperCase()}{tema.discount && tema.discount > 0 ? (<p style={{margin:0, color: 'red'}}>{`- ${tema.discount*100}%`}</p>) : <></>}
                         </a>
-                        
-                        
                     </div>
                     :
                     <></>)

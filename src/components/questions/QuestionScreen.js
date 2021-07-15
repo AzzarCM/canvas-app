@@ -19,8 +19,8 @@ export const QuestionScreen = () => {
                 <img className="question__image" alt="imagen" src={question} />
                 <div>
                     <h1 className="questions__title">¿Tienes dudas?</h1>
-                    <p className="questions__paragraph">Aqui hay una serie de preguntas frecuentes por parte de nuestros clientes <br />
-                        Cualquier pregunta mas especifica la puedes hacer a traves de nuestras redes <br />
+                    <p className="questions__paragraph">Aquí hay una serie de preguntas frecuentes por parte de nuestros clientes <br />
+                        Cualquier pregunta mas específica la puedes hacer a traves de nuestras redes <br />
                         o puedes mandarnos un correo a: <br></br> <br></br> micanva@canvasframeit.com <br />
                     </p>
                    {/* { <div className="questions__search-part">
@@ -29,11 +29,11 @@ export const QuestionScreen = () => {
                     </div>} */}
                 </div>
             </div>
-            <h1 className="selled__title-related mb-5">Preguntas frecuentes!</h1>
+            <h1 className="selled__title-related mb-5" style={{marginTop: '2%'}}>Preguntas frecuentes</h1>
 
             <div className="questions__accordion-div">
 
-                <h1 className="selled__title-related mb-5">ORDENES Y PEDIDOS</h1>
+                <h1 className="selled__title-related mb-5">ÓRDENES Y PEDIDOS</h1>
                 <Accordion
                     style={{marginBottom: 5}}>
                     <AccordionSummary
