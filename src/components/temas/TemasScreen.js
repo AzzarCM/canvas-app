@@ -46,26 +46,30 @@ export const TemasScreen = () => {
     const resp = await fetch(url);
 
     const { painting_info } = await resp.json();
-    const cuadro = painting_info.map((img) => {
-      return {
-        id: img.id,
-        name: img.name,
-        url: img.image_url,
-        descripcion: img.description,
-        materials: img.materials,
-        measurements: img.measurements,
-        theme_id: img.theme_id,
-        stock: img.stock,
-      };
-    });
-    const descuento = painting_info.map((item) => {
-      return item.theme.discount;
-    });
-    handleDropDownChange({ target: { value: cuadro[0].materials[0].id } });
-    setDiscount(descuento);
-    setPainting(cuadro);
-    setBanderaMat(true);
-    setBanderaDim(true);
+    if (painting_info.length == 0) {
+      history.push('/');
+    } else {
+      const cuadro = painting_info.map((img) => {
+        return {
+          id: img.id,
+          name: img.name,
+          url: img.image_url,
+          descripcion: img.description,
+          materials: img.materials,
+          measurements: img.measurements,
+          theme_id: img.theme_id,
+          stock: img.stock,
+        };
+      });
+      const descuento = painting_info.map((item) => {
+        return item.theme.discount;
+      });
+      handleDropDownChange({ target: { value: cuadro[0].materials[0].id } });
+      setDiscount(descuento);
+      setPainting(cuadro);
+      setBanderaMat(true);
+      setBanderaDim(true);
+    }
   };
 
   const handleClick = () => {
@@ -135,11 +139,11 @@ export const TemasScreen = () => {
 
   const handlePrice = (e) => {
     if (discount != null && discount > 0) {
-      setPrecio(e.target.value * (1 - discount));
+      setPrecio((+(e.target.value * (1 - discount) * 100) / 100).toFixed(2));
       setPrecioReal(e.target.value);
       setRadioChecked(true);
     } else {
-      setPrecio(e.target.value);
+      setPrecio((+(e.target.value * 100) / 100).toFixed(2));
       setRadioChecked(true);
     }
   };
@@ -159,9 +163,6 @@ export const TemasScreen = () => {
       (dim) => dim.material_id == idMaterial
     );
     setTemaId(painting[0].theme_id);
-    const { width, height } = result[0];
-    handlePrice({ target: { value: result[0].price } });
-    handleCheckedDim(height, width);
     result.sort(function (a, b) {
       if (a.height * a.width > b.height * b.width) {
         return 1;
@@ -171,6 +172,9 @@ export const TemasScreen = () => {
       }
       return 0;
     });
+    const { width, height } = result[0];
+    handlePrice({ target: { value: result[0].price } });
+    handleCheckedDim(height, width);
     setDimensions(result);
     setBanderaDim(false);
     handleChecked(painting[0].materials[0].name);
@@ -219,7 +223,7 @@ export const TemasScreen = () => {
                 <div className="temas__precio-container">
                   <p className="temas__precio-normal-tachado">{`$${precioReal}`}</p>
                   <p className="temas__precio-normal">{`Precio: $${(
-                    Math.round(precio * 100) / 100
+                    +(precio * 100) / 100
                   ).toFixed(2)}`}</p>
                 </div>
               ) : (
@@ -230,8 +234,7 @@ export const TemasScreen = () => {
           <div className="temas__materiales">
             <div className="temas__width-select">
               <h4 className="temas__btn-title-mat">
-                Seleccione {' '}
-                <br />
+                Seleccione <br />
                 material
               </h4>
               <div className="btn-div-wrap">
@@ -270,8 +273,7 @@ export const TemasScreen = () => {
                 style={{ marginBottom: 0, marginRight: 15 }}
                 className="temas__btn-title"
               >
-                Seleccione {' '}
-                <br />
+                Seleccione <br />
                 dimensión
               </h4>
               <div className="btn-div-wrap">
@@ -316,7 +318,7 @@ export const TemasScreen = () => {
           <div className="temas__buy-container-right">
             <button onClick={handleAddToCart} className="temas-btn-carrito">
               <i
-                style={{ marginRight: 10 }}
+                style={{ paddingRight: 10 }}
                 className="fas fa-shopping-cart"
               ></i>
               Agregar al carrito
@@ -327,10 +329,7 @@ export const TemasScreen = () => {
                   onClick={handleWarning}
                   className="resize temas-btn-carrito"
                 >
-                  <i
-                    style={{ marginRight: 10 }}
-                    className="fas fa-arrow-up"
-                  ></i>
+                  <i className="fas fa-arrow-up padd"></i>
                   Comprar
                 </button>
               </a>
@@ -340,7 +339,7 @@ export const TemasScreen = () => {
                   onClick={handleClick}
                   className="temas-btn-carrito resize"
                 >
-                  <i className="fas fa-arrow-up"></i>
+                  <i className="fas fa-arrow-up padd"></i>
                   Comprar
                 </button>
               </a>
@@ -350,7 +349,7 @@ export const TemasScreen = () => {
                   onClick={handleClick}
                   className="temas-btn-carrito resize"
                 >
-                  <i className="fas fa-arrow-up"></i>
+                  <i className="fas fa-arrow-up padd"></i>
                   Comprar
                 </button>
               </a>

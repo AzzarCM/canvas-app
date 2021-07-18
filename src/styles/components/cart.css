@@ -12,9 +12,10 @@
     padding-left: 4%;
 }
 .cart__icons-container{
-    width: 100px;
+    width: 50px;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
 }
 
 .cart-empty-message{
@@ -34,6 +35,7 @@
 }
 .delete{
     color: red;
+    margin-right: 2rem;
 }
 .delete:hover{
     color: rgb(177, 6, 6)
@@ -107,6 +109,7 @@
 .input-with-icon{
     display: flex;
     margin-bottom: 15px;
+    margin-top: 0 !important;
 }
 .cart__select-zones{
     width: 100%;
@@ -142,6 +145,19 @@
     outline: none;
 }
 
+.checkout__input-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+}
+
+.checkout__pago-container{
+    width: 65%;
+}
+
+.checkout__form{
+    width: 50%
+}
 
 .checkout-button{
     background-color: #21AB91;
@@ -183,12 +199,28 @@
         padding-left: 10px;
         padding-right: 10px;
     }
+    .checkout__form{
+        width: 80%
+    }
+    .checkout__input-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .checkout__pago-container{
+        width: 100%;
+    }
     
+}
+
+@media(min-width: 426px) and (max-width: 1024px){
+    .checkout__form{
+        width: 70%
+    }
 }
 
 @media (max-width: 400px){
     .cart__select-zones{
-        width: 310px;
+        width: 95%;
         margin-left: 10px;
     }
     .cart__container-divs-total{

@@ -348,6 +348,9 @@
     padding-left: 0%;
     flex-direction: column;
   }
+  .temas__info-container{
+    padding-left: 0;
+  }
 }
 
 @media (min-width: 300px) and (max-width: 400px) {

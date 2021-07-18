@@ -11,7 +11,6 @@ export const SearchBar = () => {
         dispatch(changeSearchText(text));
     }
 
-
     return (
         <div className="input-search">
             <input onChange={(e) => handleSearchBar(e.target.value)} name="search" className="navbar__search-input" type="text" placeholder="Buscar..." />

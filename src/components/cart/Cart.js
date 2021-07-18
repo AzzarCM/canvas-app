@@ -29,7 +29,7 @@ export const Cart = () => {
       {total > 0 && (
         <>
           <h2 className="temas__title-busqueda mt-5">Sub Total</h2>
-          <p style={{ fontSize: 25 }}>{`$${total}`}</p>
+          <p style={{ fontSize: 25 }}>{`$${(+(total*100)/100).toFixed(2)}`}</p>
           {JSON.stringify(authState) == "{}" ? (
             <button
               onClick={handleClick}

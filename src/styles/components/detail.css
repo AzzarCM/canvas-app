@@ -17,11 +17,8 @@
   
   .container-product-item{
     display: flex;
-    margin-left: 3rem;
-  }
-  
-  .text-container-product {
-    margin: auto;
+    align-items: center;
+    margin-left: 1rem;
   }
   
   .product-name {
@@ -31,7 +28,7 @@
   }
   
   .table.table-details {
-    width: 80% !important;
+    width: 90% !important;
     margin-left: 4.5rem;
   }
   

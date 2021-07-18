@@ -120,7 +120,7 @@
 }
 
 .resize{
-    width: 150px;
+    width: 170px;
     margin-left: 3rem;
 }
 
@@ -224,4 +224,10 @@
 .detail-button:hover{
     color: rgba(255, 255, 255, 0.692);
     text-decoration: none;
+}
+
+@media(max-width: 640px){
+    .temas-btn-carrito{
+        width: 260px;
+    }
 }

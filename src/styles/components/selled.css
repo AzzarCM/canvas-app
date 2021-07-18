@@ -23,12 +23,16 @@
 }
 
 .selled__title-image{
-    margin-top: 5%;
+    margin-top: 1.5rem;
     text-align: center;
     word-wrap: break-word;
 }
 .selled__price-image{
     margin-top: 5%;
+    margin-bottom: 0;
     color: #42bda5;
+}
+.padd{
+    padding-right: 0.5rem;
 }
 
