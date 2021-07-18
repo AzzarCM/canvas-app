@@ -250,6 +250,16 @@
     height: 500px;
   }
 }
+@media (min-width: 920px) and (max-width: 1223px){
+  .temas__buy-container-right{
+    flex-direction: column;
+  }
+}
+@media(max-width: 640px){
+  .resize{
+    margin-left: 0;
+  }
+}
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 300px) and (max-width: 1024px) {
   .temas__empty-space {
@@ -261,6 +271,7 @@
   }
   .temas__btn-title-mat {
     padding-right: 0px;
+    text-align: center;
   }
   .btn-div-wrap {
     justify-content: center;
