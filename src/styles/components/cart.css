@@ -16,6 +16,11 @@
     display: flex;
     justify-content: space-between;
 }
+
+.cart-empty-message{
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+}
 .cart__icons{
     font-size: 20px;
     color: #21AB91;

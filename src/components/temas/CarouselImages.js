@@ -9,6 +9,6 @@ export const CarouselImages = ({img}) => {
     
 
     return (
-        <Carousel images={images} style={{backgroundColor: 'white', width: 500, height: 'auto'}} maxIcon={false} />
+        <Carousel images={images} style={{backgroundColor: 'white', width: 500, height: 'auto'}} maxIcon={false} playIcon={false} />
     )
 }

@@ -20,17 +20,11 @@ export const QuestionScreen = () => {
                 <div>
                     <h1 className="questions__title">¿Tienes dudas?</h1>
                     <p className="questions__paragraph">Aquí hay una serie de preguntas frecuentes por parte de nuestros clientes <br />
-                        Cualquier pregunta mas específica la puedes hacer a traves de nuestras redes <br />
+                        Cualquier pregunta mas específica la puedes hacer a través de nuestras redes <br />
                         o puedes mandarnos un correo a: <br></br> <br></br> micanva@canvasframeit.com <br />
                     </p>
-                   {/* { <div className="questions__search-part">
-                        <input className="questions__search-input" type="text" />
-                        <button className="questions__search-button"><i className="fas fa-search"></i></button>
-                    </div>} */}
                 </div>
             </div>
-            <h1 className="selled__title-related mb-5" style={{marginTop: '2%'}}>Preguntas frecuentes</h1>
-
             <div className="questions__accordion-div">
 
                 <h1 className="selled__title-related mb-5">ÓRDENES Y PEDIDOS</h1>
@@ -47,7 +41,7 @@ export const QuestionScreen = () => {
                         <Typography
                             style={{color: '#868686'}}
                         >
-                            Todos los cuadros cuentan con su bastidor de madera, Actualmente ofrecemos canvas (lienzo), acrílico y vinil laminado. Sin embargo, estamos trabajando constantemente para traerte una mayor variedad.
+                            Todos los cuadros cuentan con su bastidor de madera, actualmente ofrecemos canvas (lienzo), acrílico y vinil laminado. Sin embargo, estamos trabajando constantemente para traerte una mayor variedad.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -66,7 +60,7 @@ export const QuestionScreen = () => {
                         <Typography
                             style={{color: '#868686'}}
                         >
-                            En el momento en el que colocas tu orden, empezamos a trabajar en ella lo más rápido posible. Sin embargo, sabemos que los errores ocurren. Haremos todo lo posible para cancelar tu orden. Para procesar tu cancelación, escríbenos un correo a atencionalcliente@canvasframeit.com.
+                            En el momento en el que colocas tu orden, empezamos a trabajar en ella lo más rápido posible. Sin embargo, sabemos que los errores ocurren. Haremos todo lo posible para cancelar tu orden. Para procesar tu cancelación, escríbenos un correo a micanva@canvasframeit.com.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
@@ -208,7 +202,7 @@ export const QuestionScreen = () => {
                         >
                             ¡Claro que sí! Para pedidos de grandes cantidades, ofrecemos descuentos especiales.
 
-                            Si tu pedido es de nivel empresarial, la mejor manera para manejarlo es directamente con nosotros. Puedes empezar escribiéndonos un correo a atencionalcliente@canvasframeit.com.
+                            Si tu pedido es de nivel empresarial, la mejor manera para manejarlo es directamente con nosotros. Puedes empezar escribiéndonos un correo a micanva@canvasframeit.com.
 
                         </Typography>
                     </AccordionDetails>
@@ -227,7 +221,7 @@ export const QuestionScreen = () => {
                         <Typography
                             style={{color: '#868686'}}
                         >
-                    ¡Si puedes! Si deseas un cuadro con medidas personalizadas, nos puedes escribir un correo a atencionalcliente@canvasframeit.com comentándonos las medidas que deseas acompañada de la imagen, luego de verificar la calidad de la imagen y la proporción del cuadro, te comentamos el precio del cuadro. 
+                    ¡Si puedes! Si deseas un cuadro con medidas personalizadas, nos puedes escribir un correo a micanva@canvasframeit.com comentándonos las medidas que deseas acompañada de la imagen, luego de verificar la calidad de la imagen y la proporción del cuadro, te comentamos el precio del cuadro. 
 
                         </Typography>
                     </AccordionDetails>
@@ -257,7 +251,7 @@ export const QuestionScreen = () => {
                             </ul>
                         <b>
                         Cualquier teléfono celular moderno o cámara digital toma fotografías con una calidad más que suficiente para una impresión de alta definición. Sin embargo, es importante que esta foto no haya sido transferida por alguna aplicación como Whatsapp, Facebook, Instagram, etc. ya que estas aplicaciones comprimen las imágenes, y hacen que pierdan calidad.
-                        En sí, la resolución mínima dependerá del tamaño del cuadro, y si tienes alguna duda de si tu imagen se verá bien impresa en el tamaño que quieres, puedes enviarnos un correo a atencionalcliente@canvasframeit.com adjuntando tu imagen y con gusto te ayudaremos.
+                        En sí, la resolución mínima dependerá del tamaño del cuadro, y si tienes alguna duda de si tu imagen se verá bien impresa en el tamaño que quieres, puedes enviarnos un correo a micanva@canvasframeit.com adjuntando tu imagen y con gusto te ayudaremos.
 
                         </b>
                       
@@ -374,8 +368,8 @@ export const QuestionScreen = () => {
                             style={{color: '#868686'}}
                         >
                             <b>
-                            ¡Sin duda! Para solicitar tu factura envía un correo a atencionalcliente@canvasframeit.com con la razón social, NRC, correo electrónico y el número de pedido que quieras que se facture.
-                            Solicitamos que los siguientes datos sean enviados a nuestro correo electrónico atencionalcliente@canvasframeit.com para generación de factura:
+                            ¡Sin duda! Para solicitar tu factura envía un correo a micanva@canvasframeit.com con la razón social, NRC, correo electrónico y el número de pedido que quieras que se facture.
+                            Solicitamos que los siguientes datos sean enviados a nuestro correo electrónico micanva@canvasframeit.com para generación de factura:
 
                             </b>
                            

@@ -21,19 +21,19 @@ export const LoginScreen = (props) => {
     const { email, password } = formValues;
 
     function isFormValid() {
-        if (!validator.isEmail(email)) {
-            setErrorMessage('Correo electronico invalido')
+        if (!validator.isEmpty(email)) {
+            setErrorMessage('El campo del correo esta vacio')
             setFlag(false)
             return false
-        } else if (validator.isEmpty(email)) {
-            setErrorMessage('El campo del correo esta vacio')
+        } else if (validator.isEmail(email)) {
+            setErrorMessage('Correo electronico invalido')
             setFlag(false)
             return false
         } else if (validator.isEmpty(password)) {
             setErrorMessage('El campo de la contraseña esta vacia')
             setFlag(false)
             return false
-        } else if (password.lenght < 6) {
+        } else if (password.lenght <= 6) {
             setErrorMessage('la contraseña debe ser mayor a 6 caracteres')
             setFlag(false)
             return false

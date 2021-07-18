@@ -1,10 +1,10 @@
 .auth__container{
     display: -webkit-flex;
+    height: 100vh;
   
 }
 
 .auth__image{
-    margin-top: 1%;
     height: 100%;
     width: 100%;
 }

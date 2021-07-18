@@ -19,7 +19,10 @@ import { ThemesCategory } from '../components/temas/ThemesCategory';
 import { UploadScreen } from '../components/upload/UploadScreen';
 import { Garantia } from '../components/information/Garantia'
 import { Detail } from '../components/history/Detail';
-export const PrincipalRouter = () => {
+
+export const PrincipalRouter = ({ location }) => {
+    const { pathname } = location;
+    localStorage.setItem('lastPath', `${pathname}`);
     return (
         <div>
             <Switch>

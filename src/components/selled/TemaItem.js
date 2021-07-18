@@ -19,7 +19,7 @@ export const TemaItem = ({item}) => {
                 <Card.Img className="temas__card-image" variant="top" src={item.image_url} />
                 <Card.Body className="temas__card-body">
                     <Card.Title style={{color: "#31B199", marginTop: '2rem'}}>{item.name}</Card.Title>
-                    {item.discount > 0.0 ? <div className="temas__overlay-cont"><Card.ImgOverlay className="temas__overlay">{`- ${item.discount*100}%`}</Card.ImgOverlay></div> : <></>}
+                    {item.discount > 0.0 && <div className="temas__overlay-cont">{`${item.discount*100}% OFF`}</div>}
                 </Card.Body>
                 
             </Card> :

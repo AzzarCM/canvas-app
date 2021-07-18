@@ -12,6 +12,7 @@ import { Footer } from '../main/Footer'
 import errorImg from '../../assets/img/error.png'
 import doneImg from '../../assets/img/done.png'
 import wompi from '../../assets/img/wompi2.png'
+import visamaster from '../../assets/img/visamaster.png'
 import { API_HOST } from '../../constants/URLS'
 
 
@@ -26,6 +27,8 @@ export const Checkout = () => {
     var uid = firebase.auth().currentUser.uid;
     var name = firebase.auth().currentUser.displayName;
     var mail = firebase.auth().currentUser.email;
+
+    console.log("ES AQUIUIIII")
     
     //redux variables
     const dispatch = useDispatch();
@@ -415,7 +418,10 @@ export const Checkout = () => {
                 </div>
                 
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de pago</h2>
-                <img src={wompi} alt="wompi" style={{width: 200}}/>
+                <div>
+                    <img src={wompi} alt="wompi" style={{width: 200}} />
+                    <img src={visamaster} alt="visamaster" style={{width: 120, marginLeft: '1rem'}} />
+                </div>
                 <div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                     
@@ -432,14 +438,6 @@ export const Checkout = () => {
                                 onChange={ cardValues.handleChange }
                             />
                         </div>
-                        <div style={{display: 'flex', marginBottom: 15}}>
-                            <i className="fas fa-user icon"></i>
-                            <input 
-                                className="input-number-card" 
-                                type="text"
-                                placeholder="Nombre Tarjetahabiente"
-                            />
-                        </div> 
                     </div>
                     <div style={{display: 'flex'}}>
                         <div>

@@ -24,6 +24,7 @@ export const AppRouter = () => {
         indicator: <BallTriangle width="50" />,
       });
 
+    const lastPath = localStorage.getItem('lastPath') || '/';
     const dispatch = useDispatch();
     
     useEffect(() => {
@@ -31,6 +32,7 @@ export const AppRouter = () => {
     }, []) 
     
     useEffect(() => {
+        
         firebase.auth().onAuthStateChanged( (user)=>{
             if(user?.uid){
                 dispatch(login(user.uid, user.displayName));
@@ -44,6 +46,7 @@ export const AppRouter = () => {
             setChecking(false);
         });
     }, [dispatch, setChecking, setIsLoggedIn]);
+
     const getImages = async () =>{
         const url = `${API_HOST}/paintings`;
         const resp = await fetch(url)
@@ -85,7 +88,7 @@ export const AppRouter = () => {
                         path="/auth"
                         component={ (props) => (
                             (isLoggedIn) 
-                            ? (<Redirect to="/"/>)
+                            ? (<Redirect to={lastPath}/>)
                             : (<AuthRouter/>)
                         )}
                    />
