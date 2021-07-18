@@ -44,8 +44,7 @@ export const CartList = () => {
                                 </div>
                                 <div className="cart__item-desc">
                                     <span className="cart__item-title">{item.name}</span>
-                                    <p>{item.description}</p>
-                                    <div style={{display: 'flex', width: 300, justifyContent: 'space-between'}}>
+                                    <div style={{display: 'flex', width: 300, justifyContent: 'space-between', marginTop: '1rem'}}>
                                         <div>
                                             <p>
                                                 <b>Precio: <span style={{color:"#21AB91"}}>{`$${item.price}`}</span></b>
@@ -56,7 +55,7 @@ export const CartList = () => {
                                         </div>
                                         <div>
                                             <p>
-                                                <b>Medidas: <span style={{color:"#21AB91"}}>{`${item.medidas}`}</span></b>    
+                                                <b>Medidas: <span style={{color:"#21AB91"}}>{`${item.medidas} m`}</span></b>    
                                             </p>
                                             <p>
                                                 <b>Material: <span style={{color:"#21AB91"}}>{`${item.material}`}</span></b>    

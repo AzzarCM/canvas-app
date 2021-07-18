@@ -84,7 +84,7 @@ export const TemasScreen = () => {
         html: '<p style="color:#42bda5;font-size: 35;">Inicia sesion para comprar!</p>',
         showConfirmButton: false,
         footer:
-          '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar Sesion</a>',
+          '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar sesión</a>',
       });
     } else {
       dispatch(addToCart(id, precio, material, idMaterial, medidas));
@@ -98,13 +98,13 @@ export const TemasScreen = () => {
         imageUrl: errorImg,
         imageWidth: 155,
         imageHeight: 250,
-        html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimension!</p>',
+        html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimensión</p>',
         showConfirmButton: true,
       });
     } else {
       Swal.fire({
         position: "center",
-        html: '<p style="color:#42bda5;font-size: 35;">El cuadro<br>fue agregado<br>exitosamente!</p>',
+        html: '<p style="color:#42bda5;font-size: 35;">Se agregó el cuadro al carrito</p>',
         imageUrl: compra,
         imageWidth: 200,
         imageHeight: 200,
@@ -118,8 +118,8 @@ export const TemasScreen = () => {
   const handleWarning = () => {
     Swal.fire({
       icon: "warning",
-      title: "ATENCION!",
-      html: '<p style="color:#42bda5;font-size: 35;">Inicia sesion para comprar!</p>',
+      title: "Atención!",
+      html: '<p style="color:#42bda5;font-size: 35;">Inicia sesión para comprar</p>',
       showConfirmButton: false,
       footer:
         '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar Sesion</a>',

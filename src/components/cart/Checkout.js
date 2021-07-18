@@ -28,13 +28,10 @@ export const Checkout = () => {
     var name = firebase.auth().currentUser.displayName;
     var mail = firebase.auth().currentUser.email;
 
-    console.log("ES AQUIUIIII")
-    
     //redux variables
     const dispatch = useDispatch();
     const {total, addedItems} = useSelector(state => state.cart)
    
-
     //useStates
 
     var today = new Date();
@@ -63,7 +60,7 @@ export const Checkout = () => {
         validate: values =>{
             
             let errors = {}
-
+    
             if(validator.isEmpty(values.customer_name)){
                 errors.customer_name = 'Campo del nombre requerido';
             }
@@ -90,7 +87,8 @@ export const Checkout = () => {
             return errors
         }
     });
-
+    const [visa, setVisa] = useState(false);
+    const [masterCard, setMasterCard] = useState(false);
     const cardValues = useFormik({
         initialValues:{
             numeroTarjeta: '',
@@ -100,10 +98,20 @@ export const Checkout = () => {
         },
         validate: values=>{
             let errors = {}
+            if(values.numeroTarjeta[0] == 4){
+                setVisa(true);
+            }else if(values.numeroTarjeta[0]==5){
+                setMasterCard(true);
+            }else{
+                setVisa(false);
+                setMasterCard(false);
+            }
             if(validator.isEmpty(values.numeroTarjeta)){
-                errors.numeroTarjeta = 'Completa el campo de la tarjeta de debito/credito';
+                errors.numeroTarjeta = 'Completa el campo de la tarjeta';
+            }else if(!validator.isNumeric(values.numeroTarjeta)){
+                errors.numeroTarjeta = 'No ingresar letras'
             }else if(!validator.isCreditCard(values.numeroTarjeta)){
-                errors.numeroTarjeta = 'El numero no coincide con una tarjeta Visa o Master Card'
+                errors.numeroTarjeta = 'Número de tarjeta inválido'
             }
             if(validator.isEmpty(values.mesVencimiento)){
                 errors.mesVencimiento = 'El mes esta vacio';
@@ -282,9 +290,9 @@ export const Checkout = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar/>
             <form>
-                <h2 className="temas__title-busqueda mb-5 mt-5">Informacion del cliente</h2>
+                <h2 className="temas__title-busqueda mb-5 mt-5">Información del cliente</h2>
                 <div className="input-container">
-                    <label>Nombre <span style={{color: 'red'}}>*</span></label>
+                    <label className="label-forms">Nombre <span style={{color: 'red'}}>*</span></label>
                     <div className="input-with-icon">
                         <i className="fas fa-user icon"></i>
                         <input  
@@ -297,9 +305,9 @@ export const Checkout = () => {
                         />
                     </div>
                 </div>
-                {formValues.errors.customer_name ?  <p className="foot__sticky-note">{formValues.errors.customer_name}</p> : null} 
+                {formValues.errors.customer_name ?  <p className="foot__sticky-note label-forms">{formValues.errors.customer_name}</p> : null} 
                 <div className="input-container">
-                    <label>Correo Electronico <span style={{color: 'red'}}>*</span></label>
+                    <label className="label-forms">Correo electrónico <span style={{color: 'red'}}>*</span></label>
                     <div className="input-with-icon">
                         <i className="fas fa-envelope icon"></i>
                         <input 
@@ -312,9 +320,9 @@ export const Checkout = () => {
                         />
                     </div>
                 </div>
-                {formValues.errors.email ?  <p className="foot__sticky-note">{formValues.errors.email}</p> : null} 
+                {formValues.errors.email ?  <p className="foot__sticky-note label-forms">{formValues.errors.email}</p> : null} 
                 <div className="input-container">
-                    <label>Telefono <span style={{color: 'red'}}>*</span></label>
+                    <label className="label-forms">Teléfono <span style={{color: 'red'}}>*</span></label>
                     <div className="input-with-icon">
                         <i className="fas fa-phone icon"></i>
                         <input 
@@ -328,9 +336,9 @@ export const Checkout = () => {
                         />
                     </div>
                 </div>
-                {formValues.errors.customer_phone ?  <p className="foot__sticky-note">{formValues.errors.customer_phone}</p> : null} 
+                {formValues.errors.customer_phone ?  <p className="foot__sticky-note label-forms">{formValues.errors.customer_phone}</p> : null} 
                 <h2 className="temas__title-busqueda mb-5 mt-5">Informacion de la entrega</h2>
-                <label>Departamento <span style={{color: 'red'}}>*</span></label>
+                <label className="label-forms">Departamento <span style={{color: 'red'}}>*</span></label>
                 <select
                     className="cart__select-zones"
                     name="department"
@@ -354,9 +362,9 @@ export const Checkout = () => {
                         })
                     }
                 </select>
-                {formValues.errors.department ?  <p className="foot__sticky-note">{formValues.errors.department}</p> : null} 
+                {formValues.errors.department ?  <p className="foot__sticky-note label-forms">{formValues.errors.department}</p> : null} 
                 <br/><br/>
-                <label>Municipio <span style={{color: 'red'}}>*</span></label>
+                <label className="label-forms">Municipio <span style={{color: 'red'}}>*</span></label>
                 <select
                     className="cart__select-zones"
                     name="municipality"
@@ -380,11 +388,11 @@ export const Checkout = () => {
                     }
 
                 </select>
-                {formValues.errors.municipality ?  <p className="foot__sticky-note">{formValues.errors.municipality}</p> : null} 
+                {formValues.errors.municipality ?  <p className="foot__sticky-note label-forms">{formValues.errors.municipality}</p> : null} 
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-map-marked-alt icon"></i>
                     <input 
-                        className="text-area-direccion"
+                        className="input-number-card"
                         type="text"
                         name="suburb" 
                         placeholder="Colonia"
@@ -392,19 +400,19 @@ export const Checkout = () => {
                         onChange={ formValues.handleChange }
                     />
                 </div>
-                {formValues.errors.suburb ?  <p className="foot__sticky-note">{formValues.errors.suburb}</p> : null} 
+                {formValues.errors.suburb ?  <p className="foot__sticky-note label-forms">{formValues.errors.suburb}</p> : null} 
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-map-marked-alt icon"></i>
                     <textarea 
                         className="text-area-direccion"
                         type="text"
                         name="delivery_address" 
-                        placeholder="Direccion de envio"
+                        placeholder="Dirección de envio"
                         value={ formValues.values.delivery_address }
                         onChange={ formValues.handleChange }
                     />
                 </div>
-                {formValues.errors.delivery_address ?  <p className="foot__sticky-note">{formValues.errors.delivery_address}</p> : null} 
+                {formValues.errors.delivery_address ?  <p className="foot__sticky-note label-forms">{formValues.errors.delivery_address}</p> : null} 
                 <div className="input-with-icon mt-5">
                     <i className="fas fa-asterisk icon"></i>
                     <textarea 
@@ -425,9 +433,10 @@ export const Checkout = () => {
                 <div>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
                     
-                        {cardValues.errors.numeroTarjeta ?  <p className="foot__sticky-note">{cardValues.errors.numeroTarjeta}</p> : null}
+                        {cardValues.errors.numeroTarjeta ?  <p className="foot__sticky-note label-forms">{cardValues.errors.numeroTarjeta}</p> : null}
                         <div className="input-with-icon">
-                            <i className="fas fa-credit-card icon"></i>
+                            
+                            {visa ? <i className="fab fa-cc-visa icon"></i> : masterCard ? <i className="fab fa-cc-mastercard icon"></i> : <i className="fas fa-credit-card icon"></i>}
                             <input 
                                 className="input-number-card" 
                                 type="text"
@@ -453,7 +462,7 @@ export const Checkout = () => {
                                     onChange={ cardValues.handleChange }
                                 />
                             </div>
-                            {cardValues.errors.mesVencimiento ?  <p className="foot__sticky-note">{cardValues.errors.mesVencimiento}</p> : null}
+                            {cardValues.errors.mesVencimiento ?  <p className="foot__sticky-note label-forms">{cardValues.errors.mesVencimiento}</p> : null}
                         </div>
                         <div>
                             <div className="inputs-container-foot">
@@ -468,7 +477,7 @@ export const Checkout = () => {
                                     onChange={ cardValues.handleChange }
                                 />
                             </div>
-                            {cardValues.errors.anioVencimiento ?  <p className="foot__sticky-note">{cardValues.errors.anioVencimiento}</p> : null}
+                            {cardValues.errors.anioVencimiento ?  <p className="foot__sticky-note label-forms">{cardValues.errors.anioVencimiento}</p> : null}
 
                         </div>                        
                     </div>
@@ -477,7 +486,7 @@ export const Checkout = () => {
                             <i className="fas fa-lock icon"></i>
                             <input 
                                 className="input__card-field" 
-                                type="text" 
+                                type="password" 
                                 maxLength="3"
                                 placeholder="CVC"
                                 name="cvv"
@@ -485,11 +494,11 @@ export const Checkout = () => {
                                 onChange={ cardValues.handleChange }
                             />
                     </div>
-                    {cardValues.errors.cvv ?  <p className="foot__sticky-note">{cardValues.errors.cvv}</p> : null}
+                    {cardValues.errors.cvv ?  <p className="foot__sticky-note label-forms">{cardValues.errors.cvv}</p> : null}
                 </div>
             </form>
             <h1 className="selled__title-related mb-5">Resumen de la compra</h1>
-            <p>{`NOTA: la entrega estimada seria entre el ${dayNames[tresDias.getDay()]} ${tresDias.getDate()} de ${monthNames[tresDias.getMonth()]} al  ${dayNames[cincoDias.getDay()]} ${cincoDias.getDate()} de ${monthNames[cincoDias.getMonth()]}`}</p>
+            <p className="label-forms">{`NOTA: la entrega estimada seria entre el ${dayNames[tresDias.getDay()]} ${tresDias.getDate()} de ${monthNames[tresDias.getMonth()]} al  ${dayNames[cincoDias.getDay()]} ${cincoDias.getDate()} de ${monthNames[cincoDias.getMonth()]}`}</p>
             <CartList/>
             <div className="cart__container-total">
                 <div className="cart__container-divs-total">
