@@ -3,6 +3,7 @@ import { ImageItem } from '../selled/ImageItem';
 import { useLoading, BallTriangle } from '@agney/react-loading';
 import { API_HOST } from '../../constants/URLS'
 import { useHistory } from 'react-router-dom';
+import validator from 'validator';
 
 export const WrapImages = (props) => {
     const { id } = props;
@@ -23,12 +24,13 @@ export const WrapImages = (props) => {
     }, [])
 
     const getAllImages = async () => {
+        if(!validator.isNumeric(id)) {
+            history.push('/main/themes');
+            return;
+        }
         const url = `${API_HOST}/paintings/theme/${id}`;
         const resp = await fetch(url)
         const { paintings } = await resp.json();
-        if (paintings.length == 0) {
-            history.push('/');
-        }
         const nombreTheme = paintings.map((item)=>{
             const nombre = item.theme.name
             return nombre
