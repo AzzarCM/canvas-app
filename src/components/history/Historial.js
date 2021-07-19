@@ -10,7 +10,12 @@ export const Historial = () => {
     const {id} = useParams();
     const [orden, setOrden] = useState([]);
 
-    
+    useEffect(() => {
+        if (id) {
+          window.scrollTo(0, 0);
+        }
+      }, []);
+      
     function getOrderById() {
         const url = `${API_HOST}/orders/orders-by-customer/${id}`
             var idToken = localStorage.getItem("idToken")
@@ -26,6 +31,7 @@ export const Historial = () => {
                 return result
             })
     }
+    
 
     useEffect(() => {
         getOrderById()
@@ -39,7 +45,7 @@ export const Historial = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <h1 className="selled__title-related mb-5">Historial de compras</h1>
-            <Table variant="dark" style={{marginBottom: 200, width: '80vw', borderRadius: 25, borderStyle: 'hidden', marginLeft: '1rem'}} responsive="md" striped bordered hover>
+            <Table variant="dark" style={{marginBottom: '500px', width: '80vw', borderRadius: 25, borderStyle: 'hidden', marginLeft: '1rem'}} responsive="md" striped bordered hover>
                 <thead>
                     <tr>
                         <th>Orden Id</th>
@@ -74,7 +80,7 @@ export const Historial = () => {
 
                 </tbody>
             </Table>
-            <Footer />
+            <Footer/>
         </div>
     )
 }

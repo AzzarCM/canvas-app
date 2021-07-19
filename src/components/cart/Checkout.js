@@ -166,8 +166,9 @@ export const Checkout = () => {
   const [departamentoName, setDepartamentoName] = useState("");
 
   useEffect(() => {
+    console.log(total);
     setTotalPlusShipping((total + parseFloat(shipping)).toFixed(2));
-  }, [formValues.values, cardValues.values]);
+  }, [formValues.values, cardValues.values, addedItems, total]);
 
   const handleDepartamentos = (e) => {
     setIdDepartamento(e.target.value);
@@ -235,10 +236,19 @@ export const Checkout = () => {
       .auth()
       .currentUser.getIdToken(true)
       .then(function (idToken) {
+        if(addedItems.length == 0){
+          Swal.fire({
+            title: 'Ops..',
+            text: 'El carrito esta vacío',
+            confirmButtonText: 'Ok'
+          })
+          return;
+        }
         if (
           JSON.stringify(formValues.errors) == "{}" &&
           JSON.stringify(cardValues.errors) == "{}" &&
-          flagMunicipio
+          flagMunicipio 
+          
         ) {
           const data = {
             ...formValues.values,
@@ -612,7 +622,7 @@ export const Checkout = () => {
           </div>
           <div className="cart__horizontal-total">
             <p className="cart__p-align">Total</p>
-            <p className="cart__total-color">{`$${(+total + +shipping).toFixed(2)}`}</p>
+            <p className="cart__total-color">{`$${totalPlusShipping}`}</p>
           </div>
           <button
             onClick={handleSubmitData}
