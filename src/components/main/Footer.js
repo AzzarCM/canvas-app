@@ -1,4 +1,6 @@
 import React from 'react'
+import kioriLogo from '../../assets/svg/botlogo.svg'
+
 export const Footer = () => {
     return (
         <div className="foot__main-container">
@@ -39,7 +41,7 @@ export const Footer = () => {
                 </div>
             </div>
             <div className="foot__bottom-div">
-                <p style={{color:'white'}}>© Copyright 2021</p>
+                <p style={{ margin: 0, paddingRight: '1rem', color: 'white' }}>Made with love by</p><img src={kioriLogo} className="footer__logo-kiori"/>
             </div>
         </div>
     )

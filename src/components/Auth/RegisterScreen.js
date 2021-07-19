@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import imagen from "../../assets/img/register.png";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/svg/logo.svg";
 import { useForm } from '../../hooks/useForm';
 import validator from "validator";
 import { useDispatch } from 'react-redux';

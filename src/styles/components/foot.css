@@ -20,7 +20,8 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    padding-top: 1%;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
 }
 
 .foot__left-part{
@@ -62,6 +63,10 @@
     margin: 0;
 }
 
+.footer__logo-kiori{
+    width: 8%;
+}
+
 .mb-5{
     margin-bottom: 5%;
 }
@@ -86,5 +91,15 @@
         flex-direction: column;
         align-items: center;
     }
+    .footer__logo-kiori{
+        width: 120px;
+    }
 }
+
+@media (min-width: 300px) and (max-width: 767px){
+    .footer__logo-kiori{
+        width: 100px;
+    }
+}
+
 

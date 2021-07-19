@@ -497,7 +497,7 @@ export const Checkout = () => {
           </div>
         </div>
         <h2 className="temas__title-busqueda mb-5 mt-5">Información de pago</h2>
-        <div>
+        <div className="checkout__img-container">
           <img src={wompi} alt="wompi" style={{ width: 200 }} />
           <img
             src={visamaster}

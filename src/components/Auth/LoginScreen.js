@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { startLoginEmailPassword, startFacebookLogin, startGoogleLogin } from '../../actions/auth';
 import imagen from "../../assets/img/inicio-sesion.png"
-import logo from "../../assets/img/logo.png"
+import logo from "../../assets/svg/logo.svg";
 import { useForm } from '../../hooks/useForm'
 import validator from "validator";
 import Swal from 'sweetalert2';

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { startLogout } from "../../actions/auth";
 import { Link, useHistory } from "react-router-dom";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/svg/logo.svg";
 import { ReactComponent as MenuIcon } from "../../assets/svg/menu.svg";
 import { ReactComponent as CloseMenu } from "../../assets/svg/x.svg";
 import { changeSearchText } from "../../actions/ui";
