@@ -135,7 +135,7 @@
         width: 85%;
     }
     .home__separator{
-        width: 75%;
+        padding: 1rem;
     }
     .home__line1{
         display: none;
