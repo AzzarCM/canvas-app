@@ -143,7 +143,7 @@ export const Navbar = () => {
               className="link-navbar"
               href="/auth/login"
             >
-              LOG IN
+              INICIAR SESIÓN
             </a>
           </li>
         ) : (

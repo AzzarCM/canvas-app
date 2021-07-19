@@ -35,7 +35,7 @@ export const WrapImages = (props) => {
             const nombre = item.theme.name
             return nombre
         })
-        setNombre(nombreTheme[1]);
+        setNombre(nombreTheme[0]);
         setImagenes(paintings)
         setBandera(false);
     }
@@ -56,7 +56,7 @@ export const WrapImages = (props) => {
                             className="temas__title-busqueda"
                             style={{marginBottom: '4rem'}}
                         >
-                            Tema: <span className="temas__span-busqueda">"{nombre}"</span>
+                            Tema: <span className="temas__span-busqueda">{nombre}</span>
                         </h1>
                         {
                             imagenes.length >= 1 ?
