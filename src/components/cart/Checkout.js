@@ -180,7 +180,7 @@ export const Checkout = () => {
 
   const item = addedItems.map((item) => {
     return {
-      paintingId: item.id,
+      paintingId: item.auxid,
       material_id: item.material_id,
       measurements: item.medidas,
       price: item.price,

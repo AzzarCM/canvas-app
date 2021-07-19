@@ -62,6 +62,7 @@ export const AppRouter = () => {
                 price: img.price,
                 image_url: img.image_url,
                 materials: img.materials,
+                auxid: img.id,
             }
         })
         dispatch( fillItems(imagenes));
