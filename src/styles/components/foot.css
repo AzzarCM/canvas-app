@@ -141,5 +141,10 @@
         justify-content: center;
     }
 }
+@media (min-width: 700px) and (max-width: 1024px){
+    .foot__links{
+        font-size: 20px;
+    }
+}
 
 
