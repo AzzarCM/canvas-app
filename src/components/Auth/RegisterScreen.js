@@ -51,12 +51,12 @@ export const RegisterScreen = () => {
     return (
         <div className="auth__container animate__animated animate__fadeIn">
         <div className="auth__image">
-            <img alt="una imagen" src={imagen} />
+            <img alt="una imagen" src={imagen}/>
         </div>
         <div className="auth__right-container">
             <div className="auth__mini-nav">
                 <a href="/main/home">
-                    <img alt="logo" src={logo}/>
+                    <img alt="logo" src={logo}  width="100px" />
                 </a>
                 <div style={{
                     display:'flex', 

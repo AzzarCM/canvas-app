@@ -75,7 +75,7 @@ export const LoginScreen = (props) => {
             <div className="auth__right-container">
                 <div className="auth__mini-nav">
                     <a href="/main/home">
-                        <img alt="logo" src={logo} />
+                        <img alt="logo" src={logo} width="100px" />
                     </a>
                     <div style={{
                         display: 'flex',

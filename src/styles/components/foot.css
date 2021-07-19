@@ -7,7 +7,8 @@
 
 .foot__upper-div{
     background-color:#205B50;;
-    display: -webkit-flex;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
     align-items: center;
     justify-content: space-evenly;
     width: 100vw;
@@ -40,16 +41,32 @@
     text-decoration: none;
     color: #58C7B2;
     font-size: 25px;
-    font-weight: bold;
+    font-weight: lighter;
 }
 .foot__links:hover{
     color:  #459c8c;
+    text-decoration: none;
+}
+.foot__text-info{
+    font-size: 25px;
+    margin-bottom: 0;
+    font-weight: lighter;
 }
 
 .a-color{
-    color: white;
+    color: #ffffff;
     font-size: 40px;
     margin-right: 2%;
+}
+.a-color:hover{
+    color: #58C7B2;
+    transition: 0.3s ease;
+}
+.foot__linea-vertical{
+    font-size: 3.5rem;
+    font-weight: 100;
+    margin-bottom: 0;
+    color: #58C7B2;
 }
 
 .foot__social-icons{
@@ -64,7 +81,7 @@
 }
 
 .footer__logo-kiori{
-    width: 8%;
+    width: 6%;
 }
 
 .mb-5{
@@ -76,29 +93,45 @@
 .mr-2{
     margin-right: 2%;
 }
+.logocanva{
+    margin-bottom: 1rem;
+}
 /* Smartphones (portrait and landscape) ----------- */
-@media (min-width: 300px) and (max-width: 1090px){
-    .foot__upper-div{
-        flex-wrap: wrap;
-    }
-    .foot__social-icons{
-        justify-content: center;
-    }
-    .align-text{
-        text-align: center;
-    }
-    .foot__phone{
-        flex-direction: column;
-        align-items: center;
-    }
+@media (min-width: 300px) and (max-width: 1024px){
+    
     .footer__logo-kiori{
         width: 120px;
     }
+    .foot__text-info{
+        font-size: 20px;
+    }
 }
 
-@media (min-width: 300px) and (max-width: 767px){
+@media (min-width: 300px) and (max-width: 768px){
     .footer__logo-kiori{
         width: 100px;
+    }
+    .foot__linea-vertical{
+        display: none;
+    }
+    .foot__upper-div{
+        grid-template-columns: auto auto;
+        padding-bottom: 3rem;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 465px){
+    .foot__upper-div{
+        grid-template-columns: auto;
+        padding-bottom: 3rem;
+        grid-gap: 2rem;
+    }
+    .logocanva{
+        margin-bottom: 0;
+    }
+    .foot__right-part{
+        display: flex;
+        justify-content: center;
     }
 }
 
