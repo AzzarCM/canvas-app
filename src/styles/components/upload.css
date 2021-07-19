@@ -72,3 +72,10 @@
         margin: 0;
     }
 }
+
+@media(min-width: 475px) and (max-width: 1024px){
+    .space-containers{
+        height: 100%;
+        justify-content: space-between;
+    }
+}

@@ -38,7 +38,7 @@ export const Historial = () => {
   }, []);
 
   return (
-    <div style={{ height: '100vh', justifyContent: 'space-between'}} className="home__main-container animate__animated animate__fadeIn">
+    <div  className="home__main-container animate__animated animate__fadeIn space-containers">
       <Navbar />
       <h1 className="selled__title-related mb-5">Historial de compras</h1>
       <Table
