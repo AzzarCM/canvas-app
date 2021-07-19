@@ -144,5 +144,15 @@
     .address-container{
       margin-left: 0;
     }
+    .summary-container{
+      margin-left: 0;
+    }
+    .table.table-details{
+      margin-left: 0;
+    }
+
+    .product-title{
+      margin-left: 0;
+    }
   
   }
