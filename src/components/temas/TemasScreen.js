@@ -13,6 +13,7 @@ import errorImg from "../../assets/img/error.png";
 import { SearchBar } from "../search/SearchBar";
 import { API_HOST } from "../../constants/URLS";
 import { CarouselImages } from "./CarouselImages";
+import validator from 'validator';
 
 export const TemasScreen = () => {
   window.onpopstate = function name(e) {
@@ -42,12 +43,16 @@ export const TemasScreen = () => {
   }, []);
 
   const getPainting = async () => {
+    if(!validator.isNumeric(id)){
+      history.push('/main/themes');
+      return;
+    }
     const url = `${API_HOST}/paintings/${id}`;
     const resp = await fetch(url);
 
     const { painting_info } = await resp.json();
     if (painting_info.length == 0) {
-      history.push('/');
+      history.push('/main/themes');
     } else {
       const cuadro = painting_info.map((img) => {
         return {
