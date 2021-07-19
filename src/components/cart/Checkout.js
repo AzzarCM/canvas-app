@@ -605,15 +605,15 @@ export const Checkout = () => {
         <div className="cart__container-divs-total">
           <div className="cart__horizontal-total">
             <p className="cart__p-align">Sub Total</p>
-            <p>{`$${total}`}</p>
+            <p>{`$${(+total).toFixed(2)}`}</p>
           </div>
           <div className="cart__horizontal-total">
             <p className="cart__p-align">Costo de envío</p>
-            <p>{`$${shipping}`}</p>
+            <p>{`$${(+shipping).toFixed(2)}`}</p>
           </div>
           <div className="cart__horizontal-total">
             <p className="cart__p-align">Total</p>
-            <p className="cart__total-color">{`$${totalPlusShipping}`}</p>
+            <p className="cart__total-color">{`$${(+total + +shipping).toFixed(2)}`}</p>
           </div>
           <button
             onClick={handleSubmitData}
