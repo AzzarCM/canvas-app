@@ -42,10 +42,12 @@
     color: #58C7B2;
     font-size: 25px;
     font-weight: lighter;
+    transition: transform .2s;
 }
 .foot__links:hover{
     color:  #459c8c;
     text-decoration: none;
+    transform: scale(1.1);
 }
 .foot__text-info{
     font-size: 25px;
@@ -55,12 +57,13 @@
 
 .a-color{
     color: #ffffff;
-    font-size: 40px;
+    font-size: 35px;
     margin-right: 2%;
+    transition: transform .2s;
 }
 .a-color:hover{
     color: #58C7B2;
-    transition: 0.3s ease;
+    transform: scale(1.2);
 }
 .foot__linea-vertical{
     font-size: 3.5rem;
@@ -82,6 +85,10 @@
 
 .footer__logo-kiori{
     width: 6%;
+    transition: transform .2s;
+}
+.footer__logo-kiori:hover{
+    transform: scale(1.1);
 }
 
 .mb-5{

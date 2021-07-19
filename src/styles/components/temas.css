@@ -243,6 +243,12 @@
   font-size: small;
 }
 
+.carusel__container-img{
+  background-color: white;
+  width: 500px;
+  height: auto;
+}
+
 /* Smartphones (portrait and landscape) ----------- */
 @media (min-width: 1200px) and (max-width: 1366px) {
   .temas__imagen {
@@ -276,13 +282,36 @@
   .btn-div-wrap {
     justify-content: center;
   }
+  .temas__info-container{
+    padding-left: 0;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  .temas__tema-container{
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 /* Smartphones (portrait and landscape) ----------- */
-@media (min-width: 300px) and (max-width: 1024px) {
-  .temas__imagen {
-    width: 300px;
-    height: 300px;
+@media (min-width: 768px) and (max-width: 1024px) {
+  .carusel__container-img{
+    margin-left: 65px;
+  }
+  .temas__garantia{
+    display: none;
+  }
+  .custom_br{
+    display: none;
+  }
+  .temas__buy-container-right{
+    flex-direction: row;
+  }
+}
+@media (max-width: 768px){
+  .carusel__container-img{
+    margin-left: 0;
+    width: auto;
   }
 }
 /* Smartphones (portrait and landscape) ----------- */
@@ -319,7 +348,7 @@
     text-align: center;
     margin-bottom: 2rem;
   }
-  br {
+  .custom_br{
     display: none;
   }
   .temas__garantia-movil {

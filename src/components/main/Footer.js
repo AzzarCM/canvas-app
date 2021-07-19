@@ -27,7 +27,7 @@ export const Footer = () => {
                 </div>
             </div>
             <div className="foot__bottom-div">
-                <p style={{ margin: 0, paddingRight: '1rem', color: 'white' }}>Made with love by</p><img src={kioriLogo} className="footer__logo-kiori"/>
+                <p style={{ margin: 0, paddingRight: '1rem', color: 'white' }}>Made with love by</p><a href="https://www.instagram.com/kioristudios/" target="__blank" className="footer__logo-kiori"><img src={kioriLogo} alt="logo" /></a>
             </div>
         </div>
     )

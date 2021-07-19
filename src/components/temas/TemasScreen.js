@@ -90,7 +90,7 @@ export const TemasScreen = () => {
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        html: '<p style="color:#42bda5;font-size: 35;">Inicia sesion para comprar!</p>',
+        html: '<p style="color:#42bda5;font-size: 35;">¡Inicia sesión para comprar!</p>',
         showConfirmButton: false,
         footer:
           '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar sesión</a>',
@@ -107,13 +107,13 @@ export const TemasScreen = () => {
         imageUrl: errorImg,
         imageWidth: 155,
         imageHeight: 250,
-        html: '<p style="color:#42bda5;font-size: 35;">Debes seleccionar un material y su dimensión</p>',
+        html: '<p style="color:#42bda5;font-size: 35;">¡Debes seleccionar un material y su dimensión!</p>',
         showConfirmButton: true,
       });
     } else {
       Swal.fire({
         position: "center",
-        html: '<p style="color:#42bda5;font-size: 35;">Se agregó el cuadro al carrito</p>',
+        html: '<p style="color:#42bda5;font-size: 35;">¡Se agregó el cuadro al carrito!</p>',
         imageUrl: compra,
         imageWidth: 200,
         imageHeight: 200,
@@ -127,8 +127,8 @@ export const TemasScreen = () => {
   const handleWarning = () => {
     Swal.fire({
       icon: "warning",
-      title: "Atención!",
-      html: '<p style="color:#42bda5;font-size: 35;">Inicia sesión para comprar</p>',
+      title: "¡Atención!",
+      html: '<p style="color:#42bda5;font-size: 35;">¡Inicia sesión para comprar!</p>',
       showConfirmButton: false,
       footer:
         '<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="/auth/login">Iniciar Sesion</a>',
@@ -239,7 +239,7 @@ export const TemasScreen = () => {
           <div className="temas__materiales">
             <div className="temas__width-select">
               <h4 className="temas__btn-title-mat">
-                Seleccione <br />
+                Seleccione <br className="custom_br" />
                 material
               </h4>
               <div className="btn-div-wrap">
@@ -278,7 +278,7 @@ export const TemasScreen = () => {
                 style={{ marginBottom: 0, marginRight: 15 }}
                 className="temas__btn-title"
               >
-                Seleccione <br />
+                Seleccione <br className="custom_br" />
                 dimensión
               </h4>
               <div className="btn-div-wrap">

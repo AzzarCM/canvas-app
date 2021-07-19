@@ -246,8 +246,8 @@ export const Checkout = () => {
           };
           console.log(data);
           Swal.fire({
-            title: "Seguro que desea proceder?",
-            confirmButtonText: "Si, seguro!",
+            title: "¿Seguro que desea proceder con la compra?",
+            confirmButtonText: "Si",
             showLoaderOnConfirm: true,
             showDenyButton: true,
             preConfirm: () => {
@@ -265,14 +265,11 @@ export const Checkout = () => {
                   console.log(resp);
 
                   if (!resp.error) {
-                    const path = `/main/history/${uid}`;
                     Swal.fire({
                       imageUrl: doneImg,
-                      title: "Gracias!",
-                      html: '<p style="color:#42bda5;font-size: 35;">Excelente! Tu<br>compra ha sido<br>realizada con exito</p>',
+                      html: '<p style="color:#42bda5;font-size: 35;">¡Gracias por tu compra!</p>',
                       showConfirmButton: true,
                       confirmButtonText: "Entendido!",
-                      footer: `<a style="background-color: #42bda5; padding: 10px; border-radius: 5px; color: #fff" href="${path}">Ver Historial</a>`,
                     });
                     dispatch(emptyCart());
                     setTotalPlusShipping(0);
@@ -298,7 +295,7 @@ export const Checkout = () => {
           Swal.fire({
             icon: "error",
             title: "Opss...",
-            text: "Lo siento hay campos vacios!",
+            text: "Debes llenar los campos obligatorios",
             confirmButtonText: "OK",
           });
         }
