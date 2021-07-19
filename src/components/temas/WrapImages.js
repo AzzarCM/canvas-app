@@ -54,6 +54,7 @@ export const WrapImages = (props) => {
                     <div>
                         <h1
                             className="temas__title-busqueda"
+                            style={{marginBottom: '4rem'}}
                         >
                             Tema: <span className="temas__span-busqueda">"{nombre}"</span>
                         </h1>

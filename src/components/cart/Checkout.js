@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navbar } from "../main/Navbar";
-import { CartList } from "./CartList";
 import { useSelector, useDispatch } from "react-redux";
-import { useForm } from "../../hooks/useForm";
 import { useFormik } from "formik";
 import firebase from "firebase/app";
 import { emptyCart } from "../../actions/cart";
@@ -15,6 +13,7 @@ import wompi from "../../assets/img/wompi2.png";
 import visamaster from "../../assets/img/visamaster.png";
 import { API_HOST } from "../../constants/URLS";
 import { TableCart } from "./TableCart";
+import { useHistory } from "react-router-dom";
 
 export const Checkout = () => {
   const monthNames = [
@@ -55,6 +54,8 @@ export const Checkout = () => {
   var today = new Date();
   var tresDias = new Date();
   var cincoDias = new Date();
+
+  const history = useHistory();
 
   tresDias.setDate(today.getDate() + 3);
   cincoDias.setDate(today.getDate() + 5);
@@ -274,6 +275,7 @@ export const Checkout = () => {
                     dispatch(emptyCart());
                     setTotalPlusShipping(0);
                     console.log("posteado con exito");
+                    history.push(`/main/history/${uid}`)
                   } else {
                     Swal.fire({
                       imageUrl: errorImg,

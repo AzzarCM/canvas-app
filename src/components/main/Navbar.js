@@ -81,26 +81,26 @@ export const Navbar = () => {
           {JSON.stringify(firebaseInfo) == "{}" ? (
             <li className="option mobile-option" onClick={closeMobileMenu}>
               <a href="/auth/login" className="link-navbar">
-                LOG IN
+                INICIAR SESIÓN
               </a>
             </li>
           ) : (
-            <div></div>
+            null
           )}
 
           {JSON.stringify(firebaseInfo) == "{}" ? (
-            <div></div>
+            null
           ) : (
             <div>
-              <li className="option mobile-option" onClick={closeMobileMenu}>
-                <p onClick={handleLogOut} className="link-navbar">
-                  <a href="/auth/login">SALIR</a>
-                </p>
-              </li>
               <li className="option mobile-option" onClick={closeMobileMenu}>
                 <a className="link-navbar" href={pathHistory}>
                   HISTORIAL
                 </a>
+              </li>
+              <li className="option mobile-option" onClick={closeMobileMenu}>
+                <p onClick={handleLogOut} className="link-navbar">
+                  <a href="/auth/login">SALIR</a>
+                </p>
               </li>
             </div>
           )}
@@ -154,7 +154,12 @@ export const Navbar = () => {
           <div></div>
         ) : (
           <div style={{ display: "flex" }}>
-            <li onClick={closeMobileMenu}>
+            <li>
+              <a className="link-navbar" href={pathHistory}>
+                HISTORIAL
+              </a>
+            </li>
+            <li style={{ marginLeft: 10 }} onClick={closeMobileMenu}>
               <p onClick={handleLogOut} className="link-navbar">
                 <a
                   style={{ color: "#EC7063" }}
@@ -164,11 +169,6 @@ export const Navbar = () => {
                   SALIR
                 </a>
               </p>
-            </li>
-            <li style={{ marginLeft: 10 }}>
-              <a className="link-navbar" href={pathHistory}>
-                HISTORIAL
-              </a>
             </li>
           </div>
         )}

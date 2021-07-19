@@ -44,8 +44,8 @@
   .signin-up {
     display: -webkit-flex;
     padding: 0px 5px;
-    width: 35%;
-    justify-content: space-between;
+    width: 38%;
+    justify-content: space-evenly;
     list-style-type: none;
   }
   .sign-in {
@@ -128,6 +128,11 @@
     display: none;
   }
 }
+@media (min-width: 1024px) and (max-width: 1440px){
+  .signin-up{
+    justify-content: space-between;
+  }
+}
 /* Smartphones (portrait and landscape) ----------- */
   @media(min-width: 300px) and (max-width: 1024px) {
 
@@ -164,7 +169,7 @@
         flex-direction: column;
         text-align: center;
         background:#42bda5;;
-        margin-top: 42px;
+        margin-top: 25px;
         left: 0;
         opacity: 1;
         transition: all 0.5s ease;
@@ -180,7 +185,7 @@
       display: -webkit-flex;
       align-items: center;
       justify-content: center;
-      height: 10vw;
+      height: 5vw;
       padding: 30px 0px;
     }
     .sign-up {
@@ -195,6 +200,12 @@
   
     .signin-up {
       display: none;
+    }
+  }
+
+  @media(min-width: 768px) and (max-width: 1024px){
+    .menu-icon{
+      margin-right: 0.5rem;
     }
   }
   

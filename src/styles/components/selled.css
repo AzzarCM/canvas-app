@@ -36,3 +36,9 @@
     padding-right: 0.5rem;
 }
 
+@media(min-width: 500px) and (max-width: 768px){
+    .selled__imagen{
+        width: 200px;
+    }
+}
+
