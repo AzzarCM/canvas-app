@@ -6,7 +6,7 @@ export const TableDetails = ({ details }) => {
             {
                 details && (
                     <div>
-                        <p style={{ marginLeft: '4.5rem' }} className="title-info product-title">Información de productos</p>
+                        <p className="title-info product-title">Información de productos</p>
                         <div className="table-responsive">
                             <table className="table table-details">
                                 <thead className="table-light text-center">
