@@ -177,9 +177,12 @@
   height: 370px;
   transition: 0.1s;
   cursor: pointer;
+  transition: transform .2s;
+  border-radius: 1rem !important;
 }
 .temas__card-individual:hover {
   box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
 }
 
 .temas__card-image {

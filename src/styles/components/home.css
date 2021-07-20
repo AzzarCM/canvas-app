@@ -123,6 +123,12 @@
     font-size: 40px;
     font-weight: lighter;
 }
+
+.temas__home-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+}
 /* Smartphones (portrait and landscape) ----------- */
 @media  (min-width: 920px) and (max-width: 1366px){
     .home__canvas-text-container{
@@ -187,5 +193,16 @@
     }
     .span-text-foto{
         font-size: 25px;
+    }
+}
+
+@media (min-width: 475px) and (max-width: 768px){
+    .temas__home-container{
+        grid-template-columns: auto auto;
+    }
+}
+@media (min-width: 300px) and (max-width: 475px){
+    .temas__home-container{
+        grid-template-columns: auto;
     }
 }

@@ -42,7 +42,7 @@ export const PrincipalScreen = () => {
             </div>
 
             <TemasHome/>
-
+            <a href="/main/themes"><button className="home__btn mb-5 home__btn-color">Ver mas</button></a>
             <div className="home__tablet-part">
                 <div className="home__table-left">
                     <h3 className="home__aun-no">¿Aún no <br/> te decides?</h3>
@@ -62,23 +62,6 @@ export const PrincipalScreen = () => {
                 marcando una diferencia sin limitarnos a las propuestas que posee el mercado actual.
                 </p>
             </div>
-            {/* {<div className="home__cuadro-part">
-                <img alt="imagen" src={cuadro}/>
-                <div className="home__table-left">
-                    <h3 className="home__tienes">
-                        ¿Tienes<br/>
-                        preguntas?
-                    </h3>
-                    <p className="home__preocupes-p">
-                        ¡No te preocupes!<br/>
-                        resolveremos<br/>
-                        cualquier inquietud
-                    </p>
-                    <a href="/main/faq">
-                        <button className="home__btn">IR A PREGUNTAS</button>
-                    </a>
-                </div>
-            </div>} */}
             <Footer/>
         </div>
     )
