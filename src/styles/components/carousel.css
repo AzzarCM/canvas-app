@@ -68,7 +68,7 @@
 
 @media(min-width: 375px) and (max-width: 475px) {
     .carousel__sliderimg{
-        height: 260px;
+        height: 235px;
     }
 }
 
