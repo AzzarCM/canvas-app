@@ -6,8 +6,6 @@ import { useHistory } from 'react-router-dom'
 export const TemaItem = ({item}) => {
     let history = useHistory();
     const path = `/main/categoria/${item.id}` 
-    //console.log(item);
-    const {discount} = item
     
     const handleClick = () =>{
         history.push(path);

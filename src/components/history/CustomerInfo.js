@@ -1,7 +1,6 @@
 import React from 'react'
 
 export const CustomerInfo = ({ order }) => {
-    console.log(order);
     return (
         <>
             {

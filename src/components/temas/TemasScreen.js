@@ -101,7 +101,6 @@ export const TemasScreen = () => {
   };
 
   const handleAddToCart = () => {
-    console.log({ precio, material });
     if (precio === 0 || material === "" || precio == 0) {
       Swal.fire({
         imageUrl: errorImg,

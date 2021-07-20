@@ -165,8 +165,7 @@ export const Checkout = () => {
   const [flagMunicipio, setFlagMunicipio] = useState(false);
   const [departamentoName, setDepartamentoName] = useState("");
 
-  useEffect(() => {
-    console.log(total);
+  useEffect(() => { 
     setTotalPlusShipping((total + parseFloat(shipping)).toFixed(2));
   }, [formValues.values, cardValues.values, addedItems, total]);
 
@@ -255,7 +254,6 @@ export const Checkout = () => {
             cardData: cardValues.values,
             detail: item,
           };
-          console.log(data);
           Swal.fire({
             title: "¿Seguro que desea proceder con la compra?",
             confirmButtonText: "Si",
@@ -273,8 +271,6 @@ export const Checkout = () => {
               })
                 .then((res) => res.json())
                 .then((resp) => {
-                  console.log(resp);
-
                   if (!resp.error) {
                     Swal.fire({
                       imageUrl: doneImg,

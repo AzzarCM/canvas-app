@@ -10,7 +10,6 @@ export const PrivateRoute = ({
     ...rest
 }) => {
     
-    console.log(rest);
     return (
         <Route { ...rest }
             component={ (props) => (

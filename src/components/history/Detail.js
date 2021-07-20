@@ -59,12 +59,10 @@ export const Detail = () => {
     }, []);
 
     if (!orderDetail || !deliveryDetail) return null;
-    console.log(deliveryDetail);
     const { total_amount, delivery_cost } = deliveryDetail[0];
     const total = parseFloat(total_amount).toFixed(2);
     const deliveryCost = parseFloat(delivery_cost).toFixed(2);
     const subTotal = parseFloat(total_amount - delivery_cost).toFixed(2);
-    console.log(subTotal, 'en det');
     return (
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />

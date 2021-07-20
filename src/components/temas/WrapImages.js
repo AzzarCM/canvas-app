@@ -11,7 +11,6 @@ export const WrapImages = (props) => {
     const [imagenes, setImagenes] = useState([]);
     const [bandera, setBandera] = useState(true);
     const [nombre, setNombre] = useState('No encontrado');
-    //console.log(imagenes);
     const { containerProps, indicatorEl } = useLoading({
         loading: bandera,
         indicator: <BallTriangle width="50" />,
