@@ -16,8 +16,8 @@ export const Carousel = () => {
     return (
         <div className="carousel__main-container">
             <AliceCarousel>
-                <img alt="imagen" src={banner3}  className="carousel__sliderimg"/>  
-                <img alt="imagen" src={banner4}  className="carousel__sliderimg"/>
+                <img alt="imagen" src={banner2}  className="carousel__sliderimg"/>  
+                <img alt="imagen" src={banner1}  className="carousel__sliderimg"/>
             </AliceCarousel>
         </div>
     )

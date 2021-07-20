@@ -68,17 +68,18 @@
 
 @media(min-width: 375px) and (max-width: 475px) {
     .carousel__sliderimg{
-        height: 280px;
+        height: 260px;
     }
 }
 
 @media(min-width: 325px) and (max-width: 375px) {
     .carousel__sliderimg{
-        height: 250px;
+        height: 227px;
     }
 }
 @media(min-width: 300px) and (max-width: 325px) {
     .carousel__sliderimg{
-        height: 210px;
+        height: 195px;
+
     }
 }
