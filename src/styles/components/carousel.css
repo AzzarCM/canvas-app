@@ -1,12 +1,11 @@
 .carousel__main-container{
-    margin-top: 5%;
-    width: 75%;
+
+    width: 100vw;
 
 }
 
 .carousel__sliderimg{
     width: 100%;
-    height: 550px;
     object-fit: cover
 }
 
@@ -18,17 +17,25 @@
 
 .carousel__main-image{
     position: relative;
-    background: url(../../assets/img/header.jpg) no-repeat center;
+    background: url(../../assets/img/banner1.png) no-repeat center;
+    background-color: #dfdfdf;
     background-size: cover;
     height: 700px;
     width: 100%;
     overflow: hidden;
 }
 
+.carousel__container-img{
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+}
+
 .carousel__container{
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 70%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
@@ -41,4 +48,37 @@
     color: #fff;
     font-size: 20px;
     font-weight: bolder;
+}
+
+.logo-banner-width{
+    width: 380px;
+}
+
+@media(min-width: 768px) and (max-width: 1024px){
+    .carousel__sliderimg{
+        height: 500px;
+    }
+}
+
+@media(min-width: 475px) and (max-width: 768px) {
+    .carousel__sliderimg{
+        height: 400px;
+    }
+}
+
+@media(min-width: 375px) and (max-width: 475px) {
+    .carousel__sliderimg{
+        height: 280px;
+    }
+}
+
+@media(min-width: 325px) and (max-width: 375px) {
+    .carousel__sliderimg{
+        height: 250px;
+    }
+}
+@media(min-width: 300px) and (max-width: 325px) {
+    .carousel__sliderimg{
+        height: 210px;
+    }
 }
