@@ -17,27 +17,27 @@ import { useHistory } from "react-router-dom";
 
 export const Checkout = () => {
   const monthNames = [
-    "Enero",
-    "Febrero",
-    "Marzo",
-    "April",
-    "Mayo",
-    "Junio",
-    "Julio",
-    "Augosto",
-    "Septiembre",
-    "Octubre",
-    "Noviembre",
-    "Deciembre",
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
   ];
   const dayNames = [
-    "Domingo",
-    "Lunes",
-    "Martes",
-    "Miércoles",
-    "Jueves",
-    "Viernes",
-    "Sábado",
+    "domingo",
+    "lunes",
+    "martes",
+    "miércoles",
+    "jueves",
+    "viernes",
+    "sábado",
   ];
 
   //constants from firebasse
