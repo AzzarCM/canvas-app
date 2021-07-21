@@ -37,7 +37,7 @@ export const Checkout = () => {
     "Miércoles",
     "Jueves",
     "Viernes",
-    "Sabado",
+    "Sábado",
   ];
 
   //constants from firebasse
