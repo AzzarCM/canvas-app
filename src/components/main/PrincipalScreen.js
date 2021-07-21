@@ -42,7 +42,7 @@ export const PrincipalScreen = () => {
             </div>
 
             <TemasHome/>
-            <a href="/main/themes"><button className="home__btn mb-5 home__btn-color">Ver mas</button></a>
+            <a href="/main/themes"><button className="home__btn mb-5 home__btn-color">Ver más</button></a>
             <div className="home__tablet-part">
                 <div className="home__table-left">
                     <h3 className="home__aun-no">¿Aún no <br/> te decides?</h3>
