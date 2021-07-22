@@ -55,8 +55,8 @@ export const TableCart = ({ addedItems }) => {
                 </tr>
               </thead>
               <tbody>
-                {addedItems.map((item) => (
-                  <tr className="align-middle text-center">
+                {addedItems.map((item, index) => (
+                  <tr key={index} className="align-middle text-center">
                     <th scope="row" width="40%">
                       <div className="container-product-item principal-info">
                         <i

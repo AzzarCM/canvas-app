@@ -21,7 +21,7 @@ function HeaderOrderDetails({order}) {
                         <p className="mb-0">
                             Fecha de entrega estimada: 
                         </p>
-                        <p style={{fontWeight: 'bold', marginBottom: 0}}>{`${moment(order[0].delivery_date).add(3,'days').format("DD-MM-YYYY")} al ${moment(order[0].delivery_date).add(5,'days').format("DD-MM-YYYY")}`}</p>
+                        <p style={{fontWeight: 'bold', marginBottom: 0}}>{`${moment(order[0].order_date).add(3,'days').format("DD-MM-YYYY")} al ${moment(order[0].order_date).add(5,'days').format("DD-MM-YYYY")}`}</p>
                     </div>
                 </div>
                 <div className="row d-flex justify-content-center delivery progress-column">
