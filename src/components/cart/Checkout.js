@@ -375,8 +375,8 @@ export const Checkout = () => {
                   className="input-number-card"
                   type="text"
                   name="customer_phone"
-                  maxLength="8"
-                  placeholder="Numero telefonico"
+                  maxLength=" 8"  
+                  placeholder="Número telefónico"
                   value={formValues.values.customer_phone}
                   onChange={formValues.handleChange}
                 />
@@ -529,7 +529,7 @@ export const Checkout = () => {
                 className="input-number-card"
                 type="text"
                 maxLength="16"
-                placeholder="Numero tarjeta sin espacios"
+                placeholder="Número de tarjeta sin espacios"
                 name="numeroTarjeta"
                 value={cardValues.values.numeroTarjeta}
                 onChange={cardValues.handleChange}
