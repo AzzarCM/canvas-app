@@ -9,7 +9,7 @@ import { Navbar } from './Navbar'
 
 import tablet from '../../assets/img/tablet.png';
 
-import {Carousel} from './Carousel'
+//import {Carousel} from './Carousel'
 import { SearchBar } from '../search/SearchBar';
 import { TemasHome } from '../main/TemasHome'
 
@@ -20,9 +20,9 @@ export const PrincipalScreen = () => {
         <div className="home__main-container animate__animated animate__fadeIn">
             <Navbar />
             <SearchBar/>
-            <Carousel/>
+            {/* {<Carousel/>} */}
             
-            {/* <div className="carousel__main-image">
+            <div className="carousel__main-image">
                     <div className="carousel__container">
                         <p className="p-text-cuadro" >Cuadros personalizados</p>
                         <span className="span-text-foto">Mándanos tú foto o elige de nuestra colección</span>
@@ -32,7 +32,7 @@ export const PrincipalScreen = () => {
                     <p><i className="fab fa-instagram"></i> CANVAS.SV</p>
                     <p><i className="fab fa-whatsapp"></i> +503 7609 9688</p>
                 </div>
-            </div> */}
+            </div>
             
             <div className="home__separator">
                 <div className="home__line1"></div>

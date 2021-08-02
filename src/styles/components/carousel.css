@@ -17,7 +17,7 @@
 
 .carousel__main-image{
     position: relative;
-    background: url(../../assets/img/banner1.png) no-repeat center;
+    background: url(../../assets/img/header.jpg) no-repeat center;
     background-color: #dfdfdf;
     background-size: cover;
     height: 700px;
@@ -35,7 +35,7 @@
 .carousel__container{
     position: absolute;
     top: 50%;
-    left: 70%;
+    left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
