@@ -18,14 +18,17 @@ export const LoginScreen = (props) => {
         password: ''
     });
 
+    console.log(formValues);
+
     const { email, password } = formValues;
 
     function isFormValid() {
-        if (!validator.isEmpty(email)) {
+        if (validator.isEmpty(email)) {
+            console.log('hola')
             setErrorMessage('El campo del correo esta vacio')
             setFlag(false)
             return false
-        } else if (validator.isEmail(email)) {
+        } else if (!validator.isEmail(email)) {
             setErrorMessage('Correo electronico invalido')
             setFlag(false)
             return false
